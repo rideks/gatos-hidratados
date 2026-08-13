@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeaderApp from "../../components/HeaderApp.astro";
+import FooterApp from "../../components/FooterApp.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { COMPARISONS, ENTITIES } from "../../data/ComparativaData.js";
+import { CATEGORIES } from "../../data/taxonomy.js";
+import { ArrowRight, GitCompare } from "lucide-react";
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comparativas", path: "/comparativas/" },
+];
+const rankings = CATEGORIES.filter((c) => c.comparativa);
+---
+<Layout title="Comparativas" description="Todas nuestras comparativas de fuentes de agua para gatos y accesorios: rankings 'mejores X' y enfrentamientos 'versus' por material." canonical="/comparativas/">
+  <HeaderApp />
+  <PageHeader eyebrow="Índice" title="Comparativas" description="Rankings de las mejores opciones y enfrentamientos directos por material para decidir sin dudas.">
+    <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
+  </PageHeader>
+
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <section>
+      <p class="eyebrow">Rankings</p>
+      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">Las mejores de cada tipo</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {rankings.map((c) => (
+          <a href={c.comparativa.path} class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all">
+            <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl mb-3"><c.icon className="w-5 h-5" /></span>
+            <p class="font-bold text-ink group-hover:text-brand-700 leading-snug">{c.comparativa.title}</p>
+            <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-3">Ver comparativa <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-14">
+      <p class="eyebrow">Cara a cara</p>
+      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">Enfrentamientos por material</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {COMPARISONS.map((c) => (
+          <a href={`/comparativas/${c.slug}/`} class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all flex items-center gap-4">
+            <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0"><GitCompare className="w-5 h-5" /></span>
+            <span>
+              <span class="block font-bold text-ink group-hover:text-brand-700">{ENTITIES[c.a].name} vs {ENTITIES[c.b].name}</span>
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-1">Ver cara a cara <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+  <FooterApp />
+</Layout>

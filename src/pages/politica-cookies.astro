@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+<Layout title="Política de cookies" canonical="/politica-cookies/" noindex={true}>
+  <HeaderApp />
+  <PageHeader eyebrow="Legal" title="Política de cookies" />
+  <main class="max-w-3xl mx-auto px-4 py-12 prose prose-slate">
+    <h2>Qué cookies usamos</h2>
+    <p>Por defecto <strong>no cargamos ninguna cookie de seguimiento</strong>. Solo si aceptas en el banner, activamos Google Analytics (con IP anonimizada) para medir visitas de forma agregada.</p>
+    <h2>Gestionar tu consentimiento</h2>
+    <p>Puedes cambiar tu decisión borrando los datos del sitio en tu navegador; volverá a aparecer el banner. También puedes bloquear cookies desde la configuración de tu navegador.</p>
+    <h2>Cookies de terceros</h2>
+    <p>Al ir a Amazon mediante un enlace de afiliado, Amazon puede instalar sus propias cookies según su política.</p>
+  </main>
+  <FooterApp />
+</Layout>

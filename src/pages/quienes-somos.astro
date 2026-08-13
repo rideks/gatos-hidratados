@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { SITE, AUTHOR } from "../config/site.js";
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Quiénes somos", path: "/quienes-somos/" },
+];
+---
+<Layout title="Quiénes somos" description={`Cómo trabajamos en ${SITE.name}: metodología de pruebas, independencia editorial y afiliación.`} canonical="/quienes-somos/">
+  <HeaderApp />
+  <PageHeader eyebrow="Sobre el proyecto" title="Quiénes somos y cómo probamos">
+    <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
+  </PageHeader>
+
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <div class="prose prose-slate max-w-none">
+      <p>{SITE.name} nació con una idea simple: la mayoría de "rankings" de fuentes para gatos copian la descripción de Amazon y nunca han visto el producto. Nosotros probamos, medimos y contamos también lo que falla.</p>
+
+      <h2 id="author">Metodología de pruebas</h2>
+      <p>Para cada fuente evaluamos, como mínimo:</p>
+      <ul>
+        <li><strong>Ruido real:</strong> medimos el zumbido de la bomba con el depósito lleno y a medio nivel, en una habitación en silencio.</li>
+        <li><strong>Higiene del material:</strong> revisamos acumulación de biofilm tras varios días y facilidad de limpieza de cada pieza.</li>
+        <li><strong>Caudal y aceptación:</strong> observamos si el chorro atrae o asusta, y si el gato bebe más que con su bebedero habitual.</li>
+        <li><strong>Mantenimiento:</strong> desmontaje, acceso a la bomba y compatibilidad de filtros.</li>
+      </ul>
+      <p>Nuestras notas (la puntuación de estrellas) son <strong>editoriales y propias</strong>: no reflejan la valoración de Amazon, sino nuestra experiencia probando. Señalamos siempre los defectos reales de cada producto.</p>
+
+      <h2>Independencia y afiliación</h2>
+      <p>{AUTHOR.email && <>Puedes escribirnos a <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>. </>}Financiamos el proyecto con enlaces de afiliado: si compras a través de ellos, podemos llevarnos una pequeña comisión <strong>sin coste extra para ti</strong>. Eso nunca cambia qué recomendamos; si algo no nos gusta, lo decimos.</p>
+
+      <h2>No sustituimos al veterinario</h2>
+      <p>Damos información general sobre hidratación y bienestar felino. Ante cualquier síntoma o duda de salud de tu gato, consulta siempre con un profesional veterinario.</p>
+    </div>
+  </main>
+  <FooterApp />
+</Layout>

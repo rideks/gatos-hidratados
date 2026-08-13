@@ -1,0 +1,50 @@
+---
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import ProsCons from "../components/ProsCons.astro";
+import AffiliateButton from "../components/AffiliateButton.astro";
+import ProductBadges from "../components/ProductBadges.astro";
+import { PRODUCT_TAGS, getByTag } from "../data/ProductData.js";
+
+const products = getByTag(PRODUCT_TAGS.SILENT)
+  .filter((p) => p.subcategory === "fuentes-agua")
+  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+
+const seo = {
+  title: "Fuentes de agua silenciosas para gatos (las que menos molestan)",
+  description:
+    "Fuentes de agua silenciosas para gatos: las que menos ruido hacen de noche. Por qué zumban las fuentes y cómo elegir una que no te desvele.",
+  canonical: "/fuentes-agua-silenciosas-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "Silenciosas", path: seo.canonical },
+];
+
+const faqs = [
+  { q: "¿Por qué zumba mi fuente de agua?", a: "Casi siempre por dos motivos: el nivel de agua está por debajo del mínimo y la bomba chupa aire, o hay pelo atascado en el rotor. Rellena el depósito y limpia la bomba: se soluciona el 90% de los ruidos sin cambiar de fuente." },
+  { q: "¿Cuántos decibelios hace una fuente silenciosa?", a: "Las buenas trabajan por debajo de unos 30 dB, un nivel que de noche apenas se percibe. Ten en cuenta que el sonido del agua cayendo es intencionado (atrae al gato): 'silenciosa' se refiere al zumbido de la bomba, no al chapoteo." },
+  { q: "¿La cerámica es más silenciosa?", a: "Tiende a serlo, porque el peso y el grosor del material absorben mejor las vibraciones de la bomba. Aun así, el factor decisivo sigue siendo mantener el nivel de agua y la bomba limpia." },
+];
+---
+<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs}>
+  <Fragment slot="intro">
+    <p>
+      El motivo nº1 por el que la gente devuelve una fuente es el <strong>ruido</strong> de noche.
+      La buena noticia: casi todo el zumbido se debe al <strong>nivel de agua bajo</strong> (la bomba
+      chupa aire) o a <strong>pelo atascado</strong>, no a la fuente en sí. Aun así, unos modelos
+      parten con ventaja. Aquí están los más silenciosos que hemos probado.
+    </p>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <div class="mt-10"><BadgeLegend /></div>
+    <section class="mt-10 space-y-8">
+      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
+    </section>
+  </Fragment>
+</ComparativaPage>

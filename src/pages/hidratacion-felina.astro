@@ -1,0 +1,164 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import TrustBanner from "../components/TrustBanner.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Schema from "../components/Schema.astro";
+import { CATEGORIES, GUIDES } from "../data/taxonomy.js";
+import { SITE } from "../config/site.js";
+import { buildArticle, buildWebPage, buildBreadcrumb, buildFaqPage, graph } from "../utils/schema.js";
+import { ArrowRight, Droplets, AlertTriangle } from "lucide-react";
+
+const canonical = "/hidratacion-felina/";
+const url = new URL(canonical, SITE.url).href;
+const categorias = CATEGORIES.filter((c) => c.silo === "hidratacion");
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: canonical },
+];
+
+const faqs = [
+  { q: "¿Cuánta agua debe beber un gato al día?", a: "Un gato adulto necesita en torno a 50-60 ml de agua por kilo de peso al día, contando la que ya viene en la comida. Para un gato de 4 kg son unos 200-240 ml diarios. Con pienso húmedo (hasta un 80% de agua) bebe menos por su cuenta; con pienso seco, mucho más." },
+  { q: "¿De verdad una fuente hace que el gato beba más?", a: "Depende del gato. Muchos prefieren el agua en movimiento por instinto y beben más de una fuente, sobre todo los que ya beben del grifo. Pero la evidencia científica es mixta: algunos estudios ven un ligero aumento y otros no encuentran diferencia frente a un cuenco limpio. La palanca mejor documentada para subir la ingesta total es el pienso húmedo." },
+  { q: "¿Cuándo debo llevar a mi gato al veterinario por el agua?", a: "Si deja de beber por completo más de 24 h, si de repente bebe muchísimo más (por encima de ~100 ml/kg al día, un signo de posibles problemas renales, diabetes o tiroides), o si aparecen apatía, encías secas o esfuerzo al orinar. Cualquier cambio brusco merece una consulta." },
+];
+
+const schema = graph(
+  buildArticle({ url, headline: "Hidratación felina: cuánta agua necesita tu gato y cómo mejorarla", description: "Guía veterinaria sobre la hidratación del gato: cuánta agua necesita, señales de deshidratación, qué dice la ciencia de las fuentes y cuándo acudir al veterinario.", datePublished: "2026-08-01", dateModified: "2026-08-08", section: "Hidratación" }),
+  buildWebPage({ url, name: "Hidratación felina", description: "Guía pilar de hidratación del gato.", breadcrumbId: `${url}#breadcrumb`, mainEntityId: `${url}#article`, datePublished: "2026-08-01", dateModified: "2026-08-08" }),
+  buildBreadcrumb(breadcrumbs, { id: `${url}#breadcrumb` }),
+  buildFaqPage(faqs, { id: `${url}#faq` }),
+);
+---
+<Layout title="Hidratación felina: cuánta agua necesita tu gato y cómo mejorarla" description="Cuánta agua debe beber un gato al día, señales de deshidratación, qué dice de verdad la ciencia sobre las fuentes de agua y cuándo acudir al veterinario." canonical={canonical} type="article" datePublished="2026-08-01" dateModified="2026-08-08">
+  <Schema schema={schema} />
+  <HeaderApp />
+
+  <PageHeader eyebrow="Guía pilar" title="Hidratación felina: cuánta agua necesita tu gato y cómo mejorarla" description="Los gatos beben poco por instinto. Aquí tienes las cifras exactas, cómo detectar deshidratación y qué funciona de verdad (con evidencia, no con marketing).">
+    <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
+  </PageHeader>
+
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <KeyFacts items={[
+      "Un gato adulto necesita <strong>~50-60 ml de agua por kg y día</strong>, contando la comida. Un gato de 4 kg: <strong>200-240 ml</strong>.",
+      "Los gatos beben en <strong>10-12 tomas pequeñas</strong> al día, no de un trago.",
+      "El <strong>pienso húmedo</strong> (hasta 80% de agua) es la forma mejor demostrada de subir la ingesta total.",
+      "Una <strong>fuente</strong> ayuda sobre todo a gatos que ya prefieren el agua en movimiento (los que beben del grifo).",
+      "Señal de alarma: si bebe <strong>muchísimo más</strong> de lo normal (>100 ml/kg/día), al veterinario.",
+    ]} />
+
+    <article class="prose prose-slate max-w-none">
+      <p>
+        El gato desciende del gato salvaje africano (<em>Felis lybica</em>), un felino de zonas áridas
+        que obtenía casi toda el agua de sus presas y bebía poco por su cuenta. Ese instinto sigue
+        intacto: en un piso, con pienso seco, se traduce en una <strong>ingesta de agua crónicamente
+        baja</strong>, y ahí empiezan los problemas.
+      </p>
+
+      <h2>Cuánta agua necesita tu gato (con números)</h2>
+      <p>
+        El consenso veterinario sitúa las necesidades de un gato adulto en torno a <strong>50-60 ml de
+        agua por kilo de peso y día</strong>, incluyendo la humedad de la comida. En la práctica:
+      </p>
+      <ul>
+        <li><strong>Gato de 3 kg:</strong> ~150-180 ml/día</li>
+        <li><strong>Gato de 4 kg:</strong> ~200-240 ml/día</li>
+        <li><strong>Gato de 5 kg:</strong> ~250-300 ml/día</li>
+      </ul>
+      <p>
+        Ojo con un matiz clave: esa cifra <strong>incluye el agua de la comida</strong>. El pienso
+        húmedo tiene hasta un 80% de agua, así que un gato que come latas cubre gran parte de su
+        necesidad sin apenas beber. El que come pienso seco (~10% de agua) tiene que beberlo casi todo,
+        y ahí es donde suele quedarse corto.
+      </p>
+      <p>
+        Un detalle que muchos no saben: los gatos sanos beben en <strong>10-12 tomas pequeñas</strong>
+        repartidas por el día, no de un trago. Que el cuenco no baje no significa que beba bien.
+      </p>
+
+      <h2>Por qué importa: riñón y vías urinarias</h2>
+      <p>
+        Beber poco de forma sostenida se asocia a <strong>problemas de vías urinarias bajas</strong>
+        (cistitis idiopática, cristales, en machos riesgo de obstrucción) y a una mayor carga sobre el
+        <strong>riñón</strong> a largo plazo, sobre todo en gatos mayores. Una buena hidratación ayuda
+        a mantener la orina menos concentrada y a arrastrar toxinas.
+      </p>
+
+      <div class="not-prose my-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
+        <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+        <p class="text-sm text-amber-900">
+          <strong>Señales de deshidratación:</strong> encías pegajosas o secas, letargo, ojos hundidos
+          y pérdida de elasticidad de la piel (al pellizcarla suavemente en la nuca, tarda en volver).
+          Si además hace esfuerzos al orinar o hay sangre, acude <strong>de inmediato</strong> al veterinario.
+        </p>
+      </div>
+
+      <h2>Qué funciona de verdad (y qué es marketing)</h2>
+      <p>
+        Aquí conviene ser honesto, porque hay mucho humo. Ordenado por evidencia:
+      </p>
+      <ol>
+        <li>
+          <strong>Pienso húmedo o añadir agua a la comida.</strong> Es la palanca mejor demostrada para
+          subir la ingesta total de líquido. Si solo haces una cosa, que sea esta.
+        </li>
+        <li>
+          <strong>Varios puntos de agua, limpios y lejos de la comida y del arenero.</strong> Los gatos
+          rechazan por instinto el agua cercana a comida o heces.
+        </li>
+        <li>
+          <strong>Una fuente de agua.</strong> Muchos gatos prefieren el agua en movimiento y beben más
+          de una fuente, especialmente los que ya beben del grifo. Pero seamos claros: los estudios
+          controlados dan resultados mixtos (uno vio algo más de consumo, otros no vieron diferencia
+          frente a un cuenco limpio). ¿Dónde gana de verdad una fuente? En <strong>filtrado continuo</strong>,
+          <strong>menos biofilm</strong> que un cuenco descuidado, y en gatos con <strong>preferencia
+          clara por el agua en movimiento</strong>.
+        </li>
+      </ol>
+      <p>
+        Dicho de otro modo: una fuente no es magia, pero para el gato adecuado (multigato, que bebe del
+        grifo, o con historial urinario) es una herramienta muy útil. Para elegir bien, pasa a nuestra
+        <a href="/fuentes-de-agua-para-gatos/">guía de fuentes de agua</a>.
+      </p>
+
+      <VetDisclaimer />
+
+      <h2>Qué encontrarás en esta sección</h2>
+    </article>
+
+    <div class="not-prose mt-6 grid gap-4 sm:grid-cols-2">
+      {categorias.map((c) => (
+        <a href={c.hub?.path || c.comparativa?.path} class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all flex gap-4">
+          <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0 h-fit"><c.icon className="w-5 h-5" /></span>
+          <span>
+            <span class="block font-bold text-ink group-hover:text-brand-700">{c.name}</span>
+            <span class="block text-sm text-slate-600 mt-1">{c.blurb}</span>
+            <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-2">Explorar <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></span>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <div class="not-prose mt-8">
+      <p class="eyebrow mb-3">Guías relacionadas</p>
+      <ul class="space-y-2">
+        {GUIDES.map((g) => (
+          <li>
+            <a href={g.path} class="inline-flex items-center gap-2 text-slate-700 hover:text-brand-700">
+              <Droplets className="w-4 h-4 text-brand-500" /> {g.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="mt-12"><TrustBanner /></div>
+  </main>
+
+  <FooterApp />
+</Layout>

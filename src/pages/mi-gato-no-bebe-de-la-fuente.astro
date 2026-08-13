@@ -1,0 +1,52 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+const seo = {
+  title: "Mi gato no bebe de la fuente: causas y soluciones",
+  description: "Tu gato no usa la fuente de agua? Causas más comunes (ruido, ubicación, filtro sucio, desconfianza) y soluciones paso a paso para que empiece a beber.",
+  canonical: "/mi-gato-no-bebe-de-la-fuente/",
+};
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "No bebe de la fuente", path: seo.canonical },
+];
+const faqs = [
+  { q: "¿Cuánto tardan en acostumbrarse?", a: "La mayoría, entre unos días y dos semanas. Deja el bebedero de siempre junto a la fuente los primeros días y retíralo poco a poco cuando veas que se acerca a beber del chorro." },
+  { q: "¿Y si sigue sin beber tras dos semanas?", a: "Prueba a cambiar la ubicación (lejos del comedor y del arenero), baja el caudal si le asusta el chorro, y revisa el filtro. Si además notas que bebe muy poco en general o hace esfuerzos al orinar, consulta al veterinario." },
+  { q: "¿Le pongo la fuente cerca de la comida?", a: "Mejor no. Por instinto, el gato asocia el agua cercana a la comida (o al arenero) con contaminación y la rechaza. Sepáralas y colócala en un sitio tranquilo y de paso." },
+];
+---
+<GuideLayout seo={seo} breadcrumbs={breadcrumbs} datePublished="2026-08-05" faqs={faqs}>
+  <p>Has comprado la fuente, la has montado… y tu gato la mira con desconfianza. Es más común de lo que crees y casi siempre tiene solución. Estas son las causas por orden de frecuencia.</p>
+
+  <KeyFacts title="Lo esencial" items={[
+    "La mayoría se acostumbran entre <strong>unos días y dos semanas</strong>.",
+    "Truco que más funciona: deja el <strong>cuenco de siempre al lado</strong> los primeros días y retíralo poco a poco.",
+    "Si tu gato ya <strong>bebe del grifo</strong>, es muy probable que adopte la fuente: es la señal más fiable.",
+    "Colócala <strong>lejos de la comida y del arenero</strong>, en un sitio tranquilo.",
+  ]} />
+
+  <h2>1. Le da miedo el ruido o el movimiento</h2>
+  <p>Los gatos asustadizos rechazan el chorro fuerte o el zumbido. Baja el caudal al mínimo, revisa que el nivel de agua esté por encima del mínimo (bomba a medio sumergir = ruido) y considera una <a href="/fuentes-agua-silenciosas-gatos/">fuente silenciosa</a>.</p>
+
+  <h2>2. Mala ubicación</h2>
+  <p>Junto al comedor o al arenero, muchos gatos no beben por instinto. Colócala en un sitio tranquilo, de paso, y lejos de la comida.</p>
+
+  <h2>3. El filtro está sucio (o es nueva y huele a plástico)</h2>
+  <p>Un filtro saturado o el olor a plástico nuevo echan para atrás. Enjuaga bien la fuente antes del primer uso y mantén el <a href="/filtros-recambio-fuentes-gatos/">filtro al día</a>.</p>
+
+  <h2>4. Simple desconfianza a lo nuevo</h2>
+  <p>Deja el bebedero de siempre <strong>al lado</strong> de la fuente los primeros días. Cuando veas que se acerca al chorro, retira el antiguo poco a poco.</p>
+
+  <h2>Truco que funciona</h2>
+  <p>Muchos gatos se interesan por el agua en movimiento si juegas con el chorro con el dedo delante de ellos, o si al principio dejas caer alguna golosina cerca de la base. La curiosidad hace el resto.</p>
+
+  <div class="not-prose my-6 rounded-xl border border-brand-200 bg-brand-50 p-4">
+    <p class="text-sm text-slate-700">¿Y si el problema no es la fuente sino cuánto bebe en general? Repasa nuestra <a href="/hidratacion-felina/" class="font-semibold text-brand-700">guía de hidratación felina</a> y sus señales de alerta.</p>
+  </div>
+
+  <VetDisclaimer />
+</GuideLayout>

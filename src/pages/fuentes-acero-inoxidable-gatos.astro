@@ -1,0 +1,53 @@
+---
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import ProsCons from "../components/ProsCons.astro";
+import AffiliateButton from "../components/AffiliateButton.astro";
+import ProductBadges from "../components/ProductBadges.astro";
+import { PRODUCT_TAGS, getByTag } from "../data/ProductData.js";
+
+const products = getByTag(PRODUCT_TAGS.STAINLESS_STEEL)
+  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+
+const seo = {
+  title: "Fuentes de agua de acero inoxidable para gatos",
+  description:
+    "Las mejores fuentes de acero inoxidable para gatos: más higiénicas, sin biofilm y aliadas contra el acné felino. Comparadas por capacidad, ruido y limpieza.",
+  canonical: "/fuentes-acero-inoxidable-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "De acero inoxidable", path: seo.canonical },
+];
+
+const faqs = [
+  { q: "¿Por qué elegir acero frente a plástico?", a: "El acero inoxidable no es poroso, así que no acumula el biofilm (esa película viscosa) que sí forma el plástico y que se asocia al acné felino y a que el gato deje de beber. Además se limpia mejor y dura más." },
+  { q: "¿El depósito también es de acero?", a: "En la mayoría de modelos, el plato de bebida es de acero pero el depósito interior sigue siendo de plástico. Es normal: lo importante para la higiene es la superficie con la que el gato entra en contacto. Aun así, desmonta y limpia el depósito con frecuencia." },
+  { q: "¿Se puede meter en el lavavajillas?", a: "Las piezas de acero (plato y tapa) suelen ser aptas para lavavajillas; la bomba y la electrónica, no. Revisa siempre las instrucciones del fabricante antes." },
+];
+---
+<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs}>
+  <Fragment slot="intro">
+    <p>
+      Si tu prioridad es la <strong>higiene</strong>, el acero inoxidable es la mejor apuesta. A
+      diferencia del plástico, no es poroso: no acumula esa película viscosa (biofilm) que se
+      relaciona con el <strong>acné felino</strong> en la barbilla y con que muchos gatos dejen de
+      beber. Comparamos las opciones de acero por capacidad, ruido y facilidad de limpieza.
+    </p>
+    <p>
+      ¿Quieres verlo frente al plástico en detalle? Lee
+      <a href="/comparativas/fuente-acero-vs-plastico-gatos/">fuente de acero vs plástico para gatos</a>.
+    </p>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <div class="mt-10"><BadgeLegend /></div>
+    <section class="mt-10 space-y-8">
+      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
+    </section>
+  </Fragment>
+</ComparativaPage>

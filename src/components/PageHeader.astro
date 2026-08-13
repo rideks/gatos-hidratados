@@ -1,0 +1,12 @@
+---
+const { eyebrow, title, description } = Astro.props;
+---
+<header class="bg-white border-b border-line pt-14 pb-10">
+  <div class="max-w-6xl mx-auto px-4">
+    <slot name="breadcrumbs" />
+    {eyebrow && <p class="kicker mt-4">{eyebrow}</p>}
+    <h1 class="font-display text-ink text-3xl sm:text-[2.7rem] mt-2 leading-[1.04] tracking-tight">{title}</h1>
+    {description && <p class="text-ink-700 mt-3 max-w-2xl text-lg leading-relaxed">{description}</p>}
+    <slot />
+  </div>
+</header>

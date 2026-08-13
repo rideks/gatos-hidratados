@@ -1,0 +1,100 @@
+---
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import ProsCons from "../components/ProsCons.astro";
+import AffiliateButton from "../components/AffiliateButton.astro";
+import ProductBadges from "../components/ProductBadges.astro";
+import SpecTable from "../components/SpecTable.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import { getBySilo } from "../data/ProductData.js";
+import { Beaker, Target } from "lucide-react";
+
+const products = getBySilo("hidratacion")
+  .filter((p) => p.subcategory === "fuentes-agua")
+  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+
+const seo = {
+  title: "Mejores fuentes de agua para gatos 2026: comparativa actualizada",
+  description:
+    "Comparativa real de las mejores fuentes de agua para gatos en 2026: acero, cerámica y plástico frente a frente. Cómo elegir por material, ruido, capacidad y filtro.",
+  canonical: "/mejores-fuentes-agua-para-gatos-2026/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "Mejores fuentes 2026", path: seo.canonical },
+];
+
+// Guía de decisión rápida (qué fuente para qué situación).
+const decision = [
+  { caso: "1-2 gatos, quiero acertar sin pensar", pick: "PETLIBRO acero 2 L", slug: "petlibro-acero-inoxidable-2l" },
+  { caso: "Máxima higiene y que no la vuelquen", pick: "iPettie cerámica 2,1 L", slug: "ipettie-ceramica-21l" },
+  { caso: "3 o más gatos / rellenar poco", pick: "Veken acero 3,2 L", slug: "veken-acero-32l-varios-gatos" },
+  { caso: "Sin enchufe cerca o gato que muerde cables", pick: "PETKIT sin cable con sensor", slug: "petkit-sin-cable-sensor-3l" },
+  { caso: "Quiero controlar cuánto bebe (mayor/renal)", pick: "PETKIT Eversweet Solo 2", slug: "petkit-eversweet-solo-2" },
+  { caso: "Probar sin gastar mucho", pick: "Catit Flower 3 L", slug: "catit-flower-fountain-3l" },
+]
+
+const faqs = [
+  { q: "¿De verdad bebe más un gato con fuente?", a: "Depende del gato. Muchos prefieren el agua en movimiento por instinto y beben más, sobre todo los que ya beben del grifo. La evidencia científica, sin embargo, es mixta: algunos estudios ven un ligero aumento y otros no encuentran diferencia frente a un cuenco limpio. Donde una fuente gana claro es en filtrado continuo, menos biofilm y en gatos con preferencia por el agua en movimiento." },
+  { q: "¿Qué material es mejor: acero, cerámica o plástico?", a: "Para higiene, acero inoxidable 304 y cerámica esmaltada ganan al plástico, que es poroso y acumula biofilm en microarañazos (un factor asociado al acné felino). El plástico solo compensa como opción barata para probar. Nuestra recomendación por defecto es el acero por equilibrio entre higiene, precio y facilidad de limpieza." },
+  { q: "¿Cuánto ruido hace una fuente de agua?", a: "Bien mantenida, poco: las buenas trabajan por debajo de unos 30 dB. El ruido casi siempre viene de dos cosas: nivel de agua por debajo del mínimo (la bomba chupa aire) o pelo atascado en la bomba. Rellena y limpia con frecuencia." },
+  { q: "¿Necesito comprar filtros aparte?", a: "Sí. Los filtros de carbón son consumibles: hay que cambiarlos cada 2-4 semanas. Un filtro saturado empeora el sabor y es la causa nº1 de que el gato deje de usar la fuente. Compra recambios compatibles desde el principio y mide el diámetro del tuyo." },
+  { q: "¿Cuánto cuesta mantener una fuente al año?", a: "Aparte de la compra, cuenta el consumo de filtros de carbón (unos 15-30 € al año según la frecuencia) y un consumo eléctrico mínimo (la bomba ronda los 2 W, céntimos al mes). El coste real recurrente son los filtros." },
+];
+---
+<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs}>
+  <Fragment slot="intro">
+    <p>
+      Una fuente hace que <strong>muchos</strong> gatos beban más, y beber más ayuda a prevenir
+      problemas urinarios y renales. Pero seamos honestos: no es magia para todos, y no todas las
+      fuentes valen. El <strong>material</strong>, el <strong>ruido</strong> y lo fácil que sea
+      limpiarla marcan la diferencia entre una fuente que el gato adora y otra que acaba en un armario.
+    </p>
+    <p>
+      Hemos probado y comparado los formatos más habituales fijándonos en lo que de verdad importa en el
+      día a día. Abajo tienes una <strong>guía de decisión rápida</strong>, cómo probamos, y luego el
+      análisis de cada modelo con su ficha técnica y su "ideal para".
+    </p>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <!-- Guía de decisión rápida -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-black text-ink mb-1">Elige en 10 segundos</h2>
+      <p class="text-slate-600 mb-5 text-sm">Según tu situación, esta es la que compraríamos.</p>
+      <div class="rounded-xl border border-brand-200 overflow-hidden divide-y divide-brand-100">
+        {decision.map((d) => (
+          <a href={`/productos/${d.slug}/`} class="group flex items-center justify-between gap-4 p-4 hover:bg-slate-50 transition">
+            <span class="text-sm text-slate-700">{d.caso}</span>
+            <span class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 whitespace-nowrap group-hover:gap-2 transition-all">
+              {d.pick} <Target className="w-4 h-4" />
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cómo probamos -->
+    <section class="mt-10 rounded-xl border border-brand-200 bg-slate-50 p-6">
+      <p class="inline-flex items-center gap-2 eyebrow"><Beaker className="w-4 h-4" /> Cómo lo probamos</p>
+      <ul class="mt-3 space-y-2 text-sm text-slate-700">
+        <li>• <strong>Ruido real</strong> de la bomba con el depósito lleno y a medio nivel, de noche.</li>
+        <li>• <strong>Higiene del material</strong>: acumulación de biofilm tras varios días y facilidad de desmontaje y limpieza.</li>
+        <li>• <strong>Caudal y aceptación</strong>: si el chorro atrae o asusta, y si el gato bebe más que con su cuenco.</li>
+        <li>• <strong>Mantenimiento</strong>: acceso a la bomba, compatibilidad y coste de los filtros.</li>
+      </ul>
+      <p class="text-xs text-slate-500 mt-3">Nuestras notas son editoriales y propias; no reproducen la valoración de Amazon. Señalamos siempre los defectos reales.</p>
+    </section>
+
+    <div class="mt-10"><BadgeLegend /></div>
+
+    <!-- Fichas -->
+    <section class="mt-10 space-y-10">
+      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
+    </section>
+  </Fragment>
+</ComparativaPage>

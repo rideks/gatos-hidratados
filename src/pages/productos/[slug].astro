@@ -1,0 +1,294 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeaderApp from "../../components/HeaderApp.astro";
+import FooterApp from "../../components/FooterApp.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Schema from "../../components/Schema.astro";
+import ProsCons from "../../components/ProsCons.astro";
+import StarRating from "../../components/StarRating.astro";
+import AffiliateButton from "../../components/AffiliateButton.astro";
+import ProductCard from "../../components/ProductCard.astro";
+import SpecTable from "../../components/SpecTable.astro";
+import ProductBadges from "../../components/ProductBadges.astro";
+import ProductImage from "../../components/ProductImage.astro";
+import {
+  getImages,
+  getMainImage,
+  getPros,
+  getCons,
+  hasProsCons,
+} from "../../utils/product.js";
+import { getReadableTags, productos, getRelated } from "../../data/ProductData.js";
+import { getProductFaqs } from "../../utils/productFaqs.js";
+import {
+  SITE,
+  SILOS,
+  CATEGORY_BY_SUBCATEGORY,
+  COMPARATIVA_BY_SUBCATEGORY,
+  GUIA_BY_SUBCATEGORY,
+} from "../../config/site.js";
+import { getProductSilo } from "../../data/ProductData.js";
+import {
+  buildProductNode,
+  buildWebPage,
+  buildBreadcrumb,
+  buildFaqPage,
+  graph,
+} from "../../utils/schema.js";
+import { ArrowRight, Star, ShieldCheck, Target, Sparkles } from "lucide-react";
+
+export function getStaticPaths() {
+  return productos.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const canonical = `/productos/${product.slug}/`;
+const absoluteUrl = new URL(canonical, SITE.url).href;
+
+const siloId = getProductSilo(product);
+const silo = SILOS[siloId] || SILOS.hidratacion;
+const noindex = !silo.active; // fichas de silos apagados: noindex
+const categoria = CATEGORY_BY_SUBCATEGORY[product.subcategory];
+const comparativa = COMPARATIVA_BY_SUBCATEGORY[product.subcategory];
+const guia = GUIA_BY_SUBCATEGORY[product.subcategory];
+const padre = categoria || comparativa;
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: silo.name, path: silo.path },
+  ...(padre ? [{ name: padre.title, path: padre.path }] : []),
+  { name: product.name, path: canonical },
+];
+
+// dedupe de migas consecutivas con la misma ruta (p. ej. silo == hub en silos nuevos)
+const dedupedBreadcrumbs = breadcrumbs.filter((b, i) => i === 0 || b.path !== breadcrumbs[i - 1].path);
+
+const faqs = getProductFaqs(product);
+const related = getRelated(product, 3);
+const tags = getReadableTags(product.tags, 4);
+const reviewsFmt = product.reviews ? Number(product.reviews).toLocaleString("es-ES") : null;
+const images = getImages(product);
+
+const schema = graph(
+  buildProductNode(product, { pageUrl: absoluteUrl }),
+  buildWebPage({
+    url: absoluteUrl,
+    name: product.name,
+    description: product.dynamicReview || product.name,
+    breadcrumbId: `${absoluteUrl}#breadcrumb`,
+    mainEntityId: `${absoluteUrl}#product`,
+    datePublished: product.datePublished,
+    dateModified: product.updatedAt?.split("T")[0] || product.datePublished,
+  }),
+  buildBreadcrumb(dedupedBreadcrumbs, { id: `${absoluteUrl}#breadcrumb` }),
+  faqs.length ? buildFaqPage(faqs, { id: `${absoluteUrl}#faq` }) : null,
+);
+---
+<Layout
+  title={product.name}
+  description={product.dynamicReview}
+  canonical={canonical}
+  ogImage={getMainImage(product)}
+  type="article"
+  noindex={noindex}
+  datePublished={product.datePublished}
+  dateModified={product.updatedAt}
+>
+  <Schema schema={schema} />
+  <HeaderApp />
+
+  <main class="max-w-3xl mx-auto px-4 pt-24 pb-16">
+    <Breadcrumbs items={dedupedBreadcrumbs} />
+
+    <article>
+      <div class="grid sm:grid-cols-2 gap-6 items-start mt-4">
+        <!-- Galería simple -->
+        <div class="space-y-3">
+          <div class="rounded-xl border border-brand-200 bg-white overflow-hidden aspect-square">
+            <ProductImage src={images[0]} alt={product.name} loading="eager" pawSize="w-20 h-20" />
+          </div>
+          {images.length > 1 && (
+            <div class="grid grid-cols-4 gap-2">
+              {images.slice(0, 4).map((src) => (
+                <div class="rounded-lg border border-brand-200 bg-white overflow-hidden aspect-square">
+                  <img src={src} alt={product.name} loading="lazy" class="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Buy box -->
+        <div class="rounded-xl border border-brand-200 bg-white p-5">
+          <p class="text-xs font-bold text-brand-700 uppercase tracking-wide">{product.brand}</p>
+          <h1 class="font-display font-extrabold text-ink text-2xl leading-tight mt-1">{product.name}</h1>
+          <ProductBadges product={product} class="mt-2" />
+
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3">
+            <StarRating slug={product.slug} label={true} size={15} />
+            {reviewsFmt && (
+              <span class="inline-flex items-center gap-1 text-xs text-slate-500">
+                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" /> {product.rating} · {reviewsFmt} valoraciones en Amazon
+              </span>
+            )}
+          </div>
+
+          <div class="mt-4 flex items-baseline gap-2">
+            <span class="text-3xl font-display font-extrabold text-ink">{product.price} €</span>
+            {product.originalPrice && <span class="text-lg text-slate-400 line-through">{product.originalPrice} €</span>}
+          </div>
+
+          <div class="mt-4">
+            <AffiliateButton href={product.amazonUrl} productName={product.name} price={product.price} location="buybox" full={true} />
+          </div>
+          <p class="mt-2 text-xs text-slate-400 text-center">Precio orientativo. El definitivo se ve en Amazon.</p>
+
+          {tags.length > 0 && (
+            <ul class="mt-4 flex flex-wrap gap-1.5">
+              {tags.map((t) => (
+                <li class="text-[11px] font-semibold text-brand-700 bg-brand-50 rounded-full px-2.5 py-1">{t}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+
+      <!-- Aviso: existe un modelo más reciente -->
+      {product.newerModel && (
+        <section class="mt-6">
+          <div class="flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 p-4">
+            <span class="inline-flex bg-amber-400 text-ink p-2 rounded-lg shrink-0"><Sparkles className="w-4 h-4" /></span>
+            <div>
+              <p class="font-semibold text-ink">Hay un modelo más reciente</p>
+              <p class="text-sm text-ink-700/80 mt-0.5">
+                {product.newerModel.name}{product.newerModel.note ? ` — ${product.newerModel.note}` : ""}.
+                {product.newerModel.price ? ` Desde ${product.newerModel.price} €.` : ""}
+              </p>
+              {product.newerModel.url ? (
+                <a href={product.newerModel.url} target="_blank" rel="sponsored nofollow noopener" class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800 mt-1.5">
+                  Ver el modelo nuevo <ArrowRight className="w-4 h-4" />
+                </a>
+              ) : product.newerModel.asin ? (
+                <p class="u-data text-xs text-ink-700/60 mt-1.5">ASIN {product.newerModel.asin}</p>
+              ) : null}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Reseña editorial -->
+      <section class="mt-10">
+        <h2 class="font-display font-extrabold text-ink text-2xl mb-3">Nuestra opinión</h2>
+        <p class="text-slate-700 leading-relaxed">{product.dynamicReview}</p>
+      </section>
+
+      <!-- Ideal para -->
+      {product.bestFor && (
+        <section class="mt-6">
+          <div class="flex items-start gap-3 rounded-xl border border-brand-200 bg-brand-50 p-5">
+            <span class="inline-flex bg-brand-600 text-white p-2 rounded-lg shrink-0"><Target className="w-5 h-5" /></span>
+            <div>
+              <p class="text-xs font-bold text-brand-700 uppercase tracking-wide">Ideal para</p>
+              <p class="text-slate-800 mt-0.5">{product.bestFor}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Ficha técnica -->
+      {product.specs && (
+        <section class="mt-8">
+          <SpecTable specs={product.specs} />
+        </section>
+      )}
+
+      <!-- Pros / contras -->
+      {hasProsCons(product) && (
+        <section class="mt-8">
+          <ProsCons pros={getPros(product)} cons={getCons(product)} />
+        </section>
+      )}
+
+      <!-- Características -->
+      {product.features?.length > 0 && (
+        <section class="mt-8">
+          <h2 class="font-display font-extrabold text-ink text-2xl mb-3">Características</h2>
+          <ul class="space-y-2 text-slate-700">
+            {product.features.map((f) => (
+              <li class="flex gap-2"><ShieldCheck className="w-4 h-4 text-brand-600 mt-1 shrink-0" />{f}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- FAQ dinámica -->
+      {faqs.length > 0 && (
+        <section class="mt-10">
+          <h2 class="font-display font-extrabold text-ink text-2xl mb-5">Preguntas frecuentes</h2>
+          <div class="space-y-4">
+            {faqs.map((f) => (
+              <details class="rounded-xl border border-brand-200 p-4">
+                <summary class="font-bold text-ink cursor-pointer">{f.question}</summary>
+                <p class="text-slate-700 mt-2">{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- CTA final -->
+      <section class="mt-10">
+        <AffiliateButton href={product.amazonUrl} productName={product.name} price={product.price} location="ficha-final" full={true} />
+      </section>
+
+      <!-- Sigue leyendo -->
+      <section class="mt-10 border-t border-brand-200 pt-8">
+        <h2 class="font-display font-extrabold text-ink text-2xl mb-4">Sigue leyendo</h2>
+        <div class="space-y-3">
+          {categoria && (
+            <a href={categoria.path} class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition">
+              <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
+              <span>
+                <span class="block text-xs font-bold text-brand-700 uppercase">Categoría</span>
+                <span class="block font-semibold text-ink group-hover:text-brand-700">{categoria.title}</span>
+              </span>
+            </a>
+          )}
+          {comparativa && (
+            <a href={comparativa.path} class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition">
+              <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
+              <span>
+                <span class="block text-xs font-bold text-brand-700 uppercase">Comparativa</span>
+                <span class="block font-semibold text-ink group-hover:text-brand-700">{comparativa.title}</span>
+              </span>
+            </a>
+          )}
+          {guia && (
+            <a href={guia.path} class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition">
+              <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
+              <span>
+                <span class="block text-xs font-bold text-brand-700 uppercase">Guía</span>
+                <span class="block font-semibold text-ink group-hover:text-brand-700">{guia.title}</span>
+              </span>
+            </a>
+          )}
+        </div>
+      </section>
+
+      <!-- Relacionados -->
+      {related.length > 0 && (
+        <section class="mt-12">
+          <h2 class="font-display font-extrabold text-ink text-2xl mb-5">Alternativas que hemos analizado</h2>
+          <div class="grid gap-6 sm:grid-cols-2">
+            {related.map((p) => <ProductCard product={p} />)}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+
+  <FooterApp />
+</Layout>

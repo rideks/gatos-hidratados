@@ -1,0 +1,69 @@
+---
+import ProductImage from "./ProductImage.astro";
+import ProductBadges from "./ProductBadges.astro";
+import ProsCons from "./ProsCons.astro";
+import SpecTable from "./SpecTable.astro";
+import AffiliateButton from "./AffiliateButton.astro";
+import StarRating from "./StarRating.astro";
+import { getMainImage } from "../utils/product.js";
+import { getPros, getCons } from "../utils/product.js";
+import { Target } from "lucide-react";
+
+const { product: p, rank } = Astro.props;
+const img = getMainImage(p);
+// Medallas para el podio; número neutro para el resto.
+const medalCls =
+  rank === 1 ? "bg-amber-400 text-ink"
+  : rank === 2 ? "bg-slate-300 text-ink"
+  : rank === 3 ? "bg-orange-300 text-ink"
+  : "bg-ink text-brand-300";
+---
+<article class="rounded-xl border border-brand-200 bg-white p-5 md:p-6 hover:border-brand-400 hover:shadow-lg hover:shadow-brand-100 transition-all">
+  <div class="flex gap-4">
+    <!-- Podio + miniatura -->
+    <div class="shrink-0 flex flex-col items-center gap-2">
+      {rank && (
+        <span class:list={["inline-flex items-center justify-center w-8 h-8 rounded-lg u-data text-sm font-bold", medalCls]}>
+          {String(rank).padStart(2, "0")}
+        </span>
+      )}
+      <a href={`/productos/${p.slug}/`} class="block w-20 h-20 rounded-lg overflow-hidden border border-brand-200 bg-paper-200">
+        <ProductImage src={img} alt={p.name} pawSize="w-8 h-8" />
+      </a>
+    </div>
+
+    <!-- Cabecera -->
+    <div class="min-w-0 flex-1">
+      <div class="flex items-start justify-between gap-3">
+        <div class="min-w-0">
+          <p class="eyebrow !text-xs">{p.brand}</p>
+          <h2 class="font-display font-bold text-ink text-lg leading-snug mt-0.5">
+            <a href={`/productos/${p.slug}/`} class="hover:text-brand-700 transition-colors">{p.name}</a>
+          </h2>
+          <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+            <StarRating slug={p.slug} label={true} size={14} />
+            <ProductBadges product={p} />
+          </div>
+        </div>
+        <span class="u-data text-lg font-semibold text-ink whitespace-nowrap">{p.price} €</span>
+      </div>
+      {p.bestFor && (
+        <p class="inline-flex items-start gap-1.5 text-sm text-brand-800 bg-brand-50 rounded-lg px-3 py-1.5 mt-3">
+          <Target className="w-4 h-4 mt-0.5 shrink-0" /> <span><strong>Ideal para:</strong> {p.bestFor}</span>
+        </p>
+      )}
+    </div>
+  </div>
+
+  {p.dynamicReview && <p class="text-ink-700 mt-4 leading-relaxed">{p.dynamicReview}</p>}
+
+  <div class="mt-4"><ProsCons pros={getPros(p)} cons={getCons(p)} /></div>
+
+  <div class="mt-5 grid md:grid-cols-2 gap-4 items-start">
+    <SpecTable specs={p.specs} />
+    <div class="md:pt-1">
+      <AffiliateButton href={p.amazonUrl} productName={p.name} price={p.price} location="ficha" full={true} />
+      <a href={`/productos/${p.slug}/`} class="block text-center text-sm font-semibold text-brand-700 hover:text-brand-800 mt-3">Ver análisis completo →</a>
+    </div>
+  </div>
+</article>

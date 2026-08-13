@@ -1,0 +1,15 @@
+---
+// Bloque de "datos clave" (respuesta rápida) para posts informativos.
+const { title = "En resumen", items = [] } = Astro.props;
+---
+<div class="not-prose rounded-xl border border-brand-200 bg-brand-50 p-5 my-6">
+  <p class="eyebrow mb-3">{title}</p>
+  <ul class="space-y-2">
+    {items.map((it) => (
+      <li class="flex gap-2 text-sm text-slate-700">
+        <span class="text-brand-600 font-bold mt-0.5">→</span>
+        <span set:html={it} />
+      </li>
+    ))}
+  </ul>
+</div>

@@ -1,0 +1,49 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+const seo = {
+  title: "¿Cada cuánto hay que cambiar el filtro de la fuente del gato?",
+  description: "Cada cuánto cambiar el filtro de carbón y el prefiltro de espuma de la fuente de tu gato, señales de que está saturado y cómo alargar su vida.",
+  canonical: "/cada-cuanto-cambiar-filtro-fuente-gato/",
+};
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Filtros de recambio", path: "/filtros-recambio-fuentes-gatos/" },
+  { name: "Cada cuánto cambiarlo", path: seo.canonical },
+];
+const faqs = [
+  { q: "¿Y si tengo varios gatos?", a: "Acorta el plazo: con 2-3 gatos, cambia el filtro de carbón cada 1-2 semanas en lugar de cada 3-4. Más bocas significa más pelo y saliva en el agua, y el filtro se satura antes." },
+  { q: "¿Puedo lavar el filtro de carbón para reutilizarlo?", a: "No. El de carbón activo pierde su capacidad una vez saturado; lavarlo no lo regenera. El prefiltro de espuma sí se puede enjuagar varias veces antes de tirarlo, porque hace una función mecánica, no química." },
+  { q: "¿Qué pasa si no lo cambio nunca?", a: "El agua sabe peor, se acumulan impurezas y, sobre todo, el gato tiende a dejar de beber de la fuente, que es justo lo que querías evitar. Un filtro saturado convierte una buena fuente en un adorno." },
+];
+---
+<GuideLayout seo={seo} breadcrumbs={breadcrumbs} datePublished="2026-08-06" faqs={faqs}>
+  <p>Respuesta corta: el <strong>filtro de carbón activo, cada 2 a 4 semanas</strong>; el <strong>prefiltro de espuma</strong>, enjuágalo cada semana y cámbialo cuando se deshaga. Pero conviene entender por qué, porque de esto depende que tu gato siga bebiendo.</p>
+
+  <KeyFacts title="Frecuencia de un vistazo" items={[
+    "<strong>1 gato:</strong> filtro de carbón cada 3-4 semanas.",
+    "<strong>2-3 gatos:</strong> filtro de carbón cada 1-2 semanas.",
+    "<strong>Prefiltro de espuma:</strong> enjuague semanal, cambio cada 1-2 meses.",
+    "El de carbón <strong>no se lava para reutilizar</strong> (se satura); la espuma sí se enjuaga.",
+  ]} />
+
+
+  <h2>Los dos filtros hacen cosas distintas</h2>
+  <ul>
+    <li><strong>Filtro de carbón activo:</strong> mejora el sabor y retiene impurezas químicas. Es un consumible: cuando se satura, deja de funcionar.</li>
+    <li><strong>Prefiltro de espuma:</strong> atrapa pelo y restos para proteger la bomba. Es lavable y dura más, pero se degrada con el tiempo.</li>
+  </ul>
+
+  <h2>Frecuencia recomendada</h2>
+  <ul>
+    <li><strong>1 gato:</strong> carbón cada 3-4 semanas.</li>
+    <li><strong>2-3 gatos:</strong> carbón cada 1-2 semanas.</li>
+    <li><strong>Espuma:</strong> enjuague semanal, cambio cada 1-2 meses.</li>
+  </ul>
+
+  <h2>Señales de que está saturado</h2>
+  <p>El agua se enturbia o huele raro, aparece una película en la superficie, o —la señal más clara— tu gato empieza a beber menos de la fuente y vuelve al vaso o al grifo. Antes de pensar que la fuente falla, cambia el filtro.</p>
+
+  <p>Elige recambios compatibles en nuestra <a href="/filtros-recambio-fuentes-gatos/">guía de filtros de recambio</a> (mide siempre el diámetro del que ya usas).</p>
+</GuideLayout>

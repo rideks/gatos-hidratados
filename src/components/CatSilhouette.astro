@@ -1,0 +1,38 @@
+---
+// Silueta de gato sentado (propia, libre de copyright). currentColor => text-*.
+// animate=true añade un suave coletazo (solo CSS, respeta reduce-motion).
+const { class: cls = "w-24 h-28", title, animate = false } = Astro.props;
+---
+<svg
+  viewBox="0 0 100 120"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+  class:list={[cls, animate && "cat-anim"]}
+  role={title ? "img" : "presentation"}
+  aria-label={title || undefined}
+  aria-hidden={title ? undefined : "true"}
+>
+  <!-- cola (agrupada para poder animarla) -->
+  <g class="cat-tail">
+    <path d="M71 113c17-2 27-16 24-33-2-13-12-20-20-16 8 1 13 8 14 17 2 15-8 26-24 28 3 2 5 3 6 4z" />
+  </g>
+  <!-- cuerpo sentado -->
+  <path d="M50 47c-18 0-25 27-23 51 1 12 10 16 23 16s22-4 23-16c2-24-5-51-23-51z" />
+  <!-- cabeza -->
+  <circle cx="50" cy="38" r="19" />
+  <!-- orejas -->
+  <path d="M33 27 29 7l18 12z" />
+  <path d="M67 27 71 7 53 19z" />
+</svg>
+
+<style>
+  .cat-tail { transform-box: view-box; transform-origin: 75px 109px; }
+  .cat-anim .cat-tail { animation: tailflick 3.6s ease-in-out infinite; will-change: transform; }
+  @keyframes tailflick {
+    0%, 100% { transform: rotate(0deg); }
+    50%      { transform: rotate(9deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cat-anim .cat-tail { animation: none; }
+  }
+</style>

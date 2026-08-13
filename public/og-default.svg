@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#221f1b"/>
+  <!-- rastro de huellas sutil -->
+  <g fill="#4f8e77" fill-opacity="0.5">
+    <g transform="translate(80,548)"><ellipse cx="0" cy="8" rx="7" ry="5.5"/><circle cx="-7" cy="-1" r="3"/><circle cx="0" cy="-3.5" r="3.4"/><circle cx="7" cy="-1" r="3"/></g>
+    <g transform="translate(150,566)"><ellipse cx="0" cy="8" rx="7" ry="5.5"/><circle cx="-7" cy="-1" r="3"/><circle cx="0" cy="-3.5" r="3.4"/><circle cx="7" cy="-1" r="3"/></g>
+    <g transform="translate(220,548)"><ellipse cx="0" cy="8" rx="7" ry="5.5"/><circle cx="-7" cy="-1" r="3"/><circle cx="0" cy="-3.5" r="3.4"/><circle cx="7" cy="-1" r="3"/></g>
+  </g>
+  <!-- marca gato -->
+  <g transform="translate(80,84)">
+    <rect width="56" height="56" rx="13" fill="#ffffff" opacity="0.08"/>
+    <g transform="translate(12,12)" fill="#7dae9b">
+      <path d="M2 2l5 6h14l5-6v13a11 11 0 0 1-22 0V2z"/>
+    </g>
+  </g>
+  <text x="80" y="300" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#ffffff">Micifú</text>
+  <text x="80" y="360" font-family="Georgia, serif" font-size="34" fill="#aecdc0">Cuidado felino probado de verdad, sin humo</text>
+  <text x="80" y="486" font-family="monospace" font-size="22" letter-spacing="3" fill="#7dae9b">HIDRATACIÓN · ARENA · ALIMENTACIÓN</text>
+</svg>

@@ -1,0 +1,30 @@
+---
+// WebSite + Organization globales (referenciados por @id desde el resto).
+import { SITE, AUTHOR } from "../config/site.js";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE.url}/#website`,
+      url: `${SITE.url}/`,
+      name: SITE.name,
+      description: SITE.description,
+      inLanguage: "es-ES",
+      publisher: { "@id": `${SITE.url}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.name,
+      url: `${SITE.url}/`,
+      description: SITE.tagline,
+    },
+  ],
+};
+
+// 📊 PRUEBA DE SCHEMAS — WebSite + Organization (comenta para silenciar).
+console.log(`\n📊 [JSON-LD:site] ${Astro.url?.pathname ?? ""}`);
+console.log(JSON.stringify(schema, null, 2));
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

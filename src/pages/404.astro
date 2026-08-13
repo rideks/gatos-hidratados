@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import CatSilhouette from "../components/CatSilhouette.astro";
+import { ArrowLeft } from "lucide-react";
+---
+<Layout title="Página no encontrada" canonical="/404/" noindex={true}>
+  <HeaderApp />
+  <main class="max-w-3xl mx-auto px-4 pt-32 pb-24 text-center">
+    <CatSilhouette animate class="w-28 h-32 mx-auto text-brand-300" title="Gato sentado" />
+    <p class="u-data text-brand-500 text-5xl font-semibold mt-6">404</p>
+    <h1 class="font-display font-semibold text-ink text-2xl mt-3">Este gato no encuentra la página</h1>
+    <p class="text-ink-700/70 mt-3">La página que buscas no existe o ha cambiado de sitio.</p>
+    <a href="/" class="inline-flex items-center gap-2 mt-6 bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-full transition-all">
+      <ArrowLeft className="w-4 h-4" /> Volver al inicio
+    </a>
+  </main>
+  <FooterApp />
+</Layout>

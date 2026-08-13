@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import ProductCard from "../components/ProductCard.astro";
+import BestPick from "../components/BestPick.astro";
+import { getBySubcategory, getBySilo } from "../data/ProductData.js";
+import { getEditorialScore } from "../data/EditorialScores.js";
+import { getMainImage } from "../utils/product.js";
+import { CATEGORIES, GUIDES, SILOS } from "../data/taxonomy.js";
+import { SITE } from "../config/site.js";
+import { ArrowRight, ArrowUpRight, ShieldCheck, Droplets, Volume2, Sparkles, Wrench, BadgeCheck } from "lucide-react";
+
+const fuentes = getBySubcategory("fuentes-agua");
+const destacados = getBySilo("hidratacion").filter((p) => p.subcategory === "fuentes-agua").slice(0, 3);
+const comparativas = CATEGORIES.filter((c) => c.comparativa && SILOS[c.silo]?.active);
+
+// Producto para la "tarjeta de puntuación" del hero (el mejor valorado).
+const heroPick = [...fuentes].map((p) => ({ p, s: getEditorialScore(p.slug)?.rating ?? 0 })).sort((a, b) => b.s - a.s)[0]?.p;
+const heroScore = heroPick ? getEditorialScore(heroPick.slug)?.rating : null;
+
+const criterios = [
+  { icon: ShieldCheck, t: "Higiene", d: "Material y biofilm: acero, cerámica o plástico." },
+  { icon: Volume2, t: "Ruido real", d: "Medimos la bomba de día y de noche." },
+  { icon: Droplets, t: "Caudal", d: "Si atrae al gato y cuánto le hace beber." },
+  { icon: Wrench, t: "Mantenimiento", d: "Limpieza, acceso a la bomba y coste de filtros." },
+];
+---
+<Layout title={SITE.tagline} description={SITE.description} canonical="/">
+  <HeaderApp />
+
+  <main>
+    <!-- ══ HERO ══ -->
+    <section class="border-b border-line">
+      <div class="max-w-6xl mx-auto px-4 pt-16 pb-14 lg:pt-20 lg:pb-16 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div>
+          <p class="kicker inline-flex items-center gap-2">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand-400"></span>
+            Banco de pruebas independiente · Gatos
+          </p>
+          <h1 class="font-display text-ink text-[2.5rem] sm:text-[3.4rem] leading-[1.03] mt-4 tracking-tight">
+            Qué comprar para tu gato, <span class="text-brand-600">sin marketing</span>.
+          </h1>
+          <p class="text-ink-700 text-lg leading-relaxed mt-5 max-w-xl">
+            Analizamos fuentes de agua, comederos y accesorios con un método propio.
+            Puntuamos, señalamos los defectos y te decimos cuál merece la pena de verdad.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="/mejores-fuentes-agua-para-gatos-2026/" class="btn btn-accent">Ver mejores fuentes 2026 <ArrowRight className="w-4 h-4" /></a>
+            <a href="#como-puntuamos" class="btn btn-ghost">Cómo puntuamos</a>
+          </div>
+          <dl class="mt-10 flex gap-8">
+            <div>
+              <dt class="text-xs text-ink-500 uppercase tracking-wide">Modelos analizados</dt>
+              <dd class="u-data text-2xl font-semibold text-ink mt-1">{fuentes.length}+</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-ink-500 uppercase tracking-wide">Método</dt>
+              <dd class="u-data text-2xl font-semibold text-ink mt-1">4 criterios</dd>
+            </div>
+            <div>
+              <dt class="text-xs text-ink-500 uppercase tracking-wide">Patrocinios</dt>
+              <dd class="u-data text-2xl font-semibold text-ink mt-1">0</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Tarjeta de puntuación (storytelling: "puntuamos productos") -->
+        {heroPick && (
+          <div class="relative">
+            <div class="card p-5 md:p-6 shadow-[0_30px_70px_-40px_rgba(22,21,20,.5)]">
+              <div class="flex items-center justify-between">
+                <span class="kicker inline-flex items-center gap-1.5"><BadgeCheck className="w-3.5 h-3.5" /> Nuestra elección</span>
+                <span class="inline-flex items-center gap-1 rounded-md bg-brand-600 text-white text-xs font-semibold px-2 py-1">Selección Micifú</span>
+              </div>
+              <div class="grid grid-cols-[96px_1fr] gap-4 mt-4 items-center">
+                <div class="w-24 h-24 rounded-xl overflow-hidden border border-line bg-paper-200 flex items-center justify-center">
+                  {getMainImage(heroPick)
+                    ? <img src={getMainImage(heroPick)} alt={heroPick.name} class="w-full h-full object-cover" />
+                    : <svg viewBox="0 0 24 24" class="w-9 h-9 text-brand-300" fill="currentColor" aria-hidden="true"><path d="M4 4l4 5h8l4-5v9a8 8 0 0 1-16 0z"/></svg>}
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-brand-700 uppercase tracking-wide">{heroPick.brand}</p>
+                  <p class="font-display font-semibold text-ink leading-snug mt-0.5">{heroPick.name}</p>
+                </div>
+              </div>
+              <div class="flex items-end justify-between mt-5 pt-4 border-t border-line">
+                <div>
+                  <p class="text-xs text-ink-500">Nuestra nota</p>
+                  <p class="u-data text-3xl font-semibold text-ink leading-none mt-1">{heroScore}<span class="text-lg text-ink-500">/5</span></p>
+                </div>
+                <div class="flex items-center gap-0.5">
+                  {Array.from({length:5}).map((_,i) => (
+                    <svg viewBox="0 0 24 24" class="w-4 h-4" fill={i < Math.round(heroScore) ? '#e0a340' : '#e3ded4'} aria-hidden="true"><path d="M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17.3 5.9 20.6l1.5-6.7-5.1-4.5 6.8-.6z"/></svg>
+                  ))}
+                </div>
+                <a href={`/productos/${heroPick.slug}/`} class="text-sm font-semibold text-brand-700 hover:text-brand-800 inline-flex items-center gap-1">Ver análisis <ArrowRight className="w-4 h-4" /></a>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- ══ BARRA DE CONFIANZA ══ -->
+    <section class="bg-ink text-white">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
+        <span class="inline-flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-brand-300" /> Método propio</span>
+        <span class="inline-flex items-center gap-2"><BadgeCheck className="w-4 h-4 text-brand-300" /> Sin patrocinios</span>
+        <span class="inline-flex items-center gap-2"><Sparkles className="w-4 h-4 text-brand-300" /> Señalamos también los defectos</span>
+        <span class="inline-flex items-center gap-2 text-white/70">Afiliados de Amazon · sin coste extra para ti</span>
+      </div>
+    </section>
+
+    <!-- ══ CÓMO PUNTUAMOS ══ -->
+    <section id="como-puntuamos" class="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
+      <div class="max-w-2xl">
+        <p class="kicker">El método</p>
+        <h2 class="font-display text-ink text-3xl sm:text-4xl mt-2">Cómo puntuamos cada producto</h2>
+        <p class="text-ink-700 mt-3">Cuatro criterios que de verdad deciden una compra. Nada de copiar la ficha de Amazon.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+        {criterios.map((c, i) => (
+          <div class="card p-5">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-50 text-brand-700"><c.icon className="w-5 h-5" /></span>
+              <span class="u-data text-xs text-ink-500">0{i + 1}</span>
+            </div>
+            <p class="font-display font-semibold text-ink mt-4">{c.t}</p>
+            <p class="text-sm text-ink-700 mt-1">{c.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ══ ELECCIÓN DESTACADA ══ -->
+    <section class="bg-paper-200/60 border-y border-line">
+      <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="max-w-3xl mx-auto"><BestPick products={fuentes} /></div>
+      </div>
+    </section>
+
+    <!-- ══ CATEGORÍAS / RUTAS ══ -->
+    <section class="max-w-6xl mx-auto px-4 py-16">
+      <div class="flex items-end justify-between gap-4 mb-8">
+        <div>
+          <p class="kicker">Explora</p>
+          <h2 class="font-display text-ink text-3xl sm:text-4xl mt-2">Empieza por lo que buscas</h2>
+        </div>
+        <a href={SILOS.hidratacion.path} class="hidden sm:inline-flex items-center gap-1 font-medium text-brand-700 hover:gap-2 transition-all">Toda la guía <ArrowRight className="w-4 h-4" /></a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {comparativas.map((c) => (
+          <a href={c.comparativa.path} class="card card-hover p-5 group relative">
+            {c.icon && <span class="inline-flex items-center justify-center w-11 h-11 rounded-lg bg-brand-50 text-brand-700 mb-4"><c.icon className="w-5 h-5" /></span>}
+            <p class="font-display font-semibold text-ink text-lg leading-snug group-hover:text-brand-700 transition-colors">{c.comparativa.title}</p>
+            <ArrowUpRight className="w-5 h-5 text-brand-400 absolute top-5 right-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ══ DESTACADOS ══ -->
+    <section class="bg-ink text-white">
+      <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="flex items-end justify-between gap-4 mb-8">
+          <div>
+            <p class="kicker !text-brand-300">Ranking</p>
+            <h2 class="font-display text-white text-3xl sm:text-4xl mt-2">Lo que más recomendamos</h2>
+          </div>
+          <a href="/mejores-fuentes-agua-para-gatos-2026/" class="hidden sm:inline-flex items-center gap-1 font-medium text-brand-300 hover:gap-2 transition-all">Ver comparativa <ArrowRight className="w-4 h-4" /></a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {destacados.map((p, i) => <ProductCard product={p} rank={i + 1} dark={true} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ GUÍAS ══ -->
+    <section class="max-w-6xl mx-auto px-4 py-16">
+      <div class="max-w-2xl">
+        <p class="kicker">Aprende</p>
+        <h2 class="font-display text-ink text-3xl sm:text-4xl mt-2">Guías sin relleno</h2>
+        <p class="text-ink-700 mt-3">Respuestas directas y veterinariamente correctas a lo que de verdad se pregunta.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-4 mt-8">
+        {GUIDES.map((g, i) => (
+          <a href={g.path} class="card card-hover p-6 group flex flex-col">
+            <span class="u-data text-xs text-brand-400">{String(i + 1).padStart(2, "0")}</span>
+            <p class="font-display font-semibold text-ink text-lg leading-snug mt-2 flex-1 group-hover:text-brand-700 transition-colors">{g.title}</p>
+            <span class="inline-flex items-center gap-1 text-sm font-medium text-brand-700 mt-4">Leer guía <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ══ CTA FINAL ══ -->
+    <section class="max-w-6xl mx-auto px-4 pb-20">
+      <div class="rounded-2xl bg-brand-600 text-white p-8 md:p-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <h2 class="font-display text-white text-2xl md:text-3xl">¿Aún dudas de cuál comprar?</h2>
+          <p class="text-brand-50/90 mt-2 max-w-lg">Empieza por nuestra comparativa de fuentes: de la que recomendamos a la más barata, con lo bueno y lo malo de cada una.</p>
+        </div>
+        <a href="/mejores-fuentes-agua-para-gatos-2026/" class="btn btn-primary shrink-0">Ver comparativa completa <ArrowRight className="w-4 h-4" /></a>
+      </div>
+    </section>
+  </main>
+
+  <FooterApp />
+</Layout>

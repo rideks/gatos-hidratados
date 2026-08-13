@@ -1,0 +1,14 @@
+---
+// Inserta un bloque JSON-LD ya construido (objeto) en la página.
+const { schema } = Astro.props;
+
+// 📊 PRUEBA DE SCHEMAS — imprime el JSON-LD de cada página en la terminal
+//    durante `npm run dev` o `npm run build`. Comenta este bloque para silenciar.
+if (schema) {
+  console.log(`\n📊 [JSON-LD] ${Astro.url?.pathname ?? ""}`);
+  console.log(JSON.stringify(schema, null, 2));
+}
+---
+{schema && (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

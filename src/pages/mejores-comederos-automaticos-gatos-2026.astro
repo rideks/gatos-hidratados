@@ -1,0 +1,52 @@
+---
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import ProsCons from "../components/ProsCons.astro";
+import AffiliateButton from "../components/AffiliateButton.astro";
+import ProductBadges from "../components/ProductBadges.astro";
+import SpecTable from "../components/SpecTable.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import { getBySubcategory } from "../data/ProductData.js";
+import { SILOS } from "../data/taxonomy.js";
+
+const products = getBySubcategory("comederos-automaticos")
+  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+const active = SILOS.comederos.active;
+
+const seo = {
+  title: "Mejores comederos automáticos para gatos 2026",
+  description:
+    "Comparativa de comederos automáticos para gatos: programables con app, por gravedad y con cuenco de acero. Raciones, capacidad, frescura e higiene.",
+  canonical: "/mejores-comederos-automaticos-gatos-2026/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Mejores comederos 2026", path: seo.canonical },
+];
+
+const faqs = [
+  { q: "¿Comedero automático programable o por gravedad?", a: "El programable (con app o temporizador) controla raciones y horarios, ideal para gatos que comen sin freno o dietas de control de peso. El de gravedad solo va soltando pienso a demanda: más barato y sin electricidad, pero sin control de cantidad. Para la mayoría de gatos de interior, el programable es más saludable." },
+  { q: "¿Sirven para comida húmeda?", a: "La mayoría solo dispensan pienso seco. Para húmeda necesitas un comedero automático refrigerado específico, más caro y con menos capacidad. Si tu gato come húmeda, revisa que el modelo lo indique expresamente." },
+  { q: "¿Y si tengo varios gatos?", a: "Un comedero de un cuenco no impide que un gato se coma la ración de otro. Para multigato, elige modelos de doble cuenco, o con reconocimiento por chip/collar que solo abren para el gato correcto." },
+];
+---
+<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs} noindex={!active}>
+  <Fragment slot="intro">
+    <p>
+      Un comedero automático te quita el madrugón y ayuda a <strong>controlar las raciones</strong>
+      (clave si tu gato come sin freno). Los hay <strong>programables</strong> (con app o temporizador),
+      que reparten cantidades exactas a horas fijas, y <strong>por gravedad</strong>, más baratos pero
+      sin control de cantidad. Aquí comparamos los que hemos mirado, mirando raciones, capacidad,
+      frescura del pienso e higiene del cuenco.
+    </p>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <div class="mt-10"><BadgeLegend /></div>
+    <section class="mt-10 space-y-10">
+      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
+    </section>
+  </Fragment>
+</ComparativaPage>

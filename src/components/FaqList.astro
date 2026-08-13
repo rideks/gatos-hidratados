@@ -1,0 +1,30 @@
+---
+import { ChevronDown } from "lucide-react";
+const { faqs = [], title = "Preguntas frecuentes" } = Astro.props;
+const items = faqs
+  .map((f) => ({ q: f.q || f.question, a: f.a || f.answer }))
+  .filter((f) => f.q && f.a);
+---
+{items.length > 0 && (
+  <section class="not-prose">
+    {title && <h2 class="font-display font-semibold text-ink text-2xl mb-5">{title}</h2>}
+    <div class="rounded-xl border border-brand-200 overflow-hidden bg-white divide-y divide-brand-100">
+      {items.map((f) => (
+        <details class="group">
+          <summary class="faq-summary flex items-center justify-between gap-4 p-4 cursor-pointer select-none font-semibold text-ink hover:bg-brand-50/50 transition-colors">
+            <span>{f.q}</span>
+            <ChevronDown className="faq-chevron w-4 h-4 text-brand-500 shrink-0" />
+          </summary>
+          <p class="px-4 pb-4 -mt-1 text-ink-700 leading-relaxed">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .faq-summary { list-style: none; }
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-chevron { transition: transform 0.2s ease; }
+  details[open] > .faq-summary .faq-chevron { transform: rotate(180deg); }
+</style>

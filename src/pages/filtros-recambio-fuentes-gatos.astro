@@ -1,0 +1,52 @@
+---
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import ProsCons from "../components/ProsCons.astro";
+import AffiliateButton from "../components/AffiliateButton.astro";
+import { getBySubcategory } from "../data/ProductData.js";
+
+const products = getBySubcategory("filtros-fuente")
+  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+
+const seo = {
+  title: "Filtros de recambio para fuentes de gatos: guía completa",
+  description:
+    "Guía de filtros de recambio para fuentes de gatos: carbón activo vs espuma, compatibilidad, cada cuánto cambiarlos y packs que salen a cuenta.",
+  canonical: "/filtros-recambio-fuentes-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Filtros de recambio", path: seo.canonical },
+];
+
+const faqs = [
+  { q: "¿Cada cuánto se cambia el filtro?", a: "Entre 2 y 4 semanas, y antes si tienes varios gatos o el agua se enturbia. Un filtro saturado deja de filtrar y empeora el sabor, que es lo que hace que el gato deje de beber." },
+  { q: "¿Carbón o espuma? ¿Cuál necesito?", a: "Ambos, hacen cosas distintas. El filtro de carbón activo mejora el sabor y retiene impurezas; el prefiltro de espuma protege la bomba del pelo para que no se atasque. Lo ideal es usar los dos." },
+  { q: "¿Cómo sé si son compatibles con mi fuente?", a: "Mide el diámetro del filtro que ya usas y compáralo con el del recambio. La mayoría de fuentes redondas usan un tamaño estándar, pero no todas: es el error de compra más habitual." },
+];
+---
+<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs}>
+  <Fragment slot="intro">
+    <p>
+      El consumible que casi todo el mundo olvida y que, en realidad, decide si la fuente sigue
+      funcionando: el <strong>filtro</strong>. Un filtro saturado empeora el sabor del agua y es la
+      causa nº1 de que un gato deje de beber de su fuente. Aquí te explicamos la diferencia entre
+      <strong>carbón activo</strong> y <strong>prefiltro de espuma</strong>, cómo saber si son
+      compatibles y cada cuánto cambiarlos.
+    </p>
+    <p>
+      Amplía en nuestra guía:
+      <a href="/cada-cuanto-cambiar-filtro-fuente-gato/">¿cada cuánto hay que cambiar el filtro?</a>
+    </p>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <div class="mt-10"><BadgeLegend /></div>
+    <section class="mt-10 space-y-8">
+      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
+    </section>
+  </Fragment>
+</ComparativaPage>

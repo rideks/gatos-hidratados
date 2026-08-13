@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "./HeaderApp.astro";
+import FooterApp from "./FooterApp.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import Schema from "./Schema.astro";
+import TrustBanner from "./TrustBanner.astro";
+import FaqList from "./FaqList.astro";
+import { SITE, AUTHOR } from "../config/site.js";
+import { buildArticle, buildWebPage, buildBreadcrumb, buildFaqPage, graph } from "../utils/schema.js";
+import { BookOpen, RefreshCw } from "lucide-react";
+
+const { seo, breadcrumbs = [], datePublished, dateModified, faqs = [] } = Astro.props;
+const url = new URL(seo.canonical, SITE.url).href;
+
+// Fecha legible (mes año) para la firma editorial.
+const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const d = new Date(dateModified || datePublished || Date.now());
+const fechaLegible = `${MESES[d.getMonth()]} de ${d.getFullYear()}`;
+
+const schema = graph(
+  buildArticle({ url, headline: seo.title, description: seo.description, datePublished, dateModified, section: "Hidratación" }),
+  buildWebPage({ url, name: seo.title, description: seo.description, breadcrumbId: `${url}#breadcrumb`, mainEntityId: `${url}#article`, datePublished, dateModified }),
+  buildBreadcrumb(breadcrumbs, { id: `${url}#breadcrumb` }),
+  faqs.length ? buildFaqPage(faqs, { id: `${url}#faq` }) : null,
+);
+---
+<Layout title={seo.title} description={seo.description} canonical={seo.canonical} type="article" datePublished={datePublished} dateModified={dateModified}>
+  <Schema schema={schema} />
+  <HeaderApp />
+  <main class="max-w-3xl mx-auto px-4 pt-24 pb-16">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <p class="eyebrow mt-5 inline-flex items-center gap-1.5"><BookOpen className="w-3.5 h-3.5" /> Guía</p>
+    <h1 class="font-display font-semibold text-ink text-3xl sm:text-[2.6rem] mt-2 leading-[1.05] tracking-tight">{seo.title}</h1>
+
+    <!-- Firma editorial (E-E-A-T) -->
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-4 text-sm text-ink-700/70">
+      <span>Por <a href={AUTHOR.authorPath} class="font-semibold text-ink hover:text-brand-700">{SITE.name}</a></span>
+      <span class="inline-flex items-center gap-1.5"><RefreshCw className="w-3.5 h-3.5" /> Actualizado en {fechaLegible}</span>
+    </div>
+
+    <div class="mt-3 hairline"></div>
+
+    <div class="prose prose-slate max-w-none mt-8">
+      <slot />
+    </div>
+
+    {faqs.length > 0 && (
+      <div class="mt-12"><FaqList faqs={faqs} /></div>
+    )}
+
+    <div class="mt-12"><TrustBanner /></div>
+  </main>
+  <FooterApp />
+</Layout>

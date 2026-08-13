@@ -1,0 +1,54 @@
+---
+import { SITE, SILOS } from "../config/site.js";
+import { megaMenu, primaryLinks } from "../config/navigationData.js";
+import MobileDrawer from "./react/MobileDrawer.jsx";
+import { ArrowRight } from "lucide-react";
+---
+<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
+    <a href="/" class="flex items-center gap-2.5 shrink-0 group" aria-label={`${SITE.name} — inicio`}>
+      <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-ink text-white">
+        <!-- marca: felino minimal (orejas) -->
+        <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4l4 5h8l4-5v9a8 8 0 0 1-16 0z"/><path d="M9 15h.01M15 15h.01"/>
+        </svg>
+      </span>
+      <span class="font-display font-semibold text-ink text-[1.15rem] leading-none tracking-tight">{SITE.name}</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 text-[0.95rem]" aria-label="Principal">
+      <div class="relative group">
+        <button class="inline-flex items-center gap-1 font-medium text-ink-700 hover:text-ink py-2 transition-colors">
+          {megaMenu.label}
+          <svg class="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="absolute left-0 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-150">
+          <div class="w-[640px] rounded-xl border border-line bg-white shadow-[0_24px_60px_-24px_rgba(22,21,20,.35)] p-6 grid grid-cols-3 gap-6">
+            {megaMenu.columns.map((col) => (
+              <div>
+                <p class="kicker mb-3">{col.title}</p>
+                <ul class="space-y-2.5">
+                  {col.links.map((l) => (
+                    <li><a href={l.href} class:list={["text-sm text-ink-700 hover:text-brand-700 transition-colors", l.bold && "font-semibold text-ink"]}>{l.name}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {primaryLinks.map((l) => (
+        <a href={l.href} class="font-medium text-ink-700 hover:text-ink transition-colors">{l.name}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={SILOS.hidratacion.comparativa?.path || "/mejores-fuentes-agua-para-gatos-2026/"} class="hidden sm:inline-flex btn btn-accent !py-2.5 !px-4 !text-sm">
+        Ver mejores fuentes <ArrowRight className="w-4 h-4" />
+      </a>
+      <div class="lg:hidden">
+        <MobileDrawer client:load menu={megaMenu} links={primaryLinks} siloPath={SILOS.hidratacion.path} />
+      </div>
+    </div>
+  </div>
+</header>

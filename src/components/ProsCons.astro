@@ -1,0 +1,26 @@
+---
+import { Check, X } from "lucide-react";
+const { pros = [], cons = [] } = Astro.props;
+---
+<div class="grid sm:grid-cols-2 gap-4">
+  {pros.length > 0 && (
+    <div class="rounded-xl border border-green-200 bg-green-50/60 p-4">
+      <p class="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">A favor</p>
+      <ul class="space-y-1.5">
+        {pros.map((p) => (
+          <li class="flex gap-2 text-sm text-slate-700"><Check className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />{p}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+  {cons.length > 0 && (
+    <div class="rounded-xl border border-red-200 bg-red-50/60 p-4">
+      <p class="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">En contra</p>
+      <ul class="space-y-1.5">
+        {cons.map((c) => (
+          <li class="flex gap-2 text-sm text-slate-700"><X className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />{c}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>

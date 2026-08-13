@@ -1,0 +1,28 @@
+---
+import { getEditorialScore } from "../data/EditorialScores.js";
+import { Star } from "lucide-react";
+const { slug, label = false, size = 16 } = Astro.props;
+const ed = getEditorialScore(slug);
+const rating = ed?.rating ?? 0;
+const full = Math.floor(rating);
+const half = rating - full >= 0.5;
+---
+{rating > 0 && (
+  <span class="inline-flex items-center gap-1" aria-label={`Nuestra nota: ${rating} de 5`}>
+    <span class="inline-flex">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star
+          width={size} height={size}
+          className={
+            i < full
+              ? "fill-amber-400 text-amber-400"
+              : (i === full && half)
+                ? "fill-amber-400/50 text-amber-400"
+                : "fill-slate-200 text-slate-200"
+          }
+        />
+      ))}
+    </span>
+    {label && <span class="text-sm font-semibold text-slate-700">{rating}/5</span>}
+  </span>
+)}

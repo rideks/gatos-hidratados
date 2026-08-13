@@ -1,0 +1,6 @@
+---
+// Firma visual del sitio: un "rastro de huellas" de gato que divide secciones.
+// variant: "on-light" (por defecto) | "on-dark".
+const { variant = "on-light", class: cls = "" } = Astro.props;
+---
+<div class:list={["pawtrail", variant === "on-dark" && "pawtrail--light", cls]} role="presentation"></div>

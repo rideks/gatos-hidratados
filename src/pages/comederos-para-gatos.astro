@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BestPick from "../components/BestPick.astro";
+import ProductCard from "../components/ProductCard.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import TrustBanner from "../components/TrustBanner.astro";
+import { getBySubcategory } from "../data/ProductData.js";
+import { SILOS } from "../data/taxonomy.js";
+import { ArrowRight } from "lucide-react";
+
+const productos = getBySubcategory("comederos-automaticos");
+const canonical = "/comederos-para-gatos/";
+const active = SILOS.comederos.active;
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: canonical },
+];
+---
+<Layout title="Comederos para gatos" description="Comederos automáticos y por gravedad para gatos: programables, con app y cuenco de acero. Cuál elegir según raciones, capacidad e higiene." canonical={canonical} noindex={!active}>
+  <HeaderApp />
+
+  <PageHeader eyebrow="Categoría · Comederos" title="Comederos para gatos" description="Automáticos, con app o por gravedad: te ayudamos a elegir según raciones, capacidad, material e higiene.">
+    <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
+  </PageHeader>
+
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    {!active && (
+      <div class="mb-8 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+        <strong>Sección en construcción.</strong> Este silo está montado pero apagado
+        (no aparece en menús ni buscadores). Se activa con <code>SILOS.comederos.active = true</code>.
+      </div>
+    )}
+
+    {productos.length > 0 && (
+      <>
+        <div class="max-w-3xl"><BestPick products={productos} /></div>
+        <div class="mt-12">
+          <div class="flex items-end justify-between gap-4 mb-4">
+            <div>
+              <p class="eyebrow">Analizados</p>
+              <h2 class="font-display font-semibold text-ink text-2xl mt-2">Comederos que hemos mirado</h2>
+            </div>
+            <a href="/mejores-comederos-automaticos-gatos-2026/" class="hidden sm:inline-flex items-center gap-1 font-medium text-brand-700 hover:gap-2 transition-all">
+              Ver comparativa <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+          <div class="mb-6"><BadgeLegend /></div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {productos.map((p, i) => <ProductCard product={p} rank={i + 1} />)}
+          </div>
+        </div>
+      </>
+    )}
+
+    <div class="mt-14 max-w-3xl"><TrustBanner /></div>
+  </main>
+
+  <FooterApp />
+</Layout>

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { SITE } from "../config/site.js";
+---
+<Layout title="Aviso legal" canonical="/aviso-legal/" noindex={true}>
+  <HeaderApp />
+  <PageHeader eyebrow="Legal" title="Aviso legal" />
+  <main class="max-w-3xl mx-auto px-4 py-12 prose prose-slate">
+    <p>Este sitio, {SITE.name} ({SITE.domain}), es un proyecto editorial de recomendación de productos con enlaces de afiliado. Los contenidos tienen carácter informativo.</p>
+    <h2>Titularidad</h2>
+    <p>Sustituye este bloque por los datos del titular (nombre/razón social, NIF, dirección y contacto) exigidos por la LSSI-CE antes de publicar.</p>
+    <h2>Propiedad intelectual</h2>
+    <p>Los textos y análisis son originales de {SITE.name}. Las marcas y logotipos citados pertenecen a sus respectivos propietarios.</p>
+    <h2>Responsabilidad</h2>
+    <p>La información sobre bienestar felino es general y no sustituye el consejo veterinario. Los precios mostrados son orientativos; el precio válido es el que aparece en Amazon en el momento de la compra.</p>
+    <h2>Afiliación</h2>
+    <p>Como Asociados de Amazon, obtenemos ingresos por las compras adscritas que cumplen los requisitos.</p>
+  </main>
+  <FooterApp />
+</Layout>
