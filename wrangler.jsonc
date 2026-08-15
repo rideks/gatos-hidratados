@@ -1,9 +1,17 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "gatos-hidratados",
-  "compatibility_date": "2026-08-01",
+  // Config de despliegue en Cloudflare Workers (sitio ESTÁTICO, sin adaptador).
+  // Colócalo en la RAÍZ del repo (junto a package.json / astro.config).
+  // El nombre debe coincidir con el del proyecto en el dashboard de Cloudflare.
+  "name": "felinlab",
+  "compatibility_date": "2026-08-15",
+
+  // Servir la salida de Astro (`dist`) como assets estáticos en el edge.
   "assets": {
     "directory": "./dist",
+    // Sirve dist/404.html en cualquier ruta que no exista (tu 404.astro).
     "not_found_handling": "404-page"
-  }
+  },
+
+  // Métricas/errores en el panel de Cloudflare.
+  "observability": { "enabled": true }
 }

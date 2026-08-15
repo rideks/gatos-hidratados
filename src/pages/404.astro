@@ -1,32 +1,73 @@
 ---
+// ============================================================================
+// 404 — página no encontrada. Astro genera dist/404.html a partir de este
+// archivo; Cloudflare la sirve gracias a `not_found_handling: "404-page"`.
+// Copy brand-neutral (no depende del nombre de marca) y con enlaces útiles
+// para no perder al visitante. → src/pages/404.astro
+// ============================================================================
 import Layout from "../layouts/Layout.astro";
 import HeaderApp from "../components/HeaderApp.astro";
 import FooterApp from "../components/FooterApp.astro";
-import CatSilhouette from "../components/CatSilhouette.astro";
-import { ArrowLeft } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+const enlaces = [
+  {
+    eyebrow: "Comparativa",
+    title: "Mejores fuentes de agua para gatos",
+    href: "/mejores-fuentes-agua-para-gatos-2026/",
+  },
+  { eyebrow: "Todo", title: "Catálogo completo", href: "/catalogo/" },
+  {
+    eyebrow: "Guía",
+    title: "Hidratación felina",
+    href: "/hidratacion-felina/",
+  },
+  { eyebrow: "Inicio", title: "Volver a la portada", href: "/" },
+];
 ---
 
-<Layout title="Página no encontrada" canonical="/404/" noindex={true}>
+<Layout
+  title="Página no encontrada (404)"
+  description="La página que buscas no existe o ha cambiado de sitio."
+  noindex={true}
+>
   <HeaderApp />
-  <main class="max-w-3xl mx-auto px-4 pt-32 pb-24 text-center">
-    <CatSilhouette
-      animate
-      class="w-28 h-32 mx-auto text-brand-300"
-      title="Gato sentado"
-    />
-    <p class="u-data text-brand-500 text-5xl font-semibold mt-6">404</p>
-    <h1 class="font-display font-semibold text-ink text-2xl mt-3">
-      Este gato no encuentra la página
-    </h1>
-    <p class="text-ink-700/70 mt-3">
-      La página que buscas no existe o ha cambiado de sitio.
-    </p>
-    <a
-      href="/"
-      class="inline-flex items-center gap-2 mt-6 btn-accent hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-full transition-all"
+
+  <main class="max-w-2xl mx-auto px-4 pt-28 pb-20 text-center">
+    <p
+      class="font-display font-extrabold text-brand-600 text-7xl sm:text-8xl tracking-tight"
     >
-      <ArrowLeft className="w-4 h-4" /> Volver al inicio
-    </a>
+      404
+    </p>
+    <h1 class="font-display font-extrabold text-ink text-2xl sm:text-3xl mt-3">
+      Esta página se ha escapado
+    </h1>
+    <p class="text-ink-500 mt-3 max-w-md mx-auto">
+      Como los gatos, a veces un enlace se va de paseo. La página que buscas no
+      existe o ha cambiado de sitio. Prueba por aquí:
+    </p>
+
+    <div class="mt-8 grid sm:grid-cols-2 gap-3 text-left">
+      {
+        enlaces.map((e) => (
+          <a
+            href={e.href}
+            class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition"
+          >
+            <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
+            <span>
+              <span class="block text-xs font-bold text-brand-700 uppercase">
+                {e.eyebrow}
+              </span>
+              <span class="block font-semibold text-ink group-hover:text-brand-700">
+                {e.title}
+              </span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
   </main>
+
   <FooterApp />
 </Layout>
