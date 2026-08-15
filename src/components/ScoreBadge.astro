@@ -1,0 +1,29 @@
+---
+// Sello de procedencia de la nota. Distingue una nota nacida del ANÁLISIS por
+// criterios (por defecto) de una nota de una unidad PROBADA en casa.
+// Se activa solo con marcar `tested: true` en la entrada de EditorialScores.js.
+import { getEditorialScore } from "../data/EditorialScores.js";
+import { BadgeCheck, FlaskConical } from "lucide-react";
+const { slug, size = 14 } = Astro.props;
+const ed = getEditorialScore(slug);
+const tested = !!ed?.tested;
+---
+
+{
+  ed &&
+    (tested ? (
+      <span
+        class="inline-flex items-center gap-1.5 rounded-md border border-brand-200 bg-brand-50 px-2 py-1 text-xs font-semibold text-brand-700"
+        title="Unidad que hemos usado y medido con gatos reales"
+      >
+        <BadgeCheck width={size} height={size} /> Probado en casa
+      </span>
+    ) : (
+      <span
+        class="inline-flex items-center gap-1.5 rounded-md border border-line bg-paper-200/60 px-2 py-1 text-xs font-semibold text-ink-700"
+        title="Nota por análisis de criterios objetivos: material, filtrado, ruido y fiabilidad sobre ficha real"
+      >
+        <FlaskConical width={size} height={size} /> Analizado por criterios
+      </span>
+    ))
+}

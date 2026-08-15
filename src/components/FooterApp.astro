@@ -2,50 +2,119 @@
 import { SITE, SILOS, AMAZON_AFFILIATE_DISCLOSURE } from "../config/site.js";
 import { CATEGORIES, GUIDES } from "../data/taxonomy.js";
 const isActive = (id) => SILOS[id]?.active;
-const comparativas = CATEGORIES.filter((c) => c.comparativa && isActive(c.silo)).map((c) => ({ name: c.name, href: c.comparativa.path }));
-const guias = GUIDES.filter((g) => { const c = CATEGORIES.find((x) => x.id === g.category); return !c || isActive(c.silo); }).map((g) => ({ name: g.short, href: g.path }));
+const comparativas = CATEGORIES.filter(
+  (c) => c.comparativa && isActive(c.silo),
+).map((c) => ({ name: c.name, href: c.comparativa.path }));
+const guias = GUIDES.filter((g) => {
+  const c = CATEGORIES.find((x) => x.id === g.category);
+  return !c || isActive(c.silo);
+}).map((g) => ({ name: g.short, href: g.path }));
 const year = new Date().getFullYear();
 ---
+
 <footer class="bg-ink text-white">
   <div class="max-w-6xl mx-auto px-4 py-16">
     <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
       <div>
         <div class="flex items-center gap-2.5">
-          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-brand-300">
-            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l4 5h8l4-5v9a8 8 0 0 1-16 0z"/><path d="M9 15h.01M15 15h.01"/></svg>
+          <span
+            class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-brand-300"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M4 4l4 5h8l4-5v9a8 8 0 0 1-16 0z"></path><path
+                d="M9 15h.01M15 15h.01"></path></svg
+            >
           </span>
           <p class="font-display font-semibold text-lg">{SITE.name}</p>
         </div>
         <p class="text-sm text-white/60 mt-4 max-w-xs leading-relaxed">
-          Banco de pruebas independiente de productos para gatos. Probamos de verdad, puntuamos y señalamos también los defectos.
+          Banco de pruebas independiente de productos para gatos. Analizamos a
+          fondo, puntuamos y señalamos también los defectos.
         </p>
       </div>
       <nav aria-label="Comparativas">
         <p class="kicker !text-brand-300 mb-3">Comparativas</p>
         <ul class="space-y-2.5 text-sm">
-          {comparativas.map((l) => <li><a href={l.href} class="text-white/70 hover:text-white transition-colors">{l.name}</a></li>)}
+          {
+            comparativas.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="text-white/70 hover:text-white transition-colors"
+                >
+                  {l.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
       <nav aria-label="Guías">
         <p class="kicker !text-brand-300 mb-3">Guías</p>
         <ul class="space-y-2.5 text-sm">
-          {guias.map((l) => <li><a href={l.href} class="text-white/70 hover:text-white transition-colors">{l.name}</a></li>)}
+          {
+            guias.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  class="text-white/70 hover:text-white transition-colors"
+                >
+                  {l.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
       <nav aria-label="Sitio">
         <p class="kicker !text-brand-300 mb-3">Micifú</p>
         <ul class="space-y-2.5 text-sm">
-          <li><a href={SILOS.hidratacion.path} class="text-white/70 hover:text-white transition-colors">Guía de hidratación</a></li>
-          <li><a href="/catalogo/" class="text-white/70 hover:text-white transition-colors">Catálogo</a></li>
-          <li><a href="/quienes-somos/" class="text-white/70 hover:text-white transition-colors">Método y equipo</a></li>
-          <li><a href="/aviso-legal/" class="text-white/70 hover:text-white transition-colors">Aviso legal</a></li>
-          <li><a href="/politica-privacidad/" class="text-white/70 hover:text-white transition-colors">Privacidad</a></li>
+          <li>
+            <a
+              href={SILOS.hidratacion.path}
+              class="text-white/70 hover:text-white transition-colors"
+              >Guía de hidratación</a>
+          </li>
+          <li>
+            <a
+              href="/catalogo/"
+              class="text-white/70 hover:text-white transition-colors"
+              >Catálogo</a>
+          </li>
+          <li>
+            <a
+              href="/quienes-somos/"
+              class="text-white/70 hover:text-white transition-colors"
+              >Método y equipo</a>
+          </li>
+          <li>
+            <a
+              href="/aviso-legal/"
+              class="text-white/70 hover:text-white transition-colors"
+              >Aviso legal</a>
+          </li>
+          <li>
+            <a
+              href="/politica-privacidad/"
+              class="text-white/70 hover:text-white transition-colors"
+              >Privacidad</a>
+          </li>
         </ul>
       </nav>
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text-white/50">
+    <div
+      class="max-w-6xl mx-auto px-4 py-5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text-white/50"
+    >
       <p class="max-w-2xl">{AMAZON_AFFILIATE_DISCLOSURE}</p>
       <p class="u-data">© {year} {SITE.name}</p>
     </div>

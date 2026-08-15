@@ -7,9 +7,9 @@ export const SITE = {
   name: "Micifú",
   domain: "micifu.es",
   url: "https://micifu.es",
-  tagline: "Cuidado felino probado de verdad, sin humo",
+  tagline: "Cuidado felino analizado con criterio, sin humo",
   description:
-    "Guías y comparativas honestas de productos de cuidado felino. Empezamos por la hidratación (fuentes de agua y filtros): probamos de verdad y señalamos también los defectos.",
+    "Guías y comparativas honestas de productos de cuidado felino. Empezamos por la hidratación (fuentes de agua y filtros): analizamos a fondo y señalamos también los defectos.",
   locale: "es_ES",
   lang: "es",
   themeColor: "#221f1b",
@@ -18,11 +18,30 @@ export const SITE = {
 
 export const AUTHOR = {
   name: "Micifú",
-  // Persona/editor que firma las notas editoriales (E-E-A-T). Sustituye por una
-  // persona real (mejor aún, con revisión veterinaria): da mucha credibilidad.
   editor: "Redacción",
-  email: "hola@micifu.es",
+  email: "micifu9@proton.me",
   authorPath: "/quienes-somos/#author",
+
+  // ── Persona real que firma (E-E-A-T) ────────────────────────────────────────
+  // Cuando `person.name` tenga un nombre real, los artículos usarán un autor
+  // Person (más señal E-E-A-T que Organization). Vacío = firma como la marca.
+  person: {
+    name: "John",                    // nombre real de quien edita/prueba
+    jobTitle: "Editor y evaluador de producto",
+    url: "/quienes-somos/#author",
+    sameAs: [],                  // perfiles públicos (LinkedIn, X, etc.)
+  },
+
+  // ── Revisión veterinaria (opcional, muy potente en salud felina) ─────────────
+  // SOLO con un veterinario REAL que revise de verdad el contenido. Si no lo hay,
+  // deja `name` vacío: no se emitirá `reviewedBy` y no se mostrará la firma.
+  reviewer: {
+    name: "",                    // p. ej. "Dra. Nombre Apellido"
+    jobTitle: "Veterinaria colegiada",
+    identifier: "",              // nº de colegiado, si procede
+    url: "/quienes-somos/#revision-veterinaria",
+    sameAs: [],
+  },
 };
 
 // ── Afiliación Amazon ───────────────────────────────────────────────────────

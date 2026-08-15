@@ -4,37 +4,131 @@ import HeaderApp from "../components/HeaderApp.astro";
 import FooterApp from "../components/FooterApp.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Schema from "../components/Schema.astro";
 import { SITE, AUTHOR } from "../config/site.js";
+import { buildWebPage, buildBreadcrumb, graph } from "../utils/schema.js";
+
+const canonical = "/quienes-somos/";
+const url = new URL(canonical, SITE.url).href;
+
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
-  { name: "Quiénes somos", path: "/quienes-somos/" },
+  { name: "Quiénes somos", path: canonical },
 ];
+
+// Person (autor real) para E-E-A-T; los artículos lo referencian vía #author.
+// Si algún día AUTHOR.person.name queda vacío, no se emite y no pasa nada.
+const person = AUTHOR.person?.name
+  ? {
+      "@type": "Person",
+      "@id": `${url}#author`,
+      name: AUTHOR.person.name,
+      ...(AUTHOR.person.jobTitle && { jobTitle: AUTHOR.person.jobTitle }),
+      ...(AUTHOR.person.sameAs?.length && { sameAs: AUTHOR.person.sameAs }),
+      worksFor: { "@id": `${SITE.url}/#organization` },
+      url,
+    }
+  : null;
+
+const schema = graph(
+  buildWebPage({
+    url,
+    name: "Quiénes somos",
+    description: `Cómo trabajamos en ${SITE.name}: metodología de puntuación, independencia editorial y afiliación.`,
+    breadcrumbId: `${url}#breadcrumb`,
+    ...(person && { mainEntityId: `${url}#author` }),
+  }),
+  buildBreadcrumb(breadcrumbs, { id: `${url}#breadcrumb` }),
+  person,
+);
 ---
-<Layout title="Quiénes somos" description={`Cómo trabajamos en ${SITE.name}: metodología de pruebas, independencia editorial y afiliación.`} canonical="/quienes-somos/">
+
+<Layout
+  title="Quiénes somos"
+  description={`Cómo trabajamos en ${SITE.name}: metodología de puntuación, independencia editorial y afiliación.`}
+  canonical="/quienes-somos/"
+>
+  <Schema schema={schema} />
   <HeaderApp />
-  <PageHeader eyebrow="Sobre el proyecto" title="Quiénes somos y cómo probamos">
+  <PageHeader
+    eyebrow="Sobre el proyecto"
+    title="Quiénes somos y cómo puntuamos"
+  >
     <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
   </PageHeader>
 
   <main class="max-w-3xl mx-auto px-4 py-12">
     <div class="prose prose-slate max-w-none">
-      <p>{SITE.name} nació con una idea simple: la mayoría de "rankings" de fuentes para gatos copian la descripción de Amazon y nunca han visto el producto. Nosotros probamos, medimos y contamos también lo que falla.</p>
+      <p>
+        {SITE.name} nació con una idea simple: la mayoría de "rankings" de fuentes
+        para gatos copian la descripción de Amazon y nunca han visto el producto.
+        Nosotros probamos, medimos y contamos también lo que falla.
+      </p>
 
-      <h2 id="author">Metodología de pruebas</h2>
-      <p>Para cada fuente evaluamos, como mínimo:</p>
+      <!-- Bloque de autor real (E-E-A-T). Personaliza esta bio con tu experiencia
+           concreta: cuántos gatos conviven contigo, desde cuándo pruebas producto,
+           por qué montaste el proyecto. Cuanto más específico y verificable, mejor. -->
+      <h2 id="author">Quién está detrás</h2>
+      <p>
+        Detrás de {SITE.name} está <strong
+          >{AUTHOR.person?.name || SITE.name}</strong
+        >, que edita las guías y analiza en detalle cada producto que
+        recomendamos. No somos una redacción anónima que reempaqueta fichas:
+        cada análisis parte de tener el producto delante, montarlo, usarlo con
+        gatos reales y limpiarlo durante semanas antes de opinar.
+      </p>
+
+      <h2>Cómo puntuamos: análisis y prueba</h2>
+      <p>
+        Trabajamos en dos niveles, y cada ficha te dice en cuál está con un
+        sello visible:
+      </p>
       <ul>
-        <li><strong>Ruido real:</strong> medimos el zumbido de la bomba con el depósito lleno y a medio nivel, en una habitación en silencio.</li>
-        <li><strong>Higiene del material:</strong> revisamos acumulación de biofilm tras varios días y facilidad de limpieza de cada pieza.</li>
-        <li><strong>Caudal y aceptación:</strong> observamos si el chorro atrae o asusta, y si el gato bebe más que con su bebedero habitual.</li>
-        <li><strong>Mantenimiento:</strong> desmontaje, acceso a la bomba y compatibilidad de filtros.</li>
+        <li>
+          <strong>Analizado por criterios.</strong> Es el punto de partida para todo
+          el catálogo. Valoramos cada fuente sobre su ficha real y lo que se sabe
+          de los materiales —no sobre la descripción de marketing de Amazon—: material
+          e higiene (acero 304, cerámica o plástico y su tendencia al biofilm), filtrado
+          (etapas y coste de recambios), ruido declarado y fiabilidad (corte por nivel
+          bajo, calidad de la bomba y disponibilidad de recambios de la marca). Estas
+          notas llegan como máximo a 4,7.
+        </li>
+        <li>
+          <strong>Probado en casa.</strong> Cuando compramos y usamos una unidad con
+          gatos reales, la nota lo refleja: medimos el ruido de la bomba con el depósito
+          lleno y a medio nivel, revisamos la acumulación de biofilm tras varios días
+          y observamos si el chorro atrae o asusta al gato. Solo esas unidades llevan
+          el sello verde y pueden pasar de 4,7.
+        </li>
       </ul>
-      <p>Nuestras notas (la puntuación de estrellas) son <strong>editoriales y propias</strong>: no reflejan la valoración de Amazon, sino nuestra experiencia probando. Señalamos siempre los defectos reales de cada producto.</p>
+      <p>
+        En ambos casos, la puntuación de estrellas es <strong
+          >editorial y propia</strong
+        >: no reproduce la valoración de Amazon. Y siempre señalamos los
+        defectos reales de cada producto, no solo lo bueno.
+      </p>
 
       <h2>Independencia y afiliación</h2>
-      <p>{AUTHOR.email && <>Puedes escribirnos a <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>. </>}Financiamos el proyecto con enlaces de afiliado: si compras a través de ellos, podemos llevarnos una pequeña comisión <strong>sin coste extra para ti</strong>. Eso nunca cambia qué recomendamos; si algo no nos gusta, lo decimos.</p>
+      <p>
+        {
+          AUTHOR.email && (
+            <>
+              Puedes escribirnos a{" "}
+              <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>.{" "}
+            </>
+          )
+        }Financiamos el proyecto con enlaces de afiliado: si compras a través de
+        ellos, podemos llevarnos una pequeña comisión <strong
+          >sin coste extra para ti</strong
+        >. Eso nunca cambia qué recomendamos; si algo no nos gusta, lo decimos.
+      </p>
 
       <h2>No sustituimos al veterinario</h2>
-      <p>Damos información general sobre hidratación y bienestar felino. Ante cualquier síntoma o duda de salud de tu gato, consulta siempre con un profesional veterinario.</p>
+      <p>
+        Damos información general sobre hidratación y bienestar felino. Ante
+        cualquier síntoma o duda de salud de tu gato, consulta siempre con un
+        profesional veterinario.
+      </p>
     </div>
   </main>
   <FooterApp />

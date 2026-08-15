@@ -1,7 +1,8 @@
+# Ubicación: public/robots.txt
 User-agent: *
 Allow: /
-Disallow: /aviso-legal/
-Disallow: /politica-privacidad/
-Disallow: /politica-cookies/
+
+# Las legales y los silos apagados ya salen en noindex y fuera del sitemap:
+# no se bloquean aquí a propósito (bloquear en robots impediría leer el noindex).
 
 Sitemap: https://micifu.es/sitemap-index.xml

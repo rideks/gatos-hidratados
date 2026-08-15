@@ -3,7 +3,8 @@ import GuideLayout from "../components/GuideLayout.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 const seo = {
   title: "Cómo limpiar la fuente de agua de tu gato paso a paso",
-  description: "Guía práctica para limpiar la fuente de agua de tu gato: desmontaje, bomba, filtro y cada cuánto hacerlo para evitar biofilm y malos olores.",
+  description:
+    "Guía práctica para limpiar la fuente de agua de tu gato: desmontaje, bomba, filtro y cada cuánto hacerlo para evitar biofilm y malos olores.",
   canonical: "/como-limpiar-fuente-agua-gatos/",
 };
 const breadcrumbs = [
@@ -13,23 +14,98 @@ const breadcrumbs = [
   { name: "Cómo limpiarla", path: seo.canonical },
 ];
 const faqs = [
-  { q: "¿Cada cuánto hay que limpiar la fuente a fondo?", a: "Una limpieza a fondo (desmontar y frotar la bomba) cada 1-2 semanas, y un enjuague con cambio de agua cada 1-2 días. Si tienes varios gatos, acorta esos plazos." },
-  { q: "¿Puedo usar lavavajillas?", a: "Las piezas de acero o cerámica (plato, tapa) suelen ser aptas; la bomba y la electrónica, nunca. Revisa las instrucciones de tu modelo." },
-  { q: "¿Con qué producto la limpio?", a: "Agua caliente y un poco de jabón neutro es suficiente. Evita lejía o productos perfumados: el olor residual hace que el gato rechace el agua. Enjuaga muy bien." },
+  {
+    q: "¿Cada cuánto hay que limpiar la fuente a fondo?",
+    a: "Una limpieza a fondo (desmontar y frotar la bomba) cada 1-2 semanas, y un enjuague con cambio de agua cada 1-2 días. Si tienes varios gatos, acorta esos plazos.",
+  },
+  {
+    q: "¿Puedo usar lavavajillas?",
+    a: "Las piezas de acero o cerámica (plato, tapa) suelen ser aptas; la bomba y la electrónica, nunca. Revisa las instrucciones de tu modelo.",
+  },
+  {
+    q: "¿Con qué producto la limpio?",
+    a: "Agua caliente y un poco de jabón neutro es suficiente. Evita lejía o productos perfumados: el olor residual hace que el gato rechace el agua. Enjuaga muy bien.",
+  },
 ];
----
-<GuideLayout seo={seo} breadcrumbs={breadcrumbs} datePublished="2026-08-04" faqs={faqs}>
-  <p>Una fuente sucia es contraproducente: acumula <strong>biofilm</strong> (esa capa viscosa al tacto), da mal sabor al agua y el gato deja de beber. La buena noticia es que limpiarla bien lleva menos de diez minutos si sigues un orden.</p>
 
-  <KeyFacts title="En resumen" items={[
-    "Cambio de agua y enjuague rápido: <strong>cada 1-2 días</strong>.",
-    "Limpieza a fondo con desmontaje de la bomba: <strong>cada 1-2 semanas</strong>.",
-    "Jabón neutro <strong>sin perfume</strong> y enjuagar muy bien (el olor residual la hace rechazar).",
-    "La bomba es la pieza clave: es donde se atasca el pelo y de donde sale el ruido.",
-  ]} />
+const howto = {
+  name: "Cómo limpiar la fuente de agua de tu gato",
+  description:
+    "Limpieza a fondo de la fuente: desmontaje, bomba, filtro y montaje.",
+  totalTime: "PT10M",
+  supply: [
+    "Jabón neutro sin perfume",
+    "Filtro de recambio (si toca cambiarlo)",
+  ],
+  tool: ["Cepillo pequeño o bastoncillos", "Agua caliente"],
+  steps: [
+    {
+      name: "Desenchufa y vacía",
+      text: "Tira el agua restante. Nunca limpies con la bomba conectada.",
+    },
+    {
+      name: "Desmonta todo",
+      text: "Separa plato, tapa, depósito, bomba y filtro. El biofilm se esconde en juntas y bomba.",
+    },
+    {
+      name: "Frota la bomba",
+      text: "Abre el rotor, retira el pelo acumulado y limpia el eje con el cepillo. Es de donde salen ruidos y averías.",
+    },
+    {
+      name: "Lava las piezas",
+      text: "Con agua caliente y jabón neutro. Acero y cerámica pueden ir al lavavajillas; la bomba no.",
+    },
+    {
+      name: "Enjuaga a conciencia",
+      text: "Cualquier resto de jabón o perfume hará que el gato rechace el agua.",
+    },
+    {
+      name: "Cambia o enjuaga el filtro",
+      text: "Si lleva más de 2-4 semanas, sustitúyelo.",
+    },
+    {
+      name: "Monta, rellena y enchufa",
+      text: "Rellena por encima del mínimo: un nivel bajo hace que la bomba chupe aire y zumbe.",
+    },
+  ],
+};
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-08-04"
+  faqs={faqs}
+  howto={howto}
+>
+  <p>
+    Una fuente sucia es contraproducente: acumula <strong>biofilm</strong> (esa capa
+    viscosa al tacto), da mal sabor al agua y el gato deja de beber. La buena noticia
+    es que limpiarla bien lleva menos de diez minutos si sigues un orden.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Cambio de agua y enjuague rápido: <strong>cada 1-2 días</strong>.",
+      "Limpieza a fondo con desmontaje de la bomba: <strong>cada 1-2 semanas</strong>.",
+      "Jabón neutro <strong>sin perfume</strong> y enjuagar muy bien (el olor residual la hace rechazar).",
+      "La bomba es la pieza clave: es donde se atasca el pelo y de donde sale el ruido.",
+    ]}
+  />
 
   <h2>Qué es el biofilm y por qué importa</h2>
-  <p>El biofilm es esa película escurridiza que notas al pasar el dedo por el interior de un cuenco que lleva días sin lavar. Es una colonia de bacterias que se agarra a la superficie. En materiales <strong>porosos como el plástico</strong> se forma antes y es más difícil de eliminar, porque se refugia en los microarañazos; por eso el plástico se asocia al <strong>acné felino</strong> en la barbilla. En <a href="/fuentes-acero-inoxidable-gatos/">acero inoxidable</a> o cerámica cuesta mucho más que aparezca. Sea cual sea tu fuente, la limpieza frecuente es lo que de verdad lo mantiene a raya.</p>
+  <p>
+    El biofilm es esa película escurridiza que notas al pasar el dedo por el
+    interior de un cuenco que lleva días sin lavar. Es una colonia de bacterias
+    que se agarra a la superficie. En materiales <strong
+      >porosos como el plástico</strong
+    > se forma antes y es más difícil de eliminar, porque se refugia en los microarañazos;
+    por eso el plástico se asocia al <strong>acné felino</strong> en la barbilla.
+    En <a href="/fuentes-acero-inoxidable-gatos/">acero inoxidable</a> o cerámica
+    cuesta mucho más que aparezca. Sea cual sea tu fuente, la limpieza frecuente es
+    lo que de verdad lo mantiene a raya.
+  </p>
 
   <h2>Lo que necesitas</h2>
   <ul>
@@ -40,15 +116,44 @@ const faqs = [
 
   <h2>Paso a paso</h2>
   <ol>
-    <li><strong>Desenchufa y vacía.</strong> Tira el agua restante; nunca limpies con la bomba conectada.</li>
-    <li><strong>Desmonta todo.</strong> Separa plato, tapa, depósito, bomba y filtro. La mayoría del biofilm se esconde en las juntas y en la bomba.</li>
-    <li><strong>Frota la bomba.</strong> Es la pieza clave: abre el rotor, retira el pelo acumulado y limpia el eje con el cepillo. El 90% de los ruidos y averías vienen de aquí.</li>
-    <li><strong>Lava las piezas.</strong> Con agua caliente y jabón neutro. Acero y cerámica pueden ir al lavavajillas; la bomba no.</li>
-    <li><strong>Enjuaga a conciencia.</strong> Cualquier resto de jabón o perfume hará que el gato rechace el agua.</li>
-    <li><strong>Cambia o enjuaga el filtro.</strong> Si lleva más de 2-4 semanas, sustitúyelo (ver la <a href="/cada-cuanto-cambiar-filtro-fuente-gato/">guía de recambio de filtros</a>).</li>
-    <li><strong>Monta, rellena por encima del mínimo y enchufa.</strong> Un nivel bajo hace que la bomba chupe aire y zumbe.</li>
+    <li>
+      <strong>Desenchufa y vacía.</strong> Tira el agua restante; nunca limpies con
+      la bomba conectada.
+    </li>
+    <li>
+      <strong>Desmonta todo.</strong> Separa plato, tapa, depósito, bomba y filtro.
+      La mayoría del biofilm se esconde en las juntas y en la bomba.
+    </li>
+    <li>
+      <strong>Frota la bomba.</strong> Es la pieza clave: abre el rotor, retira el
+      pelo acumulado y limpia el eje con el cepillo. El 90% de los ruidos y averías
+      vienen de aquí.
+    </li>
+    <li>
+      <strong>Lava las piezas.</strong> Con agua caliente y jabón neutro. Acero y
+      cerámica pueden ir al lavavajillas; la bomba no.
+    </li>
+    <li>
+      <strong>Enjuaga a conciencia.</strong> Cualquier resto de jabón o perfume hará
+      que el gato rechace el agua.
+    </li>
+    <li>
+      <strong>Cambia o enjuaga el filtro.</strong> Si lleva más de 2-4 semanas, sustitúyelo
+      (ver la <a href="/cada-cuanto-cambiar-filtro-fuente-gato/"
+        >guía de recambio de filtros</a
+      >).
+    </li>
+    <li>
+      <strong>Monta, rellena por encima del mínimo y enchufa.</strong> Un nivel bajo
+      hace que la bomba chupe aire y zumbe.
+    </li>
   </ol>
 
   <h2>Cada cuánto</h2>
-  <p>Cambio de agua y enjuague rápido cada 1-2 días; limpieza a fondo cada 1-2 semanas. Los materiales no porosos como el <a href="/fuentes-acero-inoxidable-gatos/">acero inoxidable</a> perdonan más los despistes que el plástico.</p>
+  <p>
+    Cambio de agua y enjuague rápido cada 1-2 días; limpieza a fondo cada 1-2
+    semanas. Los materiales no porosos como el <a
+      href="/fuentes-acero-inoxidable-gatos/">acero inoxidable</a
+    > perdonan más los despistes que el plástico.
+  </p>
 </GuideLayout>

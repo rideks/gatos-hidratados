@@ -1,0 +1,434 @@
+---
+// ============================================================================
+// CatalogFilters.astro — buscador por facetas (estilo "Acota tu búsqueda").
+//
+// v5: Escritorio con sidebar sticky y grupos en DESPLEGABLES (acordeones nativos
+// <details>). Móvil: panel plegable ("Filtros N"), píldoras quitables y chips en
+// scroll horizontal. Facets Tipo/Material/Capacidad/Características/Marca,
+// "Ordenar por" y estado en la URL. Sin React.
+//
+// Reglas: OR dentro de un grupo · AND entre grupos · características en AND.
+// URL: /catalogo/?tipo=fuentes-agua&material=acero&marca=petkit&sort=precio-asc
+//
+// Uso:  <CatalogFilters products={productos} />
+// ============================================================================
+import ProductCard from "./ProductCard.astro";
+import { CATEGORIES } from "../data/taxonomy.js";
+import { PRODUCT_TAGS as T, TAG_LABELS } from "../data/productTags.js";
+import { getEditorialScore } from "../data/EditorialScores.js";
+
+const { products = [] } = Astro.props;
+
+const slugify = (s) =>
+  String(s ?? "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+const num = (v) => {
+  const n = parseFloat(String(v ?? "").replace(",", "."));
+  return Number.isNaN(n) ? 0 : n;
+};
+
+const materialBucket = (p) => {
+  const s = `${p.material ?? ""} ${p.name ?? ""}`.toLowerCase();
+  if (/acero|inox|steel/.test(s)) return "acero";
+  if (/cerámic|ceramic/.test(s)) return "ceramica";
+  if (/plástic|plastic|\babs\b|\bpp\b|\bpet\b/.test(s)) return "plastico";
+  return "otro";
+};
+const MATERIAL_LABELS = {
+  acero: "Acero inoxidable",
+  plastico: "Plástico",
+  ceramica: "Cerámica",
+  otro: "Otros",
+};
+
+const capBucket = (p) => {
+  const m = String(p.capacity ?? "").match(/([\d.,]+)\s*l/i);
+  if (!m) return "";
+  const n = parseFloat(m[1].replace(",", "."));
+  if (n <= 2) return "s2";
+  if (n <= 3) return "m3";
+  return "g3";
+};
+const CAP_LABELS = { s2: "Hasta 2 L", m3: "2–3 L", g3: "Más de 3 L" };
+const CAP_ORDER = ["s2", "m3", "g3"];
+
+const tipos = CATEGORIES.filter((c) =>
+  products.some((p) => p.subcategory === c.id),
+).map((c) => ({ value: c.id, label: c.name }));
+
+const materials = ["acero", "plastico", "ceramica", "otro"]
+  .filter((b) => products.some((p) => materialBucket(p) === b))
+  .map((b) => ({ value: b, label: MATERIAL_LABELS[b] }));
+
+const caps = CAP_ORDER.filter((b) =>
+  products.some((p) => capBucket(p) === b),
+).map((b) => ({ value: b, label: CAP_LABELS[b] }));
+
+const CHAR_TAGS = [
+  T.SILENT,
+  T.WIRELESS,
+  T.BATTERY,
+  T.MOTION_SENSOR,
+  T.LARGE_CAPACITY,
+  T.DISHWASHER_SAFE,
+  T.LED,
+  T.BPA_FREE,
+  T.REPLACEMENT_FILTER,
+];
+const chars = CHAR_TAGS.filter((t) =>
+  products.some((p) => (p.tags || []).includes(t)),
+).map((t) => ({ value: t, label: TAG_LABELS[t] }));
+
+const marcas = [...new Set(products.map((p) => p.brand).filter(Boolean))]
+  .sort((a, b) => a.localeCompare(b, "es"))
+  .map((b) => ({ value: slugify(b), label: b }));
+
+const groups = [
+  { facet: "tipo", label: "Tipo", options: tipos },
+  { facet: "material", label: "Material", options: materials },
+  { facet: "cap", label: "Capacidad", options: caps },
+  { facet: "char", label: "Características", options: chars },
+  { facet: "marca", label: "Marca", options: marcas },
+].filter((g) => g.options.length > 1);
+
+const OPEN_BY_DEFAULT = ["tipo", "material", "cap"]; // los demás, plegados
+
+const items = products.map((p) => ({
+  p,
+  tipo: p.subcategory,
+  material: materialBucket(p),
+  cap: capBucket(p),
+  marca: slugify(p.brand),
+  tags: (p.tags || []).join(" "),
+  price: num(p.price),
+  score: getEditorialScore(p.slug)?.rating ?? 0,
+}));
+
+const chip =
+  "cat-chip shrink-0 inline-flex items-center gap-1.5 rounded-full border px-3 py-2 sm:py-1.5 text-sm font-semibold transition-colors cursor-pointer select-none border-line text-ink hover:border-brand-300 active:scale-[.98]";
+const row =
+  "flex gap-2 overflow-x-auto lg:flex-wrap pb-1 -mx-1 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+---
+
+<div class="space-y-4" data-catalog>
+  <!-- Barra superior: Filtros (móvil) · contador · Ordenar -->
+  <div class="flex items-center gap-3">
+    <button
+      type="button"
+      data-toggle
+      aria-expanded="false"
+      class="lg:hidden inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold text-ink hover:border-brand-300"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"></path></svg
+      >
+      Filtros
+      <span
+        data-fcount
+        class="hidden ml-0.5 inline-flex items-center justify-center min-w-5 h-5 px-1.5 rounded-full bg-brand-600 text-white text-xs"
+        >0</span
+      >
+    </button>
+
+    <p class="hidden sm:block text-sm text-ink-500" data-count>
+      {products.length} producto{products.length === 1 ? "" : "s"}
+    </p>
+
+    <label class="ml-auto inline-flex items-center gap-2 text-sm text-ink-500">
+      <span class="hidden sm:inline">Ordenar por</span>
+      <select
+        data-sort
+        class="rounded-lg border border-line bg-white px-2.5 py-2 text-sm font-semibold text-ink focus:border-brand-400 focus:outline-none"
+      >
+        <option value="destacados">Destacados</option>
+        <option value="precio-asc">Precio ↑</option>
+        <option value="precio-desc">Precio ↓</option>
+        <option value="nota-desc">Nuestra nota</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Filtros activos (píldoras quitables) -->
+  <div data-pills class="flex flex-wrap gap-2 empty:hidden"></div>
+
+  <!-- Cuerpo: sidebar (sticky en escritorio) + rejilla -->
+  <div
+    class="lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-8 lg:items-start"
+  >
+    <!-- Sidebar / panel plegable en móvil -->
+    <aside
+      data-panel
+      class="hidden lg:block lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto rounded-2xl border border-line bg-white p-4 sm:p-5 mb-4 lg:mb-0"
+    >
+      <div
+        class="flex items-center justify-between gap-3 pb-3 mb-1 border-b border-line"
+      >
+        <p class="eyebrow">Filtrar</p>
+        <button
+          type="button"
+          data-clear
+          class="text-sm font-semibold text-brand-700 hover:text-brand-800 hidden"
+          >Limpiar</button
+        >
+      </div>
+
+      {
+        groups.map((g) => (
+          <details
+            class="cat-group border-b border-line/60 last:border-0 py-1"
+            open={OPEN_BY_DEFAULT.includes(g.facet)}
+          >
+            <summary class="flex items-center justify-between cursor-pointer select-none py-2.5">
+              <span class="text-[11px] font-bold text-ink-500 uppercase tracking-wide">
+                {g.label}
+              </span>
+              <svg
+                class="chev w-4 h-4 text-ink-500"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="pb-3">
+              <div class={row}>
+                {g.options.map((o) => (
+                  <button
+                    type="button"
+                    class={chip}
+                    data-facet={g.facet}
+                    data-value={o.value}
+                    aria-pressed="false"
+                  >
+                    {o.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </aside>
+
+    <!-- Rejilla -->
+    <div class="min-w-0">
+      <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3" data-grid>
+        {
+          items.map((it) => (
+            <div
+              class="cat-item"
+              data-tipo={it.tipo}
+              data-material={it.material}
+              data-cap={it.cap}
+              data-marca={it.marca}
+              data-tags={it.tags}
+              data-price={it.price}
+              data-score={it.score}
+            >
+              <ProductCard product={it.p} />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="hidden text-center text-ink-500 py-16" data-empty>
+        <p>
+          Ningún producto cumple esos filtros. <button
+            type="button"
+            data-clear
+            class="font-semibold text-brand-700 hover:text-brand-800"
+            >Quítalos todos</button
+          >.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cat-group > summary {
+    list-style: none;
+  }
+  .cat-group > summary::-webkit-details-marker {
+    display: none;
+  }
+  .cat-group > summary .chev {
+    transition: transform 0.18s ease;
+  }
+  .cat-group[open] > summary .chev {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-catalog]");
+    if (!root) return;
+    const chips = [...root.querySelectorAll(".cat-chip")];
+    const cards = [...root.querySelectorAll(".cat-item")];
+    const original = [...cards];
+    const countEl = root.querySelector("[data-count]");
+    const emptyEl = root.querySelector("[data-empty]");
+    const gridEl = root.querySelector("[data-grid]");
+    const sortEl = root.querySelector("[data-sort]");
+    const panel = root.querySelector("[data-panel]");
+    const toggle = root.querySelector("[data-toggle]");
+    const fcount = root.querySelector("[data-fcount]");
+    const pillsEl = root.querySelector("[data-pills]");
+    const clearBtns = [...root.querySelectorAll("[data-clear]")];
+    const ACTIVE = ["!border-brand-600", "!bg-brand-600", "!text-white"];
+    const FACETS = ["tipo", "material", "cap", "char", "marca"];
+
+    const setChip = (c, on) => {
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+      ACTIVE.forEach((cls) => c.classList.toggle(cls, on));
+    };
+    const pressed = () =>
+      chips.filter((c) => c.getAttribute("aria-pressed") === "true");
+
+    const active = () => {
+      const map = {
+        tipo: new Set(),
+        material: new Set(),
+        cap: new Set(),
+        char: new Set(),
+        marca: new Set(),
+      };
+      pressed().forEach((c) => map[c.dataset.facet]?.add(c.dataset.value));
+      return map;
+    };
+
+    const matches = (card, a) => {
+      if (a.tipo.size && !a.tipo.has(card.dataset.tipo)) return false;
+      if (a.material.size && !a.material.has(card.dataset.material))
+        return false;
+      if (a.cap.size && !(card.dataset.cap && a.cap.has(card.dataset.cap)))
+        return false;
+      if (a.marca.size && !a.marca.has(card.dataset.marca)) return false;
+      const tags = (card.dataset.tags || "").split(" ").filter(Boolean);
+      for (const t of a.char) if (!tags.includes(t)) return false;
+      return true;
+    };
+
+    const sortCards = (mode) => {
+      const arr = [...cards];
+      if (mode === "precio-asc")
+        arr.sort((x, y) => +x.dataset.price - +y.dataset.price);
+      else if (mode === "precio-desc")
+        arr.sort((x, y) => +y.dataset.price - +x.dataset.price);
+      else if (mode === "nota-desc")
+        arr.sort((x, y) => +y.dataset.score - +x.dataset.score);
+      else arr.splice(0, arr.length, ...original);
+      arr.forEach((el) => gridEl.appendChild(el));
+    };
+
+    const renderPills = (list) => {
+      pillsEl.innerHTML = "";
+      list.forEach((c) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className =
+          "inline-flex items-center gap-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-800 pl-3 pr-2 py-1.5 text-sm font-semibold hover:bg-brand-100";
+        b.innerHTML = `${c.textContent.trim()}<span aria-hidden="true" class="text-brand-700/70">✕</span>`;
+        b.setAttribute("aria-label", `Quitar filtro ${c.textContent.trim()}`);
+        b.addEventListener("click", () => {
+          setChip(c, false);
+          apply();
+        });
+        pillsEl.appendChild(b);
+      });
+    };
+
+    const syncUrl = (a, sort) => {
+      const params = new URLSearchParams();
+      FACETS.forEach((f) => {
+        if (a[f].size) params.set(f, [...a[f]].join(","));
+      });
+      if (sort && sort !== "destacados") params.set("sort", sort);
+      const qs = params.toString();
+      history.replaceState(null, "", qs ? `?${qs}` : location.pathname);
+    };
+
+    const apply = ({ writeUrl = true } = {}) => {
+      const on = pressed();
+      const a = active();
+      const any = on.length > 0;
+      let shown = 0;
+      cards.forEach((card) => {
+        const ok = matches(card, a);
+        card.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (countEl)
+        countEl.textContent = `${shown} producto${shown === 1 ? "" : "s"}`;
+      if (emptyEl) emptyEl.classList.toggle("hidden", shown !== 0);
+      if (gridEl) gridEl.classList.toggle("hidden", shown === 0);
+      clearBtns.forEach((b) => b.classList.toggle("hidden", !any));
+      if (fcount) {
+        fcount.textContent = String(on.length);
+        fcount.classList.toggle("hidden", !any);
+      }
+      renderPills(on);
+      if (writeUrl) syncUrl(a, sortEl?.value);
+    };
+
+    // Estado inicial desde la URL (abre el grupo si trae filtro activo)
+    (() => {
+      const params = new URLSearchParams(location.search);
+      FACETS.forEach((f) => {
+        const vals = (params.get(f) || "").split(",").filter(Boolean);
+        if (!vals.length) return;
+        chips.forEach((c) => {
+          if (c.dataset.facet === f && vals.includes(c.dataset.value)) {
+            setChip(c, true);
+            c.closest("details")?.setAttribute("open", "");
+          }
+        });
+      });
+      const s = params.get("sort");
+      if (s && sortEl) sortEl.value = s;
+    })();
+
+    chips.forEach((c) =>
+      c.addEventListener("click", () => {
+        setChip(c, c.getAttribute("aria-pressed") !== "true");
+        apply();
+      }),
+    );
+    clearBtns.forEach((b) =>
+      b.addEventListener("click", () => {
+        chips.forEach((c) => setChip(c, false));
+        apply();
+      }),
+    );
+    if (sortEl)
+      sortEl.addEventListener("change", () => {
+        sortCards(sortEl.value);
+        apply();
+      });
+    if (toggle && panel)
+      toggle.addEventListener("click", () => {
+        const open = panel.classList.toggle("!block");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+    if (sortEl && sortEl.value !== "destacados") sortCards(sortEl.value);
+    apply({ writeUrl: false });
+  })();
+</script>

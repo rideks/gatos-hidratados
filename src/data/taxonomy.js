@@ -89,6 +89,8 @@ export const GUIDES = [
   { title: "Cómo limpiar la fuente de agua de tu gato paso a paso", short: "Cómo limpiar la fuente", path: "/como-limpiar-fuente-agua-gatos/", category: "fuentes-agua" },
   { title: "¿Cada cuánto hay que cambiar el filtro de la fuente?", short: "Cada cuánto cambiar el filtro", path: "/cada-cuanto-cambiar-filtro-fuente-gato/", category: "filtros-fuente" },
   { title: "Mi gato no bebe de la fuente: causas y soluciones", short: "Mi gato no bebe de la fuente", path: "/mi-gato-no-bebe-de-la-fuente/", category: "fuentes-agua" },
+  { title: "¿Cuánta agua debe beber un gato al día? (tabla por peso)", short: "Cuánta agua debe beber", path: "/cuanta-agua-debe-beber-un-gato/", category: "fuentes-agua" },
+  { title: "Fuente de agua vs cuenco: ¿de verdad bebe más tu gato?", short: "Fuente vs cuenco", path: "/fuente-de-agua-vs-cuenco-gatos/", category: "fuentes-agua" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

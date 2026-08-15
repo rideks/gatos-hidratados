@@ -131,6 +131,23 @@ export function buildWebPage({ url, name, description, breadcrumbId, mainEntityI
   };
 }
 
+// Persona (autor/revisor) para E-E-A-T. Devuelve null si no hay nombre real.
+function personNode(p) {
+  if (!p?.name) return null;
+  return {
+    "@type": "Person",
+    name: p.name,
+    ...(p.jobTitle && { jobTitle: p.jobTitle }),
+    ...(p.url && { url: abs(p.url) }),
+    ...(p.identifier && { identifier: p.identifier }),
+    ...(p.sameAs?.length && { sameAs: p.sameAs }),
+  };
+}
+
+// Autor: Person si hay persona real configurada; si no, la Organización (marca).
+const authorNode =
+  personNode(AUTHOR.person) || { "@type": "Organization", name: AUTHOR.name, url: abs(AUTHOR.authorPath) };
+
 export function buildArticle({ url, headline, description, datePublished, dateModified, image, section }) {
   return {
     "@type": "Article",
@@ -140,7 +157,8 @@ export function buildArticle({ url, headline, description, datePublished, dateMo
     inLanguage: "es-ES",
     datePublished,
     dateModified: dateModified || datePublished,
-    author: { "@type": "Organization", name: AUTHOR.name, url: abs(AUTHOR.authorPath) },
+    author: authorNode,
+    ...(personNode(AUTHOR.reviewer) && { reviewedBy: personNode(AUTHOR.reviewer) }),
     publisher: orgRef,
     mainEntityOfPage: { "@id": `${url}#webpage` },
     ...(image && { image: abs(image) }),
@@ -159,6 +177,27 @@ export function buildFaqPage(faqs, { id } = {}) {
       "@type": "Question",
       name: f.q || f.question,
       acceptedAnswer: { "@type": "Answer", text: f.a || f.answer },
+    })),
+  };
+}
+
+export function buildHowTo({ url, name, description, steps = [], totalTime, supply = [], tool = [] }) {
+  if (!steps.length) return null;
+  return {
+    "@type": "HowTo",
+    "@id": `${url}#howto`,
+    name,
+    ...(description && { description }),
+    inLanguage: "es-ES",
+    ...(totalTime && { totalTime }), // formato ISO 8601, p. ej. "PT10M"
+    ...(supply.length && { supply: supply.map((s) => ({ "@type": "HowToSupply", name: s })) }),
+    ...(tool.length && { tool: tool.map((t) => ({ "@type": "HowToTool", name: t })) }),
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      ...(s.url && { url: abs(s.url) }),
     })),
   };
 }

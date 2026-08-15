@@ -1,0 +1,170 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+const seo = {
+  title: "¿Cuánta agua debe beber un gato al día? (tabla por peso)",
+  description:
+    "Cuánta agua necesita un gato al día según su peso: la fórmula de 50-60 ml/kg, cómo cuenta la comida húmeda, señales de que bebe poco y cuándo acudir al veterinario.",
+  canonical: "/cuanta-agua-debe-beber-un-gato/",
+};
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Cuánta agua debe beber", path: seo.canonical },
+];
+const faqs = [
+  {
+    q: "¿Cuánta agua debe beber un gato de 4 kg?",
+    a: "Un gato de 4 kg necesita en torno a 200-240 ml de líquido al día en total, contando el agua que ya viene en la comida. Si come pienso húmedo (hasta un 80% de agua) beberá bastante menos de su cuenco; si come solo pienso seco, tendrá que beber casi todo eso por su cuenta.",
+  },
+  {
+    q: "¿Es malo que mi gato beba poca agua?",
+    a: "Beber poco es un factor de riesgo para problemas urinarios y renales, sobre todo en gatos que solo comen pienso seco. La forma más eficaz de subir su ingesta es pasar (total o parcialmente) a comida húmeda; una fuente y varios puntos de agua limpios también ayudan en muchos gatos.",
+  },
+  {
+    q: "¿Y si de repente bebe muchísima agua?",
+    a: "Un aumento brusco y sostenido del consumo (por encima de unos 100 ml/kg al día) puede ser señal de problemas renales, diabetes o tiroides y merece una consulta veterinaria. Cualquier cambio marcado en cuánto bebe, en un sentido o en otro, conviene revisarlo.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-08-13"
+  faqs={faqs}
+>
+  <p>
+    Es una de las dudas más frecuentes y la respuesta corta tiene truco: lo que
+    importa no es cuánta agua <em>bebe</em> tu gato del cuenco, sino cuánto líquido
+    <strong>ingiere en total</strong> al día, incluida el agua de la comida. Aquí
+    tienes la cifra según su peso y cómo interpretarla sin agobiarte.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Un gato adulto necesita unos <strong>50-60 ml de agua por kilo al día</strong>, contando la comida.",
+      "Un gato de <strong>4 kg</strong> ronda los <strong>200-240 ml diarios</strong> de líquido total.",
+      "El <strong>pienso húmedo</strong> aporta hasta un 80% de agua: con él, tu gato bebe mucho menos del cuenco (y es normal).",
+      "Con <strong>pienso seco</strong>, casi toda esa agua tiene que beberla; ahí es donde vigilar de cerca.",
+    ]}
+  />
+
+  <h2>La cifra según el peso de tu gato</h2>
+  <p>
+    Tomando la referencia de <strong>50-60 ml por kilo y día</strong> de líquido total
+    (agua bebida + agua de la comida), esta es la horquilla aproximada:
+  </p>
+
+  <table>
+    <thead>
+      <tr><th>Peso del gato</th><th>Líquido total al día</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2 kg (gatito o gato pequeño)</td><td>~100-120 ml</td></tr>
+      <tr><td>3 kg</td><td>~150-180 ml</td></tr>
+      <tr><td>4 kg (adulto medio)</td><td>~200-240 ml</td></tr>
+      <tr><td>5 kg</td><td>~250-300 ml</td></tr>
+      <tr><td>6 kg (gato grande)</td><td>~300-360 ml</td></tr>
+    </tbody>
+  </table>
+  <p class="text-sm text-slate-500">
+    Son cifras orientativas para gatos adultos sanos. La temperatura ambiente,
+    la actividad, la lactancia o cualquier enfermedad cambian estas necesidades:
+    úsalas como guía, no como norma exacta.
+  </p>
+
+  <h2>Por qué la comida cambia el cálculo</h2>
+  <p>
+    Aquí está la clave que casi nadie explica. El gato es un animal originario
+    del desierto: evolucionó para obtener la mayor parte de su agua de las
+    presas, no del cuenco. Por eso su instinto de sed es débil, y por eso <strong
+      >lo que come determina cuánto necesita beber</strong
+    >:
+  </p>
+  <ul>
+    <li>
+      <strong>Pienso húmedo (latas, sobres):</strong> contiene hasta un 70-80% de
+      agua. Un gato que come solo húmedo puede cubrir gran parte de su necesidad sin
+      apenas acercarse al bebedero. Que beba poco del cuenco <em>no</em> es un problema
+      en este caso.
+    </li>
+    <li>
+      <strong>Pienso seco:</strong> apenas un 8-10% de agua. Aquí tu gato tiene que
+      beber casi todo el líquido por su cuenta, y muchos no lo hacen en cantidad suficiente.
+      Es el escenario donde más conviene facilitarle el agua.
+    </li>
+  </ul>
+
+  <h2>Señales de que tu gato bebe poco</h2>
+  <p>
+    No hace falta medir cada mililitro. Estas pistas te dicen si va bien de
+    hidratación:
+  </p>
+  <ul>
+    <li>
+      <strong>La prueba del pellizco:</strong> levanta con suavidad la piel de la
+      nuca. Si vuelve a su sitio al instante, bien hidratado; si tarda o queda "de
+      tienda de campaña", posible deshidratación.
+    </li>
+    <li>
+      <strong>Encías:</strong> deben estar húmedas y brillantes. Pegajosas o secas
+      es mala señal.
+    </li>
+    <li>
+      <strong>La arena:</strong> muy pocas bolas de orina, pequeñas y muy concentradas,
+      sugieren que bebe poco. Es uno de los indicadores más útiles del día a día.
+    </li>
+    <li><strong>Letargo o apatía</strong> acompañando a lo anterior.</li>
+  </ul>
+
+  <h2>Cómo conseguir que ingiera más agua</h2>
+  <p>Ordenado por lo que de verdad funciona, según la evidencia:</p>
+  <ol>
+    <li>
+      <strong>Comida húmeda o añadir agua al pienso.</strong> Es, de largo, la palanca
+      mejor demostrada para subir la ingesta total. Si solo vas a hacer una cosa,
+      que sea esta.
+    </li>
+    <li>
+      <strong
+        >Varios puntos de agua, limpios y lejos de la comida y del arenero.</strong
+      > Los gatos rechazan por instinto el agua que perciben "contaminada" por estar
+      cerca de la comida o las heces.
+    </li>
+    <li>
+      <strong
+        >Una <a href="/fuentes-de-agua-para-gatos/">fuente de agua</a>.</strong
+      > Muchos gatos prefieren el agua en movimiento y beben más de una fuente, sobre
+      todo los que ya beben del grifo. No es magia para todos (la evidencia es mixta),
+      pero para el gato adecuado es una herramienta muy útil. Lo desarrollamos en
+      <a href="/fuente-de-agua-vs-cuenco-gatos/">fuente vs cuenco</a>.
+    </li>
+  </ol>
+
+  <div
+    class="not-prose my-6 rounded-xl border border-brand-200 bg-brand-50 p-4"
+  >
+    <p class="text-sm text-slate-700">
+      ¿Tu gato ignora el cuenco por completo? Puede ser cuestión de ubicación o
+      de tipo de bebedero. Repasa <a
+        href="/mi-gato-no-bebe-de-la-fuente/"
+        class="font-semibold text-brand-700">por qué un gato no bebe</a
+      > y cómo solucionarlo.
+    </p>
+  </div>
+
+  <h2>Cuándo preocuparse de verdad</h2>
+  <p>
+    Consulta al veterinario si tu gato <strong
+      >deja de beber por completo más de 24 horas</strong
+    >, si de golpe empieza a beber <strong>muchísimo más</strong> que de costumbre,
+    o si a la sed anómala se suman apatía, pérdida de apetito o esfuerzo al orinar.
+    Tanto beber demasiado poco como beber en exceso pueden apuntar a un problema de
+    salud subyacente.
+  </p>
+
+  <VetDisclaimer />
+</GuideLayout>

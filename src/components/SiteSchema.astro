@@ -24,7 +24,8 @@ const schema = {
 };
 
 // 📊 PRUEBA DE SCHEMAS — WebSite + Organization (comenta para silenciar).
-console.log(`\n📊 [JSON-LD:site] ${Astro.url?.pathname ?? ""}`);
-console.log(JSON.stringify(schema, null, 2));
+//console.log(`\n📊 [JSON-LD:site] ${Astro.url?.pathname ?? ""}`);
+//console.log(JSON.stringify(schema, null, 2));
 ---
+
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,83 @@
+---
+// ============================================================================
+// BundleBox.astro — envoltorio server-side de la isla "Comprados juntos".
+//
+// Resuelve slugs, arma objetos PLANOS (serializables) y monta la isla React.
+// Novedad: modo `auto`. Si `main` es una FUENTE y pones `auto`, recomienda solo
+// su filtro compatible (por marca / slug / universal). Si `main` es un FILTRO,
+// recomienda la fuente compatible más popular.
+//
+// Usos:
+//   Auto (recomendado en fichas de fuente):
+//     <BundleBox main={product.slug} auto title="Complétalo con su recambio" />
+//
+//   Manual (eliges tú los acompañantes):
+//     <BundleBox main="giotohun-acero-inoxidable-22l"
+//                companions={["filtros-giotohun-acero"]} />
+//
+//   Lista suelta (el primero es el principal, va bloqueado):
+//     <BundleBox slugs={["petlibro-acero-inoxidable-2l", "filtros-petkit-30"]} />
+// ============================================================================
+import BundleBox from "./react/BundleBox";
+import {
+  getBySlug,
+  getRecommendedFilter,
+  getFountainsForFilter,
+} from "../data/ProductData.js";
+import { getMainImage } from "../utils/product.js";
+import { AMAZON } from "../config/site.js";
+
+const {
+  main,
+  companions = [],
+  slugs,
+  auto = false,
+  max = 3, // tope de productos en el bundle
+  title = "Comprados juntos habitualmente",
+  tag = AMAZON.tag,
+} = Astro.props;
+
+const mainProduct = main ? getBySlug(main) : null;
+
+// Resuelve la lista de slugs a mostrar.
+let wanted;
+if (slugs?.length) {
+  wanted = slugs;
+} else {
+  const comps = [...companions];
+  if (auto && mainProduct) {
+    if (mainProduct.subcategory === "fuentes-agua") {
+      const filtro = getRecommendedFilter(mainProduct);
+      if (filtro && !comps.includes(filtro.slug)) comps.unshift(filtro.slug);
+    } else if (mainProduct.subcategory === "filtros-fuente") {
+      const fuente = getFountainsForFilter(mainProduct)[0];
+      if (fuente && !comps.includes(fuente.slug)) comps.unshift(fuente.slug);
+    }
+  }
+  wanted = [main, ...comps].filter(Boolean);
+}
+
+// Aplana a objetos planos, deduplica y recorta al máximo.
+const seen = new Set();
+const items = wanted
+  .map((slug) => getBySlug(slug))
+  .filter((p) => p && !seen.has(p.slug) && seen.add(p.slug))
+  .slice(0, max)
+  .map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    brand: p.brand ?? "",
+    price: p.price ?? "",
+    originalPrice: p.originalPrice ?? "",
+    image: getMainImage(p) ?? "",
+    asin: p.asin ?? "",
+    amazonUrl: p.amazonUrl ?? "",
+    href: `/productos/${p.slug}/`,
+  }));
+---
+
+{
+  items.length >= 2 && (
+    <BundleBox client:visible items={items} tag={tag} title={title} />
+  )
+}

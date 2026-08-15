@@ -53,6 +53,57 @@ export const getByBrand = (brand) => productos.filter((p) => p.brand?.toLowerCas
 export const getRelated = (product, n = 3) =>
   productos.filter((p) => p.subcategory === product.subcategory && p.id !== product.id).slice(0, n);
 
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  COMPATIBILIDAD FILTRO ↔ FUENTE                                           ║
+// ║                                                                           ║
+// ║  Regla por defecto (cero config): un filtro encaja con las fuentes de su  ║
+// ║  MISMA marca. Excepciones declaradas en el propio producto:               ║
+// ║    • universal: true   → filtro genérico: encaja con cualquier fuente de  ║
+// ║                          acero (fallback de última opción).               ║
+// ║    • fitsSlugs: [slug] → match exacto de fuente (máxima prioridad; útil    ║
+// ║                          cuando una marca tiene formatos incompatibles).  ║
+// ║    • fitsBrands: [..]  → escape para filtros cuya marca ≠ marca de fuente. ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
+const _norm = (s) => String(s ?? "").trim().toLowerCase();
+const _isFilter = (p) => p?.subcategory === "filtros-fuente";
+const _isFountain = (p) => p?.subcategory === "fuentes-agua";
+const _isSteel = (p) => /acero|inox|steel/i.test(`${p?.material ?? ""} ${p?.name ?? ""}`);
+const _reviews = (p) => Number(String(p?.reviews ?? "0").replace(/\D/g, "")) || 0;
+
+// Puntúa qué encaja mejor: 3 = slug exacto, 2 = misma marca, 1 = universal acero.
+const _fitScore = (filter, fountain) => {
+  if (filter.fitsSlugs?.includes(fountain.slug)) return 3;
+  if (filter.fitsBrands?.some((b) => _norm(b) === _norm(fountain.brand))) return 2;
+  if (!filter.exactOnly && !filter.universal && _norm(filter.brand) && _norm(filter.brand) === _norm(fountain.brand)) return 2;
+  if (filter.universal && _isSteel(fountain)) return 1;
+  return 0;
+};
+
+// Filtros que encajan con una fuente, ordenados por precisión y luego por
+// nº de reseñas (desempata entre universales / mismo score).
+export const getFiltersForFountain = (fountain) => {
+  if (!_isFountain(fountain)) return [];
+  return productos
+    .filter(_isFilter)
+    .map((f) => ({ f, s: _fitScore(f, fountain) }))
+    .filter((x) => x.s > 0)
+    .sort((a, b) => b.s - a.s || _reviews(b.f) - _reviews(a.f))
+    .map((x) => x.f);
+};
+
+// El mejor recambio para una fuente (o null si no hay ninguno compatible).
+export const getRecommendedFilter = (fountain) => getFiltersForFountain(fountain)[0] ?? null;
+
+// Fuentes en las que encaja un filtro (para la ficha del filtro).
+export const getFountainsForFilter = (filter) => {
+  if (!_isFilter(filter)) return [];
+  return productos
+    .filter(_isFountain)
+    .filter((p) => _fitScore(filter, p) > 0)
+    .sort((a, b) => _reviews(b) - _reviews(a));
+};
+
 // Con descuento real (para banners de ofertas; el % se calcula de los datos).
 export const getDiscounted = () =>
   productos.filter((p) => p.originalPrice && Number(String(p.originalPrice).replace(",", ".")) > Number(String(p.price).replace(",", ".")));

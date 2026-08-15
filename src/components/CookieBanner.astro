@@ -1,21 +1,30 @@
 ---
 import { ANALYTICS } from "../config/site.js";
 ---
+
 <div
   id="cookie-banner"
   hidden
   class="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-2xl rounded-xl border border-brand-200 bg-white/95 backdrop-blur p-4 shadow-lg"
 >
   <p class="text-sm text-slate-700">
-    Usamos cookies solo para medir el tráfico de forma anónima. Puedes aceptarlas
-    o seguir sin ellas. Más información en la
-    <a href="/politica-cookies/" class="font-semibold text-brand-700 underline">política de cookies</a>.
+    Usamos cookies solo para medir el tráfico de forma anónima. Puedes
+    aceptarlas o seguir sin ellas. Más información en la
+    <a href="/politica-cookies/" class="font-semibold text-brand-700 underline"
+      >política de cookies</a
+    >.
   </p>
   <div class="mt-3 flex gap-2 justify-end">
-    <button id="cookie-reject" class="text-sm font-semibold text-slate-600 px-3 py-2 rounded-full hover:bg-slate-100">
+    <button
+      id="cookie-reject"
+      class="text-sm font-semibold text-slate-600 px-3 py-2 rounded-full hover:bg-slate-100"
+    >
       Seguir sin cookies
     </button>
-    <button id="cookie-accept" class="text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 px-4 py-2 rounded-full">
+    <button
+      id="cookie-accept"
+      class="text-sm font-bold text-white btn-accent hover:bg-brand-700 px-4 py-2 rounded-full"
+    >
       Aceptar
     </button>
   </div>
@@ -34,22 +43,31 @@ import { ANALYTICS } from "../config/site.js";
       s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
       document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
       window.gtag("js", new Date());
       window.gtag("config", gaId, { anonymize_ip: true });
     }
 
-    if (stored === "accepted") { loadGA(); }
-    else if (stored !== "rejected" && banner) { banner.hidden = false; }
-
-    document.getElementById("cookie-accept")?.addEventListener("click", function () {
-      localStorage.setItem(KEY, "accepted");
-      if (banner) banner.hidden = true;
+    if (stored === "accepted") {
       loadGA();
-    });
-    document.getElementById("cookie-reject")?.addEventListener("click", function () {
-      localStorage.setItem(KEY, "rejected");
-      if (banner) banner.hidden = true;
-    });
+    } else if (stored !== "rejected" && banner) {
+      banner.hidden = false;
+    }
+
+    document
+      .getElementById("cookie-accept")
+      ?.addEventListener("click", function () {
+        localStorage.setItem(KEY, "accepted");
+        if (banner) banner.hidden = true;
+        loadGA();
+      });
+    document
+      .getElementById("cookie-reject")
+      ?.addEventListener("click", function () {
+        localStorage.setItem(KEY, "rejected");
+        if (banner) banner.hidden = true;
+      });
   })();
 </script>
