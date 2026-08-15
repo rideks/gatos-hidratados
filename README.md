@@ -1,6 +1,6 @@
-# Micifú — Web de afiliados de Amazon (Astro + React + Cloudflare)
+# Felinlab — Web de afiliados de Amazon (Astro + React + Cloudflare)
 
-Web de afiliados **mobile-first** (marca **Micifú**, paraguas de cuidado felino) para el nicho de **hidratación felina**, empezando por
+Web de afiliados **mobile-first** (marca **Felinlab**, paraguas de cuidado felino) para el nicho de **hidratación felina**, empezando por
 **fuentes de agua para gatos** (siguiendo la priorización del informe SEO: fuentes →
 arena → comida húmeda). Calca la arquitectura de la web hermana de conservación.
 
@@ -22,7 +22,7 @@ Requiere Node 20.19+ (o 22+). Astro 7.
 output `dist`).
 
 ## 3. Configúralo (un solo sitio)
-> ⚠️ **Nombre/dominio:** la marca es **Micifú** (`micifu.es` como valor por defecto).
+> ⚠️ **Nombre/dominio:** la marca es **Felinlab** (`felinlab.com` como valor por defecto).
 > Antes de comprar, **verifica la disponibilidad del dominio y la marca**. Para
 > cambiarlo, edita `SITE` en `src/config/site.js` y `site` en `astro.config.mjs`.
 

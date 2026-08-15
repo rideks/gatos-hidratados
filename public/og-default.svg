@@ -1,19 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#221f1b"/>
-  <!-- rastro de huellas sutil -->
-  <g fill="#4f8e77" fill-opacity="0.5">
-    <g transform="translate(80,548)"><ellipse cx="0" cy="8" rx="7" ry="5.5"/><circle cx="-7" cy="-1" r="3"/><circle cx="0" cy="-3.5" r="3.4"/><circle cx="7" cy="-1" r="3"/></g>
-    <g transform="translate(150,566)"><ellipse cx="0" cy="8" rx="7" ry="5.5"/><circle cx="-7" cy="-1" r="3"/><circle cx="0" cy="-3.5" r="3.4"/><circle cx="7" cy="-1" r="3"/></g>
-    <g transform="translate(220,548)"><ellipse cx="0" cy="8" rx="7" ry="5.5"/><circle cx="-7" cy="-1" r="3"/><circle cx="0" cy="-3.5" r="3.4"/><circle cx="7" cy="-1" r="3"/></g>
-  </g>
-  <!-- marca gato -->
-  <g transform="translate(80,84)">
-    <rect width="56" height="56" rx="13" fill="#ffffff" opacity="0.08"/>
-    <g transform="translate(12,12)" fill="#7dae9b">
-      <path d="M2 2l5 6h14l5-6v13a11 11 0 0 1-22 0V2z"/>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FelinLab — El laboratorio felino independiente">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7F2EA"/>
+      <stop offset="1" stop-color="#F1EADD"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="1200" height="630" rx="0"/></clipPath>
+  </defs>
+
+  <!-- Fondo papel cálido -->
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="630" fill="url(#paper)"/>
+
+    <!-- Acento de profundidad: círculo verde muy suave tras el matraz -->
+    <circle cx="965" cy="315" r="230" fill="#166f5a" opacity="0.07"/>
+
+    <!-- Rejilla técnica sutil (aire de "laboratorio") -->
+    <g stroke="#166f5a" stroke-width="1" opacity="0.06">
+      <line x1="88" y1="150" x2="1112" y2="150"/>
+      <line x1="88" y1="480" x2="1112" y2="480"/>
+    </g>
+
+    <!-- Barra de marca lateral -->
+    <rect x="0" y="0" width="14" height="630" fill="#166f5a"/>
+
+    <!-- ── Columna de texto ── -->
+    <!-- Kicker -->
+    <g>
+      <rect x="88" y="118" width="12" height="12" rx="6" fill="#166f5a"/>
+      <text x="112" y="129" font-family="'Space Grotesk', system-ui, sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#166f5a">ANÁLISIS INDEPENDIENTE · GATOS</text>
+    </g>
+
+    <!-- Wordmark: Felin (tinta) + Lab (verde) -->
+    <text x="84" y="330" font-family="'Space Grotesk', system-ui, sans-serif" font-size="148" font-weight="800" letter-spacing="-3" fill="#1C1712">Felin<tspan fill="#166f5a">Lab</tspan></text>
+
+    <!-- Tagline -->
+    <text x="88" y="400" font-family="'Space Grotesk', system-ui, sans-serif" font-size="40" font-weight="500" fill="#6B6157">El laboratorio felino independiente</text>
+
+    <!-- Pie: dominio -->
+    <g>
+      <circle cx="94" cy="556" r="7" fill="#166f5a"/>
+      <text x="112" y="565" font-family="'Space Grotesk', system-ui, sans-serif" font-size="30" font-weight="700" fill="#1C1712">felinlab.com</text>
+    </g>
+
+    <!-- ── Marca: matraz (lab) con gota (agua) ── -->
+    <g transform="translate(858 168) scale(3.05)">
+      <!-- líquido -->
+      <path d="M26,62 L70,62 L77,86 C80,91 76,95 70,95 L26,95 C20,95 16,91 19,86 Z" fill="#166f5a" opacity="0.22"/>
+      <!-- contorno del matraz -->
+      <path d="M42,10 L42,36 L19,86 C16,91 20,95 26,95 L70,95 C76,95 80,91 77,86 L54,36 L54,10 Z"
+            fill="none" stroke="#166f5a" stroke-width="5.5" stroke-linejoin="round"/>
+      <!-- boca del matraz -->
+      <line x1="37" y1="10" x2="59" y2="10" stroke="#166f5a" stroke-width="5.5" stroke-linecap="round"/>
+      <!-- gota (guiño a hidratación) -->
+      <path d="M48,40 C48,40 40,50 40,57 a8,8 0 0 0 16,0 C56,50 48,40 48,40 Z" fill="#166f5a"/>
     </g>
   </g>
-  <text x="80" y="300" font-family="Georgia, serif" font-size="76" font-weight="600" fill="#ffffff">Micifú</text>
-  <text x="80" y="360" font-family="Georgia, serif" font-size="34" fill="#aecdc0">Cuidado felino probado de verdad, sin humo</text>
-  <text x="80" y="486" font-family="monospace" font-size="22" letter-spacing="3" fill="#7dae9b">HIDRATACIÓN · ARENA · ALIMENTACIÓN</text>
 </svg>

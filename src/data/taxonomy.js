@@ -91,6 +91,9 @@ export const GUIDES = [
   { title: "Mi gato no bebe de la fuente: causas y soluciones", short: "Mi gato no bebe de la fuente", path: "/mi-gato-no-bebe-de-la-fuente/", category: "fuentes-agua" },
   { title: "¿Cuánta agua debe beber un gato al día? (tabla por peso)", short: "Cuánta agua debe beber", path: "/cuanta-agua-debe-beber-un-gato/", category: "fuentes-agua" },
   { title: "Fuente de agua vs cuenco: ¿de verdad bebe más tu gato?", short: "Fuente vs cuenco", path: "/fuente-de-agua-vs-cuenco-gatos/", category: "fuentes-agua" },
+  { title: "¿Por qué mi gato no bebe agua? Causas y cómo animarle a beber", short: "Por qué mi gato no bebe agua", path: "/por-que-mi-gato-no-bebe-agua/", category: "fuentes-agua" },
+  { title: "Filtro original vs genérico para fuente de gatos", short: "Filtro original vs genérico", path: "/filtro-original-vs-generico-fuente-gatos/", category: "filtros-fuente" },
+  { title: "Acné felino y cuencos de plástico: por qué el acero es mejor", short: "Acné felino y plástico", path: "/acne-felino-cuencos-plastico/", category: "fuentes-agua" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

@@ -52,5 +52,5 @@ export default defineConfig({
       },
     }),
   ],
-  site: 'https://micifu.es/',
+  site: 'https://felinlab.com/',
 });

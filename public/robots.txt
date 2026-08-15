@@ -5,4 +5,4 @@ Allow: /
 # Las legales y los silos apagados ya salen en noindex y fuera del sitemap:
 # no se bloquean aquí a propósito (bloquear en robots impediría leer el noindex).
 
-Sitemap: https://micifu.es/sitemap-index.xml
+Sitemap: https://felinlab.com/sitemap-index.xml

@@ -2,10 +2,10 @@
 # Formato:  /origen  /destino  301
 # Las líneas con # se ignoran. Añade una regla solo cuando cambies una URL.
 #
-# Rebranding gatoshidratados.com -> micifu.es:
+# Rebranding gatoshidratados.com -> felinlab.com:
 #   El cambio de DOMINIO se hace a nivel de DNS/registrador o con una regla de
 #   redirección de Cloudflare del dominio viejo al nuevo (no aquí dentro).
-#   Este archivo es para redirecciones DENTRO de micifu.es.
+#   Este archivo es para redirecciones DENTRO de felinlab.com.
 #
 # Ejemplos (descomenta y ajusta si alguna vez mueves una ruta):
 # /fuentes-agua-gatos/       /fuentes-de-agua-para-gatos/       301

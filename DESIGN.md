@@ -1,4 +1,4 @@
-# Micifú — Sistema de diseño v2
+# Felinlab — Sistema de diseño v2
 
 **Concepto:** "El laboratorio felino independiente". Un producto digital de
 confianza (banco de pruebas), no una web "cute" de gatos. Personalidad felina

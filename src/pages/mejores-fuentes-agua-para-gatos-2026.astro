@@ -1,17 +1,17 @@
 ---
+// ============================================================================
+// Sub-comparativa comercial: "Mejores fuentes de agua SIN CABLE para gatos".
+// Descarga long-tail del pilar y enlaza hacia él. Usa el template ComparativaPage
+// (BestPick + isla ProductComparison + FAQ) y filtra las fuentes inalámbricas.
+// → src/pages/mejores-fuentes-agua-sin-cable-gatos.astro
+// ============================================================================
 import ComparativaPage from "../templates/ComparativaPage.astro";
-import ReviewCard from "../components/ReviewCard.astro";
-import ProsCons from "../components/ProsCons.astro";
-import AffiliateButton from "../components/AffiliateButton.astro";
-import ProductBadges from "../components/ProductBadges.astro";
-import SpecTable from "../components/SpecTable.astro";
-import KeyFacts from "../components/KeyFacts.astro";
-import BadgeLegend from "../components/BadgeLegend.astro";
-import { getBySilo } from "../data/ProductData.js";
-import { Beaker, Target } from "lucide-react";
+import { getBySubcategory } from "../data/ProductData.js";
+import { PRODUCT_TAGS as T } from "../data/productTags.js";
 
-const products = getBySilo("hidratacion")
-  .filter((p) => p.subcategory === "fuentes-agua")
+// Solo fuentes sin cable (batería), ordenadas por precio.
+const products = getBySubcategory("fuentes-agua")
+  .filter((p) => p.tags?.includes(T.WIRELESS) || p.tags?.includes(T.BATTERY))
   .sort(
     (a, b) =>
       Number(String(a.price).replace(",", ".")) -
@@ -19,73 +19,35 @@ const products = getBySilo("hidratacion")
   );
 
 const seo = {
-  title: "Mejores fuentes de agua para gatos 2026: comparativa actualizada",
+  title: "Mejores fuentes de agua sin cable para gatos 2026",
   description:
-    "Comparativa real de las mejores fuentes de agua para gatos en 2026: acero, cerámica y plástico frente a frente. Cómo elegir por material, ruido, capacidad y filtro.",
-  canonical: "/mejores-fuentes-agua-para-gatos-2026/",
+    "Las mejores fuentes de agua sin cable (con batería) para gatos en 2026: autonomía real, sensor de movimiento y acero. Cuándo compensan frente a una con cable.",
+  canonical: "/mejores-fuentes-agua-sin-cable-gatos/",
 };
 
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
   { name: "Hidratación", path: "/hidratacion-felina/" },
   { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
-  { name: "Mejores fuentes 2026", path: seo.canonical },
-];
-
-// Guía de decisión rápida (qué fuente para qué situación).
-const decision = [
-  {
-    caso: "1-2 gatos, quiero acertar sin pensar",
-    pick: "PETLIBRO acero 2 L",
-    slug: "petlibro-acero-inoxidable-2l",
-  },
-  {
-    caso: "Máxima higiene y que no la vuelquen",
-    pick: "iPettie cerámica 2,1 L",
-    slug: "ipettie-ceramica-21l",
-  },
-  {
-    caso: "3 o más gatos / rellenar poco",
-    pick: "Veken acero 3,2 L",
-    slug: "veken-acero-32l-varios-gatos",
-  },
-  {
-    caso: "Sin enchufe cerca o gato que muerde cables",
-    pick: "PETKIT sin cable con sensor",
-    slug: "petkit-sin-cable-sensor-3l",
-  },
-  {
-    caso: "Quiero controlar cuánto bebe (mayor/renal)",
-    pick: "PETKIT Eversweet Solo 2",
-    slug: "petkit-eversweet-solo-2",
-  },
-  {
-    caso: "Probar sin gastar mucho",
-    pick: "Catit Flower 3 L",
-    slug: "catit-flower-fountain-3l",
-  },
+  { name: "Sin cable", path: seo.canonical },
 ];
 
 const faqs = [
   {
-    q: "¿De verdad bebe más un gato con fuente?",
-    a: "Depende del gato. Muchos prefieren el agua en movimiento por instinto y beben más, sobre todo los que ya beben del grifo. La evidencia científica, sin embargo, es mixta: algunos estudios ven un ligero aumento y otros no encuentran diferencia frente a un cuenco limpio. Donde una fuente gana claro es en filtrado continuo, menos biofilm y en gatos con preferencia por el agua en movimiento.",
+    q: "¿Merece la pena una fuente de agua sin cable para gatos?",
+    a: "Compensa en dos casos claros: si no tienes un enchufe cerca de donde bebe tu gato, o si tu gato muerde cables. Ganas libertad para colocarla en cualquier rincón. A cambio, hay que recordar recargar la batería y cuestan algo más que una equivalente con cable.",
   },
   {
-    q: "¿Qué material es mejor: acero, cerámica o plástico?",
-    a: "Para higiene, acero inoxidable 304 y cerámica esmaltada ganan al plástico, que es poroso y acumula biofilm en microarañazos (un factor asociado al acné felino). El plástico solo compensa como opción barata para probar. Nuestra recomendación por defecto es el acero por equilibrio entre higiene, precio y facilidad de limpieza.",
+    q: "¿Cuánto dura la batería de una fuente sin cable?",
+    a: "Depende del modo y de la capacidad de la batería. En modo por sensor (solo se activa cuando el gato se acerca) las mejores aguantan de 3 a 6 semanas; en modo continuo, bastante menos. Casi todas se pueden usar también enchufadas si prefieres olvidarte de recargar.",
   },
   {
-    q: "¿Cuánto ruido hace una fuente de agua?",
-    a: "Bien mantenida, poco: las buenas trabajan por debajo de unos 30 dB. El ruido casi siempre viene de dos cosas: nivel de agua por debajo del mínimo (la bomba chupa aire) o pelo atascado en la bomba. Rellena y limpia con frecuencia.",
+    q: "¿Qué es el modo sensor y por qué importa?",
+    a: "El sensor de movimiento activa el chorro solo cuando el gato se acerca, en lugar de bombear las 24 horas. Ahorra muchísima batería y reduce el ruido, pero algunos gatos tímidos prefieren el agua siempre en movimiento: en ese caso puedes dejarla en modo continuo (enchufada).",
   },
   {
-    q: "¿Necesito comprar filtros aparte?",
-    a: "Sí. Los filtros de carbón son consumibles: hay que cambiarlos cada 2-4 semanas. Un filtro saturado empeora el sabor y es la causa nº1 de que el gato deje de usar la fuente. Compra recambios compatibles desde el principio y mide el diámetro del tuyo.",
-  },
-  {
-    q: "¿Cuánto cuesta mantener una fuente al año?",
-    a: "Aparte de la compra, cuenta el consumo de filtros de carbón (unos 15-30 € al año según la frecuencia) y un consumo eléctrico mínimo (la bomba ronda los 2 W, céntimos al mes). El coste real recurrente son los filtros.",
+    q: "¿Son ruidosas las fuentes sin cable?",
+    a: "No más que las de cable: el ruido depende de la bomba y del nivel de agua, no de la batería. De hecho, el modo sensor las hace más silenciosas porque no bombean todo el tiempo. Como siempre, si baja mucho el nivel la bomba puede zumbar al trabajar en seco.",
   },
 ];
 ---
@@ -98,83 +60,86 @@ const faqs = [
 >
   <Fragment slot="intro">
     <p>
-      Una fuente hace que <strong>muchos</strong> gatos beban más, y beber más ayuda
-      a prevenir problemas urinarios y renales. Pero seamos honestos: no es magia
-      para todos, y no todas las fuentes valen. El <strong>material</strong>, el <strong
-        >ruido</strong
-      > y lo fácil que sea limpiarla marcan la diferencia entre una fuente que el
-      gato adora y otra que acaba en un armario.
+      Una fuente <strong>sin cable</strong> resuelve dos problemas muy concretos:
+      colocarla donde no llega un enchufe y evitar el cable que algunos gatos muerden.
+      Funcionan con batería recargable y muchas suman un
+      <strong>sensor de movimiento</strong> que activa el chorro solo cuando el gato
+      se acerca, lo que dispara la autonomía. No son para todo el mundo —hay que recargarlas
+      y cuestan algo más—, pero para el sitio adecuado son lo más cómodo que hay.
     </p>
+
     <p>
-      Hemos probado y comparado los formatos más habituales fijándonos en lo que
-      de verdad importa en el día a día. Abajo tienes una <strong
-        >guía de decisión rápida</strong
-      >, cómo probamos, y luego el análisis de cada modelo con su ficha técnica
-      y su "ideal para".
+      Si aún dudas entre sin cable y con cable, o entre materiales, empieza por
+      la <a href="/mejores-fuentes-agua-para-gatos-2026/"
+        >comparativa de mejores fuentes de agua para gatos</a
+      >; aquí nos centramos solo en las inalámbricas.
     </p>
-  </Fragment>
 
-  <Fragment slot="fichas">
-    <!-- Guía de decisión rápida -->
-    <section class="mt-10">
-      <h2 class="text-2xl font-black text-ink mb-1">Elige en 10 segundos</h2>
-      <p class="text-slate-600 mb-5 text-sm">
-        Según tu situación, esta es la que compraríamos.
-      </p>
-      <div
-        class="rounded-xl border border-brand-200 overflow-hidden divide-y divide-brand-100"
-      >
-        {
-          decision.map((d) => (
-            <a
-              href={`/productos/${d.slug}/`}
-              class="group flex items-center justify-between gap-4 p-4 hover:bg-slate-50 transition"
-            >
-              <span class="text-sm text-slate-700">{d.caso}</span>
-              <span class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 whitespace-nowrap group-hover:gap-2 transition-all">
-                {d.pick} <Target className="w-4 h-4" />
-              </span>
-            </a>
-          ))
-        }
+    <h2>Cuál elegir según tu caso</h2>
+    <ul>
+      <li>
+        <strong>Mejor equilibrio (acero, 1-2 gatos):</strong>
+        la <a href="/productos/feelneedy-sin-cable-32l/"
+          >FEELNEEDY sin cable de 3,2 L</a
+        > — acero inoxidable, sensor y filtro transparente para ver cuándo cambiarlo
+        sin desmontar.
+      </li>
+      <li>
+        <strong>3 o más gatos / rellenar poco:</strong>
+        la <a href="/productos/feelneedy-sin-cable-4l/"
+          >FEELNEEDY sin cable de 4 L</a
+        > — la mayor autonomía, con cuenco de acero 304 y aviso de batería y de filtro.
+      </li>
+      <li>
+        <strong>Lo más avanzado (app y datos de consumo):</strong>
+        la <a href="/productos/petkit-eversweet-max-2-3l/"
+          >PETKIT Eversweet Max 2</a
+        > — batería de larguísima duración y app que te dice cuánto bebe tu gato (útil
+        si tiene historial renal). Es la más cara.
+      </li>
+    </ul>
+
+    <h2>Lo que debes tener en cuenta antes de comprar</h2>
+    <p>
+      Prioriza el <strong>material</strong> (el acero es más higiénico que el plástico
+      y ayuda contra el acné felino; lo desarrollamos en
+      <a href="/fuentes-acero-inoxidable-gatos/">fuentes de acero inoxidable</a
+      >), la <strong>autonomía real</strong> según el modo que vayas a usar, y que
+      la bomba sea <strong>silenciosa</strong> si va en un dormitorio (más en
+      <a href="/fuentes-agua-silenciosas-gatos/">fuentes silenciosas</a>). Y no
+      olvides el consumible: cada fuente usa su
+      <a href="/filtros-recambio-fuentes-gatos/">filtro de recambio</a>
+      específico.
+    </p>
+    <div class="not-prose mt-8">
+      <p class="eyebrow mb-3">Afina tu búsqueda</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <a
+          href="/fuentes-acero-inoxidable-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >De acero inoxidable →</a
+        >
+        <a
+          href="/mejores-fuentes-agua-sin-cable-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Fuentes de agua sin cable para gatos →</a
+        >
+        <a
+          href="/fuentes-agua-silenciosas-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Las más silenciosas →</a
+        >
+        <a
+          href="/mejores-fuentes-agua-baratas-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Fuentes baratas para empezar →</a
+        >
+        <a
+          href="/filtros-recambio-fuentes-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Filtros de recambio →</a
+        >
       </div>
-    </section>
-
-    <!-- Cómo puntuamos -->
-    <section class="mt-10 rounded-xl border border-brand-200 bg-slate-50 p-6">
-      <p class="inline-flex items-center gap-2 eyebrow">
-        <Beaker className="w-4 h-4" /> Cómo puntuamos
-      </p>
-      <ul class="mt-3 space-y-2 text-sm text-slate-700">
-        <li>
-          • <strong>Material e higiene</strong>: acero 304, cerámica o plástico
-          y su tendencia al biofilm.
-        </li>
-        <li>
-          • <strong>Filtrado</strong>: etapas de filtración, resina para agua
-          dura y coste de los recambios.
-        </li>
-        <li>
-          • <strong>Ruido</strong>: decibelios declarados; medidos cuando
-          tenemos la unidad en casa.
-        </li>
-        <li>
-          • <strong>Fiabilidad y soporte</strong>: corte por nivel bajo, calidad
-          de bomba y recambios de la marca.
-        </li>
-      </ul>
-      <p class="text-xs text-slate-500 mt-3">
-        La nota es editorial y propia (no reproduce la de Amazon). Las fichas
-        marcadas "Probado en casa" son unidades que hemos usado; el resto son
-        análisis por criterios. Señalamos siempre los defectos reales.
-      </p>
-    </section>
-
-    <div class="mt-10"><BadgeLegend /></div>
-
-    <!-- Fichas -->
-    <section class="mt-10 space-y-10">
-      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
-    </section>
+    </div>
   </Fragment>
 </ComparativaPage>

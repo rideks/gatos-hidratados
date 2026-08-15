@@ -1,0 +1,106 @@
+---
+// ============================================================================
+// Sub-comparativa comercial: "Mejores fuentes de agua baratas para gatos".
+// Intención de compra de entrada (probar sin gastar). Enlaza al pilar y hace
+// upsell honesto al acero. Usa el template ComparativaPage.
+// → src/pages/mejores-fuentes-agua-baratas-gatos.astro
+// ============================================================================
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import { getBySubcategory } from "../data/ProductData.js";
+
+const BARATAS_MAX = 21; // € — umbral de "barata"
+// El dispensador por gravedad (sin bomba) se comenta en el texto, no en la tabla.
+const excluir = new Set(["amazon-basics-dispensador-gravedad-38l"]);
+
+const products = getBySubcategory("fuentes-agua")
+  .filter(
+    (p) =>
+      !excluir.has(p.slug) &&
+      Number(String(p.price).replace(",", ".")) <= BARATAS_MAX,
+  )
+  .sort(
+    (a, b) =>
+      Number(String(a.price).replace(",", ".")) -
+      Number(String(b.price).replace(",", ".")),
+  );
+
+const seo = {
+  title: "Mejores fuentes de agua baratas para gatos 2026",
+  description:
+    "Las mejores fuentes de agua baratas para gatos en 2026: modelos por debajo de 20 € para probar si tu gato la adopta, con pros y contras honestos.",
+  canonical: "/mejores-fuentes-agua-baratas-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "Baratas", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Son buenas las fuentes de agua baratas para gatos?",
+    a: "Para empezar, sí: cumplen su función principal (mantener el agua en movimiento y filtrarla) y son la forma más barata de comprobar si tu gato adopta una fuente antes de invertir más. La diferencia con las caras está sobre todo en el material y la durabilidad, no en si funcionan.",
+  },
+  {
+    q: "¿Es malo que la fuente sea de plástico?",
+    a: "No es 'malo', pero el plástico es poroso y acumula biofilm en los microarañazos, un factor asociado al acné felino. Se compensa limpiándola más a menudo. Si tu gato es propenso a granitos en la barbilla o quieres menos mantenimiento, merece la pena dar el salto al acero.",
+  },
+  {
+    q: "¿Cuánto dura una fuente barata?",
+    a: "Con buen mantenimiento, un par de años es razonable; lo primero que suele fallar es la bomba. Muchas marcas económicas ofrecen 1-2 años de garantía de bomba, así que consérvala. El gasto recurrente real no es la fuente, sino el filtro (cada 2-4 semanas).",
+  },
+  {
+    q: "¿Merece la pena pagar más por una de acero?",
+    a: "Si vas a usarla a diario durante años, casi siempre sí: gana en higiene, dura más y se limpia mejor. La barata tiene todo el sentido como primera compra para ver si tu gato la usa; si la adopta, el acero es la evolución natural.",
+  },
+];
+---
+
+<ComparativaPage
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  products={products}
+  faqs={faqs}
+>
+  <Fragment slot="intro">
+    <p>
+      Si quieres <strong>probar una fuente sin gastar mucho</strong> —para ver si
+      tu gato la adopta antes de invertir más—, estas son las opciones que recomendamos
+      por debajo de los 20&nbsp;€. Todas cumplen lo esencial: agua en movimiento,
+      filtro y funcionamiento silencioso. La diferencia con las caras está en el <strong
+        >material</strong
+      > y la durabilidad, no en si hacen su trabajo.
+    </p>
+
+    <p>
+      Seamos honestos con lo que implica el precio: casi todas son de
+      <strong>plástico</strong>, que es poroso y pide limpieza más frecuente
+      para evitar biofilm (y el acné felino que puede provocar). Como primera
+      compra para salir de dudas están muy bien; si tu gato la adopta, el paso
+      natural es el <a href="/fuentes-acero-inoxidable-gatos/"
+        >acero inoxidable</a
+      >, más higiénico y duradero.
+    </p>
+
+    <h2>¿Aún más barato? La opción sin bomba</h2>
+    <p>
+      Si buscas lo más económico y silencioso posible y a tu gato no le importa
+      el agua estancada, un <strong>dispensador por gravedad</strong> como el
+      <a href="/productos/amazon-basics-dispensador-gravedad-38l/"
+        >Amazon Basics de 3,8 L</a
+      > no tiene bomba, ni ruido, ni filtros que comprar. A cambio, el agua no circula,
+      que a muchos gatos les motiva menos. Lo comparamos a fondo en el <a
+        href="/mejores-fuentes-agua-para-gatos-2026/"
+        >análisis de mejores fuentes de agua para gatos</a
+      >.
+    </p>
+
+    <p>
+      Y recuerda el consumible: por barata que sea la fuente, necesitará su
+      <a href="/filtros-recambio-fuentes-gatos/">filtro de recambio</a> cada pocas
+      semanas para que el gato siga bebiendo a gusto.
+    </p>
+  </Fragment>
+</ComparativaPage>

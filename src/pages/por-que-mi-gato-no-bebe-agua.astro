@@ -1,0 +1,216 @@
+---
+// ============================================================================
+// Guía informativa (top-of-funnel, alto volumen): "¿Por qué mi gato no bebe agua?"
+// YMYL: información veterinaria precisa, sin diagnosticar, con señales de alarma
+// que derivan al veterinario. Enlaza al pilar y a las fichas. Usa GuideLayout.
+// → src/pages/por-que-mi-gato-no-bebe-agua.astro
+// ============================================================================
+import GuideLayout from "../components/GuideLayout.astro";
+
+const seo = {
+  title: "¿Por qué mi gato no bebe agua? Causas y cómo animarle a beber",
+  description:
+    "Por qué los gatos beben poca agua, cuánta es normal, señales de deshidratación y trucos que funcionan para que tu gato beba más. Cuándo acudir al veterinario.",
+  canonical: "/por-que-mi-gato-no-bebe-agua/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Por qué mi gato no bebe agua", path: seo.canonical },
+];
+
+const datePublished = "2026-08-15";
+const dateModified = "2026-08-15T00:00:00.000Z";
+
+const faqs = [
+  {
+    q: "¿Cuánta agua debe beber un gato al día?",
+    a: "Como referencia, un gato necesita en torno a 50-60 ml de agua por kilo de peso al día, contando la que obtiene de la comida. Un gato de 4 kg necesita unos 200-240 ml diarios en total. Si come pienso húmedo, beberá bastante menos del cuenco porque la comida ya aporta agua; si come solo pienso seco, dependerá casi por completo de lo que beba.",
+  },
+  {
+    q: "¿Es normal que mi gato apenas beba agua?",
+    a: "Hasta cierto punto, sí: los gatos descienden de felinos de zonas áridas y tienen un instinto de sed bajo. Lo que debe preocuparte no es que beba poco de forma habitual, sino un cambio brusco: que empiece a beber mucho menos (o mucho más) de lo normal, sobre todo si se acompaña de otros síntomas. Ese cambio sí merece una visita al veterinario.",
+  },
+  {
+    q: "¿Beben más los gatos con una fuente de agua?",
+    a: "Muchos sí: el agua en movimiento les resulta más apetecible por instinto, y una fuente la mantiene fresca y filtrada todo el día. La evidencia científica es mixta (no todos los estudios ven un aumento claro), pero en la práctica es de las mejores herramientas para animar a beber a un gato reacio, sobre todo si ya le gusta beber del grifo.",
+  },
+  {
+    q: "¿Cómo sé si mi gato está deshidratado?",
+    a: "Señales frecuentes son la pérdida de elasticidad de la piel (al pellizcarla suavemente en la nuca, tarda en volver a su sitio), las encías secas o pegajosas, el letargo y los ojos hundidos. Son orientativas, no un diagnóstico: ante la duda o si ves varias a la vez, acude al veterinario, porque la deshidratación puede ser signo de un problema de fondo.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished={datePublished}
+  dateModified={dateModified}
+  faqs={faqs}
+>
+  <div
+    class="not-prose rounded-xl border border-brand-200 bg-brand-50 p-5 mb-8"
+  >
+    <p class="text-xs font-bold text-brand-700 uppercase tracking-wide mb-1">
+      Respuesta rápida
+    </p>
+    <p class="text-ink">
+      Los gatos beben poco por naturaleza: descienden de felinos del desierto y
+      tienen poca sed. No suele ser un problema en sí. Lo que hay que vigilar es
+      un <strong>cambio brusco</strong> en cuánto bebe (hacia arriba o hacia abajo)
+      y las señales de deshidratación. Para animarle a beber, lo que mejor funciona
+      es agua siempre fresca, varios puntos de bebida lejos de la comida y el arenero,
+      cuencos anchos y, sobre todo, una fuente con agua en movimiento.
+    </p>
+  </div>
+
+  <h2>Por qué los gatos beben tan poca agua</h2>
+  <p>
+    No es cabezonería: es biología. El gato doméstico desciende de felinos de
+    zonas áridas que obtenían casi toda el agua de sus presas. Por eso tiene un
+    <strong>instinto de sed bajo</strong> y una capacidad enorme de concentrar la
+    orina. En la naturaleza no bebía casi nunca porque comía animales que son agua
+    en un 70-75&nbsp;%.
+  </p>
+  <p>
+    El problema aparece con la vida moderna: un gato que come <strong
+      >solo pienso seco</strong
+    > (con un 8-10&nbsp;% de humedad) tendría que compensar bebiendo mucha más agua
+    del cuenco… y su instinto no le empuja a hacerlo. De ahí que muchos gatos de interior
+    vivan crónicamente algo justos de agua, un factor asociado a problemas urinarios
+    y renales a largo plazo.
+  </p>
+
+  <h2>¿Cuánta agua es "lo normal"?</h2>
+  <p>
+    Una referencia útil: alrededor de <strong
+      >50-60 ml por kilo de peso al día</strong
+    >,
+    <em>contando el agua de la comida</em>. Un gato de 4 kg necesita unos
+    200-240 ml diarios en total. La clave está en ese "contando la comida":
+  </p>
+  <ul>
+    <li>
+      <strong>Dieta húmeda:</strong> la lata aporta gran parte del agua, así que verás
+      a tu gato beber muy poco del cuenco. Es normal.
+    </li>
+    <li>
+      <strong>Dieta seca:</strong> casi toda el agua tiene que venir de beber, así
+      que aquí sí importa mucho facilitarle el acceso.
+    </li>
+  </ul>
+
+  <h2>Por qué tu gato ignora el cuenco (causas de comportamiento)</h2>
+  <p>
+    Antes de pensar en algo médico, muchas veces el motivo es simplemente que no
+    le gusta <em>cómo</em> le ofreces el agua:
+  </p>
+  <ul>
+    <li>
+      <strong>Agua estancada:</strong> por instinto, el agua quieta les parece menos
+      segura que la que se mueve.
+    </li>
+    <li>
+      <strong>Cuenco junto a la comida o al arenero:</strong> en la naturaleza no
+      beben donde comen ni donde hacen sus necesidades.
+    </li>
+    <li>
+      <strong>Cuenco estrecho y profundo:</strong> les roza los bigotes ("fatiga de
+      bigotes"); prefieren recipientes anchos y poco profundos.
+    </li>
+    <li>
+      <strong>Plástico:</strong> puede dar sabor y olor al agua y acumula biofilm;
+      muchos gatos beben mejor en acero o cerámica.
+    </li>
+    <li>
+      <strong>Agua no fresca:</strong> si lleva horas ahí, con polvo o pelos, no les
+      apetece.
+    </li>
+    <li>
+      <strong>Un solo punto de agua:</strong> en casas grandes o con varios gatos,
+      se necesita más de uno.
+    </li>
+  </ul>
+
+  <h2>Cómo conseguir que tu gato beba más (lo que de verdad funciona)</h2>
+  <ol>
+    <li>
+      <strong>Ofrece agua en movimiento.</strong> Es el cambio con más impacto en
+      gatos reacios. Una <a href="/mejores-fuentes-agua-para-gatos-2026/"
+        >fuente de agua para gatos</a
+      > mantiene el agua en circulación, fresca y filtrada todo el día. Si tu gato
+      es de morder o de mordisquear cables, existen <a
+        href="/mejores-fuentes-agua-sin-cable-gatos/">modelos sin cable</a
+      >.
+    </li>
+    <li>
+      <strong>Elige el material adecuado.</strong> El <a
+        href="/fuentes-acero-inoxidable-gatos/">acero inoxidable</a
+      > y la cerámica son más higiénicos que el plástico y muchos gatos beben mejor
+      en ellos.
+    </li>
+    <li>
+      <strong>Multiplica y reubica los puntos de agua.</strong> Varios recipientes
+      por la casa, siempre lejos de la comida y del arenero.
+    </li>
+    <li>
+      <strong>Usa recipientes anchos.</strong> Para que no le rocen los bigotes.
+    </li>
+    <li>
+      <strong>Cambia el agua a diario</strong> y limpia el recipiente a menudo para
+      evitar biofilm.
+    </li>
+    <li>
+      <strong>Añade humedad a la dieta.</strong> Pasar (total o parcialmente) a comida
+      húmeda, o añadir un poco de agua templada o caldo sin sal ni cebolla al pienso,
+      sube mucho la ingesta total.
+    </li>
+  </ol>
+  <p>
+    Si el problema es específicamente que <strong
+      >no se acerca a la fuente</strong
+    >
+    que ya le has puesto, tenemos una guía aparte:
+    <a href="/mi-gato-no-bebe-de-la-fuente/">mi gato no bebe de la fuente</a>.
+  </p>
+
+  <h2>Cuándo NO es normal: señales para ir al veterinario</h2>
+  <p>
+    Beber poco de forma estable suele ser normal en un gato. Lo que debe
+    encender la alarma es un <strong>cambio</strong>, en cualquier dirección:
+  </p>
+  <ul>
+    <li>
+      <strong>Empieza a beber mucho más de lo habitual</strong> (y a orinar más).
+      El aumento de sed puede asociarse a enfermedad renal, diabetes o hipertiroidismo,
+      entre otros.
+    </li>
+    <li>
+      <strong>Deja de beber casi por completo</strong> de un día para otro, sobre
+      todo si tampoco come.
+    </li>
+    <li>
+      <strong>Señales de deshidratación:</strong> piel que tarda en recuperar su sitio
+      al pellizcarla, encías secas o pegajosas, letargo, ojos hundidos.
+    </li>
+    <li>
+      <strong>Problemas al orinar:</strong> hace fuerza, va muchas veces, con sangre
+      o fuera del arenero.
+    </li>
+  </ul>
+
+  <div
+    class="not-prose rounded-xl border border-amber-300 bg-amber-50 p-5 mt-6"
+  >
+    <p class="font-semibold text-ink mb-1">Aviso</p>
+    <p class="text-sm text-ink-700/90">
+      Esta guía es informativa y no sustituye la consulta veterinaria. No sirve
+      para diagnosticar a tu gato. Si observas un cambio brusco en cuánto bebe u
+      orina, señales de deshidratación o cualquier síntoma que te preocupe,
+      acude a tu veterinario: solo un profesional puede valorar a tu animal.
+    </p>
+  </div>
+  <!-- Si prefieres tu componente, sustituye el bloque anterior por <VetDisclaimer /> -->
+</GuideLayout>

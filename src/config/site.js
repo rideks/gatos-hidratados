@@ -4,9 +4,9 @@
 // ============================================================================
 
 export const SITE = {
-  name: "Micifú",
-  domain: "micifu.es",
-  url: "https://micifu.es",
+  name: "FelinLab",
+  domain: "felinlab.com",
+  url: "https://felinlab.com",
   tagline: "Cuidado felino analizado con criterio, sin humo",
   description:
     "Guías y comparativas honestas de productos de cuidado felino. Empezamos por la hidratación (fuentes de agua y filtros): analizamos a fondo y señalamos también los defectos.",
@@ -17,7 +17,7 @@ export const SITE = {
 };
 
 export const AUTHOR = {
-  name: "Micifú",
+  name: "FelinLab",
   editor: "Redacción",
   email: "micifu9@proton.me",
   authorPath: "/quienes-somos/#author",

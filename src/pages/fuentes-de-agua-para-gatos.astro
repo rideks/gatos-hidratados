@@ -11,8 +11,20 @@ import BadgeLegend from "../components/BadgeLegend.astro";
 import Schema from "../components/Schema.astro";
 import { getBySubcategory } from "../data/ProductData.js";
 import { SITE } from "../config/site.js";
-import { buildWebPage, buildBreadcrumb, buildFaqPage, graph } from "../utils/schema.js";
-import { Droplets, VolumeX, Filter, Sparkles, ArrowRight } from "lucide-react";
+import {
+  buildWebPage,
+  buildBreadcrumb,
+  buildFaqPage,
+  graph,
+} from "../utils/schema.js";
+import {
+  Droplets,
+  VolumeX,
+  BatteryCharging,
+  Filter,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 
 const products = getBySubcategory("fuentes-agua");
 const canonical = "/fuentes-de-agua-para-gatos/";
@@ -25,28 +37,76 @@ const breadcrumbs = [
 ];
 
 const rutas = [
-  { icon: Sparkles, title: "Mejores fuentes 2026", desc: "El ranking completo, de la que recomendamos a la más barata.", href: "/mejores-fuentes-agua-para-gatos-2026/" },
-  { icon: Droplets, title: "De acero inoxidable", desc: "Las más higiénicas y aliadas contra el acné felino.", href: "/fuentes-acero-inoxidable-gatos/" },
-  { icon: VolumeX, title: "Silenciosas", desc: "Las que menos molestan de noche y por qué zumban.", href: "/fuentes-agua-silenciosas-gatos/" },
-  { icon: Filter, title: "Filtros de recambio", desc: "El consumible que decide si tu gato sigue bebiendo.", href: "/filtros-recambio-fuentes-gatos/" },
+  {
+    icon: Sparkles,
+    title: "Mejores fuentes 2026",
+    desc: "El ranking completo, de la que recomendamos a la más barata.",
+    href: "/mejores-fuentes-agua-para-gatos-2026/",
+  },
+  {
+    icon: Droplets,
+    title: "De acero inoxidable",
+    desc: "Las más higiénicas y aliadas contra el acné felino.",
+    href: "/fuentes-acero-inoxidable-gatos/",
+  },
+  {
+    icon: VolumeX,
+    title: "Silenciosas",
+    desc: "Las que menos molestan de noche y por qué zumban.",
+    href: "/fuentes-agua-silenciosas-gatos/",
+  },
+  {
+    icon: Filter,
+    title: "Filtros de recambio",
+    desc: "El consumible que decide si tu gato sigue bebiendo.",
+    href: "/filtros-recambio-fuentes-gatos/",
+  },
+  {
+    icon: BatteryCharging,
+    title: "Sin cable / con batería",
+    desc: "Las inalámbricas con sensor: cuándo compensan.",
+    href: "/mejores-fuentes-agua-sin-cable-gatos/",
+  },
 ];
 
 const faqs = [
-  { q: "¿Merece la pena una fuente de agua para gatos?", a: "En la mayoría de casos, sí. El agua en movimiento resulta más apetecible para el gato y muchos aumentan la ingesta, lo que ayuda a prevenir problemas urinarios y renales." },
-  { q: "¿Cómo elijo la fuente adecuada?", a: "Decide primero por material (acero para higiene, cerámica para estabilidad, plástico para empezar barato), luego por capacidad según el número de gatos y por último por extras como el sensor de movimiento o el funcionamiento sin cable." },
+  {
+    q: "¿Merece la pena una fuente de agua para gatos?",
+    a: "En la mayoría de casos, sí. El agua en movimiento resulta más apetecible para el gato y muchos aumentan la ingesta, lo que ayuda a prevenir problemas urinarios y renales.",
+  },
+  {
+    q: "¿Cómo elijo la fuente adecuada?",
+    a: "Decide primero por material (acero para higiene, cerámica para estabilidad, plástico para empezar barato), luego por capacidad según el número de gatos y por último por extras como el sensor de movimiento o el funcionamiento sin cable.",
+  },
 ];
 
 const schema = graph(
-  buildWebPage({ url, name: "Fuentes de agua para gatos", description: "Guía y rutas para elegir la mejor fuente de agua para tu gato.", breadcrumbId: `${url}#breadcrumb`, mainEntityId: `${url}#faq` }),
+  buildWebPage({
+    url,
+    name: "Fuentes de agua para gatos",
+    description:
+      "Guía y rutas para elegir la mejor fuente de agua para tu gato.",
+    breadcrumbId: `${url}#breadcrumb`,
+    mainEntityId: `${url}#faq`,
+  }),
   buildBreadcrumb(breadcrumbs, { id: `${url}#breadcrumb` }),
   buildFaqPage(faqs, { id: `${url}#faq` }),
 );
 ---
-<Layout title="Fuentes de agua para gatos" description="Cómo elegir la mejor fuente de agua para tu gato: material, ruido, capacidad y filtros. Rutas a nuestras comparativas y guías." canonical={canonical}>
+
+<Layout
+  title="Fuentes de agua para gatos"
+  description="Cómo elegir la mejor fuente de agua para tu gato: material, ruido, capacidad y filtros. Rutas a nuestras comparativas y guías."
+  canonical={canonical}
+>
   <Schema schema={schema} />
   <HeaderApp />
 
-  <PageHeader eyebrow="Categoría · Hidratación" title="Fuentes de agua para gatos" description="Aquí empieza todo lo de fuentes: material, ruido, capacidad y filtros. Elige por dónde entrar según lo que necesites.">
+  <PageHeader
+    eyebrow="Categoría · Hidratación"
+    title="Fuentes de agua para gatos"
+    description="Aquí empieza todo lo de fuentes: material, ruido, capacidad y filtros. Elige por dónde entrar según lo que necesites."
+  >
     <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
   </PageHeader>
 
@@ -57,24 +117,40 @@ const schema = graph(
 
     <section class="mt-12">
       <p class="eyebrow">Por dónde seguir</p>
-      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">Elige según lo que buscas</h2>
+      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">
+        Elige según lo que buscas
+      </h2>
       <div class="grid gap-4 sm:grid-cols-2">
-        {rutas.map((r) => (
-          <a href={r.href} class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all flex gap-4">
-            <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0 h-fit"><r.icon className="w-5 h-5" /></span>
-            <span>
-              <span class="block font-bold text-ink group-hover:text-brand-700">{r.title}</span>
-              <span class="block text-sm text-slate-600 mt-1">{r.desc}</span>
-              <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-2">Ver <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></span>
-            </span>
-          </a>
-        ))}
+        {
+          rutas.map((r) => (
+            <a
+              href={r.href}
+              class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all flex gap-4"
+            >
+              <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0 h-fit">
+                <r.icon className="w-5 h-5" />
+              </span>
+              <span>
+                <span class="block font-bold text-ink group-hover:text-brand-700">
+                  {r.title}
+                </span>
+                <span class="block text-sm text-slate-600 mt-1">{r.desc}</span>
+                <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-2">
+                  Ver{" "}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </span>
+            </a>
+          ))
+        }
       </div>
     </section>
 
     <section class="mt-14">
       <p class="eyebrow">Todas las fuentes</p>
-      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-4">Modelos que hemos analizado</h2>
+      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-4">
+        Modelos que hemos analizado
+      </h2>
       <div class="mb-6"><BadgeLegend /></div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((p, i) => <ProductCard product={p} rank={i + 1} />)}
@@ -82,14 +158,18 @@ const schema = graph(
     </section>
 
     <section class="mt-14">
-      <h2 class="font-display font-extrabold text-ink text-2xl mb-5">Preguntas frecuentes</h2>
+      <h2 class="font-display font-extrabold text-ink text-2xl mb-5">
+        Preguntas frecuentes
+      </h2>
       <div class="space-y-4 max-w-3xl">
-        {faqs.map((f) => (
-          <details class="rounded-xl border border-brand-200 p-4">
-            <summary class="font-bold text-ink cursor-pointer">{f.q}</summary>
-            <p class="text-slate-700 mt-2">{f.a}</p>
-          </details>
-        ))}
+        {
+          faqs.map((f) => (
+            <details class="rounded-xl border border-brand-200 p-4">
+              <summary class="font-bold text-ink cursor-pointer">{f.q}</summary>
+              <p class="text-slate-700 mt-2">{f.a}</p>
+            </details>
+          ))
+        }
       </div>
     </section>
 

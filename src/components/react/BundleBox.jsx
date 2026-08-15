@@ -212,7 +212,7 @@ export default function BundleBox({
       </div>
 
       <p className="mt-4 text-[11px] text-ink-500">
-        Enlaces de afiliado: si compras a través de ellos, Micifú se lleva una pequeña comisión sin coste para ti.
+        Enlaces de afiliado: si compras a través de ellos, Felinlab se lleva una pequeña comisión sin coste para ti.
       </p>
     </section>
   );

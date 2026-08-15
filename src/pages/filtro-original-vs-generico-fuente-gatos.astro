@@ -1,0 +1,150 @@
+---
+// ============================================================================
+// Guía informativa (media-funnel, decisión de compra del consumible):
+// "Filtro original vs genérico: ¿merece la pena?". Aprovecha los filtros nuevos
+// y empuja a las fichas / al bundle. Enlaza a la comparativa de filtros y al pilar.
+// → src/pages/filtro-original-vs-generico-fuente-gatos.astro
+// ============================================================================
+import GuideLayout from "../components/GuideLayout.astro";
+
+const seo = {
+  title: "Filtro original vs genérico para fuente de gatos: ¿merece la pena?",
+  description:
+    "¿Compensa el filtro original de tu fuente o vale uno genérico? Compatibilidad, riesgos de fugas, coste real y cuándo cada opción tiene sentido para tu gato.",
+  canonical: "/filtro-original-vs-generico-fuente-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Filtro original vs genérico", path: seo.canonical },
+];
+
+const datePublished = "2026-08-15";
+const dateModified = "2026-08-15T00:00:00.000Z";
+
+const faqs = [
+  {
+    q: "¿Los filtros genéricos sirven para cualquier fuente?",
+    a: "No. Cada fuente tiene un formato de filtro concreto (diámetro y altura), y muchos fabricantes avisan de que los de otras marcas no encajan bien. Un genérico solo vale si coincide con la medida exacta de tu fuente; por eso, antes de comprar, hay que medir o comprobar el modelo. Los específicos de marca evitan ese problema.",
+  },
+  {
+    q: "¿Qué diferencia hay entre un filtro original y uno universal?",
+    a: "El original está diseñado para tu fuente, así que el ajuste es perfecto y el agua pasa por el filtro en lugar de colarse por los lados. El universal suele ser más barato y en packs grandes, pero el ajuste puede quedar holgado según el modelo. En capas filtrantes (algodón, carbón activo, resina) muchos son parecidos; la diferencia real está en el encaje.",
+  },
+  {
+    q: "¿Cada cuánto hay que cambiar el filtro de la fuente?",
+    a: "Lo habitual es cambiar el filtro de carbón cada 2-4 semanas y la esponja de prefiltro cada 1-2 meses. Un filtro saturado deja de mejorar el sabor y es justo cuando muchos gatos dejan de beber, así que no conviene estirarlo de más.",
+  },
+  {
+    q: "¿Merece la pena comprar el pack grande de filtros?",
+    a: "Si vas a mantener la fuente a largo plazo, sí: el precio por unidad baja bastante en los packs de 12+12 frente a los de 6+6, y cubres 6-8 meses de golpe. Solo tiene sentido esperar si aún estás probando si tu gato adopta la fuente.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished={datePublished}
+  dateModified={dateModified}
+  faqs={faqs}
+>
+  <div
+    class="not-prose rounded-xl border border-brand-200 bg-brand-50 p-5 mb-8"
+  >
+    <p class="text-xs font-bold text-brand-700 uppercase tracking-wide mb-1">
+      Respuesta rápida
+    </p>
+    <p class="text-ink">
+      Para la mayoría de fuentes, el <strong
+        >filtro específico de tu modelo</strong
+      >
+      (original o compatible verificado) es la apuesta segura: encaja bien y el agua
+      pasa por él en lugar de colarse. Un <strong>universal</strong> puede salir a
+      cuenta si coincide con la medida exacta de tu fuente y quieres un pack grande
+      barato. Lo que de verdad marca la diferencia no es la marca del filtro, sino
+      <strong>el encaje</strong> y <strong>cambiarlo a tiempo</strong>.
+    </p>
+  </div>
+
+  <h2>El filtro no es un accesorio: es lo que mantiene a tu gato bebiendo</h2>
+  <p>
+    Es la pieza que más se descuida y la que más influye en si la fuente sigue
+    funcionando. El filtro cumple dos funciones: retiene pelo e impurezas (la
+    esponja de prefiltro protege además la bomba, la avería más común) y mejora
+    el sabor del agua con carbón activo, a menudo con resina de intercambio
+    iónico que ablanda el agua y reduce cal. Cuando se satura, el agua vuelve a
+    saber "a estancada" y es justo entonces cuando muchos gatos dejan de
+    acercarse.
+  </p>
+
+  <h2>Filtro original / específico: cuándo compensa</h2>
+  <p>
+    El filtro pensado para tu fuente (el de la marca, o un compatible que
+    declare tu modelo exacto) tiene una ventaja que no se ve en la ficha: el
+    <strong>ajuste</strong>. Si el filtro no sella bien contra su alojamiento,
+    el agua toma el camino fácil y <em>rodea</em> el filtro en vez de atravesarlo,
+    y entonces da igual lo bueno que sea por dentro. Compensa cuando:
+  </p>
+  <ul>
+    <li>
+      Tu fuente es de una marca con formato propio (PETKIT, Catit, FEELNEEDY,
+      GIOTOHUN, BalimoPet…), donde el genérico rara vez encaja igual.
+    </li>
+    <li>
+      Vives en zona de <strong>agua dura</strong> y quieres asegurar la resina de
+      intercambio iónico que reduce calcio y magnesio.
+    </li>
+    <li>
+      No quieres complicarte midiendo: pagas un poco más y aciertas seguro.
+    </li>
+  </ul>
+
+  <h2>Filtro universal: cuándo tiene sentido</h2>
+  <p>
+    Los universales de acero (para fuentes redondas de formato estándar) son más
+    baratos y vienen en packs grandes. Tienen sentido cuando:
+  </p>
+  <ul>
+    <li>
+      Tu fuente usa el formato redondo común y puedes <strong
+        >verificar la medida</strong
+      > (el filtro típico ronda los 7,5&nbsp;cm y la esponja unos 5,5&nbsp;cm de diámetro
+      interno).
+    </li>
+    <li>
+      Quieres máxima autonomía por poco dinero y no te importa comprobar la
+      compatibilidad.
+    </li>
+    <li>
+      No dependes de una resina específica (algunos genéricos llevan menos
+      material anti-cal).
+    </li>
+  </ul>
+  <p>
+    La regla de oro con un universal: <strong>mide antes de comprar</strong>. Un
+    filtro que no ajusta es dinero tirado, por barato que sea.
+  </p>
+
+  <h2>El coste real: no es el filtro, es el ritmo</h2>
+  <p>
+    Se cambia el filtro de carbón cada <strong>2-4 semanas</strong> y la esponja cada
+    <strong>1-2 meses</strong>. Ahí está el gasto recurrente, no en la fuente.
+    Por eso el <strong>pack grande</strong> (12+12 frente a 6+6) casi siempre sale
+    mejor por unidad si vas a mantener la fuente a largo plazo. Si aún estás probando
+    si tu gato la adopta, empieza por el pack pequeño.
+  </p>
+
+  <h2>Cómo acertar con el tuyo</h2>
+  <p>
+    Lo más sencillo es partir de tu fuente: en cada
+    <a href="/mejores-fuentes-agua-para-gatos-2026/">análisis de fuente</a> te indicamos
+    su filtro compatible, y en la ficha verás el bloque
+    <em>"Complétalo con su recambio"</em>, que ya empareja la fuente con el
+    filtro correcto para que no te equivoques. Si buscas directamente el
+    consumible, tienes la <a href="/filtros-recambio-fuentes-gatos/"
+      >comparativa de filtros de recambio</a
+    > con las opciones específicas por marca y las universales.
+  </p>
+</GuideLayout>

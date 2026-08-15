@@ -1,0 +1,179 @@
+---
+// ============================================================================
+// Guía informativa (problema-consciente, conecta salud + material y canaliza al
+// acero): "Acné felino y cuencos de plástico". YMYL: preciso, multifactorial,
+// sin diagnosticar, con derivación al veterinario. Usa GuideLayout.
+// → src/pages/acne-felino-cuencos-plastico.astro
+// ============================================================================
+import GuideLayout from "../components/GuideLayout.astro";
+
+const seo = {
+  title: "Acné felino y cuencos de plástico: por qué el acero es mejor",
+  description:
+    "Qué es el acné felino, por qué se asocia a los cuencos y fuentes de plástico y cómo ayuda cambiar a acero inoxidable o cerámica. Cuándo acudir al veterinario.",
+  canonical: "/acne-felino-cuencos-plastico/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Acné felino y plástico", path: seo.canonical },
+];
+
+const datePublished = "2026-08-15";
+const dateModified = "2026-08-15T00:00:00.000Z";
+
+const faqs = [
+  {
+    q: "¿El plástico causa acné felino?",
+    a: "No se puede afirmar que lo 'cause' por sí solo: el acné felino es multifactorial. Pero el plástico es poroso y acumula bacterias y biofilm en sus microarañazos, y en la práctica muchos gatos mejoran al cambiar los cuencos y fuentes de plástico por acero inoxidable o cerámica, junto con una limpieza más frecuente. Es una medida sencilla y de bajo riesgo que suele ayudar.",
+  },
+  {
+    q: "¿Qué material de cuenco o fuente es mejor para evitarlo?",
+    a: "Los no porosos y fáciles de higienizar: acero inoxidable, cerámica esmaltada y vidrio. Se limpian a fondo, no retienen bacterias en microarañazos y no dan sabor ni olor al agua. El acero inoxidable es el más práctico por resistencia y facilidad de limpieza.",
+  },
+  {
+    q: "¿Cómo distingo el acné felino de otra cosa?",
+    a: "El acné felino aparece típicamente en la barbilla y el labio inferior como puntos negros (comedones), a veces con granitos rojos o costras si se inflama. Aun así, hay otras causas de lesiones en esa zona (alergias, infecciones, ácaros). Si tienes dudas, hay inflamación, pus o dolor, no lo trates por tu cuenta: que lo valore el veterinario.",
+  },
+  {
+    q: "¿Basta con cambiar el cuenco para que desaparezca?",
+    a: "En casos leves, cambiar a acero o cerámica y lavar a diario suele ser suficiente para que mejore. En casos moderados o graves —muy inflamado, doloroso o que no remite— hace falta tratamiento veterinario, porque puede complicarse con una infección. El cambio de material es una medida de apoyo, no un tratamiento.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished={datePublished}
+  dateModified={dateModified}
+  faqs={faqs}
+>
+  <div
+    class="not-prose rounded-xl border border-brand-200 bg-brand-50 p-5 mb-8"
+  >
+    <p class="text-xs font-bold text-brand-700 uppercase tracking-wide mb-1">
+      Respuesta rápida
+    </p>
+    <p class="text-ink">
+      El acné felino son esos "puntos negros" en la barbilla del gato. Es
+      <strong>multifactorial</strong>, pero uno de los factores más conocidos y
+      fáciles de eliminar es el <strong>cuenco (o fuente) de plástico</strong>:
+      es poroso y acumula bacterias en los microarañazos. Cambiar a
+      <strong>acero inoxidable o cerámica</strong> y lavar a diario suele ayudar en
+      casos leves. Si está inflamado o no mejora, al veterinario.
+    </p>
+  </div>
+
+  <h2>Qué es el acné felino</h2>
+  <p>
+    El acné felino es una afección frecuente de la piel que aparece sobre todo
+    en la <strong>barbilla y el labio inferior</strong>. Se manifiesta como
+    <strong>comedones</strong> (puntos negros, como pequeñas motas de suciedad que
+    no se van al frotar) y, cuando se irrita, puede pasar a granitos rojos, costras,
+    hinchazón e incluso infección. Muchos gatos lo tienen de forma leve y apenas se
+    nota; otros lo desarrollan de forma recurrente.
+  </p>
+
+  <h2>Por qué se asocia a los cuencos y fuentes de plástico</h2>
+  <p>
+    La barbilla es justo la zona que roza el recipiente al comer y beber. Y ahí
+    entra el material:
+  </p>
+  <ul>
+    <li>
+      <strong>El plástico es poroso.</strong> Con el uso se llena de microarañazos
+      donde se refugian bacterias y se forma <strong>biofilm</strong> (esa capa viscosa
+      que notas al pasar el dedo por un cuenco "limpio" de plástico).
+    </li>
+    <li>
+      <strong>Ese contacto repetido</strong> de la barbilla contra una superficie
+      con carga bacteriana es un factor asociado a la aparición o el empeoramiento
+      del acné.
+    </li>
+    <li>
+      <strong>Es difícil de higienizar a fondo:</strong> aunque lo laves, los arañazos
+      siguen ahí.
+    </li>
+  </ul>
+  <p>
+    Seamos honestos con la evidencia: la relación es sobre todo
+    <strong>observacional</strong>. No se puede decir que el plástico "cause"
+    acné en todos los gatos, porque intervienen más cosas (predisposición
+    individual, higiene, exceso de sebo, estrés, alergias). Pero cambiar de
+    material es una medida <strong
+      >barata, sin riesgo y que a mucha gente le funciona</strong
+    >, así que es de las primeras que merece la pena probar.
+  </p>
+
+  <h2>Qué materiales son mejores</h2>
+  <p>
+    Los <strong>no porosos y fáciles de limpiar</strong>: acero inoxidable,
+    cerámica esmaltada y vidrio. No retienen bacterias en microarañazos, se
+    higienizan a fondo y no dan sabor ni olor al agua (otro motivo por el que
+    algunos gatos beben mejor en ellos). Entre estos, el
+    <strong>acero inoxidable</strong> gana por resistencia y facilidad de limpieza.
+  </p>
+  <p>
+    Si tu gato bebe de una fuente, el mismo criterio aplica: aquí tienes
+    nuestras
+    <a href="/fuentes-acero-inoxidable-gatos/"
+      >fuentes de agua de acero inoxidable</a
+    >, y si aún estás eligiendo, el <a
+      href="/mejores-fuentes-agua-para-gatos-2026/"
+      >análisis de mejores fuentes de agua para gatos</a
+    > compara materiales de frente.
+  </p>
+
+  <h2>El material no lo es todo: otros factores</h2>
+  <p>
+    Cambiar el cuenco ayuda, pero el acné felino es multifactorial. Acompáñalo
+    de:
+  </p>
+  <ul>
+    <li>
+      <strong>Higiene diaria:</strong> lava el recipiente cada día; el biofilm también
+      se forma en acero si no se limpia.
+    </li>
+    <li>
+      <strong>Recipientes anchos y poco profundos:</strong> reducen el roce de la
+      barbilla.
+    </li>
+    <li>
+      <strong>Agua siempre fresca</strong> y limpieza de la fuente (te lo detallamos
+      en <a href="/como-limpiar-fuente-agua-gatos/">cómo limpiar la fuente</a>).
+    </li>
+    <li>
+      No manipular ni "reventar" los comedones en casa: puede infectarlos.
+    </li>
+  </ul>
+
+  <h2>Cuándo acudir al veterinario</h2>
+  <p>
+    Un acné leve (algún punto negro sin más) suele mejorar con material y
+    limpieza. Consulta al veterinario si ves:
+  </p>
+  <ul>
+    <li>
+      Zona <strong>inflamada, roja, con pus</strong> o que parece dolerle.
+    </li>
+    <li>
+      Que <strong>no mejora</strong> tras cambiar el cuenco y extremar la higiene.
+    </li>
+    <li>Que se <strong>extiende</strong> o el gato se rasca/se queja.</li>
+  </ul>
+
+  <div
+    class="not-prose rounded-xl border border-amber-300 bg-amber-50 p-5 mt-6"
+  >
+    <p class="font-semibold text-ink mb-1">Aviso</p>
+    <p class="text-sm text-ink-700/90">
+      Esta guía es informativa y no sustituye la consulta veterinaria ni sirve
+      para diagnosticar a tu gato. El cambio de cuenco es una medida de apoyo,
+      no un tratamiento. Ante lesiones inflamadas, dolor o dudas, acude a tu
+      veterinario: solo un profesional puede valorar y tratar a tu animal.
+    </p>
+  </div>
+  <!-- Si prefieres tu componente, sustituye el bloque anterior por <VetDisclaimer /> -->
+</GuideLayout>
