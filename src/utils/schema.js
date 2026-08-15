@@ -86,24 +86,35 @@ export function buildProductNode(p, { pageUrl } = {}) {
 }
 
 // ItemList con productos (para comparativas/categorías).
+// En schema.js
+
 export function buildItemListProducts(products, { id } = {}) {
   return {
     "@type": "ItemList",
     ...(id && { "@id": id }),
     numberOfItems: products.length,
-    itemListElement: products.map((p, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Product",
-        name: p.name,
-        url: abs(`/productos/${p.slug}/`),
-        ...(p.image && { image: abs(p.image) }),
-        brand: { "@type": "Brand", name: p.brand || "Genérico" },
-        offers: buildOffer(p),
-        ...(buildEditorialReview(p) && { review: buildEditorialReview(p) }),
-      },
-    })),
+    itemListElement: products.map((p, i) => {
+      // Usamos tu helper robusto para extraer la primera imagen disponible
+      const images = getImages(p);
+      const mainImage = images.length ? images[0] : null;
+
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Product",
+          name: p.name,
+          url: abs(`/productos/${p.slug}/`),
+          // CORRECCIÓN 1: Soluciona el problema crítico de la imagen
+          ...(mainImage && { image: abs(mainImage) }),
+          // CORRECCIÓN 2: Soluciona el aviso opcional de la descripción
+          description: p.dynamicReview || p.description || p.name,
+          brand: { "@type": "Brand", name: p.brand || "Genérico" },
+          offers: buildOffer(p),
+          ...(buildEditorialReview(p) && { review: buildEditorialReview(p) }),
+        },
+      };
+    }),
   };
 }
 
