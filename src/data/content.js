@@ -6,7 +6,7 @@ export const CONTENT_INDEX = [
   // Hub + comparativas (silo Hidratación)
   { path: "/hidratacion-felina/", updatedAt: "2026-08-01T00:00:00.000Z" },
   { path: "/fuentes-de-agua-para-gatos/", updatedAt: "2026-08-01T00:00:00.000Z" },
-  { path: "/mejores-fuentes-agua-para-gatos-2026/", updatedAt: "2026-08-01T00:00:00.000Z" },
+  { path: "/mejores-fuentes-agua-para-gatos/", updatedAt: "2026-08-19T00:00:00.000Z" },
   { path: "/fuentes-acero-inoxidable-gatos/", updatedAt: "2026-08-02T00:00:00.000Z" },
   { path: "/fuentes-agua-silenciosas-gatos/", updatedAt: "2026-08-03T00:00:00.000Z" },
   { path: "/filtros-recambio-fuentes-gatos/", updatedAt: "2026-08-06T00:00:00.000Z" },
@@ -22,4 +22,5 @@ export const CONTENT_INDEX = [
   { path: "/por-que-mi-gato-no-bebe-agua/", updatedAt: "2026-08-15T00:00:00.000Z" },
   { path: "/filtro-original-vs-generico-fuente-gatos/", updatedAt: "2026-08-15T00:00:00.000Z" },
   { path: "/acne-felino-cuencos-plastico/", updatedAt: "2026-08-15T00:00:00.000Z" },
+  { path: "/agua-problemas-urinarios-gatos/", updatedAt: "2026-08-17T00:00:00.000Z" },
 ];

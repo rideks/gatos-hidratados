@@ -165,7 +165,7 @@ export const COMPARISONS = [
     ],
     verdict:
       "La cerámica gana en casi todo lo que importa para la salud del gato: no es porosa, acumula mucho menos biofilm, reduce el riesgo de acné felino y es más estable. El plástico solo tiene una ventaja clara, el precio de entrada, y sirve como puerta barata para comprobar si tu gato acepta una fuente antes de invertir más.",
-    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos-2026/" },
+    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos/" },
     subcategory: "fuentes-agua",
     faqs: [
       {
@@ -201,7 +201,7 @@ export const COMPARISONS = [
     ],
     verdict:
       "Elige PETKIT si quieres tecnología: bombas sin cable, app y, sobre todo, el seguimiento de cuánto bebe tu gato, muy valioso si es mayor o tiene historial renal. Elige Catit si priorizas la filtración para agua dura (su resina reduce la cal), una marca veterana con recambios fáciles, o una puerta de entrada barata con la Flower. Ambas son marcas sólidas; la decisión es tecnología frente a filtración y precio.",
-    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos-2026/" },
+    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos/" },
     subcategory: "fuentes-agua",
     brands: ["PETKIT", "Catit"], // (opcional) para el related por marca, ver nota al final
     faqs: [
@@ -238,7 +238,7 @@ export const COMPARISONS = [
     ],
     verdict:
       "Es el clásico premium contra superventas. GIOTOHUN gana en lo inmediato: acero 304 y buena fuente por muy poco dinero, con un volumen de ventas que respalda su fiabilidad básica. PETKIT justifica el sobreprecio si valoras la app y el seguimiento del consumo, la comodidad sin cable y, sobre todo, el soporte de recambios de una marca establecida, algo que en una marca genérica es un interrogante. Si el presupuesto manda, GIOTOHUN; si quieres funciones y respaldo a largo plazo, PETKIT.",
-    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos-2026/" },
+    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos/" },
     subcategory: "fuentes-agua",
     brands: ["PETKIT", "GIOTOHUN"],
     faqs: [

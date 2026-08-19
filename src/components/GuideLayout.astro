@@ -24,6 +24,7 @@ const {
   dateModified,
   faqs = [],
   howto = null,
+  fuentes = [],
 } = Astro.props;
 const url = new URL(seo.canonical, SITE.url).href;
 
@@ -53,6 +54,7 @@ const schema = graph(
     datePublished,
     dateModified,
     section: "Hidratación",
+    citations: fuentes,
   }),
   buildWebPage({
     url,
