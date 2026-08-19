@@ -1,0 +1,141 @@
+---
+// ============================================================================
+// Comparativa PILAR comercial: "Mejores fuentes de agua para gatos 2026".
+// Lista TODAS las fuentes del silo (acero, plástico, sin cable, gravedad) y
+// enlaza a las sub-comparativas por atributo. Usa el template ComparativaPage
+// (BestPick + isla ProductComparison + FAQ).
+// ============================================================================
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import { getBySubcategory } from "../data/ProductData.js";
+
+// Todas las fuentes de agua (orden curado en el data file: destacados primero).
+const products = getBySubcategory("fuentes-agua");
+
+const seo = {
+  title: "Mejores fuentes de agua para gatos 2026: comparativa actualizada", // ← año SÍ
+  description:
+    "Comparativa real de las mejores fuentes de agua para gatos: acero, plástico y sin cable frente a frente. Cómo elegir por material, ruido, capacidad y filtro. Señalamos también los defectos.",
+  canonical: "/mejores-fuentes-agua-para-gatos/", // ← año NO
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "Mejores fuentes 2026", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Cuál es la mejor fuente de agua para gatos en 2026?",
+    a: "No hay una única 'mejor': depende de tu caso. Para un hogar con un gato, nuestra elección es la PETKIT Eversweet Solo 2 (silenciosa y con app de consumo). Si priorizas higiene, cualquiera de acero inoxidable 304; si buscas gastar poco para probar, una plástica superventas; y si no tienes enchufe cerca, una sin cable con sensor.",
+  },
+  {
+    q: "¿Mejor de acero, plástico o cerámica?",
+    a: "El acero inoxidable 304 es el más higiénico (no es poroso, acumula menos biofilm y ayuda contra el acné felino) y el que recomendamos si vas a tenerla años. El plástico es la puerta de entrada barata para ver si tu gato adopta la fuente, pero pide más limpieza. La cerámica es estable y elegante, pero más frágil y cara.",
+  },
+  {
+    q: "¿Cuánto ruido hace una fuente de agua para gatos?",
+    a: "Las mejores de acero bajan de 25 dB (inaudibles de noche). El ruido casi nunca es de fábrica: aparece cuando el nivel de agua baja del mínimo y la bomba trabaja medio seca, o cuando el pelo la atasca. Mantén el depósito lleno y limpia la bomba a menudo.",
+  },
+  {
+    q: "¿Cada cuánto hay que cambiar el filtro?",
+    a: "Como norma, cada 2 a 4 semanas, y antes con varios gatos. Un filtro saturado empeora el sabor del agua y es justo cuando el gato pierde interés por beber. Cada fuente usa su filtro específico: compra el recambio de la marca.",
+  },
+];
+---
+
+<ComparativaPage
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  products={products}
+  faqs={faqs}
+>
+  <Fragment slot="intro">
+    <p>
+      Una <strong>fuente de agua</strong> ayuda a que muchos gatos beban más porque
+      prefieren el agua en movimiento por instinto, y beber más protege el
+      <strong>riñón y las vías urinarias</strong>. Pero no todas valen: hemos
+      analizado las de acero, plástico y sin cable señalando también sus
+      defectos. Aquí tienes la comparativa completa, de la que recomendamos a la
+      más barata que merece la pena.
+    </p>
+
+    <h2>Cuál elegir según tu caso</h2>
+    <ul>
+      <li>
+        <strong>Un gato, quiero acertar sin pensar:</strong>
+        la <a href="/productos/petkit-eversweet-solo-2/"
+          >PETKIT Eversweet Solo 2</a
+        >
+        — silenciosa, con app que te dice cuánto bebe (útil si es mayor o renal).
+      </li>
+      <li>
+        <strong>Máxima higiene (acero) a buen precio:</strong>
+        la <a href="/productos/giotohun-acero-inoxidable-22l/"
+          >GIOTOHUN de acero 2,2 L</a
+        >
+        con ventana de nivel, o mira todas las
+        <a href="/fuentes-acero-inoxidable-gatos/"
+          >fuentes de acero inoxidable</a
+        >.
+      </li>
+      <li>
+        <strong>Gastar poco para probar si la adopta:</strong>
+        una plástica superventas como la
+        <a href="/productos/giotohun-plastico-2l/">GIOTOHUN de 2 L</a>; más
+        opciones en
+        <a href="/mejores-fuentes-agua-baratas-gatos/">fuentes baratas</a>.
+      </li>
+      <li>
+        <strong>Sin enchufe cerca o gato que muerde cables:</strong>
+        una <a href="/mejores-fuentes-agua-sin-cable-gatos/"
+          >fuente sin cable con sensor</a
+        >.
+      </li>
+    </ul>
+
+    <h2>Lo que debes mirar antes de comprar</h2>
+    <p>
+      Prioriza el <strong>material</strong> (acero &gt; cerámica &gt; plástico en
+      higiene), el <strong>ruido</strong> si va en un dormitorio (busca &lt; 25 dB;
+      lo detallamos en
+      <a href="/fuentes-agua-silenciosas-gatos/">fuentes silenciosas</a>), la
+      <strong>capacidad</strong> según cuántos gatos tengas y, sobre todo, el
+      <strong>consumible</strong>: cada fuente usa su
+      <a href="/filtros-recambio-fuentes-gatos/">filtro de recambio</a> específico,
+      y es lo que decide si tu gato sigue bebiendo mes a mes.
+    </p>
+
+    <div class="not-prose mt-8">
+      <p class="eyebrow mb-3">Afina tu búsqueda</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <a
+          href="/fuentes-acero-inoxidable-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >De acero inoxidable →</a
+        >
+        <a
+          href="/fuentes-agua-silenciosas-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Las más silenciosas →</a
+        >
+        <a
+          href="/mejores-fuentes-agua-sin-cable-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Sin cable / con batería →</a
+        >
+        <a
+          href="/mejores-fuentes-agua-baratas-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Baratas para empezar →</a
+        >
+        <a
+          href="/filtros-recambio-fuentes-gatos/"
+          class="card card-hover p-4 font-semibold text-ink hover:text-brand-700"
+          >Filtros de recambio →</a
+        >
+      </div>
+    </div>
+  </Fragment>
+</ComparativaPage>

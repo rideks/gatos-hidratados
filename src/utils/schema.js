@@ -159,7 +159,7 @@ function personNode(p) {
 const authorNode =
   personNode(AUTHOR.person) || { "@type": "Organization", name: AUTHOR.name, url: abs(AUTHOR.authorPath) };
 
-export function buildArticle({ url, headline, description, datePublished, dateModified, image, section }) {
+export function buildArticle({ url, headline, description, datePublished, dateModified, image, section, citations }) {
   return {
     "@type": "Article",
     "@id": `${url}#article`,
@@ -168,12 +168,20 @@ export function buildArticle({ url, headline, description, datePublished, dateMo
     inLanguage: "es-ES",
     datePublished,
     dateModified: dateModified || datePublished,
-    author: authorNode,
-    ...(personNode(AUTHOR.reviewer) && { reviewedBy: personNode(AUTHOR.reviewer) }),
+    author: { "@type": "Organization", name: AUTHOR.name, url: abs(AUTHOR.authorPath) },
     publisher: orgRef,
     mainEntityOfPage: { "@id": `${url}#webpage` },
     ...(image && { image: abs(image) }),
     ...(section && { articleSection: section }),
+    ...(citations?.length && {
+      citation: citations.map((c) => ({
+        "@type": "CreativeWork",
+        name: c.title || c.name,
+        url: c.url,
+        ...(c.authors && { author: c.authors }),
+        ...(c.year && { datePublished: String(c.year) }),
+      })),
+    }),
   };
 }
 

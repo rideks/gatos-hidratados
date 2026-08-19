@@ -59,7 +59,7 @@ export const CATEGORIES = [
     icon: Droplets,
     blurb: "Acero vs plástico, caudal, nivel de ruido y capacidad.",
     hub: { title: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
-    comparativa: { title: "Mejores fuentes de agua para gatos 2026", path: "/mejores-fuentes-agua-para-gatos-2026/" },
+    comparativa: { title: "Mejores fuentes de agua para gatos 2026", path: "/mejores-fuentes-agua-para-gatos/" },
   },
   {
     id: "filtros-fuente",
@@ -94,6 +94,12 @@ export const GUIDES = [
   { title: "¿Por qué mi gato no bebe agua? Causas y cómo animarle a beber", short: "Por qué mi gato no bebe agua", path: "/por-que-mi-gato-no-bebe-agua/", category: "fuentes-agua" },
   { title: "Filtro original vs genérico para fuente de gatos", short: "Filtro original vs genérico", path: "/filtro-original-vs-generico-fuente-gatos/", category: "filtros-fuente" },
   { title: "Acné felino y cuencos de plástico: por qué el acero es mejor", short: "Acné felino y plástico", path: "/acne-felino-cuencos-plastico/", category: "fuentes-agua" },
+  {
+    title: "Agua y problemas urinarios en gatos: cistitis, cristales y urgencias",
+    short: "Agua y problemas urinarios",
+    path: "/agua-problemas-urinarios-gatos/",
+    category: null,
+  },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

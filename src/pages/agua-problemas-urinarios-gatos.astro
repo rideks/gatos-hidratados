@@ -1,0 +1,238 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import EmergencyCallout from "../components/EmergencyCallout.astro";
+import Sources from "../components/Sources.astro";
+
+const seo = {
+  title:
+    "Agua y problemas urinarios en gatos: cistitis, cristales y cuándo es urgencia",
+  description:
+    "Cómo influye la hidratación en las vías urinarias del gato (cistitis, cristales, FLUTD), qué dice de verdad la evidencia y las señales de urgencia que no debes ignorar.",
+  canonical: "/agua-problemas-urinarios-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Agua y problemas urinarios", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Beber más agua cura la cistitis de mi gato?",
+    a: "No es una cura, pero diluir la orina ayuda: una orina menos concentrada irrita menos la vejiga y reduce las recaídas de la cistitis idiopática, además de bajar el riesgo de cristales. La palanca mejor demostrada para conseguirlo es la comida húmeda, no la cantidad de agua que bebe por su cuenta. Siempre con el diagnóstico y el seguimiento de tu veterinario.",
+  },
+  {
+    q: "¿Los cristales o piedras se disuelven bebiendo agua?",
+    a: "Depende del tipo. Los de estruvita pueden disolverse con una dieta veterinaria específica; los de oxalato cálcico no se disuelven y a veces requieren cirugía. En ambos casos, más agua ayuda a prevenir su formación al diluir la orina, pero no sustituye al tratamiento que indique el veterinario.",
+  },
+  {
+    q: "¿Una fuente de agua previene los problemas urinarios?",
+    a: "Puede ayudar al gato que bebe más cuando el agua está en movimiento, pero la evidencia es mixta y una fuente no es un tratamiento. Para las vías urinarias pesan más la comida húmeda y el control del estrés. La fuente es una herramienta útil para el gato adecuado, no una solución médica.",
+  },
+  {
+    q: "¿Cómo sé si es una urgencia?",
+    a: "Si tu gato (sobre todo si es macho) intenta orinar y no sale nada o solo unas gotas, maúlla de dolor, se lame mucho la zona genital, está apático o vomita, ve al veterinario de inmediato: puede ser una obstrucción de la uretra, que es potencialmente mortal en 1-2 días.",
+  },
+];
+
+// Fuentes citables (respaldan cifras y afirmaciones médicas de la guía).
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Feline lower urinary tract disease (FLUTD)",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/feline-lower-urinary-tract-disease",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Urethral obstruction in cats",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/urethral-obstruction-in-cats",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Cistitis idiopática felina (FIC)",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/feline-idiopathic-cystitis-fic-in-cats",
+  },
+  {
+    authors: "American Veterinary Medical Association (AVMA)",
+    title: "Feline lower urinary tract disease",
+    source: "avma.org",
+    url: "https://www.avma.org/resources-tools/pet-owners/petcare/feline-lower-urinary-tract-disease",
+  },
+  {
+    authors: "Buckley CM, Hawthorne A, Colyer A, Stevenson AE",
+    year: 2011,
+    title:
+      "Effect of dietary water intake on urinary output, specific gravity and relative supersaturation for calcium oxalate and struvite in the cat",
+    source: "Br J Nutr 106(S1):S128-S130",
+    url: "https://doi.org/10.1017/S0007114511001875",
+  },
+  {
+    authors: "Taylor S, Boysen S, Buffington T, et al.",
+    year: 2025,
+    title:
+      "iCatCare consensus guidelines on the diagnosis and management of lower urinary tract diseases in cats",
+    source: "J Feline Med Surg",
+    url: "https://journals.sagepub.com/doi/10.1177/1098612X241309176",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-08-17"
+  faqs={faqs}
+  fuentes={fuentes}
+>
+  <p>
+    Los problemas urinarios están entre los motivos de consulta más frecuentes
+    en gatos, y la hidratación es una de las pocas palancas que tienes en casa
+    para influir en ellos. La idea de fondo es sencilla: una <strong
+      >orina más diluida</strong
+    >
+    irrita menos la vejiga y hace más difícil que se formen cristales. Pero conviene
+    entender qué ayuda de verdad, qué es marketing y —lo más importante— cuándo lo
+    que ves es una urgencia que no admite espera.
+  </p>
+
+  <KeyFacts
+    title="Lo esencial"
+    items={[
+      "<strong>«Problemas urinarios» (FLUTD) no es un diagnóstico</strong>: es un paraguas de varias causas. En gatos jóvenes, la más común es la <strong>cistitis idiopática</strong>, no una infección.",
+      "Diluir la orina ayuda, y la palanca <strong>mejor demostrada</strong> para conseguirlo es la <strong>comida húmeda</strong> (o añadir agua a la comida).",
+      "<strong>Urgencia vital:</strong> un gato (sobre todo macho) que intenta orinar y no lo consigue necesita veterinario <strong>de inmediato</strong>.",
+      "Una <strong>fuente</strong> ayuda al gato que prefiere el agua en movimiento, pero la evidencia es mixta: es una herramienta, no un tratamiento.",
+      "El <strong>estrés</strong> tiene un papel grande en la cistitis idiopática; el entorno importa tanto como el agua.",
+    ]}
+  />
+
+  <EmergencyCallout title="Urgencia: si ves esto, ve al veterinario ya">
+    <p>
+      La complicación más grave de los problemas urinarios es la
+      <strong>obstrucción de la uretra</strong>, que impide orinar. Ocurre casi
+      siempre en <strong>machos</strong> (uretra más larga y estrecha) y es
+      <strong>potencialmente mortal en 1-2 días</strong> si no se trata. Acude de
+      inmediato si tu gato:
+    </p>
+    <ul>
+      <li>
+        Intenta orinar una y otra vez y <strong>no sale nada</strong> o solo unas
+        gotas.
+      </li>
+      <li>
+        Maúlla o se queja de dolor en el arenero (a veces se confunde con
+        estreñimiento).
+      </li>
+      <li>Se lame insistentemente la zona genital.</li>
+      <li>Está apático, no come, o vomita.</li>
+    </ul>
+    <p>
+      No esperes «a ver si mejora» ni intentes tratarlo en casa. Es una
+      emergencia.
+    </p>
+  </EmergencyCallout>
+
+  <h2>Qué son los «problemas urinarios» (y qué no)</h2>
+  <p>
+    Bajo el término FLUTD (enfermedad del tracto urinario inferior felino) caben
+    varias causas distintas que dan síntomas casi idénticos, por eso solo tu
+    veterinario puede distinguirlas. Las más habituales son:
+  </p>
+  <ul>
+    <li>
+      <strong>Cistitis idiopática felina (FIC).</strong> La causa más frecuente en
+      gatos jóvenes. «Idiopática» significa que no hay una causa infecciosa ni una
+      piedra detrás; el <strong>estrés</strong> juega un papel central y tiende a
+      dar episodios que van y vienen.
+    </li>
+    <li>
+      <strong>Cristales y cálculos (urolitiasis).</strong> Sobre todo de
+      <strong>estruvita</strong> y <strong>oxalato cálcico</strong>. Se forman
+      con más facilidad cuando la orina está muy concentrada.
+    </li>
+    <li>
+      <strong>Infección bacteriana.</strong> Al contrario de lo que mucha gente cree,
+      es <strong>poco común</strong> en gatos jóvenes; aparece más en gatos mayores
+      o con otras enfermedades. La mayoría de casos de FLUTD
+      <strong>no</strong> necesitan antibiótico.
+    </li>
+    <li>
+      <strong>Obstrucción uretral.</strong> La forma más grave (ver aviso de arriba).
+    </li>
+  </ul>
+
+  <h2>Dónde entra el agua</h2>
+  <p>
+    Aquí es donde la hidratación se gana su sitio, sin exagerar. Al aumentar la
+    ingesta total de líquido, la orina se vuelve <strong
+      >menos concentrada</strong
+    >: irrita menos la vejiga (clave en la cistitis idiopática) y reduce la
+    <strong>sobresaturación</strong> que precede a los cristales. En un estudio de
+    referencia, los gatos con una dieta de ~73&nbsp;% de humedad produjeron una orina
+    más diluida y con menor riesgo de oxalato cálcico que con dietas más secas.
+  </p>
+  <p>Ordenado por lo que de verdad mueve la aguja:</p>
+  <ol>
+    <li>
+      <strong>Comida húmeda o añadir agua a la comida.</strong> La palanca mejor documentada
+      para subir la ingesta total de líquido. Si tu gato tiene historial urinario,
+      esto es lo primero a hablar con el veterinario.
+    </li>
+    <li>
+      <strong
+        >Varios puntos de agua, limpios y lejos de la comida y del arenero.</strong
+      >
+      El gato rechaza por instinto el agua próxima a comida o heces.
+    </li>
+    <li>
+      <strong>Una fuente de agua</strong>, si tu gato prefiere el agua en
+      movimiento. Puede animarle a beber más, pero la evidencia controlada es
+      mixta: para unos gatos ayuda y para otros no cambia nada frente a un
+      cuenco limpio. Es una herramienta útil para el gato adecuado, no un
+      tratamiento. Si te planteas una, mira nuestra <a
+        href="/fuentes-de-agua-para-gatos/">guía de fuentes de agua</a
+      >.
+    </li>
+    <li>
+      <strong>Reducir el estrés.</strong> En la cistitis idiopática, el enriquecimiento
+      del entorno (rutina estable, escondites, areneros suficientes y bien ubicados)
+      pesa tanto como el agua.
+    </li>
+  </ol>
+
+  <p>
+    Si tu problema de partida es que <strong>bebe muy poco</strong>, empieza por
+    la
+    <a href="/hidratacion-felina/">guía de hidratación felina</a> y sus señales de
+    alarma, y por <a href="/mi-gato-no-bebe-de-la-fuente/"
+      >qué hacer si no bebe de la fuente</a
+    >.
+  </p>
+
+  <h2>Qué no hacer</h2>
+  <ul>
+    <li>
+      <strong>No automediques</strong> ni des antibióticos «por si acaso»: la mayoría
+      de los casos no son bacterianos y el antibiótico no ayuda (y puede perjudicar).
+    </li>
+    <li>
+      <strong>No cambies la dieta durante un episodio</strong> sin el visto bueno
+      del veterinario; espera a que tu gato esté recuperado y comiendo bien.
+    </li>
+    <li>
+      <strong>No ignores las recaídas.</strong> Los problemas urinarios recidivan
+      con frecuencia; llevar un registro de cuándo y cómo pasan ayuda mucho en la
+      consulta.
+    </li>
+  </ul>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="agosto de 2026" />
+</GuideLayout>

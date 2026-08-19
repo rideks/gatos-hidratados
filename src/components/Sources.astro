@@ -1,0 +1,88 @@
+---
+// ============================================================================
+// Sources.astro — Bloque de referencias citables (señal E-E-A-T).
+//
+// Renderiza una bibliografía editorial con enlaces salientes a fuentes
+// veterinarias y estudios revisados. Pensado para el pilar y las guías de salud.
+//
+// Uso:
+//   import Sources from "../components/Sources.astro";
+//   const fuentes = [
+//     { authors: "International Cat Care (ISFM)",
+//       title: "Cómo animar a tu gato a beber",
+//       source: "icatcare.org",
+//       url: "https://icatcare.org/articles/how-to-encourage-your-cat-to-drink" },
+//     { authors: "Pachel C, Neilson J", year: 2010,
+//       title: "Comparison of feline water consumption…",
+//       source: "J Vet Behav 5(3):130-133",
+//       url: "https://www.sciencedirect.com/science/article/pii/S155878781000002X" },
+//   ];
+//   <Sources items={fuentes} reviewed="agosto de 2026" />
+//
+// Campos por referencia: { authors?, year?, title (req), source?, url (req) }.
+//
+// Decisiones editoriales:
+//  - Enlaces salientes en DOFOLLOW a fuentes autorizadas (icatcare, Merck,
+//    revistas): es lo coherente con E-E-A-T; enlazar a buenas fuentes suma.
+//    Si prefieres nofollow por política de afiliados, cambia el `rel` de abajo.
+//  - rel="noopener" por seguridad; target="_blank" para no perder al lector.
+// ============================================================================
+import { Library, ArrowUpRight, ShieldCheck } from "lucide-react";
+
+const {
+  items = [],
+  title = "Fuentes y referencias",
+  note = "Contrastamos cada cifra con fuentes veterinarias y estudios revisados. Esta información es divulgativa y no sustituye el criterio de tu veterinario.",
+  reviewed = null, // p. ej. "agosto de 2026" → añade señal de frescura
+} = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="not-prose mt-12" aria-labelledby="fuentes-heading">
+      <div class="hairline" />
+
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-2">
+        <p
+          id="fuentes-heading"
+          class="eyebrow inline-flex items-center gap-1.5"
+        >
+          <Library className="w-3.5 h-3.5" /> {title}
+        </p>
+        {reviewed && (
+          <span class="inline-flex items-center gap-1.5 text-xs text-slate-500">
+            <ShieldCheck className="w-3.5 h-3.5 text-brand-600" /> Fuentes
+            revisadas en {reviewed}
+          </span>
+        )}
+      </div>
+
+      {note && <p class="mt-2 text-sm text-slate-500">{note}</p>}
+
+      <ol class="mt-4 space-y-3 text-sm text-slate-600">
+        {items.map((s, i) => (
+          <li class="flex gap-3">
+            <span class="font-mono text-xs text-slate-400 pt-0.5 tabular-nums select-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span class="min-w-0">
+              {s.authors && <span class="text-ink">{s.authors}</span>}
+              {s.year && <span class="text-slate-500"> ({s.year})</span>}
+              {(s.authors || s.year) && <span>. </span>}
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener"
+                class="font-medium text-brand-700 hover:text-brand-600 underline decoration-brand-200 underline-offset-2 break-words"
+              >
+                {s.title}
+                <ArrowUpRight className="inline w-3 h-3 ml-0.5 align-baseline shrink-0" />
+              </a>
+              {s.source && <span class="text-slate-500">. {s.source}.</span>}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
