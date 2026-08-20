@@ -65,6 +65,22 @@ export const ENTITIES = {
       "Menos oferta inalámbrica que PETKIT",
     ],
   },
+  feelneedy: {
+    type: "marca",
+    name: "FEELNEEDY",
+    tagline: "Acero y sin cable a buen precio: mucha fuente por poco, aunque marca genérica.",
+    pros: [
+      "Acero inoxidable en varios modelos, a precio de plástico",
+      "Gama sin cable con sensor y batería sin disparar el precio",
+      "Filtro transparente en varios modelos: ves cuándo cambiarlo sin desmontar",
+      "Muy vendidas y bien valoradas (miles de reseñas)",
+    ],
+    cons: [
+      "Marca genérica: soporte y recambios a largo plazo, un interrogante",
+      "Sin app ni seguimiento del consumo",
+      "Cada modelo usa su filtro específico (no intercambiables entre sí)",
+    ],
+  },
   giotohun: {
     type: "marca",
     name: "GIOTOHUN",
@@ -249,6 +265,44 @@ export const COMPARISONS = [
       {
         q: "¿Es peor una marca genérica como GIOTOHUN?",
         a: "No en calidad inmediata: su acero 304 y su bomba silenciosa están al nivel. La diferencia está en el largo plazo, donde una marca genérica puede dejar de fabricar el filtro específico que necesitas. Compra recambios con margen si eliges genérica.",
+      },
+    ],
+  },
+  {
+    slug: "petkit-vs-feelneedy-fuentes-gatos",
+    seo: {
+      title: "PETKIT vs FEELNEEDY: fuente premium o acero barato",
+      description:
+        "Comparamos PETKIT y FEELNEEDY en fuentes de agua para gatos: app y seguimiento, sin cable, acero, capacidad, soporte de recambios y precio. Cuándo compensa cada una.",
+    },
+    a: "petkit",
+    b: "feelneedy",
+    rows: [
+      { label: "Precio", a: "Medio-alto", b: "Bajo-medio", winner: "b" },
+      { label: "App y seguimiento del consumo", a: "Sí (registra cuánto bebe)", b: "No", winner: "a" },
+      { label: "Sin cable con sensor", a: "Sí", b: "Sí" },
+      { label: "Acero inoxidable accesible", a: "Solo en gama alta", b: "Sí (varios modelos)", winner: "b" },
+      { label: "Capacidad máxima", a: "Hasta 3 L (Max 2)", b: "Hasta 4 L", winner: "b" },
+      { label: "Ver el filtro sin desmontar", a: "Según modelo", b: "Sí (filtro transparente)", winner: "b" },
+      { label: "Soporte y recambios a largo plazo", a: "Marca establecida", b: "Genérica (incierto)", winner: "a" },
+    ],
+    verdict:
+      "Es premium-tech contra acero-barato. FEELNEEDY gana en lo inmediato: acero inoxidable y sin cable por bastante menos dinero, con más capacidad y el detalle práctico del filtro transparente. PETKIT justifica el sobreprecio si valoras la app y el seguimiento de cuánto bebe tu gato (muy útil si es mayor o renal) y el respaldo de recambios de una marca establecida, algo que en una genérica es un interrogante. Si manda el presupuesto, FEELNEEDY; si quieres datos de consumo y soporte a largo plazo, PETKIT.",
+    cta: { label: "Ver las mejores fuentes de agua", path: "/mejores-fuentes-agua-para-gatos/" },
+    subcategory: "fuentes-agua",
+    brands: ["PETKIT", "FEELNEEDY"],
+    faqs: [
+      {
+        q: "¿PETKIT o FEELNEEDY si busco gastar poco?",
+        a: "FEELNEEDY. Te da acero inoxidable y hasta versiones sin cable por un precio al que PETKIT no suele llegar. El ahorro es real; lo que no tendrás es la app ni el respaldo de recambios de una marca grande.",
+      },
+      {
+        q: "¿Merece la pena la app de PETKIT frente a una FEELNEEDY sin app?",
+        a: "Si tu gato es mayor o tiene riesgo renal, mucho: saber cuántas veces bebe al día es un dato que puedes enseñar al veterinario. Para un gato joven y sano, es un extra cómodo más que una necesidad, y ahí FEELNEEDY cumple por menos.",
+      },
+      {
+        q: "¿Es fiable una marca genérica como FEELNEEDY?",
+        a: "En calidad inmediata sí: su acero y sus bombas están al nivel y acumulan miles de reseñas. El interrogante es el largo plazo, donde una genérica puede dejar de fabricar el filtro específico de tu modelo. Compra recambios con margen si eliges FEELNEEDY.",
       },
     ],
   },

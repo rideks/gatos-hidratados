@@ -13,6 +13,7 @@ export const CONTENT_INDEX = [
 
   // Guías
   { path: "/como-limpiar-fuente-agua-gatos/", updatedAt: "2026-08-04T00:00:00.000Z" },
+  { path: "/como-silenciar-fuente-agua-gatos/", updatedAt: "2026-08-20T00:00:00.000Z" },
   { path: "/cada-cuanto-cambiar-filtro-fuente-gato/", updatedAt: "2026-08-06T00:00:00.000Z" },
   { path: "/mi-gato-no-bebe-de-la-fuente/", updatedAt: "2026-08-05T00:00:00.000Z" },
   { path: "/cuanta-agua-debe-beber-un-gato/", updatedAt: "2026-08-13T00:00:00.000Z" },
@@ -23,4 +24,5 @@ export const CONTENT_INDEX = [
   { path: "/filtro-original-vs-generico-fuente-gatos/", updatedAt: "2026-08-15T00:00:00.000Z" },
   { path: "/acne-felino-cuencos-plastico/", updatedAt: "2026-08-15T00:00:00.000Z" },
   { path: "/agua-problemas-urinarios-gatos/", updatedAt: "2026-08-17T00:00:00.000Z" },
+  { path: "/fuente-agua-gato-renal-mayor/", updatedAt: "2026-08-20T00:00:00.000Z" },
 ];
