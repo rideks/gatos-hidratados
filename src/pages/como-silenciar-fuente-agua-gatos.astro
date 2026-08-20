@@ -1,0 +1,194 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+const seo = {
+  title: "La fuente de agua de mi gato hace ruido: cómo silenciarla",
+  description:
+    "Por qué zumba la fuente de tu gato y cómo silenciarla en minutos: nivel de agua, bomba, colocación. Y cuándo el ruido significa que toca cambiar de modelo.",
+  canonical: "/como-silenciar-fuente-agua-gatos/",
+};
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Fuentes de agua para gatos", path: "/fuentes-de-agua-para-gatos/" },
+  { name: "Cómo silenciarla", path: seo.canonical },
+];
+const faqs = [
+  {
+    q: "¿Por qué mi fuente empezó a hacer ruido de repente?",
+    a: "Casi siempre por dos motivos: el nivel de agua ha bajado por debajo del mínimo y la bomba chupa aire, o se ha acumulado pelo en el rotor. Rellénala y limpia la bomba: el 90% de los ruidos se van con eso.",
+  },
+  {
+    q: "¿Es normal que una fuente de agua haga algo de ruido?",
+    a: "Un rumor muy suave de agua sí es normal. Un zumbido, traqueteo o vibración no: es señal de bomba trabajando en seco, pelo atascado o mala colocación. Las buenas fuentes de acero bajan de 25 dB, prácticamente inaudibles.",
+  },
+  {
+    q: "¿Cuál es la fuente de agua más silenciosa para gatos?",
+    a: "Las de acero inoxidable con bomba declarada por debajo de 25 dB son las más silenciosas. Entre las plásticas, algunas bajan de 20 dB. Lo vemos en detalle en nuestra comparativa de fuentes silenciosas.",
+  },
+  {
+    q: "¿El ruido de la fuente asusta al gato y hace que no beba?",
+    a: "A algunos gatos sí: un zumbido o vibración puede disuadirles de acercarse. Si tu gato bebe menos desde que la fuente hace ruido, silenciarla suele devolverle el interés por beber.",
+  },
+];
+
+const howto = {
+  name: "Cómo silenciar la fuente de agua de tu gato",
+  description:
+    "Elimina el zumbido de la fuente: nivel de agua, limpieza de bomba, colocación y ajuste de caudal.",
+  totalTime: "PT10M",
+  tool: ["Cepillo pequeño o bastoncillos", "Agua"],
+  steps: [
+    {
+      name: "Rellena por encima del mínimo",
+      text: "Es la causa nº1. Con el nivel bajo, la bomba chupa aire y zumba. Rellena siempre por encima de la marca de mínimo.",
+    },
+    {
+      name: "Limpia la bomba",
+      text: "Desenchufa, abre el rotor y retira el pelo acumulado. El pelo en el eje es la segunda causa de ruido y de averías.",
+    },
+    {
+      name: "Asienta bien la bomba",
+      text: "Comprueba que está encajada a fondo y con las ventosas pegadas a una superficie lisa. Una bomba suelta vibra contra el depósito.",
+    },
+    {
+      name: "Baja el caudal si tu modelo lo permite",
+      text: "Un caudal muy alto salpica y hace más ruido. Reduce el flujo o cambia al modo más suave.",
+    },
+    {
+      name: "Cámbiala de sitio",
+      text: "Evita superficies huecas o metálicas que amplifican la vibración. Una base estable y una esquina tranquila ayudan.",
+    },
+    {
+      name: "Revisa el filtro",
+      text: "Un filtro saturado reduce el caudal y hace trabajar más a la bomba. Si lleva 2-4 semanas, cámbialo.",
+    },
+  ],
+};
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-08-20"
+  faqs={faqs}
+  howto={howto}
+>
+  <p>
+    Una fuente que zumba no es solo molesto para ti: si el ruido asusta al gato,
+    puede dejar de acercarse a beber, que es justo lo contrario de lo que
+    buscabas. La buena noticia es que <strong
+      >el 90% de los ruidos se arreglan en cinco minutos</strong
+    >
+    sin comprar nada. Y cuando no, es señal clara de que toca cambiar de modelo.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Causa nº1: <strong>nivel de agua bajo</strong> → la bomba chupa aire y zumba. Rellena por encima del mínimo.",
+      "Causa nº2: <strong>pelo en la bomba</strong>. Ábrela y límpiala (ver guía de limpieza).",
+      "Un <strong>rumor suave de agua es normal</strong>; un zumbido o vibración, no.",
+      "Si tras limpiarla sigue sonando, el problema es la bomba: valora una <strong>de acero &lt; 25 dB</strong>.",
+    ]}
+  />
+
+  <h2>Por qué zumba tu fuente (las 3 causas reales)</h2>
+  <p>
+    Antes de nada, distingue dos sonidos: el <strong>rumor del agua</strong> cayendo
+    es normal y hasta relajante; lo que hay que eliminar es el <strong
+      >zumbido eléctrico o la vibración</strong
+    >. Ese ruido feo casi siempre viene de una de estas tres cosas:
+  </p>
+  <ul>
+    <li>
+      <strong>Nivel de agua por debajo del mínimo.</strong> Es, con diferencia, la
+      más común. Cuando el depósito baja, la bomba empieza a aspirar aire y suena
+      como un motor forzado. Mantener el nivel alto lo soluciona al instante.
+    </li>
+    <li>
+      <strong>Pelo y suciedad en la bomba.</strong> El pelo se enrolla en el rotor
+      y lo desequilibra: vibra y se calienta. Es también la avería nº1, así que limpiarla
+      te ahorra ruido <em>y</em> disgustos.
+    </li>
+    <li>
+      <strong>Mala colocación o bomba suelta.</strong> Si la bomba no está bien encajada,
+      o la fuente se apoya en una superficie hueca, la vibración se amplifica como
+      una caja de resonancia.
+    </li>
+  </ul>
+
+  <h2>Cómo silenciarla paso a paso</h2>
+  <ol>
+    <li>
+      <strong>Rellena por encima del mínimo.</strong> Empieza por aquí: en la mayoría
+      de casos el zumbido desaparece solo con esto.
+    </li>
+    <li>
+      <strong>Limpia la bomba.</strong> Desenchufa, abre el rotor y retira el pelo.
+      Si no lo has hecho nunca, sigue nuestra
+      <a href="/como-limpiar-fuente-agua-gatos/"
+        >guía para limpiar la fuente paso a paso</a
+      >: la bomba es la pieza de la que sale el ruido.
+    </li>
+    <li>
+      <strong>Asienta la bomba y estabiliza la base.</strong> Encájala a fondo, pega
+      las ventosas y coloca la fuente en una superficie lisa y estable, lejos de metales
+      huecos.
+    </li>
+    <li>
+      <strong>Baja el caudal.</strong> Si tu modelo tiene modos de flujo, prueba el
+      más suave: menos salpicadura, menos ruido.
+    </li>
+    <li>
+      <strong>Cambia el filtro si toca.</strong> Uno saturado obliga a la bomba a
+      esforzarse. Consulta <a href="/cada-cuanto-cambiar-filtro-fuente-gato/"
+        >cada cuánto cambiar el filtro</a
+      >.
+    </li>
+  </ol>
+
+  <h2>Cuándo el problema no tiene arreglo (y qué comprar)</h2>
+  <p>
+    Si has rellenado, limpiado la bomba y colocado bien la fuente y <strong
+      >sigue zumbando</strong
+    >, el problema es la propia bomba: las baratas o desgastadas hacen ruido por
+    diseño. Ahí lo sensato es cambiar a un modelo pensado para ser silencioso.
+    Dos pistas:
+  </p>
+  <ul>
+    <li>
+      <strong>Acero inoxidable con bomba &lt; 25 dB.</strong> Son las más silenciosas
+      y, de paso, las más higiénicas. Las reunimos en
+      <a href="/fuentes-agua-silenciosas-gatos/"
+        >fuentes de agua silenciosas para gatos</a
+      > y en
+      <a href="/fuentes-acero-inoxidable-gatos/">fuentes de acero inoxidable</a
+      >.
+    </li>
+    <li>
+      <strong>Si buscas gastar poco</strong>, alguna plástica baja de 20 dB,
+      como la
+      <a href="/productos/nenozi-plastico-22l/">Nenozi de 2,2 L</a>. Y si
+      quieres además vigilar cuánto bebe tu gato, la
+      <a href="/productos/petkit-eversweet-solo-2/">PETKIT Eversweet Solo 2</a> es
+      ultrasilenciosa y trae app de consumo.
+    </li>
+  </ul>
+  <p>
+    ¿No tienes claro cuál? Empieza por nuestra
+    <a href="/mejores-fuentes-agua-para-gatos/"
+      >comparativa de mejores fuentes de agua</a
+    >, donde marcamos el nivel de ruido de cada una.
+  </p>
+
+  <h2>¿El ruido molesta al gato?</h2>
+  <p>
+    A muchos sí. Los gatos oyen frecuencias que nosotros ni percibimos, y un
+    zumbido constante puede hacer que eviten la fuente. Si notas que tu gato
+    <a href="/mi-gato-no-bebe-de-la-fuente/"
+      >bebe menos desde que la fuente hace ruido</a
+    >, silenciarla no es solo cuestión de tu comodidad: es recuperar su
+    hidratación.
+  </p>
+</GuideLayout>

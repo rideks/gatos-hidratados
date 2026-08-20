@@ -87,6 +87,7 @@ export const CATEGORIES = [
 // null = guía transversal (aparece en el menú pero no cuelga de una categoría).
 export const GUIDES = [
   { title: "Cómo limpiar la fuente de agua de tu gato paso a paso", short: "Cómo limpiar la fuente", path: "/como-limpiar-fuente-agua-gatos/", category: "fuentes-agua" },
+  { title: "La fuente de mi gato hace ruido: cómo silenciarla", short: "Silenciar la fuente", path: "/como-silenciar-fuente-agua-gatos/", category: "fuentes-agua" },
   { title: "¿Cada cuánto hay que cambiar el filtro de la fuente?", short: "Cada cuánto cambiar el filtro", path: "/cada-cuanto-cambiar-filtro-fuente-gato/", category: "filtros-fuente" },
   { title: "Mi gato no bebe de la fuente: causas y soluciones", short: "Mi gato no bebe de la fuente", path: "/mi-gato-no-bebe-de-la-fuente/", category: "fuentes-agua" },
   { title: "¿Cuánta agua debe beber un gato al día? (tabla por peso)", short: "Cuánta agua debe beber", path: "/cuanta-agua-debe-beber-un-gato/", category: "fuentes-agua" },
@@ -100,6 +101,7 @@ export const GUIDES = [
     path: "/agua-problemas-urinarios-gatos/",
     category: null,
   },
+  { title: "Fuente de agua para gato renal o mayor: cuál y por qué", short: "Fuente para gato renal o mayor", path: "/fuente-agua-gato-renal-mayor/", category: "fuentes-agua" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────
