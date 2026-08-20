@@ -12,6 +12,9 @@ import SpecTable from "../../components/SpecTable.astro";
 import ProductBadges from "../../components/ProductBadges.astro";
 import ProductMedia from "../../components/react/ProductMedia.jsx";
 import BundleBox from "../../components/BundleBox.astro";
+import BenefitIcons from "../../components/BenefitIcons.astro";
+import AuthorByline from "../../components/AuthorByline.astro";
+import StickyBuyBar from "../../components/StickyBuyBar.astro";
 import {
   getMainImage,
   getPros,
@@ -108,7 +111,7 @@ const schema = graph(
   <Schema schema={schema} />
   <HeaderApp />
 
-  <main class="max-w-3xl mx-auto px-4 pt-24 pb-16">
+  <main class="max-w-3xl mx-auto px-4 pt-24 pb-28 lg:pb-16">
     <Breadcrumbs items={dedupedBreadcrumbs} />
 
     <article>
@@ -148,12 +151,19 @@ const schema = graph(
             </ul>
           )
         }
+        <BenefitIcons product={product} class="mt-4" />
       </header>
 
       <!-- Bloque interactivo: galería + variante + precio + descuento + CTA.
            Isla React con estado único; Astro renderiza el HTML inicial (SEO ok). -->
       <div class="mt-5">
         <ProductMedia product={product} client:load />
+        <div class="mt-5">
+          <AuthorByline
+            datePublished={product.datePublished}
+            dateModified={product.updatedAt}
+          />
+        </div>
       </div>
 
       <!-- Aviso: existe un modelo más reciente -->
@@ -389,6 +399,6 @@ const schema = graph(
       }
     </article>
   </main>
-
+  <StickyBuyBar product={product} />
   <FooterApp />
 </Layout>

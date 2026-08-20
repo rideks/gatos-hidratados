@@ -24,6 +24,9 @@ const person = AUTHOR.person?.name
       "@id": `${url}#author`,
       name: AUTHOR.person.name,
       ...(AUTHOR.person.jobTitle && { jobTitle: AUTHOR.person.jobTitle }),
+      ...(AUTHOR.person.avatar && {
+        image: new URL(AUTHOR.person.avatar, SITE.url).href,
+      }),
       ...(AUTHOR.person.sameAs?.length && { sameAs: AUTHOR.person.sameAs }),
       worksFor: { "@id": `${SITE.url}/#organization` },
       url,
@@ -69,6 +72,34 @@ const schema = graph(
            concreta: cuántos gatos conviven contigo, desde cuándo pruebas producto,
            por qué montaste el proyecto. Cuanto más específico y verificable, mejor. -->
       <h2 id="author">Quién está detrás</h2>
+      <div
+        class="not-prose flex items-center gap-4 my-5 p-4 rounded-2xl bg-brand-50 border border-brand-100"
+      >
+        {
+          AUTHOR.person?.avatar ? (
+            <img
+              src={AUTHOR.person.avatar}
+              alt={`Foto de ${AUTHOR.person.name}`}
+              width="64"
+              height="64"
+              loading="lazy"
+              class="w-16 h-16 rounded-full object-cover border border-brand-200 shrink-0"
+            />
+          ) : (
+            <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-600 text-white shrink-0 font-display font-semibold text-2xl">
+              {(AUTHOR.person?.name || SITE.name).charAt(0)}
+            </span>
+          )
+        }
+        <div>
+          <p class="font-display font-semibold text-ink text-lg leading-tight">
+            {AUTHOR.person?.name || SITE.name}
+          </p>
+          <p class="text-sm text-brand-700 font-medium">
+            {AUTHOR.person?.jobTitle || "Redacción"}
+          </p>
+        </div>
+      </div>
       <p>
         Detrás de {SITE.name} está <strong
           >{AUTHOR.person?.name || SITE.name}</strong

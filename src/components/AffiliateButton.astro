@@ -1,7 +1,15 @@
 ---
 import { ArrowUpRight } from "lucide-react";
-const { href, productName, price, location = "product", label = "Ver precio en Amazon", full = false } = Astro.props;
+const {
+  href,
+  productName,
+  price,
+  location = "product",
+  label = "Ver precio en Amazon",
+  full = false,
+} = Astro.props;
 ---
+
 <a
   href={href}
   target="_blank"
@@ -9,15 +17,22 @@ const { href, productName, price, location = "product", label = "Ver precio en A
   data-affiliate-location={location}
   data-product-name={productName}
   data-product-price={price}
-  class:list={["btn btn-accent group/cta", full && "w-full"]}
+  class:list={["btn btn-honey group/cta", full && "w-full"]}
 >
   {label}
-  <ArrowUpRight size={16} className="opacity-90 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
+  <ArrowUpRight
+    size={16}
+    className="opacity-90 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform"
+  />
 </a>
 <script is:inline>
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a[data-affiliate-location]");
     if (!a || typeof window.gtag !== "function") return;
-    window.gtag("event", "affiliate_click", { affiliate_location: a.dataset.affiliateLocation, product_name: a.dataset.productName, price: a.dataset.productPrice || null });
+    window.gtag("event", "affiliate_click", {
+      affiliate_location: a.dataset.affiliateLocation,
+      product_name: a.dataset.productName,
+      price: a.dataset.productPrice || null,
+    });
   });
 </script>

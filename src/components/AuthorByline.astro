@@ -1,0 +1,42 @@
+---
+import { AUTHOR } from "../config/site.js";
+import { UserRound } from "lucide-react";
+
+const { datePublished, dateModified, tested = false } = Astro.props;
+const name = AUTHOR.person?.name || AUTHOR.name;
+const role = AUTHOR.person?.jobTitle || "Redacción";
+const avatar = AUTHOR.person?.avatar;
+const fmt = (d) =>
+  d
+    ? new Date(d).toLocaleDateString("es-ES", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+    : null;
+const updated = fmt(dateModified) || fmt(datePublished);
+---
+
+<div class="flex items-center gap-3 bg-brand-50 rounded-2xl px-4 py-3">
+  {
+    avatar ? (
+      <img
+        src={avatar}
+        alt={`Foto de ${name}`}
+        width="40"
+        height="40"
+        loading="lazy"
+        class="w-10 h-10 rounded-full object-cover shrink-0 border border-brand-200"
+      />
+    ) : (
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-600 text-white shrink-0">
+        <UserRound className="w-5 h-5" />
+      </span>
+    )
+  }
+  <p class="text-sm text-ink-500">
+    <strong class="text-ink">Analizado por {name}</strong>, {role.toLowerCase()}
+    {tested ? " · probado en casa" : " · análisis por criterios"}
+    {updated && ` · actualizado el ${updated}`}
+  </p>
+</div>
