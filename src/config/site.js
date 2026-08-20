@@ -26,10 +26,11 @@ export const AUTHOR = {
   // Cuando `person.name` tenga un nombre real, los artículos usarán un autor
   // Person (más señal E-E-A-T que Organization). Vacío = firma como la marca.
   person: {
-    name: "John",                    // nombre real de quien edita/prueba
+    name: "Carlos Herrero",
     jobTitle: "Editor y evaluador de producto",
     url: "/quienes-somos/#author",
-    sameAs: [],                  // perfiles públicos (LinkedIn, X, etc.)
+    avatar: "/images/author/carlos-herrero.webp",
+    sameAs: [],
   },
 
   // ── Revisión veterinaria (opcional, muy potente en salud felina) ─────────────

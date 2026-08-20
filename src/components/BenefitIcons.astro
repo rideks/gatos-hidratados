@@ -1,0 +1,53 @@
+---
+import { PRODUCT_TAGS as T } from "../data/productTags.js";
+import {
+  VolumeX,
+  ShieldCheck,
+  WashingMachine,
+  BatteryCharging,
+  Radar,
+  Users,
+  Leaf,
+} from "lucide-react";
+
+const { product, class: cls = "" } = Astro.props;
+const tags = new Set(product?.tags || []);
+const has = (t) => tags.has(t);
+
+// Beneficios a destacar por prioridad (icono + label corto). Máx. 4.
+const ALL = [
+  { on: has(T.SILENT), icon: VolumeX, label: "Silenciosa" },
+  { on: has(T.STAINLESS_STEEL), icon: ShieldCheck, label: "Acero higiénico" },
+  {
+    on: has(T.DISHWASHER_SAFE),
+    icon: WashingMachine,
+    label: "Apta lavavajillas",
+  },
+  {
+    on: has(T.WIRELESS) || has(T.BATTERY),
+    icon: BatteryCharging,
+    label: "Sin cable",
+  },
+  { on: has(T.MOTION_SENSOR), icon: Radar, label: "Sensor de movimiento" },
+  {
+    on: has(T.MULTI_CAT) || has(T.LARGE_CAPACITY),
+    icon: Users,
+    label: "Para varios gatos",
+  },
+  { on: has(T.BPA_FREE), icon: Leaf, label: "Sin BPA" },
+];
+const benefits = ALL.filter((b) => b.on).slice(0, 4);
+---
+
+{
+  benefits.length > 0 && (
+    <ul class:list={["flex flex-wrap gap-2 not-prose", cls]}>
+      {benefits.map((b) => (
+        <li class="inline-flex items-center gap-2 bg-surface border border-line rounded-full px-3.5 py-2 text-sm font-medium text-ink">
+          <b.icon className="w-4 h-4 text-brand-600" />
+          {b.label}
+        </li>
+      ))}
+    </ul>
+  )
+}

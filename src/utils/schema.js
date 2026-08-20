@@ -150,6 +150,7 @@ function personNode(p) {
     name: p.name,
     ...(p.jobTitle && { jobTitle: p.jobTitle }),
     ...(p.url && { url: abs(p.url) }),
+    ...(p.avatar && { image: abs(p.avatar) }),
     ...(p.identifier && { identifier: p.identifier }),
     ...(p.sameAs?.length && { sameAs: p.sameAs }),
   };

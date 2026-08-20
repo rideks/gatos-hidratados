@@ -10,9 +10,16 @@ import TrustBanner from "../components/TrustBanner.astro";
 import FaqList from "../components/FaqList.astro";
 import { buildCategorySchemas } from "../utils/buildCategorySchemas.js";
 import { getMainImage } from "../utils/product.js";
+import { getEditorialScore } from "../data/EditorialScores.js";
 
 // props: seo {title, description, canonical}, breadcrumbs[], products[], faqs[]
-const { seo, breadcrumbs = [], products = [], faqs = [], noindex = false } = Astro.props;
+const {
+  seo,
+  breadcrumbs = [],
+  products = [],
+  faqs = [],
+  noindex = false,
+} = Astro.props;
 
 // Serializamos para la isla React, con la URL de afiliado ya construida.
 const rows = products.map((p) => ({
@@ -20,39 +27,63 @@ const rows = products.map((p) => ({
   name: p.name,
   price: p.price,
   image: getMainImage(p),
-  tags: p.tags || [],
+  material: p.specs?.material || p.material || "—",
+  noise: p.specs?.noise || "—",
+  capacity: p.specs?.capacity || p.capacity || "—",
+  nota: getEditorialScore(p.slug)?.rating ?? null,
   affiliateUrl: p.amazonUrl,
 }));
 
 const schema = buildCategorySchemas({ seo, breadcrumbs, products, faqs });
 ---
-<Layout title={seo.title} description={seo.description} canonical={seo.canonical} type="article" noindex={noindex}>
+
+<Layout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  type="article"
+  noindex={noindex}
+>
   <Schema schema={schema} />
   <HeaderApp />
 
   <main class="max-w-3xl mx-auto px-4 pt-24 pb-16">
     <Breadcrumbs items={breadcrumbs} />
-    <h1 class="font-display font-extrabold text-ink text-3xl sm:text-4xl mt-4 leading-tight">{seo.title}</h1>
+    <h1
+      class="font-display font-extrabold text-ink text-3xl sm:text-4xl mt-4 leading-tight"
+    >
+      {seo.title}
+    </h1>
 
     <div class="prose prose-slate max-w-none mt-5">
       <slot name="intro" />
     </div>
 
-    {products.length > 0 && (
-      <div class="mt-8"><BestPick products={products} /></div>
-    )}
+    {
+      products.length > 0 && (
+        <div class="mt-8">
+          <BestPick products={products} />
+        </div>
+      )
+    }
 
-    {rows.length > 0 && (
-      <div class="mt-8">
-        <ProductComparison client:visible products={rows} />
-      </div>
-    )}
+    {
+      rows.length > 0 && (
+        <div class="mt-8">
+          <ProductComparison client:visible products={rows} />
+        </div>
+      )
+    }
 
     <slot name="fichas" />
 
-    {faqs.length > 0 && (
-      <section class="mt-12"><FaqList faqs={faqs} /></section>
-    )}
+    {
+      faqs.length > 0 && (
+        <section class="mt-12">
+          <FaqList faqs={faqs} />
+        </section>
+      )
+    }
 
     <div class="mt-12"><TrustBanner /></div>
   </main>

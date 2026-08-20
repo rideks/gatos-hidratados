@@ -9,42 +9,55 @@
    y un único felino gráfico fuerte. Nada de texturas ni adornos decorativos.
    ============================================================================ */
 @theme {
-  /* Tipografía: display técnica + texto neutro + datos mono */
-  --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  /* Tipografía: serif editorial cálida (display) + humanista (texto) + datos mono */
+  --font-display: "Newsreader Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", monospace;
 
-  /* Marca — verde felino profundo (confianza/vet/natural), acento medido */
-  --color-brand-50: #edf7f3;
-  --color-brand-100: #cfeae0;
-  --color-brand-200: #a1d6c4;
-  --color-brand-300: #66bda4;
-  --color-brand-400: #2fa587;
+  /* Marca — verde PINO (confianza/vet/natural), algo más cálido que el teal anterior */
+  --color-brand-50: #e9f0ea;
+  --color-brand-100: #cfe2d5;
+  --color-brand-200: #a6cab2;
+  --color-brand-300: #72ab88;
+  --color-brand-400: #3d8a64;
   /* acento vivo */
-  --color-brand-500: #1e8a6f;
-  --color-brand-600: #166f5a;
-  /* primario */
-  --color-brand-700: #145a49;
-  --color-brand-800: #124a3d;
-  --color-brand-900: #0f3a30;
+  --color-brand-500: #2f7657;
+  --color-brand-600: #276b52;
+  /* primario (pino) */
+  --color-brand-700: #1f5641;
+  --color-brand-800: #1a4838;
+  --color-brand-900: #143a2d;
 
-  /* Ink cálido (casi negro) para texto y superficies oscuras */
-  --color-ink: #161514;
-  --color-ink-800: #201e1c;
-  --color-ink-700: #38342f;
-  --color-ink-500: #6a655d;
-  /* texto secundario */
+  /* Acento MIEL — la calidez humana / llamadas a la acción (nuevo) */
+  --color-honey-50: #f8ead2;
+  --color-honey-400: #e7a556;
+  --color-honey-500: #e0913a;
+  /* acento */
+  --color-honey-600: #c2761f;
+  /* hover */
+  --color-honey-700: #9e5f16;
 
-  /* Lienzo hueso (cálido, no blanco puro) */
-  --color-paper: #f7f5f1;
-  --color-paper-200: #ece8e0;
-  --color-line: #e3ded4;
+  /* Ink cálido (marrón casi negro) para texto y superficies oscuras */
+  --color-ink: #241d16;
+  --color-ink-800: #2f271e;
+  --color-ink-700: #4a4033;
+  --color-ink-500: #6f6454;
+  /* texto secundario cálido */
+
+  /* Lienzo papel avena (más cálido que el hueso anterior) */
+  --color-paper: #f4ecdf;
+  --color-paper-200: #ebe0d0;
+  --color-surface: #fbf7ee;
+  /* superficie de tarjetas (cálida, no blanco puro) */
+  --color-line: #e6dcc8;
   /* hairline cálida */
+  --color-blush: #efdccb;
+  /* relleno cálido suave (placeholders, fondos) */
 
-  /* Acento cálido: solo puntuación (estrellas) */
+  /* Acento de puntuación (estrellas) — se mantiene */
   --color-amber-rating: #e0a340;
 
-  --radius: 12px;
+  --radius: 14px;
 }
 
 *,
@@ -91,7 +104,7 @@ h3,
 .font-display {
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.005em;
   line-height: 1.08;
 }
 
@@ -150,8 +163,15 @@ h3,
   color: #fff;
 }
 
-.btn-accent:hover {
-  background: var(--color-brand-800);
+.btn-honey {
+  background: var(--color-honey-500);
+  color: #2b1c08;
+  border: 1px solid var(--color-honey-600);
+}
+
+.btn-honey:hover {
+  background: var(--color-honey-600);
+  color: #fff;
 }
 
 .btn-ghost {
@@ -178,7 +198,7 @@ h3,
 
 /* ── Tarjeta base ──────────────────────────────────────────────────────────── */
 .card {
-  background: #fff;
+  background: var(--color-surface);
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   transition: border-color .15s ease, box-shadow .2s ease, transform .2s ease;
@@ -229,7 +249,7 @@ a {
 
 .prose :is(h2, h3) {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.005em;
 }
 
 .prose h2 {

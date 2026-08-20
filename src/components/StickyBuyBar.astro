@@ -1,0 +1,29 @@
+---
+import AffiliateButton from "./AffiliateButton.astro";
+const { product } = Astro.props;
+---
+
+<div
+  class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-surface border-t border-line shadow-[0_-12px_30px_-20px_rgba(36,29,22,.4)]"
+>
+  <div
+    class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3"
+  >
+    <div class="min-w-0">
+      <p class="font-semibold text-sm text-ink truncate">
+        {product.brand}
+        {product.name}
+      </p>
+      <p class="u-data text-lg font-semibold text-brand-700 leading-none">
+        {product.price} €
+      </p>
+    </div>
+    <AffiliateButton
+      href={product.amazonUrl}
+      productName={product.name}
+      price={product.price}
+      location="sticky-bar"
+      label="Ver en Amazon"
+    />
+  </div>
+</div>
