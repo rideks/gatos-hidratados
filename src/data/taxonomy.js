@@ -78,7 +78,7 @@ export const CATEGORIES = [
     icon: UtensilsCrossed,
     blurb: "Programables, por gravedad y con app: capacidad, frescura y limpieza.",
     hub: { title: "Comederos para gatos", path: "/comederos-para-gatos/" },
-    comparativa: { title: "Mejores comederos automáticos para gatos 2026", path: "/mejores-comederos-automaticos-gatos-2026/" },
+    comparativa: { title: "Mejores comederos automáticos para gatos 2026", path: "/mejores-comederos-automaticos-gatos/" },
   },
 ];
 

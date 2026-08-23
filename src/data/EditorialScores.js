@@ -61,10 +61,12 @@ const SCORES = {
   "filtros-cat-mate-cartuchos": { rating: 4.3, date: "2026-08-06" },
   "prefiltros-espuma-petsafe": { rating: 4.1, date: "2026-08-06" },           // Solo filtrado mecánico: complemento, no sustituto del carbón
 
-  // ── Comederos (silo apagado) — sin recalibrar aquí ─────────────────────────
-  "petkit-comedero-automatico-28l": { rating: 4.5, date: "2026-08-11" },
-  "honeyguaridan-a36-comedero-acero": { rating: 4.4, date: "2026-08-11" },
-  "nobleza-2en1-comedero-bebedero": { rating: 3.9, date: "2026-08-11" },
+  // ── Comederos (silo apagado) ─────────────────────────
+  "petkit-fresh-element-solo-3l": { rating: 4.4, date: "2026-08-20" },
+  "oneisall-5l-comedero-doble": { rating: 4.2, date: "2026-08-20" },
+  "faroro-4l-comedero-acero": { rating: 4.0, date: "2026-08-20" },
+  "anykuu-4l-comedero-acero": { rating: 4.0, date: "2026-08-20" },
+  "faroro-7l-comedero": { rating: 3.8, date: "2026-08-20" },
 };
 
 export const getEditorialScore = (slug) => SCORES[slug] || null;
