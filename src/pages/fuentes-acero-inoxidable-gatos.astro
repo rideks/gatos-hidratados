@@ -7,8 +7,11 @@ import AffiliateButton from "../components/AffiliateButton.astro";
 import ProductBadges from "../components/ProductBadges.astro";
 import { PRODUCT_TAGS, getByTag } from "../data/ProductData.js";
 
-const products = getByTag(PRODUCT_TAGS.STAINLESS_STEEL)
-  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+const products = getByTag(PRODUCT_TAGS.STAINLESS_STEEL).sort(
+  (a, b) =>
+    Number(String(a.price).replace(",", ".")) -
+    Number(String(b.price).replace(",", ".")),
+);
 
 const seo = {
   title: "Fuentes de agua de acero inoxidable para gatos",
@@ -25,22 +28,85 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { q: "¿Por qué elegir acero frente a plástico?", a: "El acero inoxidable no es poroso, así que no acumula el biofilm (esa película viscosa) que sí forma el plástico y que se asocia al acné felino y a que el gato deje de beber. Además se limpia mejor y dura más." },
-  { q: "¿El depósito también es de acero?", a: "En la mayoría de modelos, el plato de bebida es de acero pero el depósito interior sigue siendo de plástico. Es normal: lo importante para la higiene es la superficie con la que el gato entra en contacto. Aun así, desmonta y limpia el depósito con frecuencia." },
-  { q: "¿Se puede meter en el lavavajillas?", a: "Las piezas de acero (plato y tapa) suelen ser aptas para lavavajillas; la bomba y la electrónica, no. Revisa siempre las instrucciones del fabricante antes." },
+  {
+    q: "¿Por qué elegir acero frente a plástico?",
+    a: "El acero inoxidable no es poroso, así que no acumula el biofilm (esa película viscosa) que sí forma el plástico y que se asocia al acné felino y a que el gato deje de beber. Además se limpia mejor y dura más.",
+  },
+  {
+    q: "¿El depósito también es de acero?",
+    a: "En la mayoría de modelos, el plato de bebida es de acero pero el depósito interior sigue siendo de plástico. Es normal: lo importante para la higiene es la superficie con la que el gato entra en contacto. Aun así, desmonta y limpia el depósito con frecuencia.",
+  },
+  {
+    q: "¿Se puede meter en el lavavajillas?",
+    a: "Las piezas de acero (plato y tapa) suelen ser aptas para lavavajillas; la bomba y la electrónica, no. Revisa siempre las instrucciones del fabricante antes.",
+  },
 ];
 ---
-<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs}>
+
+<ComparativaPage
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  products={products}
+  faqs={faqs}
+>
   <Fragment slot="intro">
     <p>
-      Si tu prioridad es la <strong>higiene</strong>, el acero inoxidable es la mejor apuesta. A
-      diferencia del plástico, no es poroso: no acumula esa película viscosa (biofilm) que se
-      relaciona con el <strong>acné felino</strong> en la barbilla y con que muchos gatos dejen de
-      beber. Comparamos las opciones de acero por capacidad, ruido y facilidad de limpieza.
+      Si tu prioridad es la <strong>higiene</strong>, el acero inoxidable es la
+      mejor apuesta. A diferencia del plástico, no es poroso: no acumula esa
+      película viscosa (biofilm) que se relaciona con el <strong
+        >acné felino</strong
+      > en la barbilla y con que muchos gatos dejen de beber. Comparamos las opciones
+      de acero por capacidad, ruido y facilidad de limpieza.
     </p>
+
+    <h2>Cuál elegir según tu caso</h2>
+    <ul>
+      <li>
+        <strong>Mejor relación calidad/precio:</strong>
+        la <a href="/productos/giotohun-acero-inoxidable-22l/"
+          >GIOTOHUN de acero 2,2 L</a
+        >, con ventana de nivel y bomba &lt; 25 dB.
+      </li>
+      <li>
+        <strong>Más capacidad:</strong>
+        la <a href="/productos/apauk-acero-inoxidable-32l/">APAUK de 3,2 L</a>,
+        con recambios garantizados en la UE durante 2 años.
+      </li>
+      <li>
+        <strong>Sin cable:</strong>
+        la <a href="/productos/feelneedy-sin-cable-32l/"
+          >FEELNEEDY sin cable de 3,2 L</a
+        >, acero con sensor y filtro transparente para ver cuándo cambiarlo.
+      </li>
+      <li>
+        <strong>Premium con app:</strong>
+        la <a href="/productos/petkit-eversweet-max-2-3l/"
+          >PETKIT Eversweet Max 2</a
+        >, bandeja de acero 304 y seguimiento del consumo.
+      </li>
+    </ul>
+
+    <h2>Qué mirar antes de comprar</h2>
+    <p>
+      Confirma que sea <strong>acero inoxidable 304</strong> (el estándar alimentario),
+      ten en cuenta que el <strong
+        >depósito interno suele seguir siendo de plástico</strong
+      > (lo importante es el plato con el que bebe el gato), y valora una <strong
+        >ventana de nivel</strong
+      > y que las piezas de acero sean
+      <strong>aptas para lavavajillas</strong>. Ojo al consumible: cada fuente
+      usa su
+      <a href="/filtros-recambio-fuentes-gatos/">filtro de recambio</a> específico.
+      Si además la quieres callada, mira las <a
+        href="/fuentes-agua-silenciosas-gatos/">fuentes silenciosas</a
+      >.
+    </p>
+
     <p>
       ¿Quieres verlo frente al plástico en detalle? Lee
-      <a href="/comparativas/fuente-acero-vs-plastico-gatos/">fuente de acero vs plástico para gatos</a>.
+      <a href="/comparativas/fuente-acero-vs-plastico-gatos/"
+        >fuente de acero vs plástico para gatos</a
+      >.
     </p>
   </Fragment>
 
