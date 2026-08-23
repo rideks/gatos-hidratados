@@ -9,7 +9,11 @@ import { PRODUCT_TAGS, getByTag } from "../data/ProductData.js";
 
 const products = getByTag(PRODUCT_TAGS.SILENT)
   .filter((p) => p.subcategory === "fuentes-agua")
-  .sort((a, b) => Number(String(a.price).replace(",", ".")) - Number(String(b.price).replace(",", ".")));
+  .sort(
+    (a, b) =>
+      Number(String(a.price).replace(",", ".")) -
+      Number(String(b.price).replace(",", ".")),
+  );
 
 const seo = {
   title: "Fuentes de agua silenciosas para gatos (las que menos molestan)",
@@ -26,18 +30,79 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  { q: "¿Por qué zumba mi fuente de agua?", a: "Casi siempre por dos motivos: el nivel de agua está por debajo del mínimo y la bomba chupa aire, o hay pelo atascado en el rotor. Rellena el depósito y limpia la bomba: se soluciona el 90% de los ruidos sin cambiar de fuente." },
-  { q: "¿Cuántos decibelios hace una fuente silenciosa?", a: "Las buenas trabajan por debajo de unos 30 dB, un nivel que de noche apenas se percibe. Ten en cuenta que el sonido del agua cayendo es intencionado (atrae al gato): 'silenciosa' se refiere al zumbido de la bomba, no al chapoteo." },
-  { q: "¿La cerámica es más silenciosa?", a: "Tiende a serlo, porque el peso y el grosor del material absorben mejor las vibraciones de la bomba. Aun así, el factor decisivo sigue siendo mantener el nivel de agua y la bomba limpia." },
+  {
+    q: "¿Por qué zumba mi fuente de agua?",
+    a: "Casi siempre por dos motivos: el nivel de agua está por debajo del mínimo y la bomba chupa aire, o hay pelo atascado en el rotor. Rellena el depósito y limpia la bomba: se soluciona el 90% de los ruidos sin cambiar de fuente.",
+  },
+  {
+    q: "¿Cuántos decibelios hace una fuente silenciosa?",
+    a: "Las buenas trabajan por debajo de unos 30 dB, un nivel que de noche apenas se percibe. Ten en cuenta que el sonido del agua cayendo es intencionado (atrae al gato): 'silenciosa' se refiere al zumbido de la bomba, no al chapoteo.",
+  },
+  {
+    q: "¿La cerámica es más silenciosa?",
+    a: "Tiende a serlo, porque el peso y el grosor del material absorben mejor las vibraciones de la bomba. Aun así, el factor decisivo sigue siendo mantener el nivel de agua y la bomba limpia.",
+  },
 ];
 ---
-<ComparativaPage seo={seo} breadcrumbs={breadcrumbs} products={products} faqs={faqs}>
+
+<ComparativaPage
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  products={products}
+  faqs={faqs}
+>
   <Fragment slot="intro">
     <p>
-      El motivo nº1 por el que la gente devuelve una fuente es el <strong>ruido</strong> de noche.
-      La buena noticia: casi todo el zumbido se debe al <strong>nivel de agua bajo</strong> (la bomba
-      chupa aire) o a <strong>pelo atascado</strong>, no a la fuente en sí. Aun así, unos modelos
-      parten con ventaja. Aquí están los más silenciosos que hemos probado.
+      El motivo nº1 por el que la gente devuelve una fuente es el <strong
+        >ruido</strong
+      > de noche. La buena noticia: casi todo el zumbido se debe al <strong
+        >nivel de agua bajo</strong
+      > (la bomba chupa aire) o a <strong>pelo atascado</strong>, no a la fuente
+      en sí. Si la tuya ya hace ruido, antes de cambiarla prueba nuestra guía de
+      <a href="/como-silenciar-fuente-agua-gatos/">cómo silenciar la fuente</a>.
+      Aun así, unos modelos parten con ventaja; aquí están los más silenciosos.
+    </p>
+
+    <h2>Cuál elegir según tu caso</h2>
+    <ul>
+      <li>
+        <strong>La más silenciosa en acero:</strong>
+        la <a href="/productos/giotohun-acero-inoxidable-22l/"
+          >GIOTOHUN de acero 2,2 L</a
+        > (&lt; 25 dB), con ventana de nivel para que la bomba no trabaje en seco.
+      </li>
+      <li>
+        <strong>Silenciosa y barata para probar:</strong>
+        la <a href="/productos/nenozi-plastico-22l/">Nenozi de 2,2 L</a> (≤ 20 dB),
+        de las más bajas del mercado.
+      </li>
+      <li>
+        <strong>Silenciosa con control por app:</strong>
+        la <a href="/productos/petkit-eversweet-solo-2/"
+          >PETKIT Eversweet Solo 2</a
+        >, ultrasilenciosa y con seguimiento del consumo.
+      </li>
+      <li>
+        <strong>Cero ruido de bomba (no la lleva):</strong>
+        el <a href="/productos/amazon-basics-dispensador-gravedad-38l/"
+          >dispensador por gravedad de Amazon Basics</a
+        >
+        — silencio total, aunque el agua queda estancada.
+      </li>
+    </ul>
+
+    <h2>Qué mirar antes de comprar</h2>
+    <p>
+      Fíjate en los <strong>decibelios declarados</strong> (por debajo de 25 dB es
+      inaudible de noche), en si el <strong
+        >material absorbe la vibración</strong
+      > (acero y cerámica mejor que un plástico fino) y en poder <strong
+        >vigilar el nivel de agua</strong
+      > (una ventana de nivel evita el zumbido de la bomba en seco). Y recuerda: el
+      <em>chapoteo del agua es intencionado</em> —atrae al gato—; lo que se silencia
+      es el motor. Si tu gato <a href="/mi-gato-no-bebe-de-la-fuente/"
+        >no se acerca a beber</a
+      >, el ruido puede ser la causa.
     </p>
   </Fragment>
 
