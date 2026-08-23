@@ -4,16 +4,45 @@ import HeaderApp from "../components/HeaderApp.astro";
 import FooterApp from "../components/FooterApp.astro";
 import PageHeader from "../components/PageHeader.astro";
 ---
-<Layout title="Política de cookies" canonical="/politica-cookies/" noindex={true}>
+
+<Layout
+  title="Política de cookies"
+  canonical="/politica-cookies/"
+  noindex={true}
+>
   <HeaderApp />
   <PageHeader eyebrow="Legal" title="Política de cookies" />
   <main class="max-w-3xl mx-auto px-4 py-12 prose prose-slate">
-    <h2>Qué cookies usamos</h2>
-    <p>Por defecto <strong>no cargamos ninguna cookie de seguimiento</strong>. Solo si aceptas en el banner, activamos Google Analytics (con IP anonimizada) para medir visitas de forma agregada.</p>
-    <h2>Gestionar tu consentimiento</h2>
-    <p>Puedes cambiar tu decisión borrando los datos del sitio en tu navegador; volverá a aparecer el banner. También puedes bloquear cookies desde la configuración de tu navegador.</p>
-    <h2>Cookies de terceros</h2>
-    <p>Al ir a Amazon mediante un enlace de afiliado, Amazon puede instalar sus propias cookies según su política.</p>
+    <h2>Cookies que usamos</h2>
+    <p>
+      Ninguna de seguimiento. Felinlab <strong
+        >no instala cookies de análisis, publicidad ni seguimiento</strong
+      > en tu navegador. Puedes navegar por todo el sitio sin aceptar nada.
+    </p>
+
+    <h2>Almacenamiento técnico</h2>
+    <p>
+      El sitio solo puede usar el almacenamiento local del navegador para
+      recordar preferencias básicas de visualización, nunca para identificarte
+      ni seguir tu actividad.
+    </p>
+
+    <h2>Cookies de terceros (Amazon)</h2>
+    <p>
+      Somos afiliados de Amazon. Cuando pulsas un enlace hacia Amazon, es
+      <strong>Amazon</strong> quien puede instalar sus propias cookies en su dominio,
+      según su política de privacidad y cookies. Nosotros no tenemos acceso a esos
+      datos ni los usamos.
+    </p>
+
+    <h2>Cómo controlarlas</h2>
+    <p>
+      Como no ponemos cookies, no hay nada que aceptar ni rechazar en Felinlab.
+      Aun así, puedes bloquear o borrar cookies (incluidas las de Amazon) desde
+      la configuración de tu navegador en cualquier momento.
+    </p>
+
+    <p class="text-sm text-slate-500">Última actualización: agosto de 2026.</p>
   </main>
   <FooterApp />
 </Layout>
