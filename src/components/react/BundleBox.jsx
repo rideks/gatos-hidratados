@@ -150,7 +150,7 @@ export default function BundleBox({
                 </p>
                 <p className="u-data text-sm font-semibold text-ink mt-1">
                   {eur(toNum(it.price))}
-                  {it.originalPrice && (
+                  {toNum(it.originalPrice) > toNum(it.price) && (
                     <span className="u-data text-xs text-ink-500 line-through ml-1.5">{eur(toNum(it.originalPrice))}</span>
                   )}
                 </p>

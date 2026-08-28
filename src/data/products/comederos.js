@@ -7,9 +7,18 @@
 // ============================================================================
 import { PRODUCT_TAGS as T } from "../productTags.js";
 
+// Fechas por defecto para productos sin fecha propia (se calculan en cada build).
+const _hoy = new Date();
+const _iso = (d) => d.toISOString().slice(0, 10);
+const FECHA_HOY = `${_iso(_hoy)}T00:00:00.000Z`;
+const FECHA_SEMANA = _iso(new Date(_hoy.getTime() - 7 * 864e5));
+
 const P = (p) => ({
   currency: "EUR",
   ...p,
+  originalPrice: p.originalPrice ?? p.price,        // ← SIEMPRE presente (= price si no hay rebaja)
+  datePublished: p.datePublished ?? FECHA_SEMANA,   // ← por defecto: hace una semana
+  updatedAt: p.updatedAt ?? FECHA_HOY,              // ← por defecto: hoy
   amazonUrl: p.amazonUrl ?? "",
   sku: p.sku || p.asin || undefined,
 });
@@ -62,7 +71,7 @@ export const comederosProducts = [
     dynamicReview:
       "El Fresh Element Solo es el comedero de la gama PETKIT pensado para emparejarse con sus fuentes, y se nota: se programa cómodo desde la app, la cubeta es de acero 304 (mejor higiene que el plástico) y el triple sellado con desecante mantiene el pienso crujiente. Con 3 L cubre unos quince días para un gato. Sus límites, con honestidad: solo va con pienso seco de grano pequeño, el adaptador y las pilas de respaldo se compran aparte, y al ser de un cuenco no distingue entre gatos. Para automatizar las raciones de un gato sin complicarte, cumple de sobra.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-08-20T00:00:00.000Z",
+    updatedAt: "2026-08-28T00:00:00.000Z",
   }),
 
   // ── VALOR / 1 GATO ──────────────────────────────────────────────────────────
@@ -114,7 +123,7 @@ export const comederosProducts = [
     dynamicReview:
       "El superventas de la categoría por un motivo sencillo: da lo esencial bien y barato. Cuenco de acero (mejor higiene que el plástico), programación de hasta seis comidas y un modo de alimentación lenta muy útil para gatos ansiosos que si no vomitan la ración. Suma grabación de voz y respaldo a pilas. Como todos, la tolva es de plástico y solo admite pienso seco, y las pilas se compran aparte. Para automatizar a un gato sin gastar de más, es una compra muy sensata.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-08-20T00:00:00.000Z",
+    updatedAt: "2026-08-28T00:00:00.000Z",
   }),
   P({
     id: "anykuu-4l-comedero-acero",
@@ -163,7 +172,7 @@ export const comederosProducts = [
     dynamicReview:
       "Una de las alternativas de acero más redondas por debajo de los 35 €: se nota en su valoración (4,4 con miles de reseñas). Acierta en lo práctico —salida antibloqueo para que no se quede a medias, tapa hermética con desecante y cuenco de acero— y moderniza con carga USB-C. No trae app, así que se programa desde los botones, y como el resto es solo para pienso seco y con tolva de plástico. Si no necesitas el móvil de por medio, es tan buena opción como cualquiera.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-08-20T00:00:00.000Z",
+    updatedAt: "2026-08-28T00:00:00.000Z",
   }),
 
   // ── MULTIGATO ───────────────────────────────────────────────────────────────
@@ -214,7 +223,7 @@ export const comederosProducts = [
     dynamicReview:
       "La solución más sensata para dos gatos: en vez de comprar dos comederos, este reparte la misma tolva en dos cuencos de acero mediante un divisor giratorio, así que cada uno tiene lo suyo y no hay peleas ni robos de ración. Suma voz, respaldo a pilas y una garantía de dos años que tranquiliza. A cambio, ocupa más y, como el resto, la tolva es de plástico y solo va con seco. Para hogares multigato, es de lo más práctico del catálogo.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-08-20T00:00:00.000Z",
+    updatedAt: "2026-08-28T00:00:00.000Z",
   }),
 
   // ── GRAN CAPACIDAD / AUSENCIAS LARGAS ───────────────────────────────────────
@@ -265,7 +274,7 @@ export const comederosProducts = [
     dynamicReview:
       "Cuando lo que necesitas es autonomía, este es el que más aguanta: 7 L dan para dos o tres semanas, así que es el típico para irte de vacaciones sin depender de nadie. Las hélices intercambiables (S y L) permiten ajustar la ración según el tamaño de tu mascota, y la tapa hermética protege el pienso de la humedad. El pero honesto: es todo de plástico —no trae cuenco de acero— y abulta lo suyo. Para ausencias largas, difícil de superar en relación capacidad/precio.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-08-20T00:00:00.000Z",
+    updatedAt: "2026-08-28T00:00:00.000Z",
   }),
 
   // ── SIN ELECTRICIDAD / 2 EN 1 / BARATO ──────────────────────────────────────
@@ -315,6 +324,6 @@ export const comederosProducts = [
     dynamicReview:
       "No es un comedero programable, es un dispensador por gravedad, y conviene tenerlo claro. Su gracia es resolver comida y agua a la vez, sin cables, por muy poco dinero: perfecto para una ausencia corta o para quien no quiere complicarse. Ahora, seamos honestos con sus límites, que son importantes: no controla raciones (el gato come lo que quiere, así que no sirve para dietas), el agua queda estancada —menos atractiva que una fuente con bomba— y su valoración es más floja (3,8). Como apaño barato para vacaciones puntuales, cumple; como solución diaria, mejor un programable.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-08-20T00:00:00.000Z",
+    updatedAt: "2026-08-28T00:00:00.000Z",
   }),
 ];

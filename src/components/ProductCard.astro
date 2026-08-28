@@ -2,7 +2,7 @@
 import ProductImage from "./ProductImage.astro";
 import ProductBadges from "./ProductBadges.astro";
 import StarRating from "./StarRating.astro";
-import { getMainImage, getPriceLabel } from "../utils/product.js";
+import { getMainImage, getPriceLabel, getDiscount } from "../utils/product.js";
 import { getReadableTags } from "../data/ProductData.js";
 import { ArrowRight } from "lucide-react";
 
@@ -10,36 +10,79 @@ const { product, rank } = Astro.props;
 const img = getMainImage(product);
 const price = getPriceLabel(product);
 const tags = getReadableTags(product.tags, 3);
+const disc = getDiscount(product);
 const href = `/productos/${product.slug}/`;
-const medalCls = rank === 1 ? "bg-amber-rating text-ink" : rank === 2 ? "bg-[#c9c6bd] text-ink" : rank === 3 ? "bg-[#d9a066] text-ink" : "bg-ink text-white";
+const medalCls =
+  rank === 1
+    ? "bg-amber-rating text-ink"
+    : rank === 2
+      ? "bg-[#c9c6bd] text-ink"
+      : rank === 3
+        ? "bg-[#d9a066] text-ink"
+        : "bg-ink text-white";
 ---
+
 <article class="card card-hover overflow-hidden flex flex-col group">
-  <a href={href} class="block relative aspect-[4/3] overflow-hidden bg-paper-200">
-    {rank && (
-      <span class:list={["absolute top-3 left-3 z-10 inline-flex items-center justify-center w-8 h-8 rounded-lg u-data text-sm font-semibold", medalCls]}>
-        {String(rank).padStart(2, "0")}
-      </span>
-    )}
-    <div class="absolute top-3 right-3 z-10"><ProductBadges product={product} /></div>
-    <div class="w-full h-full group-hover:scale-[1.03] transition-transform duration-500">
+  <a
+    href={href}
+    class="block relative aspect-[4/3] overflow-hidden bg-paper-200"
+  >
+    {
+      rank && (
+        <span
+          class:list={[
+            "absolute top-3 left-3 z-10 inline-flex items-center justify-center w-8 h-8 rounded-lg u-data text-sm font-semibold",
+            medalCls,
+          ]}
+        >
+          {String(rank).padStart(2, "0")}
+        </span>
+      )
+    }
+    <div class="absolute top-3 right-3 z-10">
+      <ProductBadges product={product} />
+    </div>
+    <div
+      class="w-full h-full group-hover:scale-[1.03] transition-transform duration-500"
+    >
       <ProductImage src={img} alt={product.name} pawSize="w-12 h-12" />
     </div>
   </a>
   <div class="p-4 flex flex-col flex-1">
     <div class="flex items-center justify-between gap-2">
-      <p class="text-[11px] font-semibold text-brand-700 uppercase tracking-wide">{product.brand}</p>
+      <p
+        class="text-[11px] font-semibold text-brand-700 uppercase tracking-wide"
+      >
+        {product.brand}
+      </p>
       <StarRating slug={product.slug} size={13} />
     </div>
     <h3 class="font-display font-semibold text-ink leading-snug mt-1.5">
-      <a href={href} class="hover:text-brand-700 transition-colors">{product.name}</a>
+      <a href={href} class="hover:text-brand-700 transition-colors"
+        >{product.name}</a
+      >
     </h3>
-    {tags.length > 0 && <p class="text-xs text-ink-500 mt-1.5">{tags.join(" · ")}</p>}
+    {
+      tags.length > 0 && (
+        <p class="text-xs text-ink-500 mt-1.5">{tags.join(" · ")}</p>
+      )
+    }
     <div class="mt-auto pt-4 flex items-center justify-between">
       <span class="flex items-baseline gap-2">
         <span class="u-data text-lg font-semibold text-ink">{price}</span>
-        {product.originalPrice && <span class="u-data text-sm text-ink-500 line-through">{product.originalPrice} €</span>}
+        {
+          disc && (
+            <span class="u-data text-sm text-ink-500 line-through">
+              {product.originalPrice} €
+            </span>
+          )
+        }
       </span>
-      <a href={href} class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 group-hover:gap-2 transition-all">Ver <ArrowRight className="w-4 h-4" /></a>
+      <a
+        href={href}
+        class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 group-hover:gap-2 transition-all"
+        >Ver <ArrowRight className="w-4 h-4" /></a
+      >
     </div>
   </div>
 </article>
