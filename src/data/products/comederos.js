@@ -32,7 +32,7 @@ export const comederosProducts = [
     amazonUrl: "https://amzn.to/4hQdmxn",
     asin: "B0CD7NRW37",
     rating: "4.3",
-    reviews: "4227",
+    reviews: "4238",
     tags: [T.STAINLESS_STEEL, T.BPA_FREE],
     bestFor: "Programar las raciones desde el móvil con cubeta de acero y respaldo a pilas por si se va la luz.",
     specs: {
@@ -83,7 +83,7 @@ export const comederosProducts = [
     amazonUrl: "https://amzn.to/4wNpfbo",
     asin: "B0FCM9LLHV",
     rating: "4.3",
-    reviews: "540",
+    reviews: "560",
     tags: [T.STAINLESS_STEEL],
     bestFor: "La opción más vendida para un gato: raciones controladas, cuenco de acero y modo de alimentación lenta a buen precio.",
     specs: {
@@ -124,7 +124,7 @@ export const comederosProducts = [
     brand: "Anykuu",
     name: "Anykuu 4L Comedero automático con cuenco de acero (USB-C)",
     metaTitle: "Comedero automático Anykuu 4L de acero para gatos",
-    price: "34,87",
+    price: "33.96",
     material: "ABS + cuenco de acero inoxidable",
     capacity: "4 litros",
     color: "Blanco",
@@ -132,7 +132,7 @@ export const comederosProducts = [
     amazonUrl: "https://amzn.to/4ip0xKz",
     asin: "B0DJKV88PY",
     rating: "4.4",
-    reviews: "1741",
+    reviews: "1749",
     tags: [T.STAINLESS_STEEL],
     bestFor: "Alternativa de acero muy bien valorada, con salida antiatasco y carga USB-C.",
     specs: {
@@ -175,8 +175,7 @@ export const comederosProducts = [
     brand: "oneisall",
     name: "oneisall 5L Comedero automático doble (2 cuencos de acero) para varios gatos",
     metaTitle: "Comedero automático doble oneisall 5L para varios gatos",
-    price: "59,49",
-    originalPrice: "69,99",
+    price: "69,99",
     material: "ABS + 2 cuencos de acero inoxidable",
     capacity: "5 litros",
     color: "Negro",
@@ -184,7 +183,7 @@ export const comederosProducts = [
     amazonUrl: "https://amzn.to/4gr8s7Q",
     asin: "B0C772KDKT",
     rating: "4.4",
-    reviews: "1399",
+    reviews: "1408",
     tags: [T.STAINLESS_STEEL, T.MULTI_CAT, T.LARGE_CAPACITY],
     bestFor: "Hogares con dos gatos: reparte la ración a la vez en dos cuencos de acero con un divisor giratorio.",
     specs: {
@@ -236,7 +235,7 @@ export const comederosProducts = [
     amazonUrl: "https://amzn.to/4wOmM01",
     asin: "B09CPPPPTS",
     rating: "4.4",
-    reviews: "2762",
+    reviews: "2773",
     tags: [T.LARGE_CAPACITY],
     bestFor: "Ausencias largas o varios gatos: 7 L de autonomía (15-21 días) con hélices para raciones grandes o pequeñas.",
     specs: {
@@ -285,7 +284,7 @@ export const comederosProducts = [
     amazonUrl: "https://amzn.to/4xYyciZ",
     asin: "B0FM71H4PZ",
     rating: "3.8",
-    reviews: "195",
+    reviews: "196",
     tags: [T.ACTIVATED_CARBON, T.LARGE_CAPACITY],
     bestFor: "Quien quiere comida y agua disponibles sin electricidad ni programación, para ausencias cortas y a bajo precio.",
     specs: {
