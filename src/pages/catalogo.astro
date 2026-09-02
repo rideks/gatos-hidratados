@@ -5,12 +5,16 @@ import FooterApp from "../components/FooterApp.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import CatalogFilters from "../components/CatalogFilters.astro";
-import { productos } from "../data/ProductData.js";
+import { productos, getProductSilo } from "../data/ProductData.js";
+import { SILOS } from "../data/taxonomy.js";
 
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
   { name: "Catálogo", path: "/catalogo/" },
 ];
+
+// Solo productos de silos ACTIVOS (los comederos apagados no se muestran).
+const visibles = productos.filter((p) => SILOS[getProductSilo(p)]?.active);
 ---
 
 <Layout
@@ -28,7 +32,7 @@ const breadcrumbs = [
   </PageHeader>
 
   <main class="max-w-6xl mx-auto px-4 py-12">
-    <CatalogFilters products={productos} />
+    <CatalogFilters products={visibles} />
   </main>
   <FooterApp />
 </Layout>
