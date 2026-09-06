@@ -44,7 +44,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4gfO4Xa",
     asin: "B0B4W8FDBV",
     rating: "4.5",
-    reviews: "1791",
+    reviews: "1793",
     tags: [T.BPA_FREE, T.SILENT, T.LOW_LEVEL_SHUTOFF, T.LED],
     bestFor: "Un gato del que quieres controlar cuánto bebe (mayor o con riesgo renal).",
     specs: {
@@ -77,7 +77,7 @@ export const aguaProducts = [
     dynamicReview:
       "La más equilibrada para un solo gato y la que recomendamos si quieres vigilar su hidratación: la app te dice cuántas veces bebe, un dato muy valioso para gatos mayores o con problemas renales que puedes enseñar al veterinario. Es silenciosa y tiene respaldo de pilas ante apagones. Su límite es el habitual del plástico (más limpieza) y la capacidad para un gato. Para el 90% de hogares con un gato, cumple de sobra.",
     datePublished: "2026-08-06",
-    updatedAt: "2026-08-10T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
   P({
@@ -99,7 +99,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4worP7v",
     asin: "B0G5PM19RG",
     rating: "4.4",
-    reviews: "18237",
+    reviews: "18367",
     tags: [T.STAINLESS_STEEL, T.SILENT, T.LED, T.LOW_LEVEL_SHUTOFF],
     bestFor: "Quien quiere acero con ventana de nivel para vigilar el agua de un vistazo.",
     specs: {
@@ -132,7 +132,7 @@ export const aguaProducts = [
     dynamicReview:
       "Una fuente de acero 304 superventas por un motivo muy práctico: la ventana de nivel de agua. Ver de un vistazo cuánta queda evita el despiste que hace trabajar la bomba en seco (la avería más común). Es silenciosa (por debajo de 25 dB), lleva LED para que el gato la localice de noche y se desmonta fácil para limpiar. Con 2,2 L cubre 5-7 días para un gato. Como toda de acero, gana en higiene al plástico; su filtro es específico, así que compra recambios de la marca.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "feelneedy-acero-28l",
@@ -154,7 +154,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4fX0Evs",
     asin: "B0FF48X5N8",
     rating: "4.4",
-    reviews: "2658",
+    reviews: "2689",
     tags: [T.STAINLESS_STEEL, T.SILENT, T.DISHWASHER_SAFE, T.BPA_FREE, T.LED],
     bestFor: "Acero apto para lavavajillas a buen precio, con doble flujo para gatos exigentes.",
     specs: {
@@ -194,7 +194,7 @@ export const aguaProducts = [
       note: "versión más reciente y aún más silenciosa (por debajo de 20 dB)",
     },
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "feelneedy-sin-cable-32l",
@@ -215,8 +215,8 @@ export const aguaProducts = [
     ],
     amazonUrl: "https://amzn.to/4qhODnW",
     asin: "B0F9WQGMH7",
-    rating: "4.6",
-    reviews: "2403",
+    rating: "4.5",
+    reviews: "2445",
     tags: [T.WIRELESS, T.BATTERY, T.MOTION_SENSOR, T.STAINLESS_STEEL, T.DISHWASHER_SAFE, T.LARGE_CAPACITY],
     bestFor: "Sin cable, con sensor y acero; ideal para colocarla libre y ver el filtro sin desmontar.",
     specs: {
@@ -255,7 +255,7 @@ export const aguaProducts = [
       note: "la misma fuente, pero con 6 filtros incluidos",
     },
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "nenozi-plastico-22l",
@@ -276,7 +276,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4bPxOL6",
     asin: "B0CSCVBB38",
     rating: "4.2",
-    reviews: "2976",
+    reviews: "2993",
     tags: [T.SILENT, T.LED, T.LOW_LEVEL_SHUTOFF],
     bestFor: "La más barata para comprobar si tu gato adopta una fuente, y muy silenciosa.",
     specs: {
@@ -309,7 +309,7 @@ export const aguaProducts = [
     dynamicReview:
       "La opción más económica para probar si tu gato acepta una fuente. Es de plástico, pero destaca por lo silenciosa (≤ 20 dB, de las más bajas) y por el doble flujo, que suele animar a beber. Lleva indicador de nivel con LED y triple filtrado de carbón. Como toda de plástico, pide limpieza más frecuente para evitar biofilm y no durará como una de acero; por el precio, es una puerta de entrada estupenda. Funciona con USB, no con pilas.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
   // ── NUEVAS (2ª tanda, datos reales Amazon.es) ──────────────────────────────
@@ -320,7 +320,7 @@ export const aguaProducts = [
     brand: "Amazon Basics",
     name: "Amazon Basics Dispensador de agua por gravedad 3,8 L",
     metaTitle: "Dispensador de agua por gravedad Amazon Basics 3,8 L",
-    price: "18,10",
+    price: "20.34",
     originalPrice: "21,06",
     material: "Base PP + botella PET",
     capacity: "3,8 litros",
@@ -332,7 +332,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4bS2Kdz",
     asin: "B07227RQJ9",
     rating: "4.5",
-    reviews: "34604",
+    reviews: "34618",
     tags: [T.SILENT, T.LARGE_CAPACITY, T.BPA_FREE],
     bestFor: "Quien no quiere bomba, ni ruido, ni recambios de filtro: agua por gravedad.",
     specs: {
@@ -364,7 +364,7 @@ export const aguaProducts = [
     dynamicReview:
       "No es una fuente, es un dispensador por gravedad, y por eso resuelve bien un caso concreto: quien quiere cero ruido, cero cables y cero recambios. Es silencioso al 100%, tiene 3,8 L y apenas se estropea. La contraparte es importante: el agua queda estancada (a muchos gatos les motiva menos que el chorro de una fuente) y no filtra, así que hay que lavarlo y cambiar el agua a menudo. Como opción sin bomba, para gatos que ya beben bien o para ausencias, cumple y es baratísimo.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "giotohun-plastico-2l",
@@ -384,7 +384,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4htIzq2",
     asin: "B0BGL2GTTM",
     rating: "4.2",
-    reviews: "25706",
+    reviews: "25744",
     tags: [T.SILENT, T.LED, T.LOW_LEVEL_SHUTOFF],
     bestFor: "La fuente de plástico más vendida y barata para probar (25.000+ reseñas).",
     specs: {
@@ -417,7 +417,7 @@ export const aguaProducts = [
     dynamicReview:
       "Probablemente la fuente más vendida de Amazon.es, con más de 25.000 reseñas: barata, con dos modos de flujo y una garantía de bomba de 2 años que sorprende a este precio. Como banco de pruebas honesto, dos avisos: es de plástico (más limpieza, peor para el acné felino que el acero) y su nivel de ruido (≤ 40 dB) está lejos de las de acero que prometen < 25 dB. Como primera fuente barata para ver si tu gato la adopta, es una apuesta segura.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "apauk-acero-32l",
@@ -439,7 +439,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4qemC0i",
     asin: "B0FG2LQQLC",
     rating: "4.4",
-    reviews: "3094",
+    reviews: "3138",
     tags: [T.STAINLESS_STEEL, T.SILENT, T.DISHWASHER_SAFE, T.LED, T.LARGE_CAPACITY],
     bestFor: "Acero 3,2 L a buen precio, con recambios garantizados en la UE 2 años.",
     specs: {
@@ -472,7 +472,7 @@ export const aguaProducts = [
     dynamicReview:
       "Una de las mejores relaciones capacidad/precio en acero: 3,2 L, acero 304 sin BPA, ventana de nivel y bomba silenciosa por debajo de 25 dB. Un detalle a favor poco habitual es la disponibilidad garantizada de recambios en la UE durante 2 años, que da tranquilidad con los filtros. Como toda de acero, gana en higiene al plástico; su filtro es específico, así que compra recambios de la marca.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "balimopet-acero-26l",
@@ -494,7 +494,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/3S98qt6",
     asin: "B0FN3K2DTK",
     rating: "4.6",
-    reviews: "618",
+    reviews: "633",
     tags: [T.STAINLESS_STEEL, T.BPA_FREE, T.SILENT, T.LED, T.LOW_LEVEL_SHUTOFF],
     bestFor: "Acero 304 a precio contenido, con caño tipo grifo y bandeja de emergencia por si se va la luz.",
     specs: {
@@ -528,7 +528,7 @@ export const aguaProducts = [
     dynamicReview:
       "Una de las formas más baratas de pasarte al acero sin renunciar a nada: 304 sin BPA, caño tipo grifo que engancha a muchos gatos y, como detalle poco común, una bandeja de emergencia que mantiene agua disponible si se va la luz. Funciona por debajo de 25 dB y trae ventana de nivel para que la bomba no trabaje en seco. Los peros son honestos: va solo con cable (sin opción de batería) y el adaptador no viene en la caja, y al ser un modelo nuevo todavía tiene pocas reseñas. Si quieres acero, silencio y caño de grifo sin gastar de más, es una apuesta muy sensata.",
     datePublished: "2026-08-13",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "pawpoll-plastico-22l",
@@ -549,7 +549,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4qen1jk",
     asin: "B0D9BPB2V5",
     rating: "4.3",
-    reviews: "2933",
+    reviews: "2955",
     tags: [T.SILENT, T.LED, T.LOW_LEVEL_SHUTOFF],
     bestFor: "Plástico económico y silencioso (≤ 25 dB), con reserva de agua de emergencia.",
     specs: {
@@ -582,7 +582,7 @@ export const aguaProducts = [
     dynamicReview:
       "De las plásticas económicas, una de las más redondas: silenciosa de verdad para su categoría (≤ 25 dB), doble flujo y una reserva de 150 ml muy útil si se va la luz. Como toda de plástico PP, pide más limpieza para evitar biofilm y no durará como una de acero. Para quien quiere gastar poco pero con buena experiencia de uso, es una compra sensata.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "feelneedy-sin-cable-4l",
@@ -604,7 +604,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/3SyoHrC",
     asin: "B0BWJ6JNXM",
     rating: "4.5",
-    reviews: "10115",
+    reviews: "10150",
     tags: [T.WIRELESS, T.BATTERY, T.MOTION_SENSOR, T.LARGE_CAPACITY, T.MULTI_CAT, T.STAINLESS_STEEL],
     bestFor: "Gran capacidad (4 L) sin cable, para 1-3 gatos o ausencias largas.",
     specs: {
@@ -637,7 +637,7 @@ export const aguaProducts = [
     dynamicReview:
       "La opción de gran capacidad: 4 L y un cuenco de acero muy amplio, con funcionamiento sin cable por sensor de movimiento y avisos de batería y de filtro. Con más de 10.000 reseñas y 4,6 estrellas, es de las sin cable más probadas. Matices honestos: el cuerpo es de ABS (solo el cuenco es de acero) y su ruido (< 35 dB) no iguala a las más silenciosas. Para hogares con varios gatos o ausencias largas, es difícil de superar en autonomía.",
     datePublished: "2026-08-11",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "petkit-eversweet-max-2",
@@ -648,7 +648,7 @@ export const aguaProducts = [
     name: "PETKIT Eversweet Max 2 (3 L, sin cable, sensor y app)",
     metaTitle: "PETKIT Eversweet Max 2: fuente 3 L sin cable",
     price: "83,59",
-    originalPrice: "99,99",
+    originalPrice: "94,99",
     material: "Bandeja de acero inox. 304 + cuerpo PPO resistente al calor",
     capacity: "3 litros",
     color: "Plata / acero",
@@ -659,7 +659,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4gjRoAG",
     asin: "B0FJFDPZ6X",
     rating: "4.3",
-    reviews: "219",
+    reviews: "223",
     tags: [T.WIRELESS, T.BATTERY, T.MOTION_SENSOR, T.STAINLESS_STEEL, T.DISHWASHER_SAFE, T.SILENT, T.LARGE_CAPACITY],
     bestFor: "Hogar multigato que quiere fuente premium sin cable, mucha autonomía y datos de consumo por app.",
     specs: {
@@ -694,7 +694,7 @@ export const aguaProducts = [
     dynamicReview:
       "La fuente más completa de PETKIT y, con diferencia, la más cara del catálogo. Lo que pagas de más se nota: 3 L para varios gatos, una batería que aguanta semanas sin cable y una app que no solo programa el flujo, sino que te dice cuánto bebe tu gato, un dato valiosísimo si tiene historial renal. Suma bandeja de acero 304 y un cuerpo que resiste el lavavajillas. Siendo honestos, no todo va al lavavajillas (bomba, base y filtro, no), depende de la app y de recargarla, y al ser reciente aún tiene pocas reseñas. Si el presupuesto no es problema y quieres lo más avanzado sin cables, es la referencia.",
     datePublished: "2026-08-13",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "filtros-petkit-30",
@@ -710,7 +710,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4xzRI5c",
     asin: "B0BK923TZY", // = sku en el schema (modelo W5-Lv)
     rating: "4.7",
-    reviews: "6212",
+    reviews: "6229",
     // La Solo 2 usa el filtro 3.0. La Max 2, según su propia ficha, monta otro
     // filtro (carbón sinterizado): por eso exactOnly evita que se le recomiende
     // este. Confirma la compatibilidad y ajusta fitsSlugs si hace falta.
@@ -744,7 +744,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio oficial de las Eversweet de PETKIT y uno de los mejor valorados de su categoría. La versión 3.0 usa material de purolita y combina cuatro capas —doble algodón, carbón de coco y resina de intercambio iónico— que ablanda el agua y ayuda a que el gato beba más. El pack de cinco cubre varios meses. Confirma tu modelo antes de comprar: encaja en Eversweet 2.0 y 3.0 y en la CYBERTAIL; si tienes una Solo 1.0 antigua, necesitas la bandeja adaptadora. Cámbialo a tiempo: un filtro saturado empeora el sabor y ahí es cuando dejan de beber.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -765,7 +765,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4wXpAch",
     asin: "B0DFMBP2BJ", // = sku en el schema (variante 6+6, S11-6+6)
     rating: "4.4",
-    reviews: "18237",
+    reviews: "18367",
     fitsSlugs: ["giotohun-acero-inoxidable-22l"],
     exactOnly: true, // solo la de acero 2,2 L (no otras GIOTOHUN)
     // Variantes de pack. Cada una: { label, price, asin, amazonUrl }.
@@ -802,7 +802,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio que encaja en la GIOTOHUN de acero 2,2 L (la de la ventana de nivel), y de los más vendidos del momento. Trae dos piezas: el filtro de carbón con resina, que mejora el sabor y retiene cal y metales, y una esponja que atrapa el pelo antes de que llegue a la bomba (la avería más típica). Puedes elegir pack: el de 6+6 cubre unos meses y el de 12+12 sale más a cuenta si quieres reservas para medio año. Es específico de la marca, así que evita los genéricos, y cambia el carbón cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
   P({
     id: "filtros-feelneedy-w22",
@@ -819,7 +819,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4clZTd2",
     asin: "B0FF4CCPXK", // modelo FN-W22-LX6
     rating: "4.6",
-    reviews: "343",
+    reviews: "351",
     fitsSlugs: ["feelneedy-acero-inoxidable-28l", "feelneedy-acero-inoxidable-28l-w22x"],
     exactOnly: true,
     tags: [T.REPLACEMENT_FILTER, T.ACTIVATED_CARBON],
@@ -850,7 +850,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio que encaja en las FEELNEEDY de acero 2,8 L (modelo FN-W22, tanto la base como la W22X). Cuatro capas —algodón denso, resina de intercambio iónico y carbón de cáscara de coco— que ablandan el agua, retienen cal y mejoran el sabor; la esponja frena el pelo antes de la bomba. Suele caer en oferta flash. Es específico de esa fuente, así que evita los genéricos y cámbialo cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -869,8 +869,8 @@ export const aguaProducts = [
     image: "/images/filtros/filtros-fuente-feelneedy-sin-cable-3-2l.webp",
     amazonUrl: "https://amzn.to/4qjJtrl",
     asin: "B0F9WVZBF7", // modelo FN-W17LX6 (variante 6+6)
-    rating: "4.6",
-    reviews: "2403",
+    rating: "4.5",
+    reviews: "2445",
     fitsSlugs: ["feelneedy-sin-cable-32l"],
     exactOnly: true,
     variants: [
@@ -905,7 +905,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio de la FEELNEEDY sin cable de 3,2 L (modelo FN-W17). Filtración de cuatro capas —algodón, resina de intercambio iónico y carbón de coco— que reduce cal y mejora el sabor, con esponja para proteger la bomba. Puedes elegir pack 6+6 o 12+12 si prefieres reservas. Es específico de esa fuente; confírmalo y cámbialo cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -925,7 +925,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4qePXI0",
     asin: "B0BWMLPMTF", // FEELNEEDY-Filter-6-Pack (variante 6)
     rating: "4.5",
-    reviews: "10115",
+    reviews: "10150",
     fitsSlugs: ["feelneedy-sin-cable-4l"],
     exactOnly: true,
     variants: [
@@ -960,7 +960,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio original de la FEELNEEDY de 4 L (modelo YPD-C004), y de los más vendidos de su tipo con miles de reseñas. Cinco capas de filtración —algodón denso, resina de intercambio iónico y carbón de coco— más esponjas de prefiltro y de bomba, así que protege bien y mejora el sabor. Elige pack de 6 o de 10. Específico de esa fuente; cámbialo cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -979,7 +979,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4xNN0AZ",
     asin: "B0CZ3TJZXH",
     rating: "4.7",
-    reviews: "523",
+    reviews: "526",
     fitsSlugs: ["nenozi-plastico-22l"],
     exactOnly: true,
     tags: [T.REPLACEMENT_FILTER, T.ACTIVATED_CARBON],
@@ -1010,7 +1010,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio de la Nenozi de 2,2 L, en un pack generoso de 9+9. Triple filtración —algodón, carbón activo y resina de intercambio iónico— que retiene pelo y metales pesados y mejora el sabor; la esponja protege la bomba. Es específico de la marca, así que compra el oficial, y enjuágalo unos minutos antes del primer uso.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -1023,7 +1023,6 @@ export const aguaProducts = [
     brand: "GIOTOHUN",
     name: "GIOTOHUN Filtros H1 (4 capas) para fuente de 2 L / 3,2 L",
     price: "13,99",
-    originalPrice: "15,99",
     material: "Algodón + carbón de coco + resina",
     capacity: "6+6 o 12+12",
     color: "Blanco",
@@ -1031,7 +1030,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/3UzSIb3",
     asin: "B0FVSZM9ZX", // modelo H1-6filters (variante 6+6)
     rating: "4.2",
-    reviews: "25706",
+    reviews: "25744",
     fitsSlugs: ["giotohun-plastico-2l"],
     exactOnly: true,
     variants: [
@@ -1066,7 +1065,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio H1 de la GIOTOHUN de 2 L (la de plástico superventas), con más de 25.000 reseñas. Cuatro capas —filtro microporoso, carbón de coco y resina catiónica— que retienen pelo, olores y metales que provocan cálculos. Elige pack 6+6 o 12+12. Enjuágalo 3-5 min antes de usarlo y cámbialo cada dos semanas para mantener el agua apetecible.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -1076,48 +1075,47 @@ export const aguaProducts = [
     slug: "filtros-apauk",
     subcategory: "filtros-fuente",
     brand: "APAUK",
-    name: "APAUK Filtros 4+4 (triple filtración) para fuente 3,2 L (APFSS-3201)",
-    price: "16,99",
-    originalPrice: "19,99",
+    name: "APAUK Filtros 8+8 (triple filtración) para fuente 3,2 L (APFSS-3201)",
+    price: "15,99",
     material: "Algodón + carbón activo + resina",
-    capacity: "4 filtros + 4 esponjas",
+    capacity: "8 filtros + 8 esponjas",
     color: "Blanco",
     image: "/images/filtros/filtros-fuente-apauk-acero-3-2l.webp",
-    amazonUrl: "https://amzn.to/3SvXrKm",
-    asin: "B0FG7MJB6F", // modelo APFSS-3201
-    rating: "4.4",
-    reviews: "3094",
+    amazonUrl: "https://amzn.to/3SVOIBg",
+    asin: "B0FG7K844H",
+    rating: "4.3",
+    reviews: "349",
     fitsSlugs: ["apauk-acero-inoxidable-32l"],
     exactOnly: true,
     tags: [T.REPLACEMENT_FILTER, T.ACTIVATED_CARBON],
-    bestFor: "El recambio original de la fuente APAUK de 3,2 L (modelo APFSS-3201).",
+    bestFor: "El recambio original en pack ahorro de 8 filtros + 8 esponjas para la fuente APAUK de 3,2 L (modelo APFSS-3201).",
     specs: {
-      material: "Triple filtración: algodón + carbón activo + resina iónica",
-      capacity: "4 filtros + 4 esponjas",
-      filter: "Original APAUK, únicamente para la fuente APFSS-3201 (3,2 L)",
-      cats: "Cambio cada 2-4 semanas",
+      material: "Triple filtración: capa de algodón + carbón activo + resina de intercambio iónico",
+      capacity: "8 filtros + 8 esponjas (16 piezas en total)",
+      filter: "Original APAUK, únicamente compatible con la fuente APFSS-3201 (3,2 L)",
+      cats: "Cambio recomendado cada 2-4 semanas",
     },
     highlights: {
       pros: [
-        "Recambio original de la APAUK de 3,2 L (APFSS-3201): encaje garantizado",
-        "Triple filtración (algodón + carbón + resina) que suaviza el agua y mejora el sabor",
-        "Cada pieza empaquetada por separado",
+        "Pack de gran autonomía (8 filtros + 8 esponjas): cubre entre 4 y 8 meses de uso",
+        "Empaquetados individualmente para mantener la máxima higiene e integridad del material",
+        "Triple filtración eficiente que elimina malos olores, ablanda el agua y retiene pelos",
       ],
       cons: [
-        "Solo para la APAUK APFSS-3201: no sirve para otras fuentes",
-        "Pack de 4: menos autonomía que los de 12",
-        "El carbón no se lava para reutilizar una vez saturado",
+        "Compatibilidad exclusiva con la fuente APAUK APFSS-3201 (3,2 L)",
+        "El filtro de carbón no se lava para reutilizar una vez saturado",
       ],
     },
     features: [
-      "4 filtros de triple filtración + 4 esponjas",
-      "Algodón + carbón activo + resina de intercambio iónico",
-      "Recambio original para la fuente APAUK de 3,2 L (APFSS-3201)",
+      "Paquete de 16 piezas: 8 filtros de triple acción + 8 esponjas protectoras para la bomba",
+      "Empaquetado independiente e individual para cada recambio",
+      "Filtración multicapa con algodón, carbón activo y resina iónica",
+      "Recambio original diseñado específicamente para la fuente APAUK de 3,2 L (APFSS-3201)",
     ],
     dynamicReview:
-      "El recambio original de la APAUK de 3,2 L (modelo APFSS-3201). Triple filtración —algodón, carbón activo y resina iónica— que retiene pelo e impurezas, ablanda el agua y mejora el sabor. Es específico de esa fuente, así que compra el oficial; el pack de 4 cunde algo menos que los grandes, pero cumple. Cámbialo cada 2-4 semanas.",
+      "El paquete de recambios originales en formato ahorro para la fuente APAUK de 3,2 L (modelo APFSS-3201). Incluye 8 filtros de triple filtración (algodón, carbón activo y resina de intercambio iónico) y 8 esponjas protectoras de bomba, todos empaquetados de forma individual para garantizar su higiene. Es la opción más económica para mantener el agua de tu mascota limpia y fresca de 4 a 8 meses, cambiando el filtro cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -1136,7 +1134,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4g071hz",
     asin: "B0FN2Z5RK3", // modelo BP03
     rating: "4.8",
-    reviews: "88",
+    reviews: "92",
     fitsSlugs: ["balimopet-acero-inoxidable-26l"],
     exactOnly: true,
     tags: [T.REPLACEMENT_FILTER, T.ACTIVATED_CARBON],
@@ -1167,7 +1165,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio original de la BalimoPet de acero 2,6 L, y la marca avisa: los de otras marcas no encajan. Cuádruple filtración —algodón denso, carbón activo, resina de intercambio iónico y espuma— que retiene pelo y metales y mejora el sabor. La nota es excelente, aunque con pocas reseñas todavía. Remójalo 5 min antes de usarlo y cambia el filtro cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -1186,7 +1184,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4x8mBxW",
     asin: "B0D9BPB9MX", // modelo PW-D02 (variante 6+6)
     rating: "4.7",
-    reviews: "494",
+    reviews: "505",
     fitsSlugs: ["pawpoll-plastico-22l"],
     exactOnly: true,
     variants: [
@@ -1221,7 +1219,7 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio original de la PawPoll de 2,2 L, muy bien valorado (4,8). Combina algodón denso, carbón activo y resina de intercambio iónico para retener pelo y metales y mejorar el sabor, con esponja que protege la bomba. Elige pack 6+6 o 12+12 según cuánta reserva quieras. Es específico de la marca; remójalo antes de usarlo y cámbialo cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 
 
@@ -1240,7 +1238,7 @@ export const aguaProducts = [
     amazonUrl: "https://amzn.to/4zf5sEd",
     asin: "B0CXPHZVHH", // modelo CT-W3-Lv-EU (unidad RECT)
     rating: "4.7",
-    reviews: "790",
+    reviews: "792",
     fitsSlugs: ["petkit-eversweet-max-2-3l"],
     exactOnly: true, // la Max 2 usa ESTE (no el 3.0)
     tags: [T.REPLACEMENT_FILTER, T.ACTIVATED_CARBON],
@@ -1271,6 +1269,6 @@ export const aguaProducts = [
     dynamicReview:
       "El recambio propio de la PETKIT Eversweet MAX, distinto del filtro 3.0 del resto de la gama. Usa carbón activo sinterizado que adsorbe cloro y olores, con algodón denso que retiene el pelo, y la app te avisa cuándo cambiarlo. Importante: es específico de la MAX y no encaja en otras PETKIT. Activa el cartucho en agua 5 minutos antes de montarlo y cámbialo cada 2-4 semanas.",
     datePublished: "2026-08-15",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-06T00:00:00.000Z",
   }),
 ];

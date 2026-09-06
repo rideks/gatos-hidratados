@@ -1,0 +1,134 @@
+---
+import ComparativaPage from "../templates/ComparativaPage.astro";
+import ReviewCard from "../components/ReviewCard.astro";
+import BadgeLegend from "../components/BadgeLegend.astro";
+import { getBySlug } from "../data/ProductData.js";
+import { SILOS } from "../data/taxonomy.js";
+
+// Orden editorial fijo: el modelo CON app va primero (es el "pick"); los otros
+// dos son las alternativas sin app, para que se vea qué compra el sobreprecio.
+const products = [
+  "petkit-fresh-element-solo-3l", // único con app/WiFi de nuestro catálogo
+  "faroro-4l-comedero-acero", // sin app, mejor precio con cuenco de acero
+  "anykuu-4l-comedero-acero", // sin app, muy bien valorado (USB-C)
+]
+  .map(getBySlug)
+  .filter(Boolean);
+
+const active = SILOS.comederos.active;
+
+const seo = {
+  title: "Mejores comederos automáticos con app y WiFi para gatos 2026", // año SÍ
+  description:
+    "El comedero automático con app y WiFi que recomendamos para gatos, y cuándo te compensa frente a uno programable de botones. Control desde el móvil, cubeta de acero y respaldo a pilas.",
+  canonical: "/mejores-comederos-automaticos-app-gatos/", // año NO
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Con app y WiFi", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Necesito WiFi en casa para un comedero con app?",
+    a: "Sí. Los comederos con app se conectan a tu red WiFi de 2,4 GHz (no a la de 5 GHz) para que puedas programar horarios, cambiar raciones y ver el registro de comidas desde el móvil, estés donde estés. Sin WiFi, un modelo con app pierde su gracia: para eso es mejor uno programable de botones y más barato.",
+  },
+  {
+    q: "¿Sigue funcionando si se va internet o la luz?",
+    a: "Sí. Los horarios se guardan en el propio aparato, así que sigue dispensando aunque se caiga el WiFi; solo perderías el control remoto hasta que vuelva. Y para los cortes de luz llevan respaldo a pilas (normalmente 3 pilas tipo D, que se compran aparte): la comida no se salta. Lo que no podrás es programarlo desde el móvil mientras no haya conexión.",
+  },
+  {
+    q: "¿De verdad merece la pena la app frente a uno de botones?",
+    a: "Depende de tu rutina. La app compensa si viajas o tienes horarios cambiantes (ajustas raciones a distancia y recibes aviso si una comida falla) o si controlas el peso del gato al gramo. Si tu horario es fijo y solo quieres automatizar 2-3 comidas, un programable de botones con cuenco de acero cumple igual por bastante menos dinero.",
+  },
+];
+---
+
+<ComparativaPage
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  products={products}
+  faqs={faqs}
+  noindex={!active}
+>
+  <Fragment slot="intro">
+    <p>
+      En esta gama, el <strong>WiFi de verdad escasea</strong>: la mayoría de
+      comederos automáticos se programan con botones en el propio aparato, no
+      desde el móvil. Por eso aquí no inflamos la lista con modelos que no lo
+      son. El que sí controlas desde la app —y el que compraríamos— es el <a
+        href="/productos/petkit-fresh-element-solo-3l/"
+        >PETKIT Fresh Element Solo</a
+      >. Debajo lo comparamos con los dos <strong>programables sin app</strong> que
+      mejor relación calidad-precio dan, para que veas exactamente qué compra el sobreprecio
+      de conectarlo a internet.
+    </p>
+
+    <h2>¿Qué te da realmente la app?</h2>
+    <ul>
+      <li>
+        <strong>Control a distancia:</strong> cambias raciones y horarios desde el
+        móvil aunque no estés en casa (útil si viajas o tu horario baila).
+      </li>
+      <li>
+        <strong>Registro y avisos:</strong> ves cuándo ha comido y te avisa si una
+        comida no se ha dispensado —tranquilidad si el gato está solo.
+      </li>
+      <li>
+        <strong>Ajuste fino del peso:</strong> subir o bajar 5 g por ración sin tocar
+        el aparato, cómodo en dietas de control de peso.
+      </li>
+    </ul>
+
+    <h2>¿Cuándo NO necesitas app?</h2>
+    <p>
+      Si tu horario es fijo y solo quieres cubrir dos o tres comidas al día, un
+      <strong>programable de botones</strong> con cuenco de acero hace el mismo trabajo
+      por menos dinero. La app suma comodidad, no salud: lo que de verdad cuida al
+      gato es <strong>controlar la ración</strong>, el <strong
+        >cuenco de acero</strong
+      >
+      (mejor higiene y menos <a href="/acne-felino-cuencos-plastico/"
+        >acné felino</a
+      >) y el <strong>respaldo a pilas</strong> por si se va la luz. Si dudas cuántas
+      tomas necesita, mira <a href="/cuantas-veces-come-un-gato/"
+        >cuántas veces al día debe comer un gato</a
+      >.
+    </p>
+
+    <h2>Cuál elegir según tu caso</h2>
+    <ul>
+      <li>
+        <strong>Quiero controlarlo desde el móvil:</strong>
+        el <a href="/productos/petkit-fresh-element-solo-3l/"
+          >PETKIT Fresh Element Solo</a
+        > — app por WiFi, cubeta de acero 304 y registro de comidas.
+      </li>
+      <li>
+        <strong>Sin app, mejor precio con cuenco de acero:</strong>
+        el <a href="/productos/faroro-4l-comedero-acero/">Faroro 4L</a> — superventas,
+        con modo de alimentación lenta para gatos ansiosos.
+      </li>
+      <li>
+        <strong>Sin app, muy bien valorado y con USB-C:</strong>
+        el <a href="/productos/anykuu-4l-comedero-acero/">Anykuu 4L</a> — salida antiatasco
+        y tapa hermética con desecante.
+      </li>
+    </ul>
+    <p>
+      ¿Buscas el resto de opciones (multigato, gran capacidad, por gravedad)?
+      Están en nuestra <a href="/mejores-comederos-automaticos-gatos/"
+        >comparativa completa de comederos automáticos</a
+      >.
+    </p>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <div class="mt-10"><BadgeLegend /></div>
+    <section class="mt-10 space-y-10">
+      {products.map((p, i) => <ReviewCard product={p} rank={i + 1} />)}
+    </section>
+  </Fragment>
+</ComparativaPage>

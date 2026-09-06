@@ -79,6 +79,9 @@ export const CATEGORIES = [
     blurb: "Programables, por gravedad y con app: capacidad, frescura y limpieza.",
     hub: { title: "Comederos para gatos", path: "/comederos-para-gatos/" },
     comparativa: { title: "Mejores comederos automáticos para gatos 2026", path: "/mejores-comederos-automaticos-gatos/" },
+    extras: [
+      { title: "Mejores comederos automáticos con app y WiFi", path: "/mejores-comederos-automaticos-app-gatos/" },
+    ],
   },
 ];
 
@@ -102,6 +105,8 @@ export const GUIDES = [
     category: null,
   },
   { title: "Fuente de agua para gato renal o mayor: cuál y por qué", short: "Fuente para gato renal o mayor", path: "/fuente-agua-gato-renal-mayor/", category: "fuentes-agua" },
+  { title: "¿Cuántas veces al día debe comer un gato?", short: "Cuántas veces come un gato", path: "/cuantas-veces-come-un-gato/", category: "comederos-automaticos" },
+  { title: "Comedero automático vs por gravedad: ¿cuál necesita tu gato?", short: "Automático vs gravedad", path: "/comedero-automatico-vs-gravedad-gatos/", category: "comederos-automaticos" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

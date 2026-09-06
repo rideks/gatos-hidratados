@@ -17,6 +17,7 @@ for (const c of CATEGORIES) {
   if (inactiveSiloIds.has(c.silo)) {
     if (c.hub) INACTIVE_PATHS.add(c.hub.path);
     if (c.comparativa) INACTIVE_PATHS.add(c.comparativa.path);
+    for (const e of c.extras ?? []) INACTIVE_PATHS.add(e.path);
   }
 }
 for (const g of GUIDES) {

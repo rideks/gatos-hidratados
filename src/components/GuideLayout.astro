@@ -25,6 +25,8 @@ const {
   faqs = [],
   howto = null,
   fuentes = [],
+  section = "Hidratación", // ← nuevo (por defecto Hidratación)
+  noindex = false, // ← nuevo
 } = Astro.props;
 const url = new URL(seo.canonical, SITE.url).href;
 
@@ -53,7 +55,7 @@ const schema = graph(
     description: seo.description,
     datePublished,
     dateModified,
-    section: "Hidratación",
+    section,
     citations: fuentes,
   }),
   buildWebPage({
@@ -76,6 +78,7 @@ const schema = graph(
   description={seo.description}
   canonical={seo.canonical}
   type="article"
+  noindex={noindex}
   datePublished={datePublished}
   dateModified={dateModified}
 >
