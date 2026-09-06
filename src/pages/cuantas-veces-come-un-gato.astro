@@ -1,0 +1,145 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Sources from "../components/Sources.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "¿Cuántas veces al día debe comer un gato? Guía por edad",
+  description:
+    "Cuántas veces y cuánto debe comer un gato según edad y peso, por qué la comida libre engorda y cómo las raciones programadas ayudan al control de peso.",
+  canonical: "/cuantas-veces-come-un-gato/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos para gatos", path: "/comederos-para-gatos/" },
+  { name: "Cuántas veces come", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Cuántas veces al día debe comer un gato adulto?",
+    a: "Lo habitual son 2 comidas al día, pero repartir la ración diaria en 3-5 tomas pequeñas se acerca más a cómo come el gato por naturaleza y ayuda a controlar el peso. Lo que importa es la ración TOTAL del día, no el número de veces.",
+  },
+  {
+    q: "¿Puedo dejarle la comida siempre puesta (a libre demanda)?",
+    a: "Con pienso seco y un gato de interior, la comida libre es una de las causas más frecuentes de sobrepeso: muchos comen por aburrimiento, no por hambre. Si tu gato se autorregula bien puede valer; si tiende a engordar, mejor raciones medidas.",
+  },
+  {
+    q: "¿Cuántas veces come un gatito?",
+    a: "Más a menudo por su tamaño y crecimiento: 3-4 comidas al día hasta los ~6 meses, e ir espaciando a 2-3 al llegar a adulto. Sigue las pautas de tu veterinario y del pienso para gatitos.",
+  },
+  {
+    q: "¿Un comedero automático ayuda con el peso?",
+    a: "Puede ayudar mucho: reparte raciones exactas a horas fijas, evita el picoteo libre y permite varias comidas pequeñas aunque no estés en casa. No sustituye a calcular la ración con tu veterinario, pero facilita cumplirla.",
+  },
+];
+
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Feeding your cat or kitten",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/feeding-your-cat-or-kitten",
+  },
+  {
+    authors: "AAHA/AAFP",
+    title: "Feline Life Stage Guidelines",
+    source: "aaha.org",
+    url: "https://www.aaha.org/education/guidelines/",
+  },
+  {
+    authors: "Association for Pet Obesity Prevention",
+    title: "Pet obesity statistics",
+    source: "petobesityprevention.org",
+    url: "https://www.petobesityprevention.org/",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-08-28"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    "¿Cuántas veces debe comer mi gato?" tiene menos misterio del que parece,
+    pero la respuesta corta esconde lo que de verdad importa: no es tanto <em
+      >cuántas veces</em
+    > como
+    <strong>cuánto en total</strong> y <strong>cómo lo repartes</strong> — porque
+    de eso depende su peso, y el sobrepeso es hoy uno de los mayores problemas de
+    salud felina.
+  </p>
+
+  <KeyFacts
+    title="Lo esencial"
+    items={[
+      "<strong>Gato adulto:</strong> 2 comidas al día funcionan; repartir en <strong>3-5 tomas pequeñas</strong> se acerca más a su instinto y ayuda con el peso.",
+      "<strong>Lo que cuenta es la ración TOTAL diaria</strong>, no el número de veces. Calcúlala con tu veterinario y la etiqueta del pienso.",
+      "<strong>Comida libre (siempre puesta):</strong> causa nº1 de sobrepeso en gatos de interior.",
+      "<strong>Gatitos:</strong> 3-4 comidas/día hasta los ~6 meses; luego se espacian.",
+      "Un <strong>comedero automático</strong> ayuda a dar raciones exactas y varias comidas al día sin estar en casa.",
+    ]}
+  />
+
+  <h2>Cuántas veces, según la edad</h2>
+  <ul>
+    <li>
+      <strong>Gatitos (hasta ~6 meses):</strong> 3-4 comidas al día. Crecen rápido
+      y su estómago es pequeño.
+    </li>
+    <li>
+      <strong>Adultos:</strong> 2 comidas es lo práctico, pero 3-5 tomas pequeñas
+      imitan mejor su forma natural (en libertad comen 10-20 presas pequeñas al día).
+    </li>
+    <li>
+      <strong>Mayores o con problemas de salud:</strong> según indique el veterinario;
+      a veces conviene más frecuencia y raciones más pequeñas.
+    </li>
+  </ul>
+
+  <h2>Cuánto: la ración total es lo que manda</h2>
+  <p>
+    El número de comidas importa menos que <strong>cuánta comida al día</strong
+    >: depende del peso, la edad, si está esterilizado y su actividad. Usa la
+    tabla del pienso como punto de partida y
+    <strong>ajústala con tu veterinario</strong>. Reparte esa ración total entre
+    las tomas; no sumes comida por dar más veces.
+  </p>
+
+  <h2>Por qué la comida libre engorda</h2>
+  <p>
+    Dejar el cuenco siempre lleno es cómodo, pero para muchos gatos de interior
+    es la vía directa al
+    <strong>sobrepeso</strong>: comen por aburrimiento, no por hambre, y el
+    picoteo suma calorías sin que te des cuenta. Y la obesidad felina no es
+    estética: eleva el riesgo de diabetes, artrosis y problemas urinarios. <strong
+      >Medir las raciones</strong
+    > es la palanca más sencilla para prevenirlo.
+  </p>
+
+  <h2>Dónde entra un comedero automático</h2>
+  <p>
+    Aquí un <a href="/comederos-para-gatos/">comedero automático</a> resuelve el problema
+    real: reparte <strong>raciones exactas a horas fijas</strong>, evita la
+    comida libre y permite dar
+    <strong>varias comidas pequeñas</strong> aunque trabajes fuera o te ausentes un
+    fin de semana. Para un gato con tendencia a engordar, o que come demasiado rápido,
+    programar porciones pequeñas y frecuentes es justo lo que necesita. Si te planteas
+    uno, mira nuestra
+    <a href="/mejores-comederos-automaticos-gatos/"
+      >comparativa de mejores comederos automáticos</a
+    >.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>

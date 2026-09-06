@@ -1,0 +1,209 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Sources from "../components/Sources.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "Comedero automático vs por gravedad: ¿cuál necesita tu gato?",
+  description:
+    "Comedero automático (programable) o por gravedad para gatos: la diferencia real es el control de la ración. Qué es mejor según el peso de tu gato, si viajas y cuántos gatos tienes.",
+  canonical: "/comedero-automatico-vs-gravedad-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Automático vs gravedad", path: seo.canonical },
+];
+
+const fuentes = [
+  {
+    authors: "WSAVA Global Nutrition Committee",
+    title: "Global Nutrition Guidelines",
+    source: "wsava.org",
+    url: "https://wsava.org/global-guidelines/global-nutrition-guidelines/",
+  },
+  {
+    authors: "Association for Pet Obesity Prevention",
+    title: "Pet Obesity Prevalence Survey",
+    source: "petobesityprevention.org",
+    url: "https://www.petobesityprevention.org/",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Consejos sobre alimentación y peso del gato",
+    source: "icatcare.org",
+    url: "https://icatcare.org/advice/",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Es malo un comedero por gravedad?",
+    a: "Malo no es: es cómodo y barato, y funciona sin electricidad. Su límite es que no controla la ración —va soltando pienso a demanda—, así que no sirve para gatos que comen sin freno ni para dietas de control de peso. Para un gato que autorregula bien lo que come, cumple; para uno que engorda, mejor un programable.",
+  },
+  {
+    q: "¿Un comedero automático sirve para comida húmeda?",
+    a: "Casi ninguno. La gran mayoría, tanto programables como por gravedad, solo dispensan pienso seco. Para húmeda necesitas un comedero automático refrigerado específico, más caro y con menos capacidad. Si tu gato come húmeda, comprueba que el modelo lo indique expresamente.",
+  },
+  {
+    q: "¿Y si se va la luz con un comedero automático?",
+    a: "Los buenos llevan respaldo a pilas (normalmente 3 pilas tipo D, que se compran aparte): si se corta la corriente, la comida no se salta. Los horarios se guardan en el propio aparato, así que sigue funcionando; solo perderías el control desde la app hasta que vuelva el WiFi. El de gravedad, al no llevar electricidad, ni se entera del apagón.",
+  },
+  {
+    q: "¿Cuál es mejor para dos gatos?",
+    a: "Un programable de doble cuenco, que reparte la ración a cada gato por separado. Un comedero por gravedad no controla cantidades, así que el gato más rápido o más grande se come lo del otro. Para multigato, el control de la ración es justamente lo que necesitas.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-08-29"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    Cuando buscas un comedero para dejar a tu gato comiendo solo, te topas con
+    dos familias que parecen lo mismo y no lo son: el <strong
+      >comedero automático programable</strong
+    > y el <strong>comedero por gravedad</strong>. La diferencia de fondo no es
+    el precio ni las pilas: es <strong
+      >si quieres controlar la ración o no</strong
+    >. Eso decide casi todo lo demás.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "<strong>Programable</strong>: reparte raciones exactas a horas fijas. Ideal si tu gato come sin freno, hace <strong>dieta</strong> o tenéis <strong>varios gatos</strong>.",
+      "<strong>Por gravedad</strong>: va soltando pienso a demanda, sin electricidad ni programación. Barato y sencillo, pero <strong>sin control de cantidad</strong>.",
+      "El punto clave para la salud es la <strong>ración</strong>: el sobrepeso es el problema nutricional más común en gatos de interior.",
+      "Casi todos, de un tipo u otro, son <strong>solo para pienso seco</strong>.",
+    ]}
+  />
+
+  <h2>Cómo funciona cada uno</h2>
+  <p>
+    Un <strong>comedero automático programable</strong> tiene un motor y un temporizador
+    (o una app): tú fijas cuántas comidas al día y de qué tamaño, y el aparato deja
+    caer esa cantidad exacta a la hora marcada. Es el que ves en nuestra <a
+      href="/mejores-comederos-automaticos-gatos/"
+      >comparativa de comederos automáticos</a
+    >.
+  </p>
+  <p>
+    Un <strong>comedero por gravedad</strong> no tiene electrónica: es un depósito
+    que va rellenando el cuenco por su propio peso a medida que el gato come. Mientras
+    quede pienso en la tolva, el cuenco nunca está vacío. El <a
+      href="/productos/nobleza-2en1-comedero-bebedero/">Nobleza 2 en 1</a
+    > de nuestro catálogo es de este tipo (además con depósito de agua).
+  </p>
+
+  <h2>La diferencia que de verdad importa: la ración</h2>
+  <p>
+    Aquí se separan de verdad. El programable <strong
+      >controla cuánto come tu gato</strong
+    >; el de gravedad, no. Y eso pesa en la salud: el <strong>sobrepeso</strong>
+    es el problema nutricional más frecuente en gatos de interior, y la palanca principal
+    para prevenirlo es <strong>ajustar la cantidad diaria</strong>. Si tu gato
+    es de los que se termina el cuenco en cuanto lo ve, un dispensador por
+    gravedad le da barra libre; un programable le reparte lo justo.
+  </p>
+  <p>
+    Hay un segundo motivo: los gatos que <strong>comen demasiado rápido</strong>
+    a veces regurgitan la comida al poco. Repartir la ración diaria en varias tomas
+    pequeñas —lo que hace un programable— ayuda a evitarlo. Si dudas cuántas tomas
+    necesita, mira <a href="/cuantas-veces-come-un-gato/"
+      >cuántas veces al día debe comer un gato</a
+    >.
+  </p>
+
+  <h2>Frescura, higiene y agua</h2>
+  <p>
+    En el <strong>programable</strong>, el pienso está guardado en una tolva
+    cerrada (muchos con junta hermética y desecante) y solo sale la ración del
+    momento: se mantiene más crujiente. En el de <strong>gravedad</strong>, el
+    cuenco está siempre lleno y expuesto al aire, así que las últimas croquetas
+    llevan horas al descubierto. En cuanto a <strong>higiene del cuenco</strong
+    >, lo que manda es el material: el <a href="/acne-felino-cuencos-plastico/"
+      >acero inoxidable</a
+    > es más fácil de limpiar y mejor contra el acné felino que el plástico, y lo
+    encuentras en varios programables.
+  </p>
+  <p>
+    Ojo con un malentendido habitual: algunos comederos por gravedad son <strong
+      >2 en 1</strong
+    > e incluyen depósito de agua. Ese agua queda <strong>estancada</strong>,
+    que es justo lo que menos anima a beber a un gato. Si te preocupa la
+    hidratación, el agua es mejor servirla en una <a
+      href="/fuentes-de-agua-para-gatos/">fuente con bomba</a
+    >, no en el depósito del comedero.
+  </p>
+
+  <h2>Electricidad, pilas y averías</h2>
+  <p>
+    El de <strong>gravedad</strong> gana en simplicidad: sin motor, no hay nada que
+    se estropee ni corriente que dependa. El <strong>programable</strong>, a
+    cambio, ofrece control, y los buenos cubren su punto débil con <strong
+      >respaldo a pilas</strong
+    >: si se va la luz, la comida no se salta. Es la casilla que conviene
+    verificar antes de comprar uno automático.
+  </p>
+
+  <h2>Precio</h2>
+  <p>
+    Los de <strong>gravedad</strong> son los más baratos (rondan los 20-25 €). Un
+    <strong>programable</strong> con cuenco de acero se mueve sobre los 35 €, y los
+    que suman <strong>app y WiFi</strong> suben de ahí. No es tirar el dinero: pagas
+    por el control de la ración y por la comodidad de programar, que es exactamente
+    lo que un gravedad no hace.
+  </p>
+
+  <h2>Cuál elegir según tu caso</h2>
+  <ul>
+    <li>
+      <strong>Tu gato engorda o hace dieta:</strong> programable, sin duda —es la
+      única forma de controlar la cantidad. Empieza por la <a
+        href="/mejores-comederos-automaticos-gatos/">comparativa</a
+      >.
+    </li>
+    <li>
+      <strong>Quieres controlarlo desde el móvil:</strong> un programable con app
+      como el <a href="/productos/petkit-fresh-element-solo-3l/"
+        >PETKIT Fresh Element Solo</a
+      >, o mira los <a href="/mejores-comederos-automaticos-app-gatos/"
+        >comederos con app y WiFi</a
+      >.
+    </li>
+    <li>
+      <strong>Buen precio con cuenco de acero:</strong> el <a
+        href="/productos/faroro-4l-comedero-acero/">Faroro 4L</a
+      >, programable y con modo de alimentación lenta.
+    </li>
+    <li>
+      <strong>Varios gatos:</strong> programable de doble cuenco; un gravedad no reparte
+      y el más rápido gana.
+    </li>
+    <li>
+      <strong>Ausencia corta, gato que autorregula, sin complicarte:</strong> un
+      <a href="/productos/nobleza-2en1-comedero-bebedero/">gravedad 2 en 1</a> cumple
+      por poco dinero —recordando que no controla raciones y que el agua queda estancada.
+    </li>
+  </ul>
+
+  <p>
+    ¿Sigues con dudas de modelo concreto? En la <a href="/comederos-para-gatos/"
+      >guía de comederos para gatos</a
+    > tienes todos los que hemos mirado, con sus pros y sus contras.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>
