@@ -135,26 +135,41 @@ export default function ProductMedia({ product }) {
         </div>
 
         {/* CTA afiliado */}
-        <a
-          href={buy.amazonUrl || "#"}
-          target="_blank"
-          rel="sponsored nofollow noopener"
-          aria-disabled={!buy.amazonUrl}
-          onClick={(e) => {
-            if (!buy.amazonUrl) {
-              e.preventDefault();
-              return;
-            }
-            trackAffiliateClick({ location: "buybox", productName: product.name, price: buy.price });
-          }}
-          className={`mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full text-white font-bold px-5 py-3 motion-safe:transition ${buy.amazonUrl ? "btn-accent hover:bg-brand-700" : "bg-slate-300 pointer-events-none"
-            }`}
-        >
-          Ver en Amazon <ExternalLink size={16} />
-        </a>
-        <p className="mt-2 text-xs text-slate-400 text-center">
-          Precio orientativo. El definitivo se ve en Amazon.
-        </p>
+        {/* CTA afiliado / Agotado */}
+        {product.availability === "OutOfStock" ? (
+          <div className="mt-4">
+            <div className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-200 text-slate-500 font-bold px-5 py-3">
+              Agotado en Amazon
+            </div>
+            <p className="mt-2 text-xs text-slate-500 text-center">
+              Ahora mismo sin stock. Mira las alternativas que recomendamos más abajo.
+            </p>
+          </div>
+        ) : (
+          <>
+            <a
+              href={buy.amazonUrl || "#"}
+              target="_blank"
+              rel="sponsored nofollow noopener"
+              aria-disabled={!buy.amazonUrl}
+              onClick={(e) => {
+                if (!buy.amazonUrl) {
+                  e.preventDefault();
+                  return;
+                }
+                trackAffiliateClick({ location: "buybox", productName: product.name, price: buy.price });
+              }}
+              className={`mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full text-white font-bold px-5 py-3 motion-safe:transition ${buy.amazonUrl ? "btn-accent hover:bg-brand-700" : "bg-slate-300 pointer-events-none"
+                }`}
+            >
+              Ver en Amazon <ExternalLink size={16} />
+            </a>
+            <p className="mt-2 text-xs text-slate-400 text-center">
+              Precio orientativo. El definitivo se ve en Amazon.
+            </p>
+          </>
+        )}
+
       </div>
     </div>
   );

@@ -1,0 +1,197 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Sources from "../components/Sources.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title:
+    "Tipos de arena para gatos: aglomerante, sílice o vegetal (cuál es mejor)",
+  description:
+    "Aglomerante de bentonita, cristales de sílice o vegetal (tofu, maíz, madera): comparamos polvo, olor, salud, si se tiran al váter y coste. Con criterio veterinario, sin humo.",
+  canonical: "/tipos-de-arena-para-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Higiene y areneros", path: "/higiene-del-gato/" },
+  { name: "Tipos de arena", path: seo.canonical },
+];
+
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Consejos sobre el arenero y la arena del gato",
+    source: "icatcare.org",
+    url: "https://icatcare.org/advice/",
+  },
+  {
+    authors: "Cornell Feline Health Center",
+    title: "Feline behavior problems: house soiling",
+    source: "vet.cornell.edu",
+    url: "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center",
+  },
+  {
+    authors: "American Association of Feline Practitioners (AAFP)",
+    title: "Litter box / house-soiling guidelines",
+    source: "catvets.com",
+    url: "https://catvets.com/guidelines/practice-guidelines",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Cuál es la arena más sana para el gato?",
+    a: "La que combine poco polvo (mejor para las vías respiratorias), nada de perfume y una textura fina que a tu gato le guste usar. Ese trío importa más que el tipo concreto: una aglomerante de buena calidad, una vegetal de tofu poco polvorienta o una de sílice sin fragancia pueden ser buenas opciones. La peor arena es la que tu gato evita.",
+  },
+  {
+    q: "¿Se puede tirar la arena al váter?",
+    a: "Solo algunas vegetales (tofu, ciertas de madera o papel) indican que son desechables por el inodoro, y aun así conviene hacerlo en poca cantidad para no atascar. La aglomerante de bentonita y la de sílice NO se tiran al váter: se apelmazan y atascan las tuberías. Ante la duda, a la basura.",
+  },
+  {
+    q: "¿La arena de sílice es peligrosa si el gato la ingiere?",
+    a: "El gel de sílice de las arenas para gatos no es tóxico en las cantidades que un gato pueda tragar al acicalarse, pero no está pensado para comerse. El riesgo real es mayor en gatitos, que exploran con la boca: en cachorros suele recomendarse arena vegetal o aglomerante de grano fino hasta que dejan de mordisquearlo todo. Si tu gato ingiere arena de forma habitual, coméntalo con tu veterinario.",
+  },
+  {
+    q: "¿La arena perfumada es mala?",
+    a: "Para el humano huele bien; para el gato, su olfato es mucho más fino y los perfumes fuertes le resultan desagradables. Es una causa habitual de que un gato deje de usar el arenero. Si quieres controlar el olor, mejor una arena sin fragancia con buen aglomerado y limpieza diaria que una perfumada.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-13"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Higiene"
+  noindex={!SILOS.higiene.active}
+>
+  <p>
+    Elegir arena parece trivial y no lo es: es lo que tu gato pisa y huele
+    varias veces al día, y una mala elección acaba en un gato que <strong
+      >deja de usar el arenero</strong
+    > o en polvo respirable por toda la casa. Hay tres grandes familias —<strong
+      >aglomerante</strong
+    >, <strong>sílice</strong> y <strong>vegetal</strong>— y ninguna es "la
+    mejor" para todos. Vamos a compararlas poniendo la <strong
+      >salud primero</strong
+    >.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "<strong>Aglomerante (bentonita):</strong> mejor control de olor y aglomerado, permite vigilar la orina. Contra: puede hacer polvo y no se tira al váter.",
+      "<strong>Sílice (cristales):</strong> muy absorbente y poco olor, dura semanas. Contra: textura que no gusta a todos y no apta para tirar al váter.",
+      "<strong>Vegetal (tofu, maíz, madera):</strong> baja en polvo, ligera y a veces desechable por el váter. Contra: control de olor variable y suele costar más.",
+      "Lo que más importa a la salud: <strong>poco polvo</strong>, <strong>sin perfume</strong> y textura <strong>fina</strong> que tu gato acepte.",
+    ]}
+  />
+
+  <h2>1. Arena aglomerante (bentonita)</h2>
+  <p>
+    Es la más usada. Al contacto con la orina forma una bola sólida que retiras
+    entera, dejando el resto limpio. Sus puntos fuertes: <strong
+      >buen control de olor</strong
+    >, limpieza cómoda y —una ventaja de salud infravalorada— que al aglomerar
+    bien te deja <strong
+      >ver el tamaño y la frecuencia de las bolas de orina</strong
+    >, señales tempranas de problemas urinarios. Su lado flojo: muchas hacen <strong
+      >polvo</strong
+    > (malo para las vías respiratorias del gato y las tuyas) y <strong
+      >no se puede tirar al váter</strong
+    > porque atasca. Si eliges aglomerante, busca una etiquetada como "baja en polvo"
+    y sin perfume.
+  </p>
+
+  <h2>2. Arena de sílice (cristales)</h2>
+  <p>
+    Son perlas de gel de sílice muy absorbentes: retienen el líquido y
+    neutralizan el olor durante semanas, así que se cambia con menos frecuencia
+    (solo retiras los sólidos). Pesa poco y suele hacer poco polvo. Sus contras:
+    la <strong>textura de cristal no gusta a todos los gatos</strong> (algunos la
+    rechazan al pisarla), no aglomera la orina —así que pierdes esa señal de vigilancia—
+    y <strong>tampoco va al váter</strong>. Un matiz de salud: en <strong
+      >gatitos</strong
+    >, que muerden y tragan lo que exploran, es preferible evitarla hasta que
+    maduran.
+  </p>
+
+  <h2>3. Arena vegetal (tofu, maíz, madera, papel)</h2>
+  <p>
+    La familia que más ha crecido, y la que mejor encaja con un enfoque de salud
+    bien hecha: suele ser <strong>muy baja en polvo</strong>, ligera y, en el
+    caso del <strong>tofu</strong> y algunas de madera/papel, <strong
+      >desechable por el váter</strong
+    > en pequeñas cantidades. Aglomera (las de tofu bastante bien) y es más suave
+    para las patas. Contras honestos: el <strong
+      >control de olor es variable</strong
+    > según la marca, algunas se reblandecen con humedad y en general <strong
+      >cuestan más</strong
+    > por uso. Es una buena primera opción para gatitos y para gatos (o personas)
+    sensibles al polvo.
+  </p>
+
+  <h2>Comparativa rápida</h2>
+  <ul>
+    <li>
+      <strong>Menos polvo (salud respiratoria):</strong> vegetal y sílice &gt; aglomerante
+      (salvo las "low dust").
+    </li>
+    <li>
+      <strong>Control de olor:</strong> aglomerante y sílice &gt; vegetal (depende
+      de marca).
+    </li>
+    <li>
+      <strong>Vigilar la orina:</strong> aglomerante y tofu (aglomeran) &gt; sílice
+      (no aglomera).
+    </li>
+    <li>
+      <strong>Tirar al váter:</strong> solo algunas vegetales; nunca bentonita ni
+      sílice.
+    </li>
+    <li>
+      <strong>Para gatitos:</strong> vegetal o aglomerante de grano fino; evita sílice
+      mientras muerdan.
+    </li>
+    <li><strong>Coste por uso:</strong> aglomerante &lt; sílice ≈ vegetal.</li>
+  </ul>
+
+  <h2>Los 3 criterios de salud que mandan sobre el tipo</h2>
+  <p>
+    Por encima de la familia que elijas, estos tres factores son los que más
+    afectan a la salud y a que tu gato la acepte:
+  </p>
+  <ol>
+    <li>
+      <strong>Poco polvo.</strong> El polvo de arena irrita las vías respiratorias
+      y empeora en gatos con asma felino. "Low dust" no es marketing vacío aquí.
+    </li>
+    <li>
+      <strong>Sin perfume.</strong> El olfato del gato es muy superior al nuestro;
+      las fragancias fuertes le echan del arenero. Controla el olor con limpieza,
+      no con perfume.
+    </li>
+    <li>
+      <strong>Textura fina.</strong> La mayoría de gatos prefieren grano fino y arenoso,
+      parecido a lo que usarían en la naturaleza. Un cambio de textura brusco es motivo
+      frecuente de rechazo.
+    </li>
+  </ol>
+
+  <h2>Cómo cambiar de arena sin que tu gato la rechace</h2>
+  <p>
+    Si cambias de tipo, hazlo <strong>de forma gradual</strong>: mezcla un poco
+    de la nueva con la habitual y ve subiendo la proporción a lo largo de una o
+    dos semanas. Un cambio de golpe —sobre todo de textura o de perfume— es una
+    de las causas más típicas de que un gato empiece a hacer sus necesidades
+    fuera del arenero.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>

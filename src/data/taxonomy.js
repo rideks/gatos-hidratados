@@ -10,7 +10,7 @@
 // agua + filtros). "Higiene" (arena/areneros) y "Alimentación" quedan apagados
 // hasta ganar autoridad en el primer clúster.
 // ============================================================================
-import { Droplets, Filter, Trash2, Utensils, UtensilsCrossed } from "lucide-react";
+import { Droplets, Filter, Trash2, Utensils, UtensilsCrossed, Layers } from "lucide-react";
 
 // ── Silos ───────────────────────────────────────────────────────────────────
 // URLs PLANAS: el silo no va en la carpeta de la URL; se comunica con
@@ -83,6 +83,25 @@ export const CATEGORIES = [
       { title: "Mejores comederos automáticos con app y WiFi", path: "/mejores-comederos-automaticos-app-gatos/" },
     ],
   },
+  // ── HIGIENE (silo apagado) ────────────────────────────────────────────────
+  {
+    id: "arena-gatos",
+    silo: "higiene",
+    name: "Arena para gatos",
+    icon: Layers,
+    blurb: "Aglomerante, sílice o vegetal: cuál es más sana, menos polvo y mejor control de olor.",
+    hub: { title: "Arena para gatos", path: "/arena-para-gatos/" },
+    comparativa: { title: "Mejor arena para gatos 2026", path: "/mejor-arena-para-gatos/" },
+  },
+  {
+    id: "areneros",
+    silo: "higiene",
+    name: "Areneros",
+    icon: Trash2,
+    blurb: "Abierto, cerrado o autolimpiable: tamaño, número por gato y ubicación.",
+    hub: { title: "Areneros para gatos", path: "/areneros-para-gatos/" },
+    comparativa: { title: "Mejor arenero para gatos 2026", path: "/mejor-arenero-para-gatos/" },
+  },
 ];
 
 // ── Guías informativas (registro editorial) ─────────────────────────────────
@@ -107,6 +126,7 @@ export const GUIDES = [
   { title: "Fuente de agua para gato renal o mayor: cuál y por qué", short: "Fuente para gato renal o mayor", path: "/fuente-agua-gato-renal-mayor/", category: "fuentes-agua" },
   { title: "¿Cuántas veces al día debe comer un gato?", short: "Cuántas veces come un gato", path: "/cuantas-veces-come-un-gato/", category: "comederos-automaticos" },
   { title: "Comedero automático vs por gravedad: ¿cuál necesita tu gato?", short: "Automático vs gravedad", path: "/comedero-automatico-vs-gravedad-gatos/", category: "comederos-automaticos" },
+  { title: "Tipos de arena para gatos: aglomerante, sílice o vegetal (cuál es mejor)", short: "Tipos de arena para gatos", path: "/tipos-de-arena-para-gatos/", category: "arena-gatos" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

@@ -16,6 +16,7 @@ const img = getMainImage(product);
 const price = getPriceLabel(product);
 const tags = getReadableTags(product.tags, 3);
 const disc = getDiscount(product);
+const soldOut = product.availability === "OutOfStock";
 const href = `/productos/${product.slug}/`;
 const medalCls =
   rank === 1
@@ -52,6 +53,15 @@ const medalCls =
     >
       <ProductImage src={img} alt={product.name} pawSize="w-12 h-12" />
     </div>
+    {
+      soldOut && (
+        <div class="absolute inset-0 z-[5] bg-white/55 flex items-center justify-center">
+          <span class="u-data text-xs font-bold uppercase tracking-wide text-ink bg-white/90 border border-line rounded-full px-3 py-1 shadow-sm">
+            Agotado
+          </span>
+        </div>
+      )
+    }
   </a>
   <div class="p-4 flex flex-col flex-1">
     <div class="flex items-center justify-between gap-2">
@@ -74,11 +84,22 @@ const medalCls =
     }
     <div class="mt-auto pt-4 flex items-start justify-between gap-3">
       <div class="min-w-0">
-        <div class="u-data text-lg font-semibold text-ink whitespace-nowrap">
+        <div
+          class:list={[
+            "u-data text-lg font-semibold whitespace-nowrap",
+            soldOut ? "text-ink-400" : "text-ink",
+          ]}
+        >
           {price}
         </div>
         {
-          disc && (
+          soldOut ? (
+            <div class="mt-1 whitespace-nowrap">
+              <span class="u-data text-[11px] font-semibold text-slate-500 bg-slate-100 rounded px-1.5 py-0.5">
+                Agotado
+              </span>
+            </div>
+          ) : disc ? (
             <div class="flex items-center gap-1.5 mt-1 whitespace-nowrap">
               <span class="u-data text-xs text-ink-400 line-through">
                 {formatEUR(disc.original)}
@@ -87,7 +108,7 @@ const medalCls =
                 −{disc.pct}%
               </span>
             </div>
-          )
+          ) : null
         }
       </div>
       <a

@@ -42,7 +42,14 @@ import {
   buildFaqPage,
   graph,
 } from "../../utils/schema.js";
-import { ArrowRight, Star, ShieldCheck, Target, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Star,
+  ShieldCheck,
+  Target,
+  Sparkles,
+  RefreshCw,
+} from "lucide-react";
 
 export function getStaticPaths() {
   return productos.map((product) => ({
@@ -222,6 +229,35 @@ const schema = graph(
           title="Complétalo con su recambio"
         />
       </div>
+
+      <!-- Mantenimiento: enlace contextual a la guía de frecuencia (solo filtros) -->
+      {
+        product.subcategory === "filtros-fuente" && guia && (
+          <section class="mt-6">
+            <div class="flex items-start gap-3 rounded-xl border border-brand-200 bg-brand-50 p-5">
+              <span class="inline-flex bg-brand-600 text-white p-2 rounded-lg shrink-0">
+                <RefreshCw className="w-5 h-5" />
+              </span>
+              <div>
+                <p class="text-xs font-bold text-brand-700 uppercase tracking-wide">
+                  Mantenimiento
+                </p>
+                <p class="text-slate-800 mt-0.5">
+                  Cámbialo <strong>cada 2-4 semanas</strong> (cada 1-2 con
+                  varios gatos). Todo el detalle en{" "}
+                  <a
+                    href={guia.path}
+                    class="font-semibold text-brand-700 underline underline-offset-2"
+                  >
+                    cada cuánto cambiar el filtro de la fuente
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </section>
+        )
+      }
 
       <!-- Reseña editorial -->
       <section class="mt-10">
