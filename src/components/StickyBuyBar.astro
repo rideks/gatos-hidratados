@@ -18,12 +18,20 @@ const { product } = Astro.props;
         {product.price} €
       </p>
     </div>
-    <AffiliateButton
-      href={product.amazonUrl}
-      productName={product.name}
-      price={product.price}
-      location="sticky-bar"
-      label="Ver en Amazon"
-    />
+    {
+      product.availability === "OutOfStock" ? (
+        <span class="btn bg-slate-200 text-slate-500 pointer-events-none">
+          Agotado
+        </span>
+      ) : (
+        <AffiliateButton
+          href={product.amazonUrl}
+          productName={product.name}
+          price={product.price}
+          location="sticky-bar"
+          label="Ver en Amazon"
+        />
+      )
+    }
   </div>
 </div>

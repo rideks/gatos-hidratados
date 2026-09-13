@@ -1,0 +1,167 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeaderApp from "../components/HeaderApp.astro";
+import FooterApp from "../components/FooterApp.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import TrustBanner from "../components/TrustBanner.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Schema from "../components/Schema.astro";
+import { SILOS, CATEGORIES, GUIDES } from "../data/taxonomy.js";
+import { SITE } from "../config/site.js";
+import {
+  buildArticle,
+  buildWebPage,
+  buildBreadcrumb,
+  buildFaqPage,
+  graph,
+} from "../utils/schema.js";
+import { ArrowRight, Trash2 } from "lucide-react";
+
+const canonical = "/higiene-del-gato/";
+const url = new URL(canonical, SITE.url).href;
+const active = SILOS.higiene.active;
+const categorias = CATEGORIES.filter((c) => c.silo === "higiene");
+const guias = GUIDES.filter((g) => categorias.some((c) => c.id === g.category));
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Higiene y areneros", path: canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Cuál es la arena más sana para un gato?",
+    a: "No hay una única respuesta, pero sí criterios de salud claros: baja en polvo (mejor para las vías respiratorias del gato y las tuyas), sin perfume (los gatos rechazan los aromas fuertes) y de grano fino, que es la textura que la mayoría de gatos prefiere. Entre aglomerante, sílice y vegetal, cada una tiene ventajas; lo importante es que sea poco polvorienta y que a tu gato le guste usarla.",
+  },
+  {
+    q: "¿Cuántos areneros debe haber en casa?",
+    a: "La regla veterinaria de referencia es 'un arenero por gato, más uno' (n+1). Con dos gatos, tres areneros, en sitios distintos. Tener pocos o mal colocados es una de las causas más frecuentes de que un gato deje de usar el arenero.",
+  },
+  {
+    q: "¿El arenero tiene algo que ver con los problemas urinarios?",
+    a: "De forma indirecta, sí. Un arenero sucio, escaso o mal ubicado hace que el gato aguante y orine menos, y eso se relaciona con la cistitis y con problemas de vías urinarias. Además, una arena que aglomera bien te permite vigilar el tamaño y la frecuencia de las bolas de orina, señales tempranas de que algo va mal.",
+  },
+];
+
+const schema = graph(
+  buildArticle({
+    url,
+    headline: "Higiene y areneros del gato: arena, cajas y salud, sin humo",
+    description:
+      "Qué arena y qué arenero son mejores para la salud de tu gato: polvo, olor, número de areneros y su relación con las vías urinarias.",
+    datePublished: "2026-09-13",
+    dateModified: "2026-09-13",
+    section: "Higiene",
+    citations: [],
+  }),
+  buildWebPage({
+    url,
+    name: "Higiene y areneros del gato",
+    description: "Guía pilar de higiene: arena y areneros para gatos.",
+    breadcrumbId: `${url}#breadcrumb`,
+    mainEntityId: `${url}#article`,
+    datePublished: "2026-09-13",
+    dateModified: "2026-09-13",
+  }),
+  buildBreadcrumb(breadcrumbs, { id: `${url}#breadcrumb` }),
+  buildFaqPage(faqs, { id: `${url}#faq` }),
+);
+---
+
+<Layout
+  title="Higiene y areneros del gato: arena, cajas y salud, sin humo"
+  description="Qué arena y qué arenero son mejores para la salud de tu gato: polvo, olor, número de areneros y su relación con las vías urinarias. Con criterio, no marketing."
+  canonical={canonical}
+  type="article"
+  noindex={!active}
+  datePublished="2026-09-13"
+  dateModified="2026-09-13"
+>
+  <Schema schema={schema} />
+  <HeaderApp />
+
+  <PageHeader
+    eyebrow="Silo · Higiene"
+    title="Higiene y areneros del gato"
+    description="Arena y areneros elegidos por salud: menos polvo, sin perfumes y pensados para que tu gato quiera usarlos. Con rigor y fuentes, no con humo."
+  >
+    <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
+  </PageHeader>
+
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    {
+      !active && (
+        <div class="mb-8 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+          <strong>Sección en construcción.</strong> Este silo está montado pero
+          apagado (no aparece en menús ni buscadores). Se activa con{" "}
+          <code>SILOS.higiene.active = true</code>.
+        </div>
+      )
+    }
+
+    <KeyFacts
+      title="Lo esencial en salud"
+      items={[
+        "Prioriza arena <strong>baja en polvo</strong>: cuida las vías respiratorias del gato (y las tuyas).",
+        "<strong>Sin perfume</strong>: los aromas fuertes hacen que muchos gatos dejen de usar el arenero.",
+        "Regla <strong>n+1</strong>: un arenero por gato, más uno, en sitios distintos.",
+        "Una arena que <strong>aglomera bien</strong> te deja vigilar la orina — señal temprana de problemas urinarios.",
+      ]}
+    />
+
+    <article class="prose prose-slate max-w-none">
+      <p>
+        El arenero es, junto con el agua, el rincón que más dice sobre la salud
+        de un gato — y el que peor se elige, casi siempre guiándose por el
+        precio o por el olor para el humano. Aquí lo enfocamos al revés: <strong
+          >primero la salud del gato</strong
+        >, después la comodidad. Menos polvo, nada de perfumes, la textura que
+        prefieren y los areneros suficientes y bien colocados.
+      </p>
+
+      <h2>Las dos decisiones que importan</h2>
+      <p>
+        <strong>La arena (el sustrato).</strong> Aglomerante de bentonita, cristales
+        de sílice o vegetal (tofu, maíz, madera): cambian en polvo, control de olor,
+        si se pueden tirar al váter, cuánto se pega a las patas y su impacto si el
+        gato la ingiere. Lo desglosamos, con salud por delante, en <a
+          href="/tipos-de-arena-para-gatos/">tipos de arena para gatos</a
+        >.
+      </p>
+      <p>
+        <strong>El arenero (la caja).</strong> Abierto, cerrado o autolimpiable; tamaño,
+        altura de entrada para gatos mayores, número por gato y —lo que más falla—
+        dónde se coloca. Un buen arenero mal ubicado no se usa.
+      </p>
+
+      <VetDisclaimer />
+
+      {guias.length > 0 && <h2>Guías de esta sección</h2>}
+    </article>
+
+    {
+      guias.length > 0 && (
+        <div class="not-prose mt-4">
+          <ul class="space-y-2">
+            {guias.map((g) => (
+              <li>
+                <a
+                  href={g.path}
+                  class="inline-flex items-center gap-2 text-slate-700 hover:text-brand-700"
+                >
+                  <Trash2 className="w-4 h-4 text-brand-500" /> {g.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <div class="mt-12"><TrustBanner /></div>
+  </main>
+
+  <FooterApp />
+</Layout>

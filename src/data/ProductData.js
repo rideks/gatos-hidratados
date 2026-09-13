@@ -10,13 +10,13 @@ export * from "./productTags.js";
 import { getCategory, isCategoryId } from "./taxonomy.js";
 import { aguaProducts } from "./products/agua.js";
 import { comederosProducts } from "./products/comederos.js";
-// import { higieneProducts } from "./products/higiene.js";           // futuro
+import { higieneProducts } from "./products/higiene.js";           // futuro
 // import { alimentacionProducts } from "./products/alimentacion.js"; // futuro
 
 export const productos = [
   ...aguaProducts,
   ...comederosProducts,
-  // ...higieneProducts,
+  ...higieneProducts,
   // ...alimentacionProducts,
 ];
 
