@@ -7,7 +7,7 @@ import BestPick from "../components/BestPick.astro";
 import { getBySubcategory, getBySilo } from "../data/ProductData.js";
 import { getEditorialScore } from "../data/EditorialScores.js";
 import { getMainImage } from "../utils/product.js";
-import { CATEGORIES, GUIDES, SILOS } from "../data/taxonomy.js";
+import { CATEGORIES, SILOS, getActiveGuides } from "../data/taxonomy.js";
 import { SITE } from "../config/site.js";
 import {
   ArrowRight,
@@ -28,6 +28,7 @@ const destacados = getBySilo("hidratacion")
 const comparativas = CATEGORIES.filter(
   (c) => c.comparativa && SILOS[c.silo]?.active,
 );
+const guias = getActiveGuides();
 
 // Producto para la "tarjeta de puntuación" del hero (el mejor valorado).
 const heroPick = [...fuentes]
@@ -369,7 +370,7 @@ const criterios = [
       </div>
       <div class="grid sm:grid-cols-3 gap-4 mt-8">
         {
-          GUIDES.map((g, i) => (
+          guias.map((g, i) => (
             <a href={g.path} class="card card-hover p-6 group flex flex-col">
               <span class="u-data text-xs text-brand-400">
                 {String(i + 1).padStart(2, "0")}

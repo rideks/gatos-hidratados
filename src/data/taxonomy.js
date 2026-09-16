@@ -28,7 +28,7 @@ export const SILOS = {
     name: "Comederos",
     path: "/comederos-para-gatos/",
     icon: UtensilsCrossed,
-    active: false, // MONTADO pero APAGADO: se activa poniendo true (aparece en menús/sitemap)
+    active: true, // LANZADO: aparece en menús/sitemap y sus páginas se indexan
   },
   higiene: {
     id: "higiene",
@@ -137,3 +137,10 @@ export const getCategoriesBySilo = (siloId) => CATEGORIES.filter((c) => c.silo =
 export const getActiveSilos = () => Object.values(SILOS).filter((s) => s.active);
 export const isCategoryId = (id) => CATEGORIES.some((c) => c.id === id);
 export const getGuideByCategory = (id) => GUIDES.find((g) => g.category === id);
+// Guías de silos ACTIVOS (las transversales, category null, siempre entran).
+// Úsala en portada/pilar para NO enlazar guías de silos apagados (noindex).
+export const getActiveGuides = () =>
+  GUIDES.filter((g) => {
+    const c = getCategory(g.category);
+    return !c || Boolean(SILOS[c.silo]?.active);
+  });

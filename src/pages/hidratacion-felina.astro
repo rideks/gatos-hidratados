@@ -8,7 +8,7 @@ import TrustBanner from "../components/TrustBanner.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 import Schema from "../components/Schema.astro";
-import { CATEGORIES, GUIDES } from "../data/taxonomy.js";
+import { CATEGORIES, getActiveGuides } from "../data/taxonomy.js";
 import { SITE } from "../config/site.js";
 import {
   buildArticle,
@@ -23,6 +23,7 @@ import Sources from "../components/Sources.astro";
 const canonical = "/hidratacion-felina/";
 const url = new URL(canonical, SITE.url).href;
 const categorias = CATEGORIES.filter((c) => c.silo === "hidratacion");
+const guias = getActiveGuides();
 
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
@@ -271,7 +272,7 @@ const schema = graph(
       <p class="eyebrow mb-3">Guías relacionadas</p>
       <ul class="space-y-2">
         {
-          GUIDES.map((g) => (
+          guias.map((g) => (
             <li>
               <a
                 href={g.path}

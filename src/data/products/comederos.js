@@ -33,15 +33,16 @@ export const comederosProducts = [
     brand: "PETKIT",
     name: "PETKIT Fresh Element Solo Comedero automático 3 L con app (WiFi)",
     metaTitle: "Comedero automático PETKIT 3 L con app para gatos",
-    price: "69,99",
+    price: "66,49",
+    originalPrice: "69,99",
+    asin: "B0CD7NRW37",
+    rating: "4.4",
+    reviews: "4273",
     material: "ABS alimentario + cubeta de acero inox. 304",
     capacity: "3 litros (~15 días para 1 gato)",
     color: "Blanco leche",
     image: "/images/comederos/petkit-fresh-element-solo-3l.webp",
     amazonUrl: "https://amzn.to/4hQdmxn",
-    asin: "B0CD7NRW37",
-    rating: "4.4",
-    reviews: "4252",
     tags: [T.STAINLESS_STEEL, T.BPA_FREE],
     bestFor: "Programar las raciones desde el móvil con cubeta de acero y respaldo a pilas por si se va la luz.",
     specs: {
@@ -71,7 +72,7 @@ export const comederosProducts = [
     dynamicReview:
       "El Fresh Element Solo es el comedero de la gama PETKIT pensado para emparejarse con sus fuentes, y se nota: se programa cómodo desde la app, la cubeta es de acero 304 (mejor higiene que el plástico) y el triple sellado con desecante mantiene el pienso crujiente. Con 3 L cubre unos quince días para un gato. Sus límites, con honestidad: solo va con pienso seco de grano pequeño, el adaptador y las pilas de respaldo se compran aparte, y al ser de un cuenco no distingue entre gatos. Para automatizar las raciones de un gato sin complicarte, cumple de sobra.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-16T00:00:00.000Z",
   }),
 
   // ── VALOR / 1 GATO ──────────────────────────────────────────────────────────
@@ -84,14 +85,14 @@ export const comederosProducts = [
     name: "Faroro 4L Comedero automático con cuenco de acero y alimentación lenta",
     metaTitle: "Comedero automático Faroro 4L de acero para gatos",
     price: "35,99",
+    asin: "B0FCM9LLHV",
+    rating: "4.3",
+    reviews: "631",
     material: "Cuerpo ABS + cuenco de acero inoxidable",
     capacity: "4 litros",
     color: "Negro",
     image: "/images/comederos/faroro-4l-comedero-acero.webp",
     amazonUrl: "https://amzn.to/4wNpfbo",
-    asin: "B0FCM9LLHV",
-    rating: "4.3",
-    reviews: "583",
     tags: [T.STAINLESS_STEEL],
     bestFor: "La opción más vendida para un gato: raciones controladas, cuenco de acero y modo de alimentación lenta a buen precio.",
     specs: {
@@ -122,7 +123,7 @@ export const comederosProducts = [
     dynamicReview:
       "El superventas de la categoría por un motivo sencillo: da lo esencial bien y barato. Cuenco de acero (mejor higiene que el plástico), programación de hasta seis comidas y un modo de alimentación lenta muy útil para gatos ansiosos que si no vomitan la ración. Suma grabación de voz y respaldo a pilas. Como todos, la tolva es de plástico y solo admite pienso seco, y las pilas se compran aparte. Para automatizar a un gato sin gastar de más, es una compra muy sensata.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-16T00:00:00.000Z",
   }),
   P({
     id: "anykuu-4l-comedero-acero",
@@ -132,15 +133,15 @@ export const comederosProducts = [
     brand: "Anykuu",
     name: "Anykuu 4L Comedero automático con cuenco de acero (USB-C)",
     metaTitle: "Comedero automático Anykuu 4L de acero para gatos",
-    price: "35,32",
+    price: "34,53",
+    asin: "B0DJKV88PY",
+    rating: "4.3",
+    reviews: "1788",
     material: "ABS + cuenco de acero inoxidable",
     capacity: "4 litros",
     color: "Blanco",
     image: "/images/comederos/anykuu-4l-comedero-acero.webp",
     amazonUrl: "https://amzn.to/4ip0xKz",
-    asin: "B0DJKV88PY",
-    rating: "4.4",
-    reviews: "1763",
     tags: [T.STAINLESS_STEEL],
     bestFor: "Alternativa de acero muy bien valorada, con salida antiatasco y carga USB-C.",
     specs: {
@@ -171,7 +172,7 @@ export const comederosProducts = [
     dynamicReview:
       "Una de las alternativas de acero más redondas por debajo de los 35 €: se nota en su valoración (4,4 con miles de reseñas). Acierta en lo práctico —salida antibloqueo para que no se quede a medias, tapa hermética con desecante y cuenco de acero— y moderniza con carga USB-C. No trae app, así que se programa desde los botones, y como el resto es solo para pienso seco y con tolva de plástico. Si no necesitas el móvil de por medio, es tan buena opción como cualquiera.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-16T00:00:00.000Z",
   }),
 
   // ── MULTIGATO ───────────────────────────────────────────────────────────────
@@ -183,15 +184,16 @@ export const comederosProducts = [
     brand: "oneisall",
     name: "oneisall 5L Comedero automático doble (2 cuencos de acero) para varios gatos",
     metaTitle: "Comedero automático doble oneisall 5L para varios gatos",
-    price: "69,99",
+    price: "53,67",
+    originalPrice: "69,99",
+    asin: "B0C772KDKT",
+    rating: "4.4",
+    reviews: "1433",
     material: "ABS + 2 cuencos de acero inoxidable",
     capacity: "5 litros",
     color: "Negro",
     image: "/images/comederos/oneisall-5l-comedero-doble.webp",
     amazonUrl: "https://amzn.to/4gr8s7Q",
-    asin: "B0C772KDKT",
-    rating: "4.4",
-    reviews: "1416",
     tags: [T.STAINLESS_STEEL, T.MULTI_CAT, T.LARGE_CAPACITY],
     bestFor: "Hogares con dos gatos: reparte la ración a la vez en dos cuencos de acero con un divisor giratorio.",
     specs: {
@@ -222,7 +224,7 @@ export const comederosProducts = [
     dynamicReview:
       "La solución más sensata para dos gatos: en vez de comprar dos comederos, este reparte la misma tolva en dos cuencos de acero mediante un divisor giratorio, así que cada uno tiene lo suyo y no hay peleas ni robos de ración. Suma voz, respaldo a pilas y una garantía de dos años que tranquiliza. A cambio, ocupa más y, como el resto, la tolva es de plástico y solo va con seco. Para hogares multigato, es de lo más práctico del catálogo.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-16T00:00:00.000Z",
   }),
 
   // ── GRAN CAPACIDAD / AUSENCIAS LARGAS ───────────────────────────────────────
@@ -234,16 +236,16 @@ export const comederosProducts = [
     brand: "Faroro",
     name: "Faroro 7L Comedero automático de gran capacidad (hasta 3 semanas)",
     metaTitle: "Comedero automático Faroro 7L gran capacidad para gatos",
-    price: "37,99",
+    price: "39,99",
     originalPrice: "39,99",
+    asin: "B09CPPPPTS",
+    rating: "4.4",
+    reviews: "2811",
     material: "Plástico ABS",
     capacity: "7 litros",
     color: "Gris",
     image: "/images/comederos/faroro-7l-comedero.webp",
     amazonUrl: "https://amzn.to/4wOmM01",
-    asin: "B09CPPPPTS",
-    rating: "4.5",
-    reviews: "2789",
     tags: [T.LARGE_CAPACITY],
     bestFor: "Ausencias largas o varios gatos: 7 L de autonomía (15-21 días) con hélices para raciones grandes o pequeñas.",
     specs: {
@@ -273,7 +275,7 @@ export const comederosProducts = [
     dynamicReview:
       "Cuando lo que necesitas es autonomía, este es el que más aguanta: 7 L dan para dos o tres semanas, así que es el típico para irte de vacaciones sin depender de nadie. Las hélices intercambiables (S y L) permiten ajustar la ración según el tamaño de tu mascota, y la tapa hermética protege el pienso de la humedad. El pero honesto: es todo de plástico —no trae cuenco de acero— y abulta lo suyo. Para ausencias largas, difícil de superar en relación capacidad/precio.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-16T00:00:00.000Z",
   }),
 
   // ── SIN ELECTRICIDAD / 2 EN 1 / BARATO ──────────────────────────────────────
@@ -285,14 +287,14 @@ export const comederosProducts = [
     name: "Nobleza 2 en 1 Comedero y bebedero por gravedad (2,2 L comida + 1 L agua)",
     metaTitle: "Comedero y bebedero por gravedad Nobleza 2 en 1",
     price: "21,99",
+    asin: "B0FM71H4PZ",
+    rating: "3.8",
+    reviews: "198",
     material: "Plástico PP",
     capacity: "2,2 L comida + 1 L agua",
     color: "Blanco y gris",
     image: "/images/comederos/nobleza-2en1-comedero-bebedero.webp",
     amazonUrl: "https://amzn.to/4xYyciZ",
-    asin: "B0FM71H4PZ",
-    rating: "3.8",
-    reviews: "197",
     tags: [T.ACTIVATED_CARBON, T.LARGE_CAPACITY],
     bestFor: "Quien quiere comida y agua disponibles sin electricidad ni programación, para ausencias cortas y a bajo precio.",
     specs: {
@@ -323,6 +325,6 @@ export const comederosProducts = [
     dynamicReview:
       "No es un comedero programable, es un dispensador por gravedad, y conviene tenerlo claro. Su gracia es resolver comida y agua a la vez, sin cables, por muy poco dinero: perfecto para una ausencia corta o para quien no quiere complicarse. Ahora, seamos honestos con sus límites, que son importantes: no controla raciones (el gato come lo que quiere, así que no sirve para dietas), el agua queda estancada —menos atractiva que una fuente con bomba— y su valoración es más floja (3,8). Como apaño barato para vacaciones puntuales, cumple; como solución diaria, mejor un programable.",
     datePublished: "2026-08-20",
-    updatedAt: "2026-09-02T00:00:00.000Z",
+    updatedAt: "2026-09-16T00:00:00.000Z",
   }),
 ];

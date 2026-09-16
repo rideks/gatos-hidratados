@@ -1,13 +1,10 @@
 // Navegación DERIVADA de la taxonomía. Solo muestra categorías/guías de silos
 // ACTIVOS: los silos apagados (active:false) no aparecen en el menú.
-import { CATEGORIES, GUIDES, SILOS } from "../data/taxonomy.js";
+import { CATEGORIES, SILOS, getActiveGuides } from "../data/taxonomy.js";
 
 const isActive = (siloId) => SILOS[siloId]?.active;
 const activeCats = CATEGORIES.filter((c) => isActive(c.silo));
-const activeGuides = GUIDES.filter((g) => {
-  const cat = CATEGORIES.find((c) => c.id === g.category);
-  return !cat || isActive(cat.silo);
-});
+const activeGuides = getActiveGuides();
 
 const withHub = activeCats.filter((c) => c.hub);
 const withComparativa = activeCats.filter((c) => c.comparativa);
