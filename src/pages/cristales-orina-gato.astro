@@ -1,0 +1,227 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import EmergencyCallout from "../components/EmergencyCallout.astro";
+import Sources from "../components/Sources.astro";
+
+const seo = {
+  title: "Cristales en la orina del gato: tipos, síntomas y qué hacer",
+  description:
+    "Cristales en la orina del gato: diferencia entre estruvita y oxalato cálcico, síntomas de alarma, por qué la hidratación es clave y cuándo es una urgencia veterinaria.",
+  canonical: "/cristales-orina-gato/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Cristales en la orina", path: seo.canonical },
+];
+
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Feline lower urinary tract disease (FLUTD)",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/feline-lower-urinary-tract-disease",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Urethral obstruction in cats",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/urethral-obstruction-in-cats",
+  },
+  {
+    authors: "Buckley CM, Hawthorne A, Colyer A, Stevenson AE",
+    year: 2011,
+    title:
+      "Effect of dietary water intake on urinary output, specific gravity and relative supersaturation for calcium oxalate and struvite in the cat",
+    source: "Br J Nutr 106(S1):S128-S130",
+    url: "https://doi.org/10.1017/S0007114511001875",
+  },
+  {
+    authors: "American Veterinary Medical Association (AVMA)",
+    title: "Feline lower urinary tract disease",
+    source: "avma.org",
+    url: "https://www.avma.org/resources-tools/pet-owners/petcare/feline-lower-urinary-tract-disease",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Los cristales en la orina del gato son graves?",
+    a: "Depende. Una pequeña cantidad de cristales puede no dar problemas, pero cuando se acumulan pueden irritar la vejiga, formar piedras o —en machos— taponar la uretra, que es una urgencia mortal. Siempre debe valorarlo el veterinario con un análisis de orina; no es algo para tratar en casa por tu cuenta.",
+  },
+  {
+    q: "¿Qué diferencia hay entre estruvita y oxalato cálcico?",
+    a: "Son los dos tipos más frecuentes. La estruvita se forma en orina más alcalina y muchas veces se disuelve con una dieta veterinaria específica, sin cirugía. El oxalato cálcico se forma en orina más ácida, es más común en gatos mayores y NO se disuelve con dieta: si forma piedras que obstruyen, hay que retirarlas. Solo un análisis de orina dice cuál tiene tu gato.",
+  },
+  {
+    q: "¿Puede el agua ayudar a prevenir los cristales?",
+    a: "Sí, es una de las palancas mejor documentadas y de las pocas que controlas tú. Cuanta más agua bebe el gato, más diluida está su orina y menos se concentran los minerales que forman cristales. Por eso el veterinario suele insistir en subir la ingesta de agua (comida húmeda y fuentes) como parte de la prevención.",
+  },
+  {
+    q: "¿Se le pueden quitar los cristales con remedios caseros?",
+    a: "No. No uses vinagre, suplementos ni cambios de dieta por tu cuenta: un tratamiento equivocado puede empeorarlo (lo que ayuda contra la estruvita puede favorecer el oxalato y al revés). El manejo lo dirige el veterinario según el tipo de cristal. Tu papel en casa es la hidratación y vigilar los síntomas.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-16"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Hidratación"
+  noindex={false}
+>
+  <p>
+    Ver «<strong>cristales</strong>» en el informe del veterinario o
+    sospecharlos porque tu gato orina raro asusta, y con razón. Pero conviene
+    entenderlos bien: no todos son iguales, no todos se tratan igual, y hay una
+    parte que <strong>sí depende de ti</strong>. Aquí va lo importante, con
+    rigor y sin alarmismo — pero marcando con claridad cuándo es una <strong
+      >urgencia</strong
+    >.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Los <strong>dos tipos</strong> más comunes son <strong>estruvita</strong> y <strong>oxalato cálcico</strong>; se tratan de forma distinta.",
+      "Solo un <strong>análisis de orina</strong> del veterinario dice cuál es y cómo manejarlo.",
+      "La <strong>hidratación</strong> (orina más diluida) es la palanca de prevención que controlas en casa.",
+      "En <strong>machos</strong>, un cristal que obstruye la uretra es una <strong>urgencia mortal</strong>.",
+    ]}
+  />
+
+  <EmergencyCallout title="Urgencia: si ves esto, ve al veterinario YA">
+    <p>
+      Si tu gato —sobre todo un <strong>macho</strong>— <strong
+        >va al arenero e intenta orinar sin que salga nada</strong
+      >, se queja o maúlla al hacerlo, se lame mucho la zona, vomita o está
+      decaído, <strong>acude de inmediato a urgencias</strong>. Una obstrucción
+      urinaria por cristales puede ser mortal en cuestión de horas. No esperes.
+    </p>
+  </EmergencyCallout>
+
+  <h2>Qué son (y qué no)</h2>
+  <p>
+    Los cristales son <strong>minerales que precipitan en la orina</strong>
+    cuando están demasiado concentrados o el pH los favorece. En cantidades mínimas
+    pueden pasar desapercibidos; el problema llega cuando se acumulan:
+    <strong>irritan la vejiga</strong>, pueden agregarse en <strong
+      >piedras (urolitos)</strong
+    > o, en el peor caso, formar un tapón que <strong>obstruye la uretra</strong
+    >. Forman parte del conjunto de problemas que los veterinarios llaman <a
+      href="/agua-problemas-urinarios-gatos/"
+      >enfermedad del tracto urinario inferior felino (FLUTD)</a
+    >.
+  </p>
+
+  <h2>Los dos tipos más comunes</h2>
+  <p>
+    No es un detalle técnico: de qué tipo sean cambia por completo el
+    tratamiento.
+  </p>
+  <ul>
+    <li>
+      <strong>Estruvita</strong> (fosfato amónico magnésico): se forma en orina más
+      <strong>alcalina</strong>. Es muy frecuente y, buena noticia, muchas veces <strong
+        >se disuelve con una dieta veterinaria específica</strong
+      >, sin necesidad de cirugía.
+    </li>
+    <li>
+      <strong>Oxalato cálcico</strong>: se forma en orina más <strong
+        >ácida</strong
+      >, es más habitual en <strong>gatos mayores</strong> y <strong
+        >no se disuelve con dieta</strong
+      >: si forma piedras que dan problemas, hay que retirarlas. Se previene, no
+      se «deshace».
+    </li>
+  </ul>
+  <p>
+    Aquí está la clave: lo que ayuda contra un tipo puede favorecer el otro. Por
+    eso <strong>no se puede tratar a ciegas</strong>: hace falta el análisis de
+    orina que identifica el cristal.
+  </p>
+
+  <h2>Síntomas que debes vigilar</h2>
+  <ul>
+    <li>
+      Va al arenero <strong>muchas veces</strong> y orina <strong
+        >poca cantidad</strong
+      >.
+    </li>
+    <li>Hace <strong>esfuerzo</strong> o se queja al orinar.</li>
+    <li><strong>Sangre</strong> en la orina (tono rosado o rojizo).</li>
+    <li>Se <strong>lame</strong> mucho los genitales.</li>
+    <li>
+      Orina <strong>fuera del arenero</strong>, en sitios raros o fríos (bañera,
+      suelo).
+    </li>
+  </ul>
+  <p>
+    Cualquiera de estos merece consulta. Y si además <strong
+      >no consigue orinar</strong
+    >, es urgencia (ver arriba).
+  </p>
+
+  <h2>Por qué se forman, y qué controlas tú</h2>
+  <p>
+    Influyen la <strong>concentración de la orina</strong>, el <strong
+      >pH</strong
+    >, la dieta y la predisposición individual. De todo eso, lo que está en tu
+    mano es la <strong>hidratación</strong>: cuanta más agua bebe el gato, más
+    diluida está su orina y menos se «saturan» los minerales que forman
+    cristales — algo que la evidencia respalda (Buckley et al., 2011). El estrés
+    también cuenta, porque agrava la <a href="/agua-problemas-urinarios-gatos/"
+      >cistitis</a
+    > que a menudo acompaña a estos cuadros.
+  </p>
+
+  <h2>Diagnóstico y tratamiento: cosa del veterinario</h2>
+  <p>
+    El manejo lo dirige el veterinario: <strong>análisis de orina</strong> (y a veces
+    ecografía o radiografía) para ver el tipo y si hay piedras, y a partir de ahí
+    una <strong>dieta terapéutica</strong> y, si toca, tratamiento del episodio. No
+    automediques ni cambies el pienso por tu cuenta: <strong
+      >un movimiento equivocado puede empeorarlo</strong
+    >.
+  </p>
+
+  <h2>Prevención (tu parte en casa)</h2>
+  <ul>
+    <li>
+      <strong>Sube la ingesta de agua:</strong> comida húmeda y agua siempre fresca.
+      Muchos gatos beben más de una <a href="/fuentes-de-agua-para-gatos/"
+        >fuente de agua</a
+      > que de un cuenco, sobre todo si <a href="/por-que-mi-gato-no-bebe-agua/"
+        >les cuesta beber</a
+      >.
+    </li>
+    <li>
+      <strong>Sigue la dieta que prescriba tu veterinario</strong> — es la herramienta
+      principal frente al tipo concreto de cristal.
+    </li>
+    <li>
+      <strong>Arenero limpio y accesible:</strong> si el gato aguanta por un arenero
+      sucio, orina menos y concentra más.
+    </li>
+    <li>
+      <strong>Controla el peso y el estrés:</strong> el sobrepeso y el ambiente tenso
+      empeoran el cuadro urinario.
+    </li>
+  </ul>
+  <p>
+    Para el fondo del asunto —cuánta agua necesita y cómo lograr que beba más—
+    tienes nuestra guía de <a href="/cuanta-agua-debe-beber-un-gato/"
+      >cuánta agua debe beber un gato</a
+    > y la <a href="/hidratacion-felina/">guía pilar de hidratación felina</a>.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>

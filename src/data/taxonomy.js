@@ -129,6 +129,8 @@ export const GUIDES = [
   { title: "Tipos de arena para gatos: aglomerante, sílice o vegetal (cuál es mejor)", short: "Tipos de arena para gatos", path: "/tipos-de-arena-para-gatos/", category: "arena-gatos" },
   { title: "¿Cuántos areneros por gato? La regla n+1", short: "Cuántos areneros (n+1)", path: "/cuantos-areneros-por-gato/", category: "areneros" },
   { title: "Arenero abierto o cerrado: ¿cuál es mejor para tu gato?", short: "Arenero abierto o cerrado", path: "/arenero-abierto-o-cerrado-gatos/", category: "areneros" },
+  { title: "Cristales en la orina del gato: tipos, síntomas y qué hacer", short: "Cristales en la orina", path: "/cristales-orina-gato/", category: null },
+  { title: "Cómo limpiar un comedero automático para gatos paso a paso", short: "Cómo limpiar el comedero", path: "/como-limpiar-comedero-automatico-gatos/", category: "comederos-automaticos" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────
