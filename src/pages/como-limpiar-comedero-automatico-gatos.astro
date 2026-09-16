@@ -1,0 +1,172 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "Cómo limpiar un comedero automático para gatos paso a paso",
+  description:
+    "Cómo limpiar un comedero automático de gato sin estropear la electrónica: cuenco, tolva y mecanismo, cada cuánto hacerlo y el error de humedad que cría moho.",
+  canonical: "/como-limpiar-comedero-automatico-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Cómo limpiarlo", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Cada cuánto hay que limpiar el comedero automático?",
+    a: "El cuenco donde come, cada uno o dos días (ahí van saliva y restos grasos del pienso). La tolva y el mecanismo dispensador, a fondo cada 2-4 semanas o cada vez que rellenes por completo. Con varios gatos, acorta los plazos.",
+  },
+  {
+    q: "¿Puedo mojar la base del comedero?",
+    a: "No. La base lleva el motor y la electrónica: nunca la sumerjas ni la pongas bajo el grifo. Límpiala solo con un paño ligeramente húmedo por fuera y sécala. Las partes que sí se lavan son el cuenco, la tolva y la tapa, siempre que sean desmontables.",
+  },
+  {
+    q: "¿Por qué se atasca el dispensador?",
+    a: "Casi siempre por restos de pienso graso pegados en la salida, a veces reblandecidos por la humedad. Una limpieza en seco del mecanismo (cepillo o paño) cada pocas semanas lo evita. Nunca guardes pienso húmedo dentro de la tolva.",
+  },
+  {
+    q: "¿Se puede meter en el lavavajillas?",
+    a: "Solo el cuenco de acero inoxidable desmontable suele ser apto, y no siempre: revisa las instrucciones de tu modelo. La tolva de plástico, el mecanismo y la base con electrónica no van al lavavajillas.",
+  },
+];
+
+const howto = {
+  name: "Cómo limpiar un comedero automático de gato",
+  description:
+    "Limpieza segura del comedero automático sin dañar el motor: cuenco, tolva, mecanismo y secado.",
+  totalTime: "PT15M",
+  supply: ["Jabón neutro sin perfume"],
+  tool: ["Cepillo pequeño o bastoncillos", "Paño seco", "Agua caliente"],
+  steps: [
+    {
+      name: "Desconecta y quita las pilas",
+      text: "Desenchufa el adaptador y retira las pilas de respaldo. Nunca limpies con el aparato conectado.",
+    },
+    {
+      name: "Vacía la tolva",
+      text: "Saca todo el pienso que quede en el depósito. No dejes pienso viejo ni húmedo dentro entre limpiezas.",
+    },
+    {
+      name: "Separa las partes lavables",
+      text: "Desmonta el cuenco, la tolva y la tapa. La base con el motor y la electrónica se queda aparte: esa no se moja.",
+    },
+    {
+      name: "Lava cuenco, tolva y tapa",
+      text: "Con agua caliente y un poco de jabón neutro. El cuenco de acero es el más higiénico y a veces apto para lavavajillas; la tolva de plástico, a mano.",
+    },
+    {
+      name: "Limpia el mecanismo en seco",
+      text: "Retira los restos de pienso de la salida y la hélice con un cepillo o un paño. Evita mojar el motor; si acaso, paño apenas húmedo y secar al momento.",
+    },
+    {
+      name: "Seca TODO por completo",
+      text: "Es el paso que más se salta y el más importante: la humedad apelmaza el pienso y cría moho y bacterias. No montes nada húmedo.",
+    },
+    {
+      name: "Monta, rellena y reconecta",
+      text: "Con todo bien seco, vuelve a montar, rellena con pienso seco y reconecta el adaptador y las pilas de respaldo.",
+    },
+  ],
+};
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-16"
+  faqs={faqs}
+  howto={howto}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    Un comedero automático te ahorra madrugones, pero acumula lo que muchos
+    olvidan: <strong>grasa del pienso, saliva y humedad</strong>. Si no se
+    limpia bien, el cuenco cría bacterias, el mecanismo se atasca y —lo peor—
+    puede aparecer <strong>moho</strong> en la tolva. La buena noticia: limpiarlo
+    es rápido si sabes qué mojar y qué no. Aquí tienes el paso a paso, sin cargarte
+    la electrónica.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "<strong>Cuenco:</strong> cada 1-2 días (saliva y restos grasos).",
+      "<strong>Tolva y mecanismo:</strong> a fondo cada 2-4 semanas o al rellenar del todo.",
+      "La <strong>base con motor NUNCA se moja</strong>: solo paño húmedo por fuera.",
+      "El error nº1 es <strong>montar con humedad</strong>: apelmaza el pienso y cría moho. Seca todo.",
+    ]}
+  />
+
+  <h2>Por qué importa más de lo que parece</h2>
+  <p>
+    El pienso seco deja una película grasa, y el cuenco recibe la saliva del
+    gato en cada comida: terreno perfecto para bacterias y para el <a
+      href="/acne-felino-cuencos-plastico/">acné felino</a
+    > si el cuenco es de plástico. En la tolva, cualquier resto de humedad puede enmohecer
+    el pienso que tu gato comerá durante días. Y un mecanismo con restos pegados <strong
+      >se atasca</strong
+    > y salta comidas. Limpiarlo no es manía: es salud y que el aparato siga funcionando.
+  </p>
+
+  <h2>Paso a paso</h2>
+  <ol>
+    <li><strong>Desconecta y quita las pilas.</strong> Nunca con corriente.</li>
+    <li>
+      <strong>Vacía la tolva.</strong> Nada de pienso viejo o húmedo dentro.
+    </li>
+    <li>
+      <strong>Separa lo lavable</strong> (cuenco, tolva, tapa) de la base con motor.
+    </li>
+    <li>
+      <strong>Lava</strong> cuenco, tolva y tapa con agua caliente y jabón neutro
+      sin perfume.
+    </li>
+    <li>
+      <strong>Limpia el mecanismo en seco</strong> (cepillo o paño); evita mojar el
+      motor.
+    </li>
+    <li>
+      <strong>Seca todo por completo.</strong> El paso clave contra el moho.
+    </li>
+    <li><strong>Monta, rellena y reconecta.</strong></li>
+  </ol>
+
+  <h2>Errores que conviene evitar</h2>
+  <ul>
+    <li>
+      <strong>Sumergir la base o mojar la electrónica:</strong> la avería más típica
+      y evitable.
+    </li>
+    <li>
+      <strong>Usar lejía o productos perfumados:</strong> el olor residual hace que
+      el gato rechace la comida. Jabón neutro y buen enjuague.
+    </li>
+    <li>
+      <strong>Rellenar sobre restos viejos:</strong> vacía y limpia la tolva antes
+      de añadir pienso nuevo, no lo eches encima.
+    </li>
+    <li>
+      <strong>Montar con humedad:</strong> aunque parezca seco, espera. La humedad
+      es lo que cría moho y apelmaza.
+    </li>
+  </ul>
+
+  <p>
+    Si aún estás eligiendo modelo, un <strong
+      >cuenco de acero desmontable</strong
+    >
+    se limpia mucho mejor que el plástico: lo tienes en cuenta en nuestra <a
+      href="/mejores-comederos-automaticos-gatos/"
+      >comparativa de comederos automáticos</a
+    >. Y para ajustar cuántas tomas programas, mira <a
+      href="/cuantas-veces-come-un-gato/"
+      >cuántas veces al día debe comer un gato</a
+    >.
+  </p>
+</GuideLayout>
