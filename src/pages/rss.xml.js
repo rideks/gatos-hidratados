@@ -6,7 +6,7 @@
 // Ubicación: src/pages/rss.xml.js
 // ============================================================================
 import { SITE } from "../config/site.js";
-import { GUIDES, CATEGORIES, SILOS } from "../data/taxonomy.js";
+import { getActiveGuides } from "../data/taxonomy.js";
 import { CONTENT_INDEX } from "../data/content.js";
 
 const abs = (path) => new URL(path, SITE.url).href;
@@ -20,13 +20,9 @@ const esc = (s = "") =>
 
 // Fecha por ruta desde el índice del sitemap (fallback: ahora).
 const dateByPath = Object.fromEntries(CONTENT_INDEX.map((e) => [e.path, e.updatedAt]));
-const isActive = (siloId) => SILOS[siloId]?.active;
 
 export async function GET() {
-  const items = GUIDES.filter((g) => {
-    const cat = CATEGORIES.find((c) => c.id === g.category);
-    return !cat || isActive(cat.silo); // no filtra guías de silos apagados
-  })
+  const items = getActiveGuides()
     .map((g) => ({
       title: g.title,
       link: abs(g.path),

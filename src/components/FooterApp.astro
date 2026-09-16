@@ -1,14 +1,11 @@
 ---
 import { SITE, SILOS, AMAZON_AFFILIATE_DISCLOSURE } from "../config/site.js";
-import { CATEGORIES, GUIDES } from "../data/taxonomy.js";
+import { CATEGORIES, getActiveGuides } from "../data/taxonomy.js";
 const isActive = (id) => SILOS[id]?.active;
 const comparativas = CATEGORIES.filter(
   (c) => c.comparativa && isActive(c.silo),
 ).map((c) => ({ name: c.name, href: c.comparativa.path }));
-const guias = GUIDES.filter((g) => {
-  const c = CATEGORIES.find((x) => x.id === g.category);
-  return !c || isActive(c.silo);
-}).map((g) => ({ name: g.short, href: g.path }));
+const guias = getActiveGuides().map((g) => ({ name: g.short, href: g.path }));
 const year = new Date().getFullYear();
 ---
 
