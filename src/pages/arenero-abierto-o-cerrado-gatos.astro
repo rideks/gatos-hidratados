@@ -1,0 +1,174 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Sources from "../components/Sources.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "Arenero abierto o cerrado: ¿cuál es mejor para tu gato?",
+  description:
+    "Arenero abierto vs cerrado para gatos: olor, calidad del aire, tamaño y qué prefiere el gato. Qué dice la evidencia y cuál elegir según tu caso, sin mitos.",
+  canonical: "/arenero-abierto-o-cerrado-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Higiene y areneros", path: "/higiene-del-gato/" },
+  { name: "Abierto vs cerrado", path: seo.canonical },
+];
+
+const fuentes = [
+  {
+    authors: "Grigg EK, Pick L, Nibblett B",
+    year: 2013,
+    title: "Litter box preference in domestic cats: covered versus uncovered",
+    source: "J Feline Med Surg 15(4):280-284",
+    url: "https://journals.sagepub.com/doi/10.1177/1098612X12465606",
+  },
+  {
+    authors: "Ellis SLH, Rodan I, Carney HC, et al. (AAFP & ISFM)",
+    year: 2013,
+    title: "AAFP and ISFM Feline Environmental Needs Guidelines",
+    source: "J Feline Med Surg 15(3):219-230 · catvets.com",
+    url: "https://catvets.com/guidelines/practice-guidelines",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "El arenero: tipo, tamaño y ubicación",
+    source: "icatcare.org",
+    url: "https://icatcare.org/advice/",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué prefieren los gatos, abierto o cerrado?",
+    a: "En promedio, la evidencia no encuentra una preferencia fuerte por uno u otro cuando ambos se mantienen igual de limpios: lo que más pesa es la limpieza y el tamaño. Dicho esto, cada gato es un mundo; algunos rechazan claramente el cerrado por sentirse atrapados. Lo más honesto: prueba y observa a tu gato.",
+  },
+  {
+    q: "¿El arenero cerrado huele menos?",
+    a: "Para ti, sí: la tapa retiene el olor hacia fuera. Pero eso mismo concentra el amoníaco dentro, y si no lo limpias a diario el ambiente interior se vuelve desagradable para el gato (su olfato es mucho más fino). Un cerrado sucio es peor que un abierto limpio.",
+  },
+  {
+    q: "¿El cerrado es mejor para gatos que escarban mucho?",
+    a: "Sí, ayuda a contener la arena que sale volando y da algo de intimidad. Pero asegúrate de que sea grande: muchos areneros cerrados del mercado se quedan pequeños para el gato, que necesita poder girar y escarbar con holgura.",
+  },
+  {
+    q: "¿Y para gatos mayores o con problemas urinarios?",
+    a: "Suele ir mejor un arenero abierto o de entrada baja: es más fácil de acceder para un gato con artrosis y le da varias vías de salida, lo que reduce el estrés en gatos con historial de cistitis. Un espacio amplio y sin sensación de encierro les ayuda a usarlo con más frecuencia.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-16"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Higiene"
+  noindex={!SILOS.higiene.active}
+>
+  <p>
+    Es la duda clásica al comprar arenero: <strong>¿abierto o cerrado?</strong>
+    La respuesta honesta no es "uno es mejor", sino que cada uno resuelve cosas distintas
+    — y que hay un factor que pesa más que la tapa: el <strong>tamaño</strong> y la
+    <strong>limpieza</strong>. Vamos a compararlos sin mitos, con lo que dice la
+    evidencia.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "En promedio, los gatos <strong>no prefieren claramente</strong> uno u otro si están igual de limpios.",
+      "<strong>Cerrado:</strong> menos olor para ti y menos arena fuera; pero concentra amoníaco dentro si no limpias a diario.",
+      "<strong>Abierto:</strong> mejor aire y varias salidas (menos estrés); a cambio, más olor y arena alrededor.",
+      "Manda más el <strong>tamaño</strong> (grande) y la <strong>limpieza diaria</strong> que la tapa.",
+    ]}
+  />
+
+  <h2>Arenero cerrado (con tapa)</h2>
+  <p>
+    <strong>A favor:</strong> retiene el olor hacia fuera, contiene la arena que el
+    gato lanza al escarbar y da intimidad. Encaja bien si el arenero está en una zona
+    de paso y quieres discreción, o si tu gato escarba como una excavadora.
+  </p>
+  <p>
+    <strong>En contra:</strong> esa misma tapa <strong
+      >concentra el amoníaco</strong
+    >
+    dentro; si no lo limpias a diario, el aire interior se vuelve desagradable para
+    un olfato tan fino como el del gato. Además, muchos modelos cerrados se quedan
+    <strong>pequeños</strong>, y a algunos gatos les incomoda tener <strong
+      >una sola salida</strong
+    > (sensación de estar atrapados, sobre todo en multigato, donde otro gato puede
+    "emboscar" la entrada).
+  </p>
+
+  <h2>Arenero abierto (sin tapa)</h2>
+  <p>
+    <strong>A favor:</strong> mejor <strong>ventilación</strong> (no acumula gases),
+    <strong>varias vías de escape</strong> —clave para gatos nerviosos o con historial
+    urinario— y suele ser más fácil de limpiar y más espacioso. Es la opción más segura
+    si dudas.
+  </p>
+  <p>
+    <strong>En contra:</strong> huele más en la habitación y se escapa algo de arena
+    alrededor (se mitiga con una alfombrilla atrapa-arena y una arena <a
+      href="/tipos-de-arena-para-gatos/">baja en polvo que aglomere bien</a
+    >).
+  </p>
+
+  <h2>Lo que de verdad decide (más que la tapa)</h2>
+  <ul>
+    <li>
+      <strong>Tamaño:</strong> que el gato quepa girando y escarbando con holgura
+      (referencia: 1,5 veces el largo del gato). Un arenero pequeño se rechaza, tenga
+      tapa o no.
+    </li>
+    <li>
+      <strong>Limpieza diaria:</strong> retira sólidos y orina cada día. Es lo que
+      más influye en que el gato lo use, muy por encima del tipo.
+    </li>
+    <li>
+      <strong>Número y ubicación:</strong> aplica la <a
+        href="/cuantos-areneros-por-gato/">regla n+1</a
+      > y repártelos por la casa. De poco sirve el arenero perfecto si hay pocos o
+      mal puestos.
+    </li>
+  </ul>
+
+  <h2>Cuál elegir según tu caso</h2>
+  <ul>
+    <li>
+      <strong>Gato joven, sano y escarbador, arenero en zona visible:</strong>
+      cerrado <em>grande</em> puede compensar por olor e intimidad — limpiándolo a
+      diario.
+    </li>
+    <li>
+      <strong>Gato mayor, con artrosis o historial urinario:</strong> abierto o de
+      entrada baja, por accesibilidad y menos estrés.
+    </li>
+    <li>
+      <strong>Varios gatos:</strong> mejor abiertos (varias salidas, sin emboscadas),
+      y siempre en sitios distintos.
+    </li>
+    <li>
+      <strong>Si dudas:</strong> empieza por <strong>abierto y grande</strong>.
+      Es la apuesta más segura para que el gato lo use.
+    </li>
+  </ul>
+
+  <p>
+    ¿Sospechas que tu gato evita el arenero o hace fuera? Suele ser tamaño,
+    suciedad, número o ubicación antes que la tapa. Y si además notas molestias
+    al orinar, revisa nuestra guía de <a href="/agua-problemas-urinarios-gatos/"
+      >agua y problemas urinarios</a
+    >.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>

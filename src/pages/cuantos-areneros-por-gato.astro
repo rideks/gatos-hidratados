@@ -1,0 +1,174 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Sources from "../components/Sources.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "¿Cuántos areneros por gato? La regla n+1 (y dónde ponerlos)",
+  description:
+    "Cuántos areneros necesitas según el número de gatos: la regla n+1, por qué importa para evitar accidentes y problemas urinarios, y dónde colocarlos.",
+  canonical: "/cuantos-areneros-por-gato/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Higiene y areneros", path: "/higiene-del-gato/" },
+  { name: "Cuántos areneros", path: seo.canonical },
+];
+
+const fuentes = [
+  {
+    authors: "Ellis SLH, Rodan I, Carney HC, et al. (AAFP & ISFM)",
+    year: 2013,
+    title: "AAFP and ISFM Feline Environmental Needs Guidelines",
+    source: "J Feline Med Surg 15(3):219-230 · catvets.com",
+    url: "https://catvets.com/guidelines/practice-guidelines",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "El arenero: número, tipo y ubicación",
+    source: "icatcare.org",
+    url: "https://icatcare.org/advice/",
+  },
+  {
+    authors: "Cornell Feline Health Center",
+    title: "Feline behavior problems: house soiling",
+    source: "vet.cornell.edu",
+    url: "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Cuántos areneros necesito para dos gatos?",
+    a: "Tres. La regla veterinaria de referencia es 'un arenero por gato más uno' (n+1): con dos gatos, tres areneros, colocados en sitios distintos de la casa. No vale ponerlos los tres juntos: para el gato, dos cajas pegadas cuentan casi como una.",
+  },
+  {
+    q: "¿Por qué uno más que gatos?",
+    a: "Porque los gatos son territoriales y algunos 'vigilan' o bloquean el acceso al arenero de otro. El +1 evita que un gato se quede sin sitio disponible, reduce la competencia y da opciones si una caja está sucia. También te cubre si un gato prefiere orinar en una y defecar en otra, algo bastante común.",
+  },
+  {
+    q: "¿Tener pocos areneros puede causar problemas de salud?",
+    a: "De forma indirecta, sí. Si el gato evita un arenero sucio o disputado, tiende a aguantar y a orinar menos veces, y eso se asocia a cistitis y a problemas de vías urinarias bajas. Además, con pocas cajas es más difícil que detectes a tiempo cambios en la orina de un gato concreto.",
+  },
+  {
+    q: "¿Y en un piso pequeño de un solo gato?",
+    a: "Lo ideal siguen siendo dos (1+1): uno principal y otro de respaldo en otra zona. Si el espacio es muy justo, un arenero grande, limpio a diario y bien ubicado puede bastar para un gato, pero dos siempre es más seguro y reduce accidentes.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-13"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Higiene"
+  noindex={!SILOS.higiene.active}
+>
+  <p>
+    Es de las preguntas que más se hacen mal y que más problemas evita acertar.
+    La respuesta corta, y con respaldo veterinario: <strong
+      >un arenero por gato, más uno</strong
+    > — la famosa <strong>regla n+1</strong>. Un gato, dos areneros; dos gatos,
+    tres; y así. Pero el número es solo la mitad: importa igual <strong
+      >dónde</strong
+    > los pones.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Regla <strong>n+1</strong>: nº de areneros = nº de gatos + 1.",
+      "<strong>1 gato → 2 areneros · 2 gatos → 3 · 3 gatos → 4.</strong>",
+      "En <strong>sitios distintos</strong>: dos cajas juntas cuentan casi como una.",
+      "Pocos o mal colocados = accidentes fuera y más riesgo de <strong>problemas urinarios</strong>.",
+    ]}
+  />
+
+  <h2>Qué dice la regla n+1</h2>
+  <p>
+    El número recomendado de areneros es el <strong
+      >número de gatos más uno</strong
+    >. No es una manía: viene de las guías de necesidades ambientales del gato
+    de la
+    <strong>AAFP e ISFM</strong> y responde a cómo funcionan socialmente los gatos.
+  </p>
+  <ul>
+    <li><strong>1 gato:</strong> 2 areneros</li>
+    <li><strong>2 gatos:</strong> 3 areneros</li>
+    <li><strong>3 gatos:</strong> 4 areneros</li>
+  </ul>
+
+  <h2>Por qué "más uno"</h2>
+  <p>
+    Los gatos son territoriales y no siempre comparten de buen grado. Con áreas
+    de descanso, comida y arenero suele haber un gato que <strong
+      >controla o bloquea</strong
+    > el acceso de otro, a veces de forma tan sutil que ni la ves. El arenero de más
+    garantiza que <strong>siempre haya una opción libre y limpia</strong>, baja
+    la tensión entre gatos y cubre un detalle muy común: muchos gatos prefieren <strong
+      >orinar en una caja y defecar en otra</strong
+    >.
+  </p>
+
+  <h2>Dónde colocarlos (tan importante como cuántos)</h2>
+  <p>
+    De nada sirve cumplir el número si los pones todos en el mismo rincón: para
+    el gato, <strong>dos areneros pegados cuentan casi como uno</strong>.
+    Reparte:
+  </p>
+  <ul>
+    <li>
+      <strong>En zonas distintas</strong> de la casa (y en distintas plantas si hay
+      varias), no todos juntos.
+    </li>
+    <li>
+      <strong>Lejos de la comida y del agua.</strong> El gato rechaza por instinto
+      hacer sus necesidades donde come o bebe.
+    </li>
+    <li>
+      <strong>En sitios tranquilos y con salida.</strong> Nada de rincones sin escapatoria
+      ni al lado de la lavadora que arranca de golpe: un susto y deja de usarlo.
+    </li>
+    <li>
+      <strong>Accesibles para gatos mayores:</strong> entrada baja si tiene artrosis,
+      para que no tenga que saltar.
+    </li>
+  </ul>
+
+  <h2>La conexión con la salud urinaria</h2>
+  <p>
+    Aquí está el motivo de peso, no solo la comodidad. Si un gato encuentra el
+    arenero <strong>sucio, escaso o disputado</strong>, tiende a <strong
+      >aguantar</strong
+    > y a orinar menos veces. Esa retención se asocia a la <a
+      href="/agua-problemas-urinarios-gatos/"
+      >cistitis y a los problemas de vías urinarias bajas</a
+    > — y en machos, el riesgo de obstrucción es una urgencia. Suficientes areneros,
+    limpios y bien puestos, no son un lujo: son parte del cuidado de las vías urinarias,
+    junto con una buena <a href="/hidratacion-felina/">hidratación</a>.
+  </p>
+  <p>
+    Un beneficio extra de tener las cajas repartidas y de usar una <a
+      href="/tipos-de-arena-para-gatos/">arena que aglomere bien</a
+    >: te permite <strong>vigilar la orina de cada gato</strong> (tamaño y número
+    de bolas), una de las señales tempranas más útiles de que algo va mal.
+  </p>
+
+  <h2>Limpieza: el otro factor que decide</h2>
+  <p>
+    Aunque tengas los areneros justos, si están sucios el gato los evita igual.
+    Lo mínimo razonable: <strong>retirar sólidos y orina a diario</strong> y hacer
+    un <strong>lavado completo</strong> cada 1-2 semanas (más a menudo con varios
+    gatos). El olfato del gato es muy fino: un arenero que a ti te parece aceptable
+    a él puede resultarle inaceptable.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>

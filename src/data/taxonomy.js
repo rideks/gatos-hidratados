@@ -127,6 +127,8 @@ export const GUIDES = [
   { title: "¿Cuántas veces al día debe comer un gato?", short: "Cuántas veces come un gato", path: "/cuantas-veces-come-un-gato/", category: "comederos-automaticos" },
   { title: "Comedero automático vs por gravedad: ¿cuál necesita tu gato?", short: "Automático vs gravedad", path: "/comedero-automatico-vs-gravedad-gatos/", category: "comederos-automaticos" },
   { title: "Tipos de arena para gatos: aglomerante, sílice o vegetal (cuál es mejor)", short: "Tipos de arena para gatos", path: "/tipos-de-arena-para-gatos/", category: "arena-gatos" },
+  { title: "¿Cuántos areneros por gato? La regla n+1", short: "Cuántos areneros (n+1)", path: "/cuantos-areneros-por-gato/", category: "areneros" },
+  { title: "Arenero abierto o cerrado: ¿cuál es mejor para tu gato?", short: "Arenero abierto o cerrado", path: "/arenero-abierto-o-cerrado-gatos/", category: "areneros" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────
