@@ -1,0 +1,174 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "¿Merecen la pena los comederos automáticos para gatos?",
+  description:
+    "¿Vale la pena un comedero automático para gatos? Cuándo sí y cuándo no, ventajas e inconvenientes reales y qué mirar antes de gastar, sin humo.",
+  canonical: "/merecen-la-pena-comederos-automaticos-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "¿Merecen la pena?", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿De verdad merece la pena un comedero automático?",
+    a: "Para la mayoría de gatos de interior que comen pienso seco y cuyo dueño tiene horarios cambiantes o quiere controlar las raciones, sí compensa: reparte cantidades exactas a horas fijas sin depender de ti. No compensa tanto si tu gato come húmeda, sigue una dieta veterinaria estricta o tu horario es fijo (ahí basta con menos).",
+  },
+  {
+    q: "¿Sirven para poner a dieta a un gato?",
+    a: "Ayudan mucho, porque dosifican la cantidad exacta y evitan el 'picoteo' libre. Pero la dieta la marca el veterinario: el comedero es la herramienta para cumplirla al gramo, no el que decide cuánto debe comer tu gato.",
+  },
+  {
+    q: "¿Un comedero automático puede fallar y dejar al gato sin comer?",
+    a: "Puede, y por eso importa el modelo. Los buenos llevan respaldo a pilas (si se va la luz sigue funcionando) y una salida antiatasco. Aun así, para ausencias de varios días conviene no depender de un solo aparato: deja también un cuenco de reserva o pide a alguien que lo revise.",
+  },
+  {
+    q: "¿Es mejor un comedero automático o uno por gravedad?",
+    a: "Depende de si necesitas controlar la cantidad. El automático programable reparte raciones exactas (mejor para dietas y gatos ansiosos); el de gravedad solo va soltando pienso a demanda, más barato pero sin control. Lo comparamos a fondo en nuestra guía de automático vs gravedad.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-17"
+  faqs={faqs}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    Antes de gastarte el dinero, la pregunta honesta: <strong
+      >¿de verdad compensa un comedero automático?</strong
+    > La respuesta corta es <strong>para la mayoría, sí</strong> —pero no para todos.
+    Depende de qué come tu gato, de tu horario y de si necesitas controlar las raciones.
+    Aquí lo desglosamos sin vender humo.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "<strong>Sí compensa</strong> si tu gato come seco, come sin freno o tu horario baila.",
+      "<strong>No tanto</strong> si come húmeda, sigue dieta veterinaria estricta o tu horario es fijo.",
+      "Su gran ventaja no es la comodidad, es el <strong>control de la ración</strong> (peso).",
+      "Elige uno con <strong>cuenco de acero</strong> y <strong>respaldo a pilas</strong>; casi todos son solo para <strong>pienso seco</strong>.",
+    ]}
+  />
+
+  <h2>Cuándo SÍ merecen la pena</h2>
+  <ul>
+    <li>
+      <strong>Tu gato come sin freno o necesita adelgazar.</strong> Repartir la ración
+      diaria en tomas exactas es la forma más fácil de <a
+        href="/cuantas-veces-come-un-gato/">controlar cuánto come</a
+      > sin pelearte con el cuenco.
+    </li>
+    <li>
+      <strong>Tienes horarios cambiantes o trabajas fuera.</strong> El gato come a
+      su hora aunque tú llegues tarde; se acabó el despertador felino a las 5 de la
+      mañana.
+    </li>
+    <li>
+      <strong>Ausencias cortas o fines de semana.</strong> Con capacidad suficiente,
+      cubre uno o varios días de forma fiable.
+    </li>
+    <li>
+      <strong>Varios gatos:</strong> los modelos de <strong>doble cuenco</strong
+      >
+      reparten a cada uno sin que se roben la comida.
+    </li>
+  </ul>
+
+  <h2>Cuándo NO (seamos honestos)</h2>
+  <ul>
+    <li>
+      <strong>Tu gato come comida húmeda:</strong> la gran mayoría solo dispensan
+      pienso seco. Para húmeda necesitas un comedero refrigerado específico, más caro
+      y con menos capacidad.
+    </li>
+    <li>
+      <strong
+        >Sigue una dieta veterinaria muy estricta o necesita supervisión:</strong
+      >
+      ahí manda el veterinario y a veces la comida controlada a mano.
+    </li>
+    <li>
+      <strong>Tu horario ya es fijo y solo quieres dos comidas:</strong> puede bastarte
+      algo más simple o incluso un <a
+        href="/comedero-automatico-vs-gravedad-gatos/"
+        >dispensador por gravedad</a
+      >, más barato.
+    </li>
+    <li>
+      <strong>Ausencias largas de varios días como única solución:</strong> no dependas
+      de un solo aparato; deja reserva o que alguien lo revise.
+    </li>
+  </ul>
+
+  <h2>Ventajas reales</h2>
+  <ul>
+    <li>
+      <strong>Raciones exactas a horas fijas</strong> — el motivo de peso.
+    </li>
+    <li><strong>Menos madrugones</strong> y rutina estable para el gato.</li>
+    <li>
+      <strong>Frescura:</strong> el pienso se guarda cerrado y solo sale la ración
+      del momento.
+    </li>
+    <li>
+      <strong>Con app (opcional):</strong> ajustas y vigilas desde el móvil.
+    </li>
+  </ul>
+
+  <h2>Inconvenientes que conviene saber</h2>
+  <ul>
+    <li><strong>Solo pienso seco</strong> en casi todos.</li>
+    <li>
+      <strong>Hay que limpiarlo</strong> bien (cuenco a menudo, tolva a fondo): mira
+      <a href="/como-limpiar-comedero-automatico-gatos/"
+        >cómo limpiar un comedero automático</a
+      >.
+    </li>
+    <li>
+      <strong>Pueden atascarse</strong> si no limpias el mecanismo; los buenos traen
+      salida antiatasco.
+    </li>
+    <li>
+      <strong>Un solo cuenco no distingue gatos:</strong> en multigato, uno puede
+      comerse la ración de otro.
+    </li>
+  </ul>
+
+  <h2>¿Cuánto cuesta y compensa?</h2>
+  <p>
+    Un programable con cuenco de acero se mueve sobre los <strong>35 €</strong>,
+    y los que suman <strong>app y WiFi</strong> suben de ahí. No tiene gasto recurrente
+    (a diferencia de las fuentes con filtro), así que es una compra única: pagas por
+    el <strong>control de la ración</strong> y por la comodidad. Para un gato de interior
+    con pienso seco, es de las compras que más tranquilidad dan por su precio.
+  </p>
+
+  <h2>Si decides comprar, qué mirar</h2>
+  <p>
+    Prioriza el <strong>cuenco de acero</strong> (más higiénico), el <strong
+      >respaldo a pilas</strong
+    > (que no se salte una comida si se va la luz), la <strong>capacidad</strong
+    >
+    según cuántos días quieras cubrir y, si tienes varios gatos, el <strong
+      >doble cuenco</strong
+    >. Todo eso, con la nota de cada modelo, está en nuestra <a
+      href="/mejores-comederos-automaticos-gatos/"
+      >comparativa de mejores comederos automáticos</a
+    >; y si quieres control desde el móvil, mira los <a
+      href="/mejores-comederos-automaticos-app-gatos/"
+      >comederos con app y WiFi</a
+    >.
+  </p>
+</GuideLayout>

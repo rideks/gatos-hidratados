@@ -6,9 +6,12 @@ import AffiliateButton from "./AffiliateButton.astro";
 import { BadgeCheck, Check } from "lucide-react";
 
 const { products = [] } = Astro.props;
-const pick = [...products]
+// Destacamos preferentemente un producto EN STOCK; si todos están agotados, el mejor.
+const _pool = products.filter((p) => p.availability !== "OutOfStock");
+const pick = [...(_pool.length ? _pool : products)]
   .map((p) => ({ p, s: getEditorialScore(p.slug)?.rating ?? 0 }))
   .sort((a, b) => b.s - a.s)[0]?.p;
+const soldOut = pick?.availability === "OutOfStock";
 const score = pick ? getEditorialScore(pick.slug)?.rating : null;
 const pros = pick?.highlights?.pros?.slice(0, 3) || [];
 const img = pick ? getMainImage(pick) : null;
@@ -78,13 +81,19 @@ const img = pick ? getMainImage(pick) : null;
             <span class="u-data text-2xl font-semibold text-white">
               {pick.price} €
             </span>
-            <AffiliateButton
-              href={pick.amazonUrl}
-              productName={pick.name}
-              price={pick.price}
-              location="best-pick"
-              label="Ver en Amazon"
-            />
+            {soldOut ? (
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/15 text-white/80 font-semibold px-5 py-3">
+                Agotado en Amazon
+              </span>
+            ) : (
+              <AffiliateButton
+                href={pick.amazonUrl}
+                productName={pick.name}
+                price={pick.price}
+                location="best-pick"
+                label="Ver en Amazon"
+              />
+            )}
           </div>
         </div>
       </div>

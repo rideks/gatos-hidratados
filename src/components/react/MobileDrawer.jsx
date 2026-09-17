@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
-// Drawer de navegación para móvil. Recibe el mega-menú y los enlaces primarios
-// ya derivados de la taxonomía (props serializadas desde Astro).
-export default function MobileDrawer({ menu = { columns: [] }, links = [], siloPath = "/" }) {
+// Drawer de navegación para móvil. Recibe los mega-menús (uno por silo activo)
+// y los enlaces primarios, ya derivados de la taxonomía (props serializadas).
+export default function MobileDrawer({ menus = [], links = [] }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -32,21 +32,29 @@ export default function MobileDrawer({ menu = { columns: [] }, links = [], siloP
               </button>
             </div>
 
-            <nav className="flex-1 overflow-y-auto px-4 py-5 space-y-6">
-              <a href={siloPath} className="block font-display font-bold text-lg text-ink">
-                {menu.featured?.title || "Guía"}
-              </a>
-
-              {menu.columns.map((col) => (
-                <div key={col.title}>
-                  <p className="eyebrow mb-2">{col.title}</p>
-                  <ul className="space-y-2">
-                    {col.links.map((l) => (
-                      <li key={l.href}>
-                        <a href={l.href} className="text-slate-700 hover:text-brand-700">{l.name}</a>
-                      </li>
-                    ))}
-                  </ul>
+            <nav className="flex-1 overflow-y-auto px-4 py-5 space-y-8">
+              {menus.map((menu) => (
+                <div key={menu.id} className="space-y-4">
+                  <a href={menu.path} className="block font-display font-bold text-lg text-ink">
+                    {menu.label}
+                  </a>
+                  {menu.columns.map((col) => (
+                    <div key={col.title}>
+                      <p className="eyebrow mb-2">{col.title}</p>
+                      <ul className="space-y-2">
+                        {col.links.map((l) => (
+                          <li key={l.href}>
+                            <a
+                              href={l.href}
+                              className={l.more ? "text-brand-700 font-medium" : "text-slate-700 hover:text-brand-700"}
+                            >
+                              {l.name}{l.more ? " →" : ""}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               ))}
 

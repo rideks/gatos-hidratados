@@ -91,16 +91,20 @@ export default function ProductComparison({ products = [] }) {
 
               {/* Precio + CTA */}
               <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 shrink-0 pl-15 sm:pl-0">
-                <span className="u-data text-lg font-semibold text-ink whitespace-nowrap">{p.price} €</span>
-                <a
-                  href={p.affiliateUrl}
-                  target="_blank"
-                  rel="sponsored nofollow noopener"
-                  onClick={() => trackAffiliateClick({ location: "comparison", productName: p.name, price: p.price })}
-                  className="btn-honey inline-flex items-center gap-1 text-sm font-semibold px-4 py-2 rounded-full whitespace-nowrap"
-                >
-                  Ver <ExternalLink size={14} />
-                </a>
+                <span className={"u-data text-lg font-semibold whitespace-nowrap " + (p.availability === "OutOfStock" ? "text-ink-400" : "text-ink")}>{p.price} €</span>
+                {p.availability === "OutOfStock" ? (
+                  <span className="u-data text-xs font-semibold text-slate-500 bg-slate-100 rounded-full px-4 py-2 whitespace-nowrap">Agotado</span>
+                ) : (
+                  <a
+                    href={p.affiliateUrl}
+                    target="_blank"
+                    rel="sponsored nofollow noopener"
+                    onClick={() => trackAffiliateClick({ location: "comparison", productName: p.name, price: p.price })}
+                    className="btn-honey inline-flex items-center gap-1 text-sm font-semibold px-4 py-2 rounded-full whitespace-nowrap"
+                  >
+                    Ver <ExternalLink size={14} />
+                  </a>
+                )}
               </div>
             </li>
           );

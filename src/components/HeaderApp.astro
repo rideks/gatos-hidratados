@@ -1,6 +1,6 @@
 ---
 import { SITE, SILOS } from "../config/site.js";
-import { megaMenu, primaryLinks } from "../config/navigationData.js";
+import { megaMenus, primaryLinks } from "../config/navigationData.js";
 import MobileDrawer from "./react/MobileDrawer.jsx";
 import { ArrowRight } from "lucide-react";
 ---
@@ -44,51 +44,65 @@ import { ArrowRight } from "lucide-react";
       class="hidden lg:flex items-center gap-7 text-[0.95rem]"
       aria-label="Principal"
     >
-      <div class="relative group">
-        <button
-          class="inline-flex items-center gap-1 font-medium text-ink-700 hover:text-ink py-2 transition-colors"
-        >
-          {megaMenu.label}
-          <svg
-            class="w-3.5 h-3.5 opacity-60"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg
-          >
-        </button>
-        <div
-          class="absolute left-0 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-150"
-        >
-          <div
-            class="w-[640px] rounded-xl border border-line bg-white shadow-[0_24px_60px_-24px_rgba(22,21,20,.35)] p-6 grid grid-cols-3 gap-6"
-          >
-            {
-              megaMenu.columns.map((col) => (
-                <div>
-                  <p class="kicker mb-3">{col.title}</p>
-                  <ul class="space-y-2.5">
-                    {col.links.map((l) => (
-                      <li>
-                        <a
-                          href={l.href}
-                          class:list={[
-                            "text-sm text-ink-700 hover:text-brand-700 transition-colors",
-                            l.bold && "font-semibold text-ink",
-                          ]}
-                        >
-                          {l.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))
-            }
+      {
+        megaMenus.map((menu) => (
+          <div class="relative group">
+            <a
+              href={menu.path}
+              class="inline-flex items-center gap-1 font-medium text-ink-700 hover:text-ink py-2 transition-colors"
+            >
+              {menu.label}
+              <svg
+                class="w-3.5 h-3.5 opacity-60"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </a>
+            <div class="absolute left-0 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-150">
+              <div
+                class:list={[
+                  "rounded-xl border border-line bg-white shadow-[0_24px_60px_-24px_rgba(22,21,20,.35)] p-6 grid gap-6",
+                  menu.columns.length >= 3
+                    ? "w-[640px] grid-cols-3"
+                    : menu.columns.length === 2
+                      ? "w-[440px] grid-cols-2"
+                      : "w-[260px] grid-cols-1",
+                ]}
+              >
+                {menu.columns.map((col) => (
+                  <div>
+                    <p class="kicker mb-3">{col.title}</p>
+                    <ul class="space-y-2.5">
+                      {col.links.map((l) => (
+                        <li>
+                          <a
+                            href={l.href}
+                            class:list={[
+                              "text-sm transition-colors",
+                              l.more
+                                ? "font-medium text-brand-700 hover:text-brand-800"
+                                : "text-ink-700 hover:text-brand-700",
+                              l.bold && "font-semibold text-ink",
+                            ]}
+                          >
+                            {l.name}
+                            {l.more && " →"}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        ))
+      }
       {
         primaryLinks.map((l) => (
           <a
@@ -103,19 +117,13 @@ import { ArrowRight } from "lucide-react";
 
     <div class="flex items-center gap-2">
       <a
-        href={SILOS.hidratacion.comparativa?.path ||
-          "/mejores-fuentes-agua-para-gatos/"}
+        href="/mejores-fuentes-agua-para-gatos/"
         class="hidden sm:inline-flex btn btn-accent !py-2.5 !px-4 !text-sm"
       >
         Ver mejores fuentes <ArrowRight className="w-4 h-4" />
       </a>
       <div class="lg:hidden">
-        <MobileDrawer
-          client:load
-          menu={megaMenu}
-          links={primaryLinks}
-          siloPath={SILOS.hidratacion.path}
-        />
+        <MobileDrawer client:load menus={megaMenus} links={primaryLinks} />
       </div>
     </div>
   </div>
