@@ -1,0 +1,124 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "¿Qué filtro necesita mi fuente de agua? Guía de compatibilidad",
+  description:
+    "Cómo acertar con el filtro de recambio de la fuente de tu gato: por marca, midiendo el diámetro o con un genérico universal. Evita el error de compra nº1.",
+  canonical: "/que-filtro-necesita-mi-fuente-gato/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Filtros de recambio", path: "/filtros-recambio-fuentes-gatos/" },
+  { name: "Qué filtro necesito", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Sirve cualquier filtro redondo para mi fuente?",
+    a: "No. Aunque muchas fuentes redondas usan un tamaño parecido, el diámetro y la forma varían entre marcas, y un filtro que no encaja deja pasar el agua sin filtrar o no asienta bien. Lo seguro es el recambio de tu marca/modelo; si vas a genérico, comprueba el diámetro exacto.",
+  },
+  {
+    q: "¿Cómo mido el diámetro del filtro?",
+    a: "Coge el filtro que ya usas (o el hueco donde va) y mide el diámetro de un borde a otro con una regla, en milímetros. Ese número es lo que tienes que hacer coincidir con el recambio. La mayoría rondan los 6-8 cm, pero no lo des por hecho: mídelo.",
+  },
+  {
+    q: "¿Puedo usar un filtro genérico en vez del oficial?",
+    a: "Sí, si es del tamaño correcto y de buena calidad: muchos genéricos funcionan igual de bien y salen más baratos. La clave es la compatibilidad (diámetro) y que lleve carbón activo de verdad. Lo comparamos en nuestra guía de filtro original vs genérico.",
+  },
+  {
+    q: "¿Mi fuente lleva uno o dos filtros?",
+    a: "Muchas llevan dos piezas distintas: el filtro de carbón activo (mejora el sabor) y un prefiltro de esponja (retiene pelo y protege la bomba). Al comprar recambios, mira si necesitas reponer ambos; a menudo se venden juntos en packs.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-17"
+  faqs={faqs}
+  section="Hidratación"
+  noindex={false}
+>
+  <p>
+    El <strong>error de compra nº1</strong> con las fuentes de gato no es elegir mal
+    la fuente: es comprar el <strong>filtro equivocado</strong>. Uno que no
+    encaja deja pasar el agua sin filtrar, y a los pocos días el gato vuelve a
+    rechazarla. Acertar es fácil si sabes qué mirar. Aquí tienes las tres formas
+    de dar con el filtro correcto, de la más fiable a la de último recurso.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Lo más seguro: el recambio <strong>de tu marca/modelo</strong> de fuente.",
+      "Si vas a genérico, haz coincidir el <strong>diámetro exacto</strong> (mídelo, no lo mires a ojo).",
+      "Muchas fuentes llevan <strong>dos piezas</strong>: filtro de carbón + prefiltro de esponja.",
+      "Un filtro que no encaja = agua sin filtrar = gato que deja de beber.",
+    ]}
+  />
+
+  <h2>Antes de nada: ¿qué filtros lleva una fuente?</h2>
+  <p>
+    La mayoría de fuentes usan dos consumibles distintos: el <strong
+      >filtro de carbón activo</strong
+    > (mejora el sabor y retiene impurezas) y un <strong
+      >prefiltro de esponja</strong
+    > (atrapa pelo y protege la bomba). Al buscar recambio, comprueba cuál(es) necesitas
+    reponer. Cada cuánto cambiarlos lo tienes en <a
+      href="/cada-cuanto-cambiar-filtro-fuente-gato/"
+      >cada cuánto cambiar el filtro</a
+    >.
+  </p>
+
+  <h2>3 formas de acertar con el filtro (de más a menos fiable)</h2>
+
+  <h3>1. Por marca y modelo de tu fuente (lo más seguro)</h3>
+  <p>
+    Es la opción sin sorpresas: busca el recambio <strong
+      >oficial de tu fuente</strong
+    > (por marca y capacidad, p. ej. "filtros Nenozi 2,2 L"). El encaje está garantizado.
+    En nuestra <a href="/filtros-recambio-fuentes-gatos/"
+      >guía de filtros de recambio</a
+    > los tenemos ordenados por compatibilidad.
+  </p>
+
+  <h3>2. Midiendo el diámetro (si no encuentras el oficial)</h3>
+  <p>
+    Coge el filtro que ya usas y <strong>mide su diámetro en milímetros</strong>
+    de borde a borde. Ese número es el que tiene que coincidir con el recambio. Muchas
+    fuentes redondas comparten medida, así que un genérico del diámetro correcto encaja
+    — pero <strong>mídelo</strong>, no te fíes de que "parezca igual" en la
+    foto.
+  </p>
+
+  <h3>3. Un genérico universal (último recurso)</h3>
+  <p>
+    Si tu fuente es rara o ya no fabrican su recambio, hay filtros <strong
+      >genéricos universales</strong
+    > (a menudo recortables) que sirven para varios modelos. Funcionan, pero revisa
+    que lleven <strong>carbón activo de verdad</strong> y que el tamaño se ajuste
+    bien; es la opción con más margen de error.
+  </p>
+
+  <h2>¿Original o genérico?</h2>
+  <p>
+    Una vez sabes la medida, la duda habitual es si pagar el oficial o ir al
+    genérico más barato. La respuesta corta: un buen genérico del tamaño
+    correcto suele rendir igual por menos dinero. Lo desglosamos en <a
+      href="/filtro-original-vs-generico-fuente-gatos/"
+      >filtro original vs genérico</a
+    >.
+  </p>
+
+  <p>
+    ¿Ya sabes cuál necesitas? Encuentra el recambio compatible con tu fuente en
+    la <a href="/filtros-recambio-fuentes-gatos/">guía de filtros de recambio</a
+    >, con los packs que salen más a cuenta.
+  </p>
+</GuideLayout>

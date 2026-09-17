@@ -133,6 +133,7 @@ export const GUIDES = [
   { title: "Cómo limpiar un comedero automático para gatos paso a paso", short: "Cómo limpiar el comedero", path: "/como-limpiar-comedero-automatico-gatos/", category: "comederos-automaticos" },
   { title: "¿Merecen la pena los comederos automáticos para gatos?", short: "¿Merecen la pena?", path: "/merecen-la-pena-comederos-automaticos-gatos/", category: "comederos-automaticos" },
   { title: "¿Por qué mi gato bebe mucha agua? Cuándo preocuparse", short: "Por qué bebe mucha agua", path: "/por-que-mi-gato-bebe-mucha-agua/", category: "fuentes-agua" },
+  { title: "¿Qué filtro necesita mi fuente de agua? Guía de compatibilidad", short: "Qué filtro necesito", path: "/que-filtro-necesita-mi-fuente-gato/", category: "filtros-fuente" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────
