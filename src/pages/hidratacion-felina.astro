@@ -23,7 +23,10 @@ import Sources from "../components/Sources.astro";
 const canonical = "/hidratacion-felina/";
 const url = new URL(canonical, SITE.url).href;
 const categorias = CATEGORIES.filter((c) => c.silo === "hidratacion");
-const guias = getActiveGuides();
+const guias = getActiveGuides().filter((g) => {
+  const c = CATEGORIES.find((x) => x.id === g.category);
+  return !c || c.silo === "hidratacion";
+});
 
 const breadcrumbs = [
   { name: "Inicio", path: "/" },

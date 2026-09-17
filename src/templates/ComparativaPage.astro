@@ -32,6 +32,7 @@ const rows = products.map((p) => ({
   capacity: p.specs?.capacity || p.capacity || "—",
   nota: getEditorialScore(p.slug)?.rating ?? null,
   affiliateUrl: p.amazonUrl,
+  availability: p.availability || null,
 }));
 
 const schema = buildCategorySchemas({ seo, breadcrumbs, products, faqs });

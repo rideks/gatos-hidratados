@@ -131,6 +131,8 @@ export const GUIDES = [
   { title: "Arenero abierto o cerrado: ¿cuál es mejor para tu gato?", short: "Arenero abierto o cerrado", path: "/arenero-abierto-o-cerrado-gatos/", category: "areneros" },
   { title: "Cristales en la orina del gato: tipos, síntomas y qué hacer", short: "Cristales en la orina", path: "/cristales-orina-gato/", category: null },
   { title: "Cómo limpiar un comedero automático para gatos paso a paso", short: "Cómo limpiar el comedero", path: "/como-limpiar-comedero-automatico-gatos/", category: "comederos-automaticos" },
+  { title: "¿Merecen la pena los comederos automáticos para gatos?", short: "¿Merecen la pena?", path: "/merecen-la-pena-comederos-automaticos-gatos/", category: "comederos-automaticos" },
+  { title: "¿Por qué mi gato bebe mucha agua? Cuándo preocuparse", short: "Por qué bebe mucha agua", path: "/por-que-mi-gato-bebe-mucha-agua/", category: "fuentes-agua" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

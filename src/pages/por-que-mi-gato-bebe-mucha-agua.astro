@@ -1,0 +1,185 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import Sources from "../components/Sources.astro";
+
+const seo = {
+  title:
+    "¿Por qué mi gato bebe mucha agua? Cuándo es normal y cuándo preocuparse",
+  description:
+    "Tu gato bebe mucha agua (polidipsia): cuánto es demasiado, causas normales y las señales de alarma (riñón, diabetes, tiroides) que sí exigen ir al veterinario.",
+  canonical: "/por-que-mi-gato-bebe-mucha-agua/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Bebe mucha agua", path: seo.canonical },
+];
+
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Consejos de salud y comportamiento del gato",
+    source: "icatcare.org",
+    url: "https://icatcare.org/advice/",
+  },
+  {
+    authors: "Cornell Feline Health Center",
+    title: "Chronic kidney disease / feline health topics",
+    source: "vet.cornell.edu",
+    url: "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center",
+  },
+  {
+    authors: "Royal Canin Academy",
+    title: "The water requirements and drinking habits of cats",
+    source: "academy.royalcanin.com",
+    url: "https://academy.royalcanin.com/en/veterinary/the-water-requirements-and-drinking-habits-of-cats",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Cuánta agua es 'demasiada' para un gato?",
+    a: "Como referencia, un gato suele necesitar unos 50-60 ml por kilo al día contando la comida. Beber de forma sostenida por encima de ~100 ml/kg al día se considera excesivo (polidipsia) y merece consulta veterinaria. Más importante que la cifra exacta es el cambio: si de repente bebe mucho más que antes, es una señal a vigilar.",
+  },
+  {
+    q: "¿Beber mucha agua es señal de enfermedad?",
+    a: "Puede serlo. Las causas médicas más frecuentes de que un gato beba mucho son la enfermedad renal crónica, la diabetes y el hipertiroidismo, sobre todo en gatos mayores. También hay causas normales (calor, pienso seco, ejercicio). Un aumento brusco o acompañado de otros síntomas debe valorarlo el veterinario con análisis.",
+  },
+  {
+    q: "¿Debo quitarle agua si bebe demasiado?",
+    a: "Nunca. Restringir el agua es peligroso: si el gato bebe mucho por una enfermedad, necesita esa agua para compensar y limitarla puede deshidratarlo y agravar el problema. Deja siempre agua fresca disponible y acude al veterinario para averiguar la causa.",
+  },
+  {
+    q: "Bebe más y también orina más, ¿es normal?",
+    a: "Beber más y orinar más van juntos (poliuria-polidipsia) y suelen aparecer a la vez en las enfermedades renales, la diabetes y el hipertiroidismo. Si notas los dos a la vez, sobre todo con pérdida de peso o apatía, pide cita cuanto antes.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-17"
+  faqs={faqs}
+  fuentes={fuentes}
+  section="Hidratación"
+  noindex={false}
+>
+  <p>
+    Solemos preocuparnos porque el gato <strong>no</strong> bebe, pero lo contrario
+    también importa: un gato que <strong>bebe mucha agua</strong> de repente puede
+    estar mandándote una señal. A esto se le llama <strong>polidipsia</strong>,
+    y aunque a veces es totalmente normal, otras veces es de los primeros avisos
+    de una enfermedad. Vamos a distinguir cuándo es una cosa y cuándo la otra,
+    sin alarmismo.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Referencia: <strong>50-60 ml/kg al día</strong> (contando la comida). Por encima de <strong>~100 ml/kg/día</strong> es excesivo.",
+      "Lo que más manda es el <strong>cambio</strong>: si de golpe bebe mucho más que antes, vigílalo.",
+      "Causas médicas frecuentes: <strong>riñón</strong>, <strong>diabetes</strong> e <strong>hipertiroidismo</strong> (sobre todo en gatos mayores).",
+      "<strong>Nunca le quites el agua</strong>: si bebe mucho por enfermedad, la necesita. Al veterinario a buscar la causa.",
+    ]}
+  />
+
+  <h2>¿Cuánto es "beber mucho"?</h2>
+  <p>
+    Un gato adulto suele necesitar en torno a <strong
+      >50-60 ml de agua por kilo y día</strong
+    >, incluyendo la humedad de la comida (por eso los que comen pienso seco
+    beben más del cuenco que los de comida húmeda). Se habla de <strong
+      >polidipsia</strong
+    > cuando bebe de forma sostenida por encima de unos <strong
+      >100 ml/kg al día</strong
+    >. Si quieres una referencia por peso, la tienes en <a
+      href="/cuanta-agua-debe-beber-un-gato/">cuánta agua debe beber un gato</a
+    >. Pero no te obsesiones con el número exacto: lo revelador es un <strong
+      >cambio claro respecto a lo habitual</strong
+    >.
+  </p>
+
+  <h2>Causas normales (sin drama)</h2>
+  <ul>
+    <li><strong>Calor</strong> o ambiente seco: bebe más para regularse.</li>
+    <li>
+      <strong>Pienso seco:</strong> al llevar poca agua, compensa bebiendo más.
+    </li>
+    <li>
+      <strong>Ejercicio o juego intenso</strong>, y en gatas, la <strong
+        >lactancia</strong
+      >.
+    </li>
+    <li>Un cambio de dieta (por ejemplo, de húmeda a seca).</li>
+  </ul>
+  <p>
+    En estos casos el aumento es moderado, tiene una explicación y el gato está
+    por lo demás bien. No hay que hacer nada salvo asegurarle agua fresca y
+    accesible.
+  </p>
+
+  <h2>Causas médicas (las que hay que descartar)</h2>
+  <p>
+    Cuando el aumento es marcado o sostenido, sobre todo en <strong
+      >gatos mayores</strong
+    >, hay tres sospechosos habituales que solo el veterinario puede confirmar
+    con análisis:
+  </p>
+  <ul>
+    <li>
+      <strong>Enfermedad renal crónica (ERC):</strong> muy común en gatos mayores;
+      el riñón concentra peor la orina, así que el gato orina más y bebe más para
+      compensar. Aquí la hidratación es parte del manejo: lo vemos en <a
+        href="/fuente-agua-gato-renal-mayor/"
+        >fuente de agua para gato renal o mayor</a
+      >.
+    </li>
+    <li>
+      <strong>Diabetes:</strong> el exceso de azúcar arrastra agua a la orina; suele
+      acompañarse de <strong>más apetito pero pérdida de peso</strong>.
+    </li>
+    <li>
+      <strong>Hipertiroidismo:</strong> acelera el metabolismo; típico en gatos mayores,
+      con adelgazamiento pese a comer bien e inquietud.
+    </li>
+  </ul>
+  <p>
+    También pueden influir infecciones urinarias, problemas hepáticos o algunos
+    medicamentos. La lista es larga a propósito: por eso <strong
+      >el diagnóstico es del veterinario</strong
+    >, no de internet.
+  </p>
+
+  <h2>Cuándo ir al veterinario</h2>
+  <p>Pide cita —sin urgencia extrema, pero sin dejarlo pasar— si notas que:</p>
+  <ul>
+    <li>Bebe <strong>bastante más que antes</strong> de forma mantenida.</li>
+    <li>Orina <strong>más cantidad</strong> o moja más el arenero.</li>
+    <li><strong>Pierde peso</strong> aunque coma igual o más.</li>
+    <li>Está <strong>apático</strong>, vomita, o le cambia el apetito.</li>
+  </ul>
+  <p>
+    Cuanto antes se identifique la causa (riñón, diabetes, tiroides), mejor se
+    maneja. Un buen truco para el veterinario: <strong
+      >mide durante un par de días</strong
+    > cuánta agua le pones y cuánta queda, para dar una cifra real.
+  </p>
+
+  <h2>Qué NO hacer</h2>
+  <p>
+    Lo más importante: <strong>no le restrinjas el agua</strong> para que "beba menos".
+    Si bebe mucho por una enfermedad, esa agua le está compensando; quitársela puede
+    deshidratarlo y empeorar el cuadro. Deja siempre agua limpia y accesible —varios
+    puntos, e incluso una <a href="/fuentes-de-agua-para-gatos/">fuente</a> si le
+    anima a beber— y centra tu energía en <strong>averiguar la causa</strong>
+    con el veterinario.
+  </p>
+
+  <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="septiembre de 2026" />
+</GuideLayout>
