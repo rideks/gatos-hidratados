@@ -1,0 +1,137 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "Comederos automáticos para varios gatos: cómo alimentar a 2 o más",
+  description:
+    "Cómo usar un comedero automático con varios gatos sin que uno robe la ración del otro: doble cuenco, uno por gato o con reconocimiento por chip. Cuál elegir.",
+  canonical: "/comederos-automaticos-varios-gatos/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Para varios gatos", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Un comedero automático normal sirve para dos gatos?",
+    a: "Uno de un solo cuenco no reparte por gato: el que llega primero o come más rápido se lleva la ración del otro. Para varios gatos necesitas un modelo de doble cuenco (reparte a dos a la vez), un comedero por gato, o uno con reconocimiento por chip que solo abre para el gato correcto.",
+  },
+  {
+    q: "¿Qué es un comedero con reconocimiento por chip o collar?",
+    a: "Es un comedero que lee el microchip o un colgante del gato y solo se abre para ese gato concreto. Es la solución ideal cuando un gato está a dieta o sigue comida veterinaria y no puede comer la del otro. A cambio, son bastante más caros y suelen ser de un solo gato por unidad.",
+  },
+  {
+    q: "¿Y si mis gatos comen a ritmos muy distintos?",
+    a: "Si uno picotea y otro devora, o tienen dietas diferentes, lo más sensato es un comedero por gato (o uno con chip). Un doble cuenco reparte la misma cantidad a la vez a ambos, así que va mejor cuando los dos comen parecido y la misma comida.",
+  },
+  {
+    q: "¿Dónde coloco los comederos con varios gatos?",
+    a: "En puntos separados, no pegados: los gatos prefieren no comer hombro con hombro, y separar las estaciones reduce la tensión y el robo de ración. Igual que con los areneros, repartir por la casa ayuda a que cada uno coma tranquilo.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-21"
+  faqs={faqs}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    Automatizar la comida con <strong>un gato</strong> es fácil. Con <strong
+      >dos o más</strong
+    > aparece el problema de siempre: el que come más rápido se zampa también la ración
+    del otro. La buena noticia es que hay soluciones pensadas justo para eso. Aquí
+    tienes las tres, y cuál te conviene según tu caso.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "Un comedero de <strong>un solo cuenco no reparte por gato</strong>: el más rápido gana.",
+      "<strong>Doble cuenco:</strong> reparte a dos gatos a la vez; ideal si comen parecido y lo mismo.",
+      "<strong>Uno por gato</strong> o <strong>con chip</strong>: para ritmos o dietas distintas.",
+      "Coloca las estaciones <strong>separadas</strong>, no pegadas, para que cada uno coma tranquilo.",
+    ]}
+  />
+
+  <h2>El problema con varios gatos</h2>
+  <p>
+    Los gatos no negocian el reparto: si dejas una ración accesible, el que
+    llega primero o come más deprisa se lleva la parte del otro. Eso rompe
+    cualquier intento de <strong>controlar cuánto come cada uno</strong> —clave si
+    uno está a dieta— y genera tensión. Por eso, en un hogar multigato, el factor
+    decisivo del comedero es <strong>cómo separa las raciones</strong>.
+  </p>
+
+  <h2>Las 3 opciones (y para quién es cada una)</h2>
+
+  <h3>1. Comedero de doble cuenco</h3>
+  <p>
+    Un solo aparato con una tolva que reparte a <strong
+      >dos cuencos a la vez</strong
+    > mediante un divisor. Es la opción más práctica y económica cuando tus dos gatos
+    comen <strong>lo mismo y en cantidades parecidas</strong>: cada uno tiene su
+    cuenco y no se roban. En nuestro catálogo, el <a
+      href="/productos/oneisall-5l-comedero-doble/"
+      >oneisall 5L de doble cuenco</a
+    > es justo esto.
+  </p>
+
+  <h3>2. Un comedero por gato</h3>
+  <p>
+    Si tus gatos comen a <strong>ritmos muy distintos</strong> o tienen <strong
+      >dietas diferentes</strong
+    >, a veces lo más simple es un comedero para cada uno, en sitios separados.
+    Más aparatos, pero control total por gato.
+  </p>
+
+  <h3>3. Comedero con reconocimiento por chip o collar</h3>
+  <p>
+    La solución premium: el comedero <strong
+      >solo se abre para el gato correcto</strong
+    > (lee su microchip o un colgante). Es lo ideal cuando un gato sigue <strong
+      >comida veterinaria</strong
+    > o está a dieta y no puede tocar la del otro. A cambio, son <strong
+      >más caros</strong
+    > y de un gato por unidad. No lo tenemos en catálogo, pero conviene que lo conozcas
+    si tu caso lo pide.
+  </p>
+
+  <h2>Cuál elegir según tu caso</h2>
+  <ul>
+    <li>
+      <strong>Dos gatos, misma comida, comen parecido:</strong> doble cuenco (el <a
+        href="/productos/oneisall-5l-comedero-doble/">oneisall</a
+      >). La opción más sensata en precio y espacio.
+    </li>
+    <li>
+      <strong>Ritmos o cantidades muy distintas:</strong> un comedero por gato.
+    </li>
+    <li>
+      <strong>Uno a dieta o con comida veterinaria:</strong> comedero con chip (evita
+      que el otro se la coma).
+    </li>
+    <li>
+      <strong>Tres o más gatos:</strong> combina — varios de doble cuenco o uno por
+      gato, siempre repartidos.
+    </li>
+  </ul>
+
+  <p>
+    Para ver todos los modelos con su nota, pasa a la <a
+      href="/mejores-comederos-automaticos-gatos/"
+      >comparativa de comederos automáticos</a
+    >. Y si dudas cuántas tomas programar por gato, mira <a
+      href="/cuantas-veces-come-un-gato/"
+      >cuántas veces al día debe comer un gato</a
+    >.
+  </p>
+</GuideLayout>
