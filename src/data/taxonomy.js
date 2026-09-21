@@ -134,6 +134,7 @@ export const GUIDES = [
   { title: "¿Merecen la pena los comederos automáticos para gatos?", short: "¿Merecen la pena?", path: "/merecen-la-pena-comederos-automaticos-gatos/", category: "comederos-automaticos" },
   { title: "¿Por qué mi gato bebe mucha agua? Cuándo preocuparse", short: "Por qué bebe mucha agua", path: "/por-que-mi-gato-bebe-mucha-agua/", category: "fuentes-agua" },
   { title: "¿Qué filtro necesita mi fuente de agua? Guía de compatibilidad", short: "Qué filtro necesito", path: "/que-filtro-necesita-mi-fuente-gato/", category: "filtros-fuente" },
+  { title: "Comederos automáticos para varios gatos: cómo alimentar a 2 o más", short: "Comederos para varios gatos", path: "/comederos-automaticos-varios-gatos/", category: "comederos-automaticos" },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────
