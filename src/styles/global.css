@@ -42,6 +42,7 @@
   --color-ink-800: #2f271e;
   --color-ink-700: #4a4033;
   --color-ink-500: #6f6454;
+  --color-ink-400: #8a7f6d;
   /* texto secundario cálido */
 
   /* Lienzo papel avena (más cálido que el hueso anterior) */
@@ -109,7 +110,8 @@ h3,
 }
 
 /* Etiqueta estructural (kicker) en mono */
-.kicker {
+.kicker,
+.eyebrow {
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 0.7rem;

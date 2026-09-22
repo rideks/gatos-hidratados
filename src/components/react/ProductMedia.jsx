@@ -124,7 +124,7 @@ export default function ProductMedia({ product }) {
           </span>
           {buy.discount && (
             <>
-              <span className="text-lg text-slate-400 line-through">
+              <span className="text-lg text-ink-400 line-through">
                 {formatEUR(buy.discount.original)}
               </span>
               <span className="inline-flex items-center rounded-md bg-red-50 text-red-700 border border-red-200 text-xs font-bold px-2 py-0.5">
@@ -138,10 +138,10 @@ export default function ProductMedia({ product }) {
         {/* CTA afiliado / Agotado */}
         {product.availability === "OutOfStock" ? (
           <div className="mt-4">
-            <div className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-200 text-slate-500 font-bold px-5 py-3">
+            <div className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-blush text-ink-500 font-bold px-5 py-3">
               Agotado en Amazon
             </div>
-            <p className="mt-2 text-xs text-slate-500 text-center">
+            <p className="mt-2 text-xs text-ink-500 text-center">
               Ahora mismo sin stock. Mira las alternativas que recomendamos más abajo.
             </p>
           </div>
@@ -164,7 +164,7 @@ export default function ProductMedia({ product }) {
             >
               Ver en Amazon <ExternalLink size={16} />
             </a>
-            <p className="mt-2 text-xs text-slate-400 text-center">
+            <p className="mt-2 text-xs text-ink-400 text-center">
               Precio orientativo. El definitivo se ve en Amazon.
             </p>
           </>

@@ -120,7 +120,7 @@ export default function BundleBox({
             <label
               className={[
                 "group relative flex sm:flex-col gap-3 sm:gap-2 rounded-xl border p-3 cursor-pointer transition-colors sm:w-40 sm:shrink-0",
-                checked[i] ? "border-brand-300 bg-brand-50/60" : "border-line bg-white hover:border-brand-200",
+                checked[i] ? "border-brand-300 bg-brand-50/60" : "border-line bg-surface hover:border-brand-200",
               ].join(" ")}
             >
               <span className="absolute top-2 left-2 z-10">
