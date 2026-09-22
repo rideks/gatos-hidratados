@@ -1014,7 +1014,6 @@ export const aguaProducts = [
       "El recambio de la Nenozi de 2,2 L, en un pack generoso de 6+6. Triple filtración —algodón, carbón activo y resina de intercambio iónico— que retiene pelo y metales pesados y mejora el sabor; la esponja protege la bomba. Es específico de la marca, así que compra el oficial, y enjuágalo unos minutos antes del primer uso.",
     datePublished: "2026-08-15",
     updatedAt: "2026-09-21T00:00:00.000Z",
-    availability: "OutOfStock",
   }),
 
 

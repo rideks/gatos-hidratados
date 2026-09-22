@@ -43,7 +43,7 @@ const rankings = CATEGORIES.filter(
           rankings.map((c) => (
             <a
               href={c.comparativa.path}
-              class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all"
+              class="group rounded-xl border border-brand-200 bg-surface p-5 hover:border-brand-300 hover:shadow-lg transition-all"
             >
               <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl mb-3">
                 <c.icon className="w-5 h-5" />
@@ -71,7 +71,7 @@ const rankings = CATEGORIES.filter(
           COMPARISONS.map((c) => (
             <a
               href={`/comparativas/${c.slug}/`}
-              class="group rounded-xl border border-brand-200 bg-white p-5 hover:border-brand-300 hover:shadow-lg transition-all flex items-center gap-4"
+              class="group rounded-xl border border-brand-200 bg-surface p-5 hover:border-brand-300 hover:shadow-lg transition-all flex items-center gap-4"
             >
               <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0">
                 <GitCompare className="w-5 h-5" />
