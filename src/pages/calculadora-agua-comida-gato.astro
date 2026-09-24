@@ -1,0 +1,94 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import CatCalculator from "../components/react/CatCalculator.jsx";
+
+const seo = {
+  title: "Calculadora de agua y comida para gatos (por peso)",
+  description:
+    "Calcula cuánta agua y comida necesita tu gato al día según su peso y su dieta. Herramienta gratuita y orientativa, con criterio veterinario y sin humo.",
+  canonical: "/calculadora-agua-comida-gato/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Hidratación", path: "/hidratacion-felina/" },
+  { name: "Calculadora de agua y comida", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Cómo se calcula el agua que necesita un gato?",
+    a: "Partimos de la referencia veterinaria de unos 50-60 ml de líquido por kilo de peso al día, incluyendo el agua que ya aporta la comida. Para un gato de 4 kg salen unos 200-240 ml diarios. Es una horquilla orientativa: la temperatura ambiente, la actividad o una enfermedad la modifican.",
+  },
+  {
+    q: "¿Y la cantidad de comida?",
+    a: "La comida es más variable porque depende de la energía concreta de cada pienso, así que damos una horquilla orientativa por peso (en torno a 12-14 g de pienso seco por kilo al día). La referencia buena siempre es la tabla de tu saco para el peso de tu gato y el criterio de tu veterinario.",
+  },
+  {
+    q: "¿Es fiable esta calculadora?",
+    a: "Como orientación rápida, sí; como norma exacta, no. Ningún cálculo genérico sustituye la tabla del fabricante ni al veterinario, sobre todo en gatitos, gatos castrados, gestantes o con alguna enfermedad. Úsala para hacerte una idea y ajusta con tu veterinario.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-24"
+  faqs={faqs}
+  section="Hidratación"
+  noindex={false}
+>
+  <p>
+    Introduce el <strong>peso</strong> de tu gato y su <strong
+      >tipo de dieta</strong
+    >
+    y te decimos, de forma orientativa, cuánta <strong>agua</strong> y cuánta
+    <strong>comida</strong> necesita al día. Es una guía rápida: la referencia final
+    siempre es la tabla del saco y tu veterinario.
+  </p>
+
+  <div class="not-prose my-6">
+    <CatCalculator client:load />
+  </div>
+
+  <h2>Cómo se calcula</h2>
+  <p>
+    Para el <strong>agua</strong> usamos el consenso veterinario de
+    <strong>50-60 ml de líquido por kilo y día</strong>, contando el agua de la
+    comida. Para la <strong>comida</strong>, una horquilla orientativa de
+    <strong>12-14 g de pienso seco por kilo y día</strong>. Lo explicamos a
+    fondo en <a href="/cuanta-agua-debe-beber-un-gato/"
+      >cuánta agua debe beber un gato</a
+    >
+    y en <a href="/cuanta-comida-darle-a-un-gato/"
+      >cuánta comida darle a un gato</a
+    >.
+  </p>
+
+  <h2>Qué cambia el resultado</h2>
+  <ul>
+    <li>
+      <strong>La dieta:</strong> con comida húmeda tu gato bebe mucho menos del cuenco
+      (la lata ya es ~80 % agua); con pienso seco, casi todo el agua tiene que beberla.
+    </li>
+    <li>
+      <strong>Edad y castración:</strong> un gatito necesita más energía por kilo;
+      tras castrar, las necesidades bajan (y es cuando más engordan).
+    </li>
+    <li>
+      <strong>Actividad y clima:</strong> un gato activo o con calor necesita más
+      agua.
+    </li>
+  </ul>
+
+  <p>
+    ¿Tu gato bebe poco? Muchos beben más con agua en movimiento: mira nuestra
+    <a href="/mejores-fuentes-agua-para-gatos/"
+      >comparativa de fuentes de agua</a
+    >
+    o, si el problema es que no se acerca, <a
+      href="/por-que-mi-gato-no-bebe-agua/">por qué tu gato no bebe agua</a
+    >.
+  </p>
+</GuideLayout>

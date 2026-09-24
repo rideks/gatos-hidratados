@@ -1,0 +1,155 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "¿Cuánta comida darle a un gato al día? Tabla por peso",
+  description:
+    "Cuánta comida necesita un gato según su peso, edad y actividad, con una tabla orientativa de pienso seco y cómo repartir la ración sin que engorde.",
+  canonical: "/cuanta-comida-darle-a-un-gato/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Cuánta comida al día", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Cuánta comida necesita un gato de 4 kg?",
+    a: "Como orientación, un gato adulto de interior de unos 4 kg necesita alrededor de 50-55 g de pienso seco al día. Es una guía, no una regla: la cantidad exacta depende de su edad, actividad, si está castrado y de la energía concreta de tu pienso. La referencia buena siempre es la tabla del saco para su peso y el criterio de tu veterinario.",
+  },
+  {
+    q: "¿Es mejor dejarle la comida siempre puesta o darle raciones?",
+    a: "Para la mayoría de gatos de interior, por raciones. El acceso libre al pienso favorece el picoteo constante y el sobrepeso, que es uno de los problemas de salud más comunes en gatos. Repartir la cantidad diaria en tomas medidas controla el peso; un comedero automático lo hace al gramo por ti.",
+  },
+  {
+    q: "¿Cuántas veces al día debe comer?",
+    a: "Lo habitual es 2-4 tomas al día repartiendo la ración total; los gatos prefieren comer poco y a menudo. Lo vemos a fondo en nuestra guía de cuántas veces al día debe comer un gato.",
+  },
+  {
+    q: "Mi gato siempre parece tener hambre, ¿le doy más?",
+    a: "No necesariamente. Muchos gatos piden por costumbre o aburrimiento, no por hambre real. Si mantiene un peso correcto (notas las costillas sin verlas y tiene cintura vista desde arriba), la ración es adecuada. Si pide mucho, reparte la misma cantidad en más tomas pequeñas antes que aumentarla.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-24"
+  faqs={faqs}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    La pregunta no tiene un número único, porque la cantidad correcta depende de
+    varios factores. Pero sí se puede dar una <strong
+      >orientación fiable por peso</strong
+    > y, sobre todo, entender de qué depende para no pasarte ni quedarte corto. Aquí
+    tienes la tabla y las claves, sin liarte.
+  </p>
+
+  <KeyFacts
+    title="En resumen"
+    items={[
+      "La ración depende de <strong>peso + edad + actividad + si está castrado</strong>, no solo del peso.",
+      "Orientación para un adulto de interior de ~4 kg: <strong>50-55 g de pienso seco al día</strong>.",
+      "Repártelo en <strong>2-4 tomas</strong>; un comedero automático lo dosifica al gramo.",
+      "Manda siempre <strong>la tabla del saco</strong> (según su peso) y tu <strong>veterinario</strong>, no una tabla genérica.",
+    ]}
+  />
+
+  <h2>Tabla orientativa por peso (pienso seco)</h2>
+  <p>
+    Cifras <strong>de referencia</strong> para un gato adulto, castrado y de interior,
+    con un pienso seco estándar. Ajusta según lo que indique tu saco:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Peso del gato</th><th>Pienso seco al día (orientativo)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>3 kg</td><td>40-45 g</td></tr>
+      <tr><td>4 kg</td><td>50-55 g</td></tr>
+      <tr><td>5 kg</td><td>60-65 g</td></tr>
+      <tr><td>6 kg</td><td>65-75 g</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Son gramos, no "puñados": pésalos. Un vaso medidor engaña muchísimo, y 10 g
+    de más al día son cientos de gramos al mes.
+  </p>
+
+  <h2>De qué depende (más allá del peso)</h2>
+  <ul>
+    <li>
+      <strong>Edad:</strong> un gatito en crecimiento necesita bastante más energía
+      por kilo; un gato senior, algo menos.
+    </li>
+    <li>
+      <strong>Actividad:</strong> un gato de interior tranquilo gasta menos que uno
+      joven y activo o con acceso al exterior.
+    </li>
+    <li>
+      <strong>Castración:</strong> tras castrar, las necesidades de energía bajan
+      (a menudo un 20-30 %). Es cuando más gatos engordan.
+    </li>
+    <li>
+      <strong>Gestación o lactancia:</strong> necesidades muy aumentadas; ahí manda
+      el veterinario.
+    </li>
+    <li>
+      <strong>Tipo de comida:</strong> la húmeda pesa más (es ~80 % agua), así que
+      los gramos no se comparan con los del seco.
+    </li>
+  </ul>
+
+  <h2>Seco, húmedo o mixto</h2>
+  <p>
+    No hay una única respuesta correcta, pero la <strong>comida húmeda</strong>
+    aporta mucha agua, algo valioso para las vías urinarias del gato. Muchos tutores
+    hacen una <strong>dieta mixta</strong>: húmeda como toma principal y seco
+    para dosificar y para el comedero automático. Si te preocupa cuánto bebe, lo
+    tratamos en la <a href="/hidratacion-felina/">guía de hidratación felina</a
+    >.
+  </p>
+
+  <h2>¿Comida libre o por raciones?</h2>
+  <p>
+    Para la mayoría de gatos de interior, <strong>por raciones</strong>. El
+    cuenco siempre lleno favorece el picoteo y el sobrepeso. Dividir la cantidad
+    diaria en tomas medidas es la forma más simple de controlar el peso, y es
+    justo donde un <a href="/mejores-comederos-automaticos-gatos/"
+      >comedero automático programable</a
+    > ayuda: reparte <strong>la ración exacta a horas fijas</strong>, aunque no
+    estés en casa. Si dudas si te compensa, lee
+    <a href="/merecen-la-pena-comederos-automaticos-gatos/"
+      >si merecen la pena</a
+    >.
+  </p>
+
+  <h2>Cómo saber si te pasas o te quedas corto</h2>
+  <p>
+    Olvida la báscula un momento y mira el cuerpo: deberías <strong
+      >notar las costillas</strong
+    > al pasar la mano (sin verlas marcadas) y verle
+    <strong>cintura</strong> desde arriba. Si no palpas las costillas, sobra comida;
+    si se le marcan mucho, falta. Ante la duda, pesa al gato cada pocas semanas: los
+    cambios se ven mejor en la tendencia que en un día.
+  </p>
+
+  <h2>Cómo repartir la ración</h2>
+  <p>
+    Una vez sabes la cantidad diaria, repártela en <strong>2-4 tomas</strong>
+    (los gatos comen mejor poco y a menudo). Cómo distribuirlas según su edad y rutina
+    lo tienes en <a href="/cuantas-veces-come-un-gato/"
+      >cuántas veces al día debe comer un gato</a
+    >.
+  </p>
+
+  <VetDisclaimer />
+</GuideLayout>

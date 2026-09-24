@@ -135,6 +135,9 @@ export const GUIDES = [
   { title: "¿Por qué mi gato bebe mucha agua? Cuándo preocuparse", short: "Por qué bebe mucha agua", path: "/por-que-mi-gato-bebe-mucha-agua/", category: "fuentes-agua" },
   { title: "¿Qué filtro necesita mi fuente de agua? Guía de compatibilidad", short: "Qué filtro necesito", path: "/que-filtro-necesita-mi-fuente-gato/", category: "filtros-fuente" },
   { title: "Comederos automáticos para varios gatos: cómo alimentar a 2 o más", short: "Comederos para varios gatos", path: "/comederos-automaticos-varios-gatos/", category: "comederos-automaticos" },
+  { title: "¿Cuánta comida darle a un gato al día? Tabla por peso", short: "Cuánta comida al día", path: "/cuanta-comida-darle-a-un-gato/", category: "comederos-automaticos" },
+  { title: "Mi gato come muy rápido y vomita: soluciones", short: "Come rápido y vomita", path: "/gato-come-rapido-vomita/", category: "comederos-automaticos" },
+  { title: "Calculadora de agua y comida para gatos", short: "Calculadora de agua y comida", path: "/calculadora-agua-comida-gato/", category: null },
 ];
 
 // ── Helpers de taxonomía ─────────────────────────────────────────────────────

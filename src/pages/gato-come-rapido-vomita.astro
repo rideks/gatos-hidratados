@@ -1,0 +1,137 @@
+---
+import GuideLayout from "../components/GuideLayout.astro";
+import KeyFacts from "../components/KeyFacts.astro";
+import VetDisclaimer from "../components/VetDisclaimer.astro";
+import { SILOS } from "../data/taxonomy.js";
+
+const seo = {
+  title: "Mi gato come muy rápido y vomita: soluciones",
+  description:
+    "Por qué tu gato come demasiado rápido y devuelve la comida, cómo distinguir regurgitación de vómito y qué soluciones funcionan, incluidos los comederos de alimentación lenta.",
+  canonical: "/gato-come-rapido-vomita/",
+};
+
+const breadcrumbs = [
+  { name: "Inicio", path: "/" },
+  { name: "Comederos", path: "/comederos-para-gatos/" },
+  { name: "Come rápido y vomita", path: seo.canonical },
+];
+
+const faqs = [
+  {
+    q: "¿Por qué mi gato vomita justo después de comer?",
+    a: "La causa más común cuando ocurre justo al terminar y la comida sale casi entera y sin digerir es la regurgitación por comer demasiado rápido: el gato engulle sin masticar, traga aire y el estómago devuelve el exceso. No es lo mismo que un vómito real (comida ya digerida, bilis, esfuerzo). Si es lo primero, se soluciona haciéndole comer más despacio.",
+  },
+  {
+    q: "¿Qué es un comedero de alimentación lenta?",
+    a: "Es un comedero (o un accesorio tipo laberinto) diseñado para que el gato no pueda tragar todo de golpe: tiene relieves o compartimentos que le obligan a comer poco a poco. Reduce el atragantamiento y la regurgitación por voracidad. Algunos comederos automáticos incluyen además un modo de alimentación lenta que reparte la ración en porciones pequeñas.",
+  },
+  {
+    q: "¿Comer rápido es peligroso para el gato?",
+    a: "En sí, la regurgitación puntual por voracidad no es grave, pero conviene corregirla: además de molesta, puede favorecer que vuelva a comer lo devuelto y no aprovechar bien el alimento. Lo que sí hay que vigilar es el vómito de verdad, repetido o con pérdida de peso: eso siempre lo valora el veterinario.",
+  },
+  {
+    q: "¿Ayuda repartir la comida en más tomas?",
+    a: "Mucho. Si el gato llega con demasiada hambre a una toma grande, come ansioso y rápido. Dar la misma cantidad diaria en más tomas pequeñas reduce la ansiedad y la voracidad; un comedero automático lo hace solo a horas fijas.",
+  },
+];
+---
+
+<GuideLayout
+  seo={seo}
+  breadcrumbs={breadcrumbs}
+  datePublished="2026-09-24"
+  faqs={faqs}
+  section="Alimentación"
+  noindex={!SILOS.comederos.active}
+>
+  <p>
+    Si tu gato devora el plato en segundos y al poco <strong
+      >devuelve la comida casi entera</strong
+    >, no estás solo: es muy frecuente y, en la mayoría de casos, tiene una
+    causa sencilla y solución fácil. Pero antes de nada conviene distinguir dos
+    cosas que se confunden.
+  </p>
+
+  <KeyFacts
+    title="Lo esencial"
+    items={[
+      "Devolver la comida <strong>entera y sin digerir</strong> justo tras comer suele ser <strong>regurgitación</strong> por comer rápido, no vómito.",
+      "La causa más común es la <strong>voracidad</strong>: engulle sin masticar y traga aire.",
+      "Soluciones: <strong>raciones más pequeñas y frecuentes</strong> y un <strong>comedero de alimentación lenta</strong>.",
+      "<strong>Vómito real</strong> (digerido, con bilis, repetido o con pérdida de peso) → siempre al <strong>veterinario</strong>.",
+    ]}
+  />
+
+  <h2>¿Regurgitación o vómito? No es lo mismo</h2>
+  <p>Distinguirlo es la clave para saber si te preocupas o no:</p>
+  <ul>
+    <li>
+      <strong>Regurgitación:</strong> ocurre <strong>justo después</strong> de comer,
+      la comida sale <strong>entera y sin digerir</strong> (a veces con forma de tubo)
+      y el gato lo hace casi sin esfuerzo. Típico del que come muy rápido. Es lo que
+      trata esta guía.
+    </li>
+    <li>
+      <strong>Vómito de verdad:</strong> lleva esfuerzo y arcadas, la comida sale
+      <strong>ya digerida</strong> o con líquido/bilis, y puede pasar un rato después
+      de comer. Si es repetido, con desgana o pérdida de peso, es motivo de veterinario.
+    </li>
+  </ul>
+
+  <h2>Por qué come tan rápido</h2>
+  <ul>
+    <li>
+      <strong>Competencia con otros gatos:</strong> si viven varios, comen deprisa
+      para "asegurar" su parte.
+    </li>
+    <li>
+      <strong>Raciones grandes muy espaciadas:</strong> llega con demasiada hambre
+      y engulle.
+    </li>
+    <li>
+      <strong>Instinto:</strong> algunos gatos, sobre todo rescatados, comen ansiosos
+      por costumbre.
+    </li>
+  </ul>
+
+  <h2>Soluciones que funcionan</h2>
+  <ol>
+    <li>
+      <strong>Reparte la ración en más tomas pequeñas.</strong> La misma cantidad
+      diaria en 3-4 tomas reduce el hambre acumulada y la ansiedad. Cuánto y cómo,
+      en <a href="/cuanta-comida-darle-a-un-gato/"
+        >cuánta comida darle a un gato</a
+      >.
+    </li>
+    <li>
+      <strong>Usa un comedero de alimentación lenta.</strong> Sus relieves obligan
+      a comer poco a poco. Muchos <a
+        href="/mejores-comederos-automaticos-gatos/">comederos automáticos</a
+      > traen además un <strong>modo de alimentación lenta</strong>
+      que va soltando porciones pequeñas: por ejemplo, el
+      <a href="/productos/faroro-4l-comedero-acero/"
+        >Faroro 4L con cuenco de acero</a
+      >
+      incluye ese modo, muy útil para gatos ansiosos.
+    </li>
+    <li>
+      <strong>Separa a los gatos al comer</strong> si compiten, dándoles su espacio.
+    </li>
+    <li>
+      <strong>Evita cambiar de golpe la comida:</strong> las transiciones bruscas
+      también dan digestiones malas.
+    </li>
+  </ol>
+
+  <h2>Cuándo ir al veterinario</h2>
+  <p>
+    Si lo que ves es <strong>vómito real</strong> (comida digerida, bilis, arcadas),
+    <strong>se repite</strong> varios días, hay <strong>pérdida de peso</strong
+    >, desgana, diarrea o tu gato está apagado, no lo atribuyas a la voracidad:
+    acude al veterinario. Comer rápido explica la regurgitación puntual, no un
+    vómito persistente.
+  </p>
+
+  <VetDisclaimer />
+</GuideLayout>
