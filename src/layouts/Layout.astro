@@ -20,7 +20,10 @@ const {
 
 const canonicalURL = new URL(canonical, SITE.url).href;
 const absoluteOgImageURL = new URL(ogImage, SITE.url).href;
-const fullTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+// La marca solo se añade si el título completo cabe en ~60 caracteres (lo que
+// Google muestra sin cortar); si no, priorizamos el título de la página.
+const withBrand = title ? `${title} | ${SITE.name}` : SITE.name;
+const fullTitle = !title || withBrand.length <= 60 ? withBrand : title;
 ---
 
 <!doctype html>

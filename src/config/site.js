@@ -9,7 +9,7 @@ export const SITE = {
   url: "https://felinlab.com",
   tagline: "Cuidado felino analizado con criterio, sin humo",
   description:
-    "Guías y comparativas honestas de productos de cuidado felino. Empezamos por la hidratación (fuentes de agua y filtros): analizamos a fondo y señalamos también los defectos.",
+    "Guías y comparativas honestas para el cuidado de tu gato: fuentes de agua, filtros y comederos analizados a fondo, con sus defectos. Sin patrocinios.",
   locale: "es_ES",
   lang: "es",
   themeColor: "#221f1b",
