@@ -79,6 +79,7 @@ export const comederosProducts = [
   P({
     id: "faroro-4l-comedero-acero",
     slug: "faroro-4l-comedero-acero",
+    guias: ["/gato-come-rapido-vomita/"], // enlace en "Sigue leyendo" de la ficha
     bestseller: true,
     subcategory: "comederos-automaticos",
     brand: "Faroro",
@@ -179,6 +180,7 @@ export const comederosProducts = [
   P({
     id: "oneisall-5l-comedero-doble",
     slug: "oneisall-5l-comedero-doble",
+    guias: ["/comederos-automaticos-varios-gatos/"], // enlace en "Sigue leyendo" de la ficha
     bestseller: true,
     subcategory: "comederos-automaticos",
     brand: "oneisall",
@@ -231,6 +233,7 @@ export const comederosProducts = [
   P({
     id: "faroro-7l-comedero",
     slug: "faroro-7l-comedero",
+    guias: ["/comederos-automaticos-varios-gatos/"], // enlace en "Sigue leyendo" de la ficha
     bestseller: true,
     subcategory: "comederos-automaticos",
     brand: "Faroro",

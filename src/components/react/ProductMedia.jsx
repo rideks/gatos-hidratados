@@ -84,7 +84,8 @@ export default function ProductMedia({ product }) {
                   : "border-brand-200 hover:border-brand-400"
                   }`}
               >
-                <img src={src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                {/* alt descriptivo: las fotos 2-4 solo aparecen aquí y así Google Imágenes sabe qué muestran */}
+                <img src={src} alt={`${product.name}, imagen ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
               </button>
             ))}
           </div>

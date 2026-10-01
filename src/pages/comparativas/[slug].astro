@@ -56,6 +56,11 @@ const schema = graph(
 );
 
 const hasWinner = c.rows.some((r) => r.winner);
+// "Elige una fuente de acero inoxidable si…" / "Elige PETKIT si…"
+const eligeLabel = (e) =>
+  e.type === "material"
+    ? `Elige una ${e.name.charAt(0).toLowerCase()}${e.name.slice(1)} si…`
+    : `Elige ${e.name} si…`;
 ---
 
 <Layout
@@ -78,6 +83,17 @@ const hasWinner = c.rows.some((r) => r.winner);
       {c.seo.title}
     </h1>
     <p class="text-ink-700 mt-3 leading-relaxed">{c.seo.description}</p>
+
+    {
+      c.intro?.length > 0 && (
+        <section class="prose prose-slate max-w-none mt-8">
+          <h2>La diferencia clave</h2>
+          {c.intro.map((p) => (
+            <p set:html={p} />
+          ))}
+        </section>
+      )
+    }
 
     <!-- ── Comparativa por criterios (tarjetas) ──────────────────────────── -->
     <section class="mt-8">
@@ -150,14 +166,6 @@ const hasWinner = c.rows.some((r) => r.winner);
         </p>
       )
     }
-    {
-      hasWinner && (
-        <p class="text-xs text-ink-500 mt-2 flex items-center gap-1.5">
-          <Check className="w-3.5 h-3.5 text-brand-600" /> Marca nuestra
-          preferencia en ese criterio.
-        </p>
-      )
-    }
 
     <!-- ── Pros / contras de cada uno ────────────────────────────────────── -->
     <section class="grid sm:grid-cols-2 gap-5 mt-10">
@@ -204,6 +212,35 @@ const hasWinner = c.rows.some((r) => r.winner);
         ))
       }
     </section>
+
+    <!-- ── Cuál elegir según tu caso ─────────────────────────────────────── -->
+    {
+      c.chooseA && c.chooseB && (
+        <section class="mt-10">
+          <h2 class="font-display font-semibold text-ink text-2xl mb-4">
+            Cuál elegir según tu caso
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {[
+              [a, c.chooseA],
+              [b, c.chooseB],
+            ].map(([ent, casos]) => (
+              <div class="rounded-xl border border-line bg-surface p-5">
+                <p class="font-semibold text-ink">{eligeLabel(ent)}</p>
+                <ul class="mt-3 space-y-2">
+                  {casos.map((txt) => (
+                    <li class="flex gap-2 text-sm text-ink-700">
+                      <ArrowRight className="w-4 h-4 text-brand-600 mt-0.5 shrink-0" />
+                      <span>{txt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
 
     <!-- ── Veredicto ─────────────────────────────────────────────────────── -->
     <section class="mt-10 rounded-xl border border-brand-200 bg-brand-50 p-6">

@@ -41,7 +41,7 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const path = new URL(page).pathname;
-        if (/\/(aviso-legal|politica-privacidad|politica-cookies)\//.test(path)) return false;
+        if (/\/(aviso-legal|politica-privacidad|politica-cookies|ofertas)\//.test(path)) return false; // noindex: fuera del sitemap
         if (INACTIVE_PATHS.has(path)) return false; // silos apagados fuera del sitemap
         return true;
       },
