@@ -267,3 +267,62 @@ a {
 .prose a:hover {
   text-decoration-color: var(--color-brand-600);
 }
+
+/* ── Tablas responsive ───────────────────────────────────────────────── */
+/* Celdas numéricas: no se parten ("≈ 28 €" en una línea) y alinean cifras. */
+.prose :is(th, td).num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.prose td.num {
+  white-space: nowrap;
+}
+
+/* .tabla-tarjetas: en móvil cada fila se convierte en una tarjeta y cada dato
+   lleva su etiqueta (data-label). En escritorio sigue siendo una tabla normal.
+   La primera celda de cada fila hace de título de la tarjeta. */
+@media (max-width: 639px) {
+  /* Tablas normales en móvil: algo más compactas para que quepan sin scroll. */
+  .prose table:not(.tabla-tarjetas) :is(th, td) {
+    padding-left: 0.45em;
+    padding-right: 0.45em;
+  }
+  .prose table.tabla-tarjetas,
+  .prose table.tabla-tarjetas :is(tbody, tr, td) {
+    display: block;
+    width: 100%;
+  }
+  .prose table.tabla-tarjetas thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .prose table.tabla-tarjetas tr {
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose table.tabla-tarjetas td {
+    padding: 0.3rem 0;
+    border: 0;
+  }
+  .prose table.tabla-tarjetas td:first-child {
+    font-size: 1.05em;
+    padding-bottom: 0.35rem;
+  }
+  .prose table.tabla-tarjetas td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-brand-700);
+    margin-bottom: 0.1rem;
+  }
+}

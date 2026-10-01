@@ -3,6 +3,10 @@ import "../styles/global.css";
 import "@fontsource-variable/newsreader";
 import "@fontsource-variable/hanken-grotesk";
 import "@fontsource-variable/jetbrains-mono";
+// Precarga de las dos fuentes principales (subconjunto latino): llegan antes
+// del primer pintado y evitan el salto de texto (CLS) al cambiar de fuente.
+import newsreaderLatin from "@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url";
+import hankenLatin from "@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url";
 import { SITE } from "../config/site.js";
 import CookieBanner from "../components/CookieBanner.astro";
 import SiteSchema from "../components/SiteSchema.astro";
@@ -31,6 +35,8 @@ const fullTitle = !title || withBrand.length <= 60 ? withBrand : title;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={newsreaderLatin} as="font" type="font/woff2" crossorigin />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
@@ -60,10 +66,10 @@ const fullTitle = !title || withBrand.length <= 60 ? withBrand : title;
     <meta property="og:locale" content={SITE.locale} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={fullTitle} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={absoluteOgImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImageURL} />
 
     {
       type === "article" && datePublished && (
@@ -79,7 +85,6 @@ const fullTitle = !title || withBrand.length <= 60 ? withBrand : title;
       )
     }
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content={SITE.themeColor} />
     <meta name="generator" content={Astro.generator} />
     <link rel="dns-prefetch" href="https://amazon.es" />

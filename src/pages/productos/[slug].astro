@@ -36,6 +36,8 @@ import {
   GUIA_BY_SUBCATEGORY,
 } from "../../config/site.js";
 import { getBySlug, getProductSilo } from "../../data/ProductData.js";
+import { COMPARISONS } from "../../data/ComparativaData.js";
+import { getActiveGuides } from "../../data/taxonomy.js";
 import { buildAmazonUrl } from "../../utils/amazon.js";
 import {
   buildProductNode,
@@ -71,6 +73,39 @@ const categoria = CATEGORY_BY_SUBCATEGORY[product.subcategory];
 const comparativa = COMPARATIVA_BY_SUBCATEGORY[product.subcategory];
 const guia = GUIA_BY_SUBCATEGORY[product.subcategory];
 const padre = categoria || comparativa;
+
+// Guías extra declaradas en el producto (campo opcional `guias: [path]`).
+const guiasExtra = getActiveGuides()
+  .filter((g) => product.guias?.includes(g.path) && g.path !== guia?.path)
+  .map((g) => ({ title: g.title, path: g.path }));
+
+// Comparativas "cara a cara" para fuentes: primero las de su marca, luego las
+// de su material (acero o plástico). Máximo 2.
+const versus = (() => {
+  // Los dispensadores por gravedad no son fuentes con bomba: no aplican.
+  if (product.subcategory !== "fuentes-agua" || /gravedad/i.test(product.specs?.flow || "")) return [];
+  const brand = String(product.brand || "").toLowerCase();
+  const mat = `${product.specs?.material || ""} ${product.material || ""}`;
+  const material = /acero|inox/i.test(mat) ? "acero" : /pl[aá]stico|ABS|\bPP\b|PET/i.test(mat) ? "plastico" : null;
+  const porMarca = COMPARISONS.filter((c) => c.brands?.some((b) => b.toLowerCase() === brand));
+  const orden = material === "acero" ? ["ceramica", "plastico"] : ["ceramica", "acero"];
+  const porMaterial = material
+    ? orden
+        .map((otro) => COMPARISONS.find((c) => !c.brands && [c.a, c.b].includes(material) && [c.a, c.b].includes(otro)))
+        .filter(Boolean)
+    : [];
+  return [...porMarca, ...porMaterial]
+    .slice(0, 2)
+    .map((c) => ({ title: c.seo.title, path: `/comparativas/${c.slug}/` }));
+})();
+
+const sigueLeyendo = [
+  categoria && { label: "Categoría", ...categoria },
+  comparativa && { label: "Comparativa", ...comparativa },
+  ...versus.map((v) => ({ label: "Cara a cara", ...v })),
+  guia && { label: "Guía", ...guia },
+  ...guiasExtra.map((g) => ({ label: "Guía", ...g })),
+].filter(Boolean);
 
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
@@ -379,60 +414,22 @@ const schema = graph(
           Sigue leyendo
         </h2>
         <div class="space-y-3">
-          {
-            categoria && (
-              <a
-                href={categoria.path}
-                class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition"
-              >
-                <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
-                <span>
-                  <span class="block text-xs font-bold text-brand-700 uppercase">
-                    Categoría
-                  </span>
-                  <span class="block font-semibold text-ink group-hover:text-brand-700">
-                    {categoria.title}
-                  </span>
+          {sigueLeyendo.map((l) => (
+            <a
+              href={l.path}
+              class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition"
+            >
+              <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
+              <span>
+                <span class="block text-xs font-bold text-brand-700 uppercase">
+                  {l.label}
                 </span>
-              </a>
-            )
-          }
-          {
-            comparativa && (
-              <a
-                href={comparativa.path}
-                class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition"
-              >
-                <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
-                <span>
-                  <span class="block text-xs font-bold text-brand-700 uppercase">
-                    Comparativa
-                  </span>
-                  <span class="block font-semibold text-ink group-hover:text-brand-700">
-                    {comparativa.title}
-                  </span>
+                <span class="block font-semibold text-ink group-hover:text-brand-700">
+                  {l.title}
                 </span>
-              </a>
-            )
-          }
-          {
-            guia && (
-              <a
-                href={guia.path}
-                class="group flex items-center gap-3 rounded-xl border border-brand-200 p-4 hover:border-brand-300 hover:shadow-md transition"
-              >
-                <ArrowRight className="w-5 h-5 text-brand-600 shrink-0" />
-                <span>
-                  <span class="block text-xs font-bold text-brand-700 uppercase">
-                    Guía
-                  </span>
-                  <span class="block font-semibold text-ink group-hover:text-brand-700">
-                    {guia.title}
-                  </span>
-                </span>
-              </a>
-            )
-          }
+              </span>
+            </a>
+          ))}
         </div>
       </section>
 

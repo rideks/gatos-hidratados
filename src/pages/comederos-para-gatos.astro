@@ -9,25 +9,79 @@ import ProductCard from "../components/ProductCard.astro";
 import BadgeLegend from "../components/BadgeLegend.astro";
 import TrustBanner from "../components/TrustBanner.astro";
 import { getBySubcategory } from "../data/ProductData.js";
-import { SILOS } from "../data/taxonomy.js";
+import Schema from "../components/Schema.astro";
+import { SILOS, getActiveGuides } from "../data/taxonomy.js";
+import { SITE } from "../config/site.js";
+import {
+  buildWebPage,
+  buildBreadcrumb,
+  buildFaqPage,
+  graph,
+} from "../utils/schema.js";
 import { ArrowRight } from "lucide-react";
 
 const productos = getBySubcategory("comederos-automaticos");
 const canonical = "/comederos-para-gatos/";
 const active = SILOS.comederos.active;
 
+const url = new URL(canonical, SITE.url).href;
+const title = "Comederos para gatos: automáticos, con app o por gravedad";
+const description =
+  "Comederos automáticos y por gravedad para gatos: programables, con app y cuenco de acero. Cuál elegir según raciones, capacidad e higiene.";
+
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
   { name: "Comederos", path: canonical },
 ];
+
+// Guías del silo (se añaden solas al registrarlas en taxonomy.js).
+const guias = getActiveGuides().filter((g) => g.category === "comederos-automaticos");
+
+const faqs = [
+  {
+    q: "¿Merece la pena un comedero automático?",
+    a: "Sí, si necesitas controlar las raciones (gatos con sobrepeso o que comen con ansia), si pasas muchas horas fuera de casa o si quieres repartir la comida en varias tomas pequeñas. Si tu gato come bien a sus horas y siempre hay alguien en casa, no es imprescindible.",
+  },
+  {
+    q: "¿Comedero automático o por gravedad?",
+    a: "El automático reparte raciones medidas a horas fijas; el de gravedad deja el pienso siempre disponible y no controla la cantidad. Para la mayoría de gatos de interior, el automático es más saludable porque evita el picoteo constante y el sobrepeso.",
+  },
+  {
+    q: "¿Sirven para comida húmeda?",
+    a: "Casi todos los comederos automáticos son solo para pienso seco: la comida húmeda se estropea a temperatura ambiente y atasca el mecanismo de reparto. Para comida húmeda existen comederos de compartimentos con tapa programada, que son otro tipo de producto.",
+  },
+  {
+    q: "¿Puedo dejar a mi gato solo varios días con un comedero automático?",
+    a: "El comedero resuelve la comida, pero no sustituye a una persona: el gato necesita agua fresca, el arenero limpio y que alguien compruebe que está bien. Para ausencias de más de un día o dos, lo recomendable es que alguien pase a verlo.",
+  },
+  {
+    q: "¿Qué pasa si se va la luz?",
+    a: "Los modelos con respaldo a pilas siguen funcionando con normalidad; los que solo van con adaptador se paran hasta que vuelve la corriente. Si te vas a ausentar, elige uno con doble alimentación.",
+  },
+];
+
+const schema = active
+  ? graph(
+      buildWebPage({
+        url,
+        name: title,
+        description,
+        breadcrumbId: `${url}#breadcrumb`,
+        mainEntityId: `${url}#faq`,
+      }),
+      buildBreadcrumb(breadcrumbs, { id: `${url}#breadcrumb` }),
+      buildFaqPage(faqs, { id: `${url}#faq` }),
+    )
+  : null;
 ---
 
 <Layout
-  title="Comederos para gatos"
-  description="Comederos automáticos y por gravedad para gatos: programables, con app y cuenco de acero. Cuál elegir según raciones, capacidad e higiene."
+  title={title}
+  description={description}
   canonical={canonical}
   noindex={!active}
 >
+  {schema && <Schema schema={schema} />}
   <HeaderApp />
 
   <PageHeader
@@ -74,11 +128,11 @@ const breadcrumbs = [
                 (temporizador o app) reparte raciones exactas a horas fijas:
                 clave para{" "}
                 <a href="/cuantas-veces-come-un-gato/">controlar el peso</a> o
-                para gatos que comen sin freno. Uno{" "}
+                para gatos que <a href="/gato-come-rapido-vomita/">comen demasiado rápido</a>. Uno{" "}
                 <strong>por gravedad</strong> solo va soltando pienso a demanda:
                 más barato y sin electricidad, pero{" "}
                 <strong>sin control de cantidad</strong>. Para la mayoría de
-                gatos de interior, el programable es más saludable.
+                gatos de interior, el programable es más saludable (lo comparamos en <a href="/comedero-automatico-vs-gravedad-gatos/">automático vs gravedad</a>).
               </p>
 
               <h3>2. Material del cuenco</h3>
@@ -95,7 +149,7 @@ const breadcrumbs = [
                 varios días; para ausencias largas, más capacidad. Y con{" "}
                 <strong>varios gatos</strong>, un modelo de{" "}
                 <strong>doble cuenco</strong> reparte la ración a cada uno sin
-                que se roben la comida.
+                que se roben la comida. Te contamos cómo elegir en <a href="/comederos-automaticos-varios-gatos/">comederos para varios gatos</a>.
               </p>
 
               <h3>4. App y respaldo a pilas</h3>
@@ -154,6 +208,46 @@ const breadcrumbs = [
         </>
       )
     }
+
+    {
+      guias.length > 0 && (
+        <section class="mt-14">
+          <p class="eyebrow">Para acertar</p>
+          <h2 class="font-display font-semibold text-ink text-2xl mt-2 mb-6">
+            Guías para alimentar a tu gato
+          </h2>
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {guias.map((g) => (
+              <a
+                href={g.path}
+                class="group flex items-start gap-3 rounded-xl border border-brand-200 bg-surface p-4 hover:border-brand-300 hover:shadow-md transition"
+              >
+                <ArrowRight className="w-5 h-5 text-brand-600 shrink-0 mt-0.5" />
+                <span class="font-semibold text-ink group-hover:text-brand-700 leading-snug">
+                  {g.title}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mt-14 max-w-3xl">
+      <h2 class="font-display font-semibold text-ink text-2xl mb-5">
+        Preguntas frecuentes
+      </h2>
+      <div class="space-y-4">
+        {
+          faqs.map((f) => (
+            <details class="rounded-xl border border-brand-200 p-4">
+              <summary class="font-bold text-ink cursor-pointer">{f.q}</summary>
+              <p class="text-ink-700 mt-2">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
 
     <div class="mt-14 max-w-3xl"><TrustBanner /></div>
   </main>

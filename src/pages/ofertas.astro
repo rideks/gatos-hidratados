@@ -15,6 +15,9 @@ const pct = (p) => {
     orig = Number(String(p.originalPrice).replace(",", "."));
   return orig > price ? Math.round(((orig - price) / orig) * 100) : 0;
 };
+// noindex: los precios y descuentos son estáticos (del data file) y la página
+// tiene poco contenido propio. Sigue en el menú para los usuarios; quítale el
+// noindex cuando tenga ofertas actualizadas y texto que la sostenga.
 const ofertas = getDiscounted().sort((a, b) => pct(b) - pct(a));
 
 const breadcrumbs = [
@@ -30,7 +33,7 @@ const schema = {
   ],
 };
 ---
-<Layout title="Ofertas" description="Fuentes de agua para gatos y accesorios con descuento real, ordenados por el mayor ahorro." canonical="/ofertas/">
+<Layout title="Ofertas" description="Fuentes de agua para gatos y accesorios con descuento real, ordenados por el mayor ahorro." canonical="/ofertas/" noindex={true}>
   <Schema schema={schema} />
   <HeaderApp />
   <PageHeader eyebrow="Chollos" title="Ofertas del momento" description="Productos con rebaja real, ordenados por el mayor descuento. Los precios finales se ven en Amazon.">

@@ -13,26 +13,51 @@ const breadcrumbs = [
   { name: "Comparativas", path: "/comparativas/" },
 ];
 
-const rankings = CATEGORIES.filter(
-  (c) => c.comparativa && SILOS[c.silo]?.active,
-);
+// Rankings "mejores X": lista curada (orden = prioridad). Cada uno declara su
+// silo y su icono, y desaparece solo si el silo se apaga.
+const rankings = [
+  { silo: "hidratacion", cat: "fuentes-agua", title: "Mejores fuentes de agua para gatos", blurb: "La comparativa completa: acero, plástico, sin cable y gravedad, con coste de filtros.", path: "/mejores-fuentes-agua-para-gatos/" },
+  { silo: "hidratacion", cat: "fuentes-agua", title: "Fuentes de acero inoxidable", blurb: "Las más higiénicas: no porosas y fáciles de limpiar.", path: "/fuentes-acero-inoxidable-gatos/" },
+  { silo: "hidratacion", cat: "fuentes-agua", title: "Fuentes silenciosas", blurb: "Para dormitorios y gatos asustadizos: bombas por debajo de 25 dB.", path: "/fuentes-agua-silenciosas-gatos/" },
+  { silo: "hidratacion", cat: "fuentes-agua", title: "Fuentes sin cable", blurb: "Con batería y sensor: sin enchufe cerca ni cables que morder.", path: "/mejores-fuentes-agua-sin-cable-gatos/" },
+  { silo: "hidratacion", cat: "fuentes-agua", title: "Fuentes baratas", blurb: "Para probar si tu gato adopta una fuente gastando poco.", path: "/mejores-fuentes-agua-baratas-gatos/" },
+  { silo: "hidratacion", cat: "filtros-fuente", title: "Filtros de recambio", blurb: "El recambio compatible con cada fuente y cuánto cuesta al año.", path: "/filtros-recambio-fuentes-gatos/" },
+  { silo: "comederos", cat: "comederos-automaticos", title: "Mejores comederos automáticos", blurb: "Programables, de doble cuenco y por gravedad, con su nota.", path: "/mejores-comederos-automaticos-gatos/" },
+  { silo: "comederos", cat: "comederos-automaticos", title: "Comederos con app y WiFi", blurb: "Para programar y vigilar las raciones desde el móvil.", path: "/mejores-comederos-automaticos-app-gatos/" },
+]
+  .filter((r) => SILOS[r.silo]?.active)
+  .map((r) => ({ ...r, icon: CATEGORIES.find((c) => c.id === r.cat)?.icon }));
+
+const versus = [
+  { title: "Por material", items: COMPARISONS.filter((c) => ENTITIES[c.a].type === "material") },
+  { title: "Por marca", items: COMPARISONS.filter((c) => ENTITIES[c.a].type === "marca") },
+].filter((g) => g.items.length > 0);
 ---
 
 <Layout
-  title="Comparativas"
-  description="Todas nuestras comparativas de fuentes de agua para gatos y accesorios: rankings 'mejores X' y enfrentamientos 'versus' por material."
+  title="Comparativas de fuentes y comederos para gatos"
+  description="Todas nuestras comparativas: las mejores fuentes de agua, filtros y comederos para gatos, y duelos cara a cara por material y por marca."
   canonical="/comparativas/"
 >
   <HeaderApp />
   <PageHeader
     eyebrow="Índice"
     title="Comparativas"
-    description="Rankings de las mejores opciones y enfrentamientos directos por material para decidir sin dudas."
+    description="Rankings de las mejores opciones y duelos cara a cara por material y por marca, para decidir sin dudas."
   >
     <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
   </PageHeader>
 
   <main class="max-w-6xl mx-auto px-4 py-12">
+    <div class="prose prose-slate max-w-3xl mb-12">
+      <p>
+        Hay dos formas de usar esta sección. Si sabes qué buscas (una fuente silenciosa, sin cable, un comedero para dos gatos…), ve directo al <strong>ranking</strong> de ese tipo: cada uno ordena los productos por nuestra nota y explica para quién es cada uno. Si dudas entre dos opciones concretas, los <strong>cara a cara</strong> las enfrentan criterio a criterio y terminan con un veredicto y con qué elegir según tu caso.
+      </p>
+      <p>
+        Todas las notas son propias y salen de los mismos criterios (material, filtrado, ruido, fiabilidad y coste de los recambios), no de las estrellas de Amazon. Te contamos cómo lo hacemos en <a href="/quienes-somos/">quiénes somos y método</a>.
+      </p>
+    </div>
+
     <section>
       <p class="eyebrow">Rankings</p>
       <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">
@@ -42,15 +67,18 @@ const rankings = CATEGORIES.filter(
         {
           rankings.map((c) => (
             <a
-              href={c.comparativa.path}
+              href={c.path}
               class="group rounded-xl border border-brand-200 bg-surface p-5 hover:border-brand-300 hover:shadow-lg transition-all"
             >
-              <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl mb-3">
-                <c.icon className="w-5 h-5" />
-              </span>
+              {c.icon && (
+                <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl mb-3">
+                  <c.icon className="w-5 h-5" />
+                </span>
+              )}
               <p class="font-bold text-ink group-hover:text-brand-700 leading-snug">
-                {c.comparativa.title}
+                {c.title}
               </p>
+              <p class="text-sm text-ink-700 mt-1.5 leading-snug">{c.blurb}</p>
               <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-3">
                 Ver comparativa{" "}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -61,35 +89,40 @@ const rankings = CATEGORIES.filter(
       </div>
     </section>
 
-    <section class="mt-14">
-      <p class="eyebrow">Cara a cara</p>
-      <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">
-        Enfrentamientos por material
-      </h2>
-      <div class="grid gap-4 sm:grid-cols-2">
-        {
-          COMPARISONS.map((c) => (
-            <a
-              href={`/comparativas/${c.slug}/`}
-              class="group rounded-xl border border-brand-200 bg-surface p-5 hover:border-brand-300 hover:shadow-lg transition-all flex items-center gap-4"
-            >
-              <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0">
-                <GitCompare className="w-5 h-5" />
-              </span>
-              <span>
-                <span class="block font-bold text-ink group-hover:text-brand-700">
-                  {ENTITIES[c.a].name} vs {ENTITIES[c.b].name}
+    {
+      versus.map((g, i) => (
+        <section class="mt-14">
+          {i === 0 && <p class="eyebrow">Cara a cara</p>}
+          <h2 class="font-display font-extrabold text-ink text-2xl mt-2 mb-6">
+            {g.title}
+          </h2>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {g.items.map((c) => (
+              <a
+                href={`/comparativas/${c.slug}/`}
+                class="group rounded-xl border border-brand-200 bg-surface p-5 hover:border-brand-300 hover:shadow-lg transition-all flex items-start gap-4"
+              >
+                <span class="inline-flex bg-brand-50 text-brand-700 p-2.5 rounded-xl shrink-0">
+                  <GitCompare className="w-5 h-5" />
                 </span>
-                <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-1">
-                  Ver cara a cara{" "}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <span>
+                  <span class="block font-bold text-ink group-hover:text-brand-700">
+                    {ENTITIES[c.a].name} vs {ENTITIES[c.b].name}
+                  </span>
+                  <span class="block text-sm text-ink-700 mt-1 leading-snug">
+                    {c.seo.description}
+                  </span>
+                  <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 mt-2">
+                    Ver cara a cara{" "}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
                 </span>
-              </span>
-            </a>
-          ))
-        }
-      </div>
-    </section>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
   </main>
   <FooterApp />
 </Layout>
