@@ -3,18 +3,72 @@
 // Comparativa PILAR comercial: "Mejores fuentes de agua para gatos 2026".
 // Lista TODAS las fuentes del silo (acero, plástico, sin cable, gravedad) y
 // enlaza a las sub-comparativas por atributo. Usa el template ComparativaPage
-// (BestPick + isla ProductComparison + FAQ).
+// (BestPick + isla ProductComparison + FAQ). El contenido de apoyo (tipos,
+// capacidad, coste de filtros, errores) va en el slot "fichas", DESPUÉS de la
+// tabla, para no retrasar la comparativa.
 // ============================================================================
 import ComparativaPage from "../templates/ComparativaPage.astro";
-import { getBySubcategory } from "../data/ProductData.js";
+import { getBySubcategory, getRecommendedFilter } from "../data/ProductData.js";
 
 // Todas las fuentes de agua (orden curado en el data file: destacados primero).
 const products = getBySubcategory("fuentes-agua");
 
+// Coste anual de filtros: precio del pack (del data file, siempre al día) ÷
+// unidades del pack × 12 cambios al año. Las unidades no están en el data
+// file como número, por eso van aquí. Si cambias de pack, actualiza la cifra.
+const PACK_UNITS = {
+  "filtros-petkit-30": 5,
+  "filtros-petkit-max": 5,
+  "filtros-giotohun-acero": 6,
+  "filtros-giotohun-2l": 6,
+  "filtros-feelneedy-w22": 6,
+  "filtros-feelneedy-w17": 6,
+  "filtros-feelneedy-ypd-c004": 6,
+  "filtros-nenozi": 6,
+  "filtros-apauk": 8,
+  "filtros-balimopet": 6,
+  "filtros-pawpoll": 6,
+};
+const SHORT = {
+  "petkit-eversweet-solo-2": "PETKIT Eversweet Solo 2",
+  "giotohun-acero-inoxidable-22l": "GIOTOHUN acero 2,2 L",
+  "feelneedy-acero-inoxidable-28l": "FEELNEEDY acero 2,8 L",
+  "feelneedy-sin-cable-32l": "FEELNEEDY sin cable 3,2 L",
+  "nenozi-plastico-22l": "Nenozi 2,2 L",
+  "giotohun-plastico-2l": "GIOTOHUN plástico 2 L",
+  "apauk-acero-inoxidable-32l": "APAUK acero 3,2 L",
+  "balimopet-acero-inoxidable-26l": "BalimoPet acero 2,6 L",
+  "pawpoll-plastico-22l": "PawPoll 2,2 L",
+  "feelneedy-sin-cable-4l": "FEELNEEDY sin cable 4 L",
+  "petkit-eversweet-max-2-3l": "PETKIT Eversweet Max 2",
+};
+const num = (v) => Number(String(v ?? "").replace(",", "."));
+const eur = (n) => n.toFixed(2).replace(".", ",");
+const filterCosts = products
+  .map((f) => {
+    const filter = getRecommendedFilter(f);
+    const units = filter && PACK_UNITS[filter.slug];
+    if (!units || !num(filter.price)) return null;
+    const perUnit = num(filter.price) / units;
+    return {
+      fountain: f,
+      label: SHORT[f.slug] || f.name,
+      filter,
+      units,
+      perUnit: eur(perUnit),
+      perYear: Math.round(perUnit * 12),
+    };
+  })
+  .filter(Boolean)
+  .sort((a, b) => a.perYear - b.perYear);
+const minYear = Math.min(...filterCosts.map((r) => r.perYear));
+const maxYear = Math.max(...filterCosts.map((r) => r.perYear));
+
+const link = (slug) => `/productos/${slug}/`;
+
 const seo = {
-  title: "Mejores fuentes de agua para gatos 2026: comparativa actualizada", // ← año SÍ
-  description:
-    "Comparativa real de las mejores fuentes de agua para gatos: acero, plástico y sin cable frente a frente. Cómo elegir por material, ruido, capacidad y filtro. Señalamos también los defectos.",
+  title: "Mejores fuentes de agua para gatos 2026", // ← año SÍ
+  description: `Comparamos ${products.length} fuentes de agua para gatos (acero, plástico, sin cable y gravedad): cuál elegir según tu caso, ruido, capacidad y coste de filtros.`,
   canonical: "/mejores-fuentes-agua-para-gatos/", // ← año NO
 };
 
@@ -28,19 +82,31 @@ const breadcrumbs = [
 const faqs = [
   {
     q: "¿Cuál es la mejor fuente de agua para gatos en 2026?",
-    a: "No hay una única 'mejor': depende de tu caso. Para un hogar con un gato, nuestra elección es la PETKIT Eversweet Solo 2 (silenciosa y con app de consumo). Si priorizas higiene, cualquiera de acero inoxidable 304; si buscas gastar poco para probar, una plástica superventas; y si no tienes enchufe cerca, una sin cable con sensor.",
+    a: "No hay una única 'mejor': depende de tu caso. Para un hogar con un gato, nuestra elección es la PETKIT Eversweet Solo 2 (silenciosa y con app de consumo). Si priorizas higiene, cualquiera de acero inoxidable 304; si buscas gastar poco para probar, una plástica superventas; si tienes varios gatos, una de 3 L o más; y si no tienes enchufe cerca, una sin cable con sensor.",
   },
   {
     q: "¿Mejor de acero, plástico o cerámica?",
-    a: "El acero inoxidable 304 es el más higiénico (no es poroso, acumula menos biofilm y ayuda contra el acné felino) y el que recomendamos si vas a tenerla años. El plástico es la puerta de entrada barata para ver si tu gato adopta la fuente, pero pide más limpieza. La cerámica es estable y elegante, pero más frágil y cara.",
+    a: "El acero inoxidable 304 es el más higiénico (no es poroso, acumula menos biofilm y ayuda contra el acné felino) y el que recomendamos si vas a tenerla años. El plástico es la puerta de entrada barata para ver si tu gato adopta la fuente, pero pide más limpieza y conviene renovarlo cuando se raya. La cerámica es estable y elegante, pero más frágil y cara.",
+  },
+  {
+    q: "¿Qué capacidad necesito si tengo dos gatos?",
+    a: "Entre 2,5 y 3,2 L es un buen rango para dos gatos: te da margen si un día no rellenas y evita que la bomba trabaje con el nivel bajo. Con tres o más gatos, mejor 3-4 L o, aún mejor, dos puntos de agua en habitaciones distintas.",
   },
   {
     q: "¿Cuánto ruido hace una fuente de agua para gatos?",
-    a: "Las mejores de acero bajan de 25 dB (inaudibles de noche). El ruido casi nunca es de fábrica: aparece cuando el nivel de agua baja del mínimo y la bomba trabaja medio seca, o cuando el pelo la atasca. Mantén el depósito lleno y limpia la bomba a menudo.",
+    a: "Las mejores de acero declaran menos de 25 dB (inaudibles de noche). El ruido casi nunca es de fábrica: aparece cuando el nivel de agua baja del mínimo y la bomba trabaja medio seca, o cuando el pelo la atasca. Mantén el depósito lleno y limpia la bomba a menudo.",
+  },
+  {
+    q: "¿Cuánto cuesta mantener una fuente al año?",
+    a: `Lo que más pesa es el filtro: cambiándolo cada mes, entre unos ${minYear} y ${maxYear} € al año según la marca, a veces más que la propia fuente. La electricidad es casi despreciable: una bomba de 1,5 W gasta en torno a 13 kWh al año, unos 2-3 €.`,
   },
   {
     q: "¿Cada cuánto hay que cambiar el filtro?",
-    a: "Como norma, cada 2 a 4 semanas, y antes con varios gatos. Un filtro saturado empeora el sabor del agua y es justo cuando el gato pierde interés por beber. Cada fuente usa su filtro específico: compra el recambio de la marca.",
+    a: "Como norma, cada 2 a 4 semanas, y antes con varios gatos o agua muy dura. Un filtro saturado empeora el sabor del agua y es justo cuando el gato pierde interés por beber. Cada fuente usa su filtro específico: compra el recambio compatible con tu modelo.",
+  },
+  {
+    q: "¿Merece la pena una fuente o basta con un cuenco?",
+    a: "Si tu gato ya bebe bien de un cuenco limpio, no es imprescindible. Merece la pena si bebe poco, si prefiere el grifo, si es mayor o tiene antecedentes urinarios o renales: el agua en movimiento anima a muchos gatos a beber más. Lo importante es que el agua esté siempre fresca y limpia, sea cual sea el recipiente.",
   },
 ];
 ---
@@ -54,61 +120,67 @@ const faqs = [
   <Fragment slot="intro">
     <p>
       Una <strong>fuente de agua</strong> ayuda a que muchos gatos beban más porque
-      prefieren el agua en movimiento por instinto, y beber más protege el{" "}
-      <strong>riñón y las vías urinarias</strong>. Pero no todas valen: hemos
-      analizado las de acero, plástico y sin cable señalando también sus
-      defectos. Aquí tienes la comparativa completa, de la que recomendamos a la
-      más barata que merece la pena.
+      prefieren el agua en movimiento por instinto, y beber más protege el <strong
+        >riñón y las vías urinarias</strong
+      >. Pero no todas valen lo mismo: aquí comparamos {products.length} fuentes de
+      acero, plástico, sin cable y por gravedad, con sus defectos, lo que cuesta mantenerlas
+      y para quién es cada una.
     </p>
 
     <h2>Cuál elegir según tu caso</h2>
     <ul>
       <li>
-        <strong>Un gato, quiero acertar sin pensar:</strong>{" "}
-        la <a href="/productos/petkit-eversweet-solo-2/"
-          >PETKIT Eversweet Solo 2</a
-        >
-        — silenciosa, con app que te dice cuánto bebe (útil si es mayor o renal).
+        <strong>Un gato, quiero acertar sin pensar:</strong> la <a
+          href={link("petkit-eversweet-solo-2")}>PETKIT Eversweet Solo 2</a
+        >, silenciosa y con app que te dice cuánto bebe (útil si es mayor o
+        renal).
       </li>
       <li>
-        <strong>Máxima higiene (acero) a buen precio:</strong>{" "}
-        la <a href="/productos/giotohun-acero-inoxidable-22l/"
+        <strong>Máxima higiene (acero) a buen precio:</strong> la <a
+          href={link("giotohun-acero-inoxidable-22l")}
           >GIOTOHUN de acero 2,2 L</a
-        >{" "}
-        con ventana de nivel, o mira todas las{" "}
-        <a href="/fuentes-acero-inoxidable-gatos/"
-          >fuentes de acero inoxidable</a
+        > con ventana de nivel, o mira todas las <a
+          href="/fuentes-acero-inoxidable-gatos/">fuentes de acero inoxidable</a
         >.
       </li>
       <li>
-        <strong>Gastar poco para probar si la adopta:</strong>{" "}
-        una plástica superventas como la{" "}
-        <a href="/productos/giotohun-plastico-2l/">GIOTOHUN de 2 L</a>; más
-        opciones en{" "}
-        <a href="/mejores-fuentes-agua-baratas-gatos/">fuentes baratas</a>.
+        <strong>Dos o más gatos:</strong> la <a
+          href={link("apauk-acero-inoxidable-32l")}>APAUK de acero 3,2 L</a
+        > si tienes enchufe cerca; si buscas lo más completo, la <a
+          href={link("petkit-eversweet-max-2-3l")}>PETKIT Eversweet Max 2</a
+        > (sin cable, con sensor y app).
       </li>
       <li>
-        <strong>Sin enchufe cerca o gato que muerde cables:</strong>{" "}
-        una <a href="/mejores-fuentes-agua-sin-cable-gatos/"
+        <strong>Gastar poco para probar si la adopta:</strong> una plástica superventas
+        como la <a href={link("giotohun-plastico-2l")}>GIOTOHUN de 2 L</a>; más
+        opciones en <a href="/mejores-fuentes-agua-baratas-gatos/"
+          >fuentes baratas</a
+        >.
+      </li>
+      <li>
+        <strong>Sin enchufe cerca o gato que muerde cables:</strong> una <a
+          href="/mejores-fuentes-agua-sin-cable-gatos/"
           >fuente sin cable con sensor</a
         >.
       </li>
+      <li>
+        <strong>Nada de ruido ni de filtros:</strong> un <a
+          href={link("amazon-basics-dispensador-gravedad-38l")}
+          >dispensador por gravedad</a
+        >, sabiendo que el agua no circula y hay que lavarlo más a menudo.
+      </li>
     </ul>
 
-    <h2>Lo que debes mirar antes de comprar</h2>
+    <h2>Cómo hemos hecho esta comparativa</h2>
     <p>
-      Prioriza el <strong>material</strong> (acero &gt; cerámica &gt; plástico en
-      higiene), el <strong>ruido</strong> si va en un dormitorio (busca &lt; 25 dB;
-      lo detallamos en{" "}
-      <a href="/fuentes-agua-silenciosas-gatos/">fuentes silenciosas</a>), la{
-        " "
-      }
-      <strong>capacidad</strong> según cuántos gatos tengas y, sobre todo, el{
-        " "
-      }
-      <strong>consumible</strong>: cada fuente usa su{" "}
-      <a href="/filtros-recambio-fuentes-gatos/">filtro de recambio</a> específico,
-      y es lo que decide si tu gato sigue bebiendo mes a mes.
+      Cada fuente tiene una <strong>nota editorial propia de 1 a 5</strong> que sale
+      de los mismos criterios: material e higiene, filtrado y precio de los recambios,
+      ruido declarado frente a lo que cuentan los compradores con el tiempo, y fiabilidad
+      (corte por nivel bajo, bomba, garantía). No copiamos las estrellas de Amazon.
+      Hoy son análisis por criterios, sin unidad probada en casa, así que ninguna
+      pasa de 4,7. Lo explicamos con detalle en <a href="/quienes-somos/"
+        >cómo analizamos</a
+      >.
     </p>
 
     <div class="not-prose mt-8">
@@ -140,6 +212,254 @@ const faqs = [
           >Filtros de recambio →</a
         >
       </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="fichas">
+    <div class="prose prose-slate max-w-none mt-12">
+      <h2>Tipos de fuente: ventajas y pegas</h2>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr
+              ><th>Tipo</th><th>A favor</th><th>En contra</th><th>Para quién</th
+              ></tr
+            >
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Acero inoxidable 304</strong></td>
+              <td
+                >No es poroso: acumula menos biofilm, no se raya fácilmente y
+                suele ir al lavavajillas.</td
+              >
+              <td
+                >Algo más cara que el plástico; no ves el nivel salvo que tenga
+                ventana.</td
+              >
+              <td>Quien la va a usar años, gatos con acné en la barbilla.</td>
+            </tr>
+            <tr>
+              <td><strong>Plástico</strong></td>
+              <td
+                >La más barata y ligera; suele ser transparente y se ve el
+                nivel.</td
+              >
+              <td
+                >Se raya y el biofilm se refugia en los arañazos: pide más
+                limpieza.</td
+              >
+              <td>Probar si tu gato adopta una fuente gastando poco.</td>
+            </tr>
+            <tr>
+              <td><strong>Cerámica</strong></td>
+              <td>Higiénica, pesada (no la vuelca) y bonita.</td>
+              <td
+                >Frágil y cara; los repuestos son más difíciles de encontrar.</td
+              >
+              <td
+                >Quien prioriza diseño y estabilidad (no incluimos ninguna aún).</td
+              >
+            </tr>
+            <tr>
+              <td><strong>Sin cable (batería)</strong></td>
+              <td
+                >La colocas donde quieras, sin cable que morder; muchas tienen
+                sensor de presencia.</td
+              >
+              <td
+                >Hay que recargarla; más cara y con más electrónica que puede
+                fallar.</td
+              >
+              <td>Sin enchufe cerca, gatos que muerden cables.</td>
+            </tr>
+            <tr>
+              <td><strong>Por gravedad</strong></td>
+              <td>Sin bomba, sin ruido, sin filtros ni electricidad.</td>
+              <td
+                >El agua no circula ni se filtra: menos atractiva y se ensucia
+                antes.</td
+              >
+              <td>Gatos que ya beben bien y solo necesitan más reserva.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Qué capacidad necesitas</h2>
+      <p>
+        La capacidad no es "cuántos días puedes olvidarte de ella": el agua
+        conviene renovarla a menudo aunque quede, porque se llena de pelo, polvo
+        y restos de comida. Lo que te da un depósito mayor es <strong
+          >margen</strong
+        > si un día no rellenas y que la bomba no trabaje con el nivel bajo, que es
+        cuando empieza a hacer ruido.
+      </p>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr
+              ><th>Gatos en casa</th><th>Capacidad orientativa</th><th
+                >Ejemplos</th
+              ></tr
+            >
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 gato</td>
+              <td>1,8-2,5 L</td>
+              <td
+                ><a href={link("petkit-eversweet-solo-2")}>Solo 2</a>, <a
+                  href={link("giotohun-acero-inoxidable-22l")}
+                  >GIOTOHUN acero 2,2 L</a
+                >, <a href={link("nenozi-plastico-22l")}>Nenozi 2,2 L</a></td
+              >
+            </tr>
+            <tr>
+              <td>2 gatos</td>
+              <td>2,5-3,2 L</td>
+              <td
+                ><a href={link("balimopet-acero-inoxidable-26l")}
+                  >BalimoPet 2,6 L</a
+                >, <a href={link("feelneedy-acero-inoxidable-28l")}
+                  >FEELNEEDY 2,8 L</a
+                >, <a href={link("apauk-acero-inoxidable-32l")}>APAUK 3,2 L</a
+                ></td
+              >
+            </tr>
+            <tr>
+              <td>3 o más</td>
+              <td>3-4 L, o dos puntos de agua</td>
+              <td
+                ><a href={link("petkit-eversweet-max-2-3l")}>Eversweet Max 2</a
+                >, <a href={link("feelneedy-sin-cable-4l")}
+                  >FEELNEEDY sin cable 4 L</a
+                ></td
+              >
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Con varios gatos, <strong
+          >dos fuentes medianas en habitaciones distintas</strong
+        > suelen funcionar mejor que una enorme: así ningún gato tiene que pasar por
+        el territorio de otro para beber.
+      </p>
+
+      <h2>Lo que cuesta mantenerla: el filtro</h2>
+      <p>
+        Es el gasto que casi nadie mira al comprar. Cada fuente usa su <strong
+          >filtro específico</strong
+        >, y cambiándolo cada mes (lo habitual con un gato) el recambio cuesta
+        entre {minYear} y {maxYear} € al año. En las baratas, eso es más que la propia
+        fuente. Precios del pack más pequeño, orientativos:
+      </p>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr
+              ><th>Fuente</th><th>Filtro compatible</th><th>Por filtro</th><th
+                >Al año*</th
+              ></tr
+            >
+          </thead>
+          <tbody>
+            {
+              filterCosts.map((r) => (
+                <tr>
+                  <td>
+                    <a href={link(r.fountain.slug)}>{r.label}</a>
+                  </td>
+                  <td>
+                    <a href={link(r.filter.slug)}>Pack de {r.units}</a>
+                  </td>
+                  <td>{r.perUnit} €</td>
+                  <td>≈ {r.perYear} €</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm">
+        * Con 12 cambios al año. Con varios gatos o agua muy dura toca cambiarlo
+        más a menudo; los PETKIT en modo inteligente pueden durar más. La
+        electricidad apenas cuenta: una bomba de 1,5 W gasta unos 13 kWh al año
+        (2-3 €). Más detalle en <a
+          href="/cada-cuanto-cambiar-filtro-fuente-gato/"
+          >cada cuánto cambiar el filtro</a
+        > y en <a href="/filtro-original-vs-generico-fuente-gatos/"
+          >filtro original o genérico</a
+        >.
+      </p>
+
+      <h2>Errores frecuentes al comprar una fuente</h2>
+      <ul>
+        <li>
+          <strong>Mirar solo el precio de la fuente.</strong> En dos o tres años,
+          los filtros cuestan más que la fuente: compara también lo que vale el recambio
+          en la tabla de arriba.
+        </li>
+        <li>
+          <strong>No comprobar el enchufe.</strong> Muchas funcionan por USB y algunas
+          no traen adaptador de corriente (la BalimoPet o la Eversweet Max 2, por
+          ejemplo). Si no tienes uno a mano, añádelo al pedido.
+        </li>
+        <li>
+          <strong
+            >Elegir plástico para un gato con granitos en la barbilla.</strong
+          > Es la señal típica del <a href="/acne-felino-cuencos-plastico/"
+            >acné felino</a
+          >, que se asocia a cuencos de plástico rayado: mejor acero.
+        </li>
+        <li>
+          <strong>Ponerla junto a la comida o el arenero.</strong> Por instinto, muchos
+          gatos rechazan el agua cerca de donde comen o hacen sus necesidades. Si
+          no se acerca, repasa <a href="/mi-gato-no-bebe-de-la-fuente/"
+            >por qué tu gato no bebe de la fuente</a
+          >.
+        </li>
+        <li>
+          <strong>Retirar el cuenco el primer día.</strong> Déjalo al lado una o dos
+          semanas, hasta que veas que bebe de la fuente.
+        </li>
+        <li>
+          <strong>Dejar que baje el nivel.</strong> Con poca agua la bomba chupa aire
+          y zumba: es la causa más habitual de ruido. Si ya suena, mira <a
+            href="/como-silenciar-fuente-agua-gatos/"
+            >cómo silenciar la fuente</a
+          >.
+        </li>
+      </ul>
+
+      <h2>Mantenimiento: lo que de verdad hace que siga bebiendo</h2>
+      <p>
+        Una fuente sucia es peor que un cuenco limpio. Cambia el agua y
+        enjuágala cada 1-2 días, desmóntala y limpia la bomba cada 1-2 semanas,
+        y cambia el filtro antes de que el agua sepa a estancada. Te lo contamos
+        paso a paso en <a href="/como-limpiar-fuente-agua-gatos/"
+          >cómo limpiar la fuente</a
+        >, y si no sabes qué recambio lleva la tuya, en <a
+          href="/que-filtro-necesita-mi-fuente-gato/"
+          >qué filtro necesita mi fuente</a
+        >.
+      </p>
+
+      <h2>Cuándo la fuente no es la solución</h2>
+      <p>
+        Una fuente anima a beber, pero no arregla un problema de salud. Si tu
+        gato <a href="/por-que-mi-gato-bebe-mucha-agua/"
+          >bebe mucho más de lo normal</a
+        > de repente, o <a href="/por-que-mi-gato-no-bebe-agua/">casi no bebe</a
+        > aunque cambies el recipiente, consulta al veterinario. Si entra y sale del
+        arenero sin orinar o hace esfuerzos, es una <a
+          href="/agua-problemas-urinarios-gatos/">urgencia</a
+        >, sobre todo en machos. Para gatos mayores o con enfermedad renal,
+        tienes una guía específica sobre <a
+          href="/fuente-agua-gato-renal-mayor/">qué fuente elegir</a
+        >.
+      </p>
     </div>
   </Fragment>
 </ComparativaPage>

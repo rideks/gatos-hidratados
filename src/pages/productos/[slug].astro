@@ -27,6 +27,7 @@ import {
   getRelated,
 } from "../../data/ProductData.js";
 import { getProductFaqs } from "../../utils/productFaqs.js";
+import { getEditorialScore } from "../../data/EditorialScores.js";
 import {
   SITE,
   SILOS,
@@ -34,7 +35,8 @@ import {
   COMPARATIVA_BY_SUBCATEGORY,
   GUIA_BY_SUBCATEGORY,
 } from "../../config/site.js";
-import { getProductSilo } from "../../data/ProductData.js";
+import { getBySlug, getProductSilo } from "../../data/ProductData.js";
+import { buildAmazonUrl } from "../../utils/amazon.js";
 import {
   buildProductNode,
   buildWebPage,
@@ -82,6 +84,25 @@ const dedupedBreadcrumbs = breadcrumbs.filter(
   (b, i) => i === 0 || b.path !== breadcrumbs[i - 1].path,
 );
 
+// Meta description propia (≤155 car.): la reseña completa es demasiado larga
+// para Google y repetía el texto del cuerpo. Nombre + "para quién es" + nota.
+const edScore = getEditorialScore(product.slug)?.rating;
+const metaDescription = (() => {
+  const nota = edScore ? ` Nota Felinlab: ${String(edScore).replace(".", ",")}/5.` : "";
+  const base = `${product.metaTitle || product.name}. ${product.bestFor || ""}`.trim();
+  const max = 155 - nota.length;
+  const cut = base.length <= max ? base : base.slice(0, max - 1).replace(/[\s,;:]+\S*$/, "") + "…";
+  return cut + nota;
+})();
+
+// Modelo más reciente: enlace interno solo si tenemos su ficha; si no, a
+// Amazon (con nuestro tag) a partir de su url o ASIN. Evita enlaces 404.
+const newerInternal = product.newerModel?.slug && getBySlug(product.newerModel.slug)
+  ? `/productos/${product.newerModel.slug}/`
+  : null;
+const newerAmazon = !newerInternal && (product.newerModel?.url || product.newerModel?.asin)
+  ? buildAmazonUrl(product.newerModel.url || product.newerModel.asin)
+  : null;
 const faqs = getProductFaqs(product);
 const related = getRelated(product, 3);
 const tags = getReadableTags(product.tags, 4);
@@ -106,8 +127,8 @@ const schema = graph(
 ---
 
 <Layout
-  title={product.name}
-  description={product.dynamicReview}
+  title={product.metaTitle || product.name}
+  description={metaDescription}
   canonical={canonical}
   ogImage={getMainImage(product)}
   type="article"
@@ -193,27 +214,24 @@ const schema = graph(
                     ? ` Desde ${product.newerModel.price} €.`
                     : ""}
                 </p>
-                {product.newerModel.slug ? (
+                {newerInternal ? (
                   <a
-                    href={`/productos/${product.newerModel.slug}/`}
+                    href={newerInternal}
                     class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800 mt-1.5"
                   >
                     Ver nuestro análisis del modelo nuevo{" "}
                     <ArrowRight className="w-4 h-4" />
                   </a>
-                ) : product.newerModel.url ? (
+                ) : newerAmazon ? (
                   <a
-                    href={product.newerModel.url}
+                    href={newerAmazon}
                     target="_blank"
                     rel="sponsored nofollow noopener"
                     class="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800 mt-1.5"
                   >
-                    Ver el modelo nuevo <ArrowRight className="w-4 h-4" />
+                    Ver el modelo nuevo en Amazon{" "}
+                    <ArrowRight className="w-4 h-4" />
                   </a>
-                ) : product.newerModel.asin ? (
-                  <p class="u-data text-xs text-ink-700/60 mt-1.5">
-                    ASIN {product.newerModel.asin}
-                  </p>
                 ) : null}
               </div>
             </div>

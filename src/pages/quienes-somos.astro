@@ -10,6 +10,9 @@ import { buildWebPage, buildBreadcrumb, graph } from "../utils/schema.js";
 
 const canonical = "/quienes-somos/";
 const url = new URL(canonical, SITE.url).href;
+const title = "Quiénes somos y cómo analizamos cada producto";
+const description = `Quién está detrás de ${SITE.name}, cómo analizamos y puntuamos cada producto, de dónde sale la información y cómo se financia el proyecto.`;
+const reviewer = AUTHOR.reviewer?.name ? AUTHOR.reviewer : null;
 
 const breadcrumbs = [
   { name: "Inicio", path: "/" },
@@ -36,8 +39,8 @@ const person = AUTHOR.person?.name
 const schema = graph(
   buildWebPage({
     url,
-    name: "Quiénes somos",
-    description: `Cómo trabajamos en ${SITE.name}: metodología de puntuación, independencia editorial y afiliación.`,
+    name: title,
+    description,
     breadcrumbId: `${url}#breadcrumb`,
     ...(person && { mainEntityId: `${url}#author` }),
   }),
@@ -46,31 +49,28 @@ const schema = graph(
 );
 ---
 
-<Layout
-  title="Quiénes somos"
-  description={`Cómo trabajamos en ${SITE.name}: metodología de puntuación, independencia editorial y afiliación.`}
-  canonical="/quienes-somos/"
->
+<Layout title={title} description={description} canonical={canonical}>
   <Schema schema={schema} />
   <HeaderApp />
   <PageHeader
     eyebrow="Sobre el proyecto"
-    title="Quiénes somos y cómo puntuamos"
+    title="Quiénes somos y cómo analizamos"
   >
     <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
   </PageHeader>
 
   <main class="max-w-3xl mx-auto px-4 py-12">
-    <div class="prose prose-slate max-w-none">
+    <div class="prose max-w-none">
       <p>
-        {SITE.name} nació con una idea simple: la mayoría de "rankings" de fuentes
-        para gatos copian la descripción de Amazon y nunca han visto el producto.
-        Nosotros probamos, medimos y contamos también lo que falla.
+        {SITE.name} nació de una frustración concreta: buscar una fuente de agua para
+        un gato y encontrar decenas de "rankings" que repiten la descripción de Amazon,
+        ponen cinco estrellas a todo y no mencionan ni un defecto. Aquí hacemos lo
+        contrario: <strong
+          >explicamos cómo analizamos cada producto, con qué criterios y qué
+          limitaciones tiene nuestro análisis</strong
+        >, para que puedas juzgar por ti mismo cuánto fiarte.
       </p>
 
-      <!-- Bloque de autor real (E-E-A-T). Personaliza esta bio con tu experiencia
-           concreta: cuántos gatos conviven contigo, desde cuándo pruebas producto,
-           por qué montaste el proyecto. Cuanto más específico y verificable, mejor. -->
       <h2 id="author">Quién está detrás</h2>
       <div
         class="not-prose flex items-center gap-4 my-5 p-4 rounded-2xl bg-brand-50 border border-brand-100"
@@ -103,62 +103,126 @@ const schema = graph(
       <p>
         Detrás de {SITE.name} está <strong
           >{AUTHOR.person?.name || SITE.name}</strong
-        >, que edita las guías y analiza en detalle cada producto que
-        recomendamos. No somos una redacción anónima que reempaqueta fichas:
-        cada análisis parte de tener el producto delante, montarlo, usarlo con
-        gatos reales y limpiarlo durante semanas antes de opinar.
+        >, que escribe y revisa todas las guías y analiza cada producto del
+        catálogo. Cada ficha y cada guía las firma y revisa la misma persona, y
+        cada recomendación se puede rastrear hasta los criterios que explicamos
+        abajo.
       </p>
+      {
+        (
+          <p>
+            Tengo 2 gatos y vivo con ellos desde que tenía 25 años, así que con
+            el tiempo he aprendido a estar muy pendiente de su salud y
+            bienestar. Empecé a investigar más a fondo cuando uno de mis gatos
+            comenzó a tener problemas en las caderas y quería encontrar formas
+            de ayudarlo a sentirse mejor. Desde entonces, he probado en casa
+            distintos productos pensados para mejorar su comodidad y bienestar,
+            y he ido aprendiendo de primera mano qué cosas pueden funcionar
+            mejor para ellos.
+          </p>
+        )
+      }
 
-      <h2>Cómo puntuamos: análisis y prueba</h2>
+      <h2>Cómo analizamos un producto</h2>
       <p>
-        Trabajamos en dos niveles, y cada ficha te dice en cuál está con un
-        sello visible:
+        Hoy, todas las fichas del catálogo son <strong
+          >análisis por criterios</strong
+        >: estudiamos cada producto a partir de su ficha técnica real, sus
+        manuales, las medidas de sus piezas y recambios, y los problemas que se
+        repiten en las opiniones verificadas de compradores. No partimos del
+        texto de marketing, y no copiamos la valoración de Amazon.
       </p>
+      <p>Para las <strong>fuentes de agua</strong> miramos siempre lo mismo:</p>
       <ul>
         <li>
-          <strong>Analizado por criterios.</strong> Es el punto de partida para todo
-          el catálogo. Valoramos cada fuente sobre su ficha real y lo que se sabe
-          de los materiales —no sobre la descripción de marketing de Amazon—: material
-          e higiene (acero 304, cerámica o plástico y su tendencia al biofilm), filtrado
-          (etapas y coste de recambios), ruido declarado y fiabilidad (corte por nivel
-          bajo, calidad de la bomba y disponibilidad de recambios de la marca). Estas
-          notas llegan como máximo a 4,7.
+          <strong>Material e higiene:</strong> acero inoxidable 304, cerámica o plástico,
+          y cuánto facilita cada uno la formación de biofilm (la capa viscosa donde
+          se acumulan bacterias).
         </li>
         <li>
-          <strong>Probado en casa.</strong> Cuando compramos y usamos una unidad con
-          gatos reales, la nota lo refleja: medimos el ruido de la bomba con el depósito
-          lleno y a medio nivel, revisamos la acumulación de biofilm tras varios días
-          y observamos si el chorro atrae o asusta al gato. Solo esas unidades llevan
-          el sello verde y pueden pasar de 4,7.
+          <strong>Filtrado y coste de mantenimiento:</strong> etapas de filtro, precio
+          de los recambios y si son fáciles de encontrar o solo sirven los de la marca.
+        </li>
+        <li>
+          <strong>Ruido:</strong> los decibelios que declara el fabricante y lo que
+          dicen los compradores sobre la bomba con el tiempo.
+        </li>
+        <li>
+          <strong>Fiabilidad:</strong> corte por nivel bajo de agua, calidad de la
+          bomba, garantía y disponibilidad de repuestos.
         </li>
       </ul>
       <p>
-        En ambos casos, la puntuación de estrellas es <strong
-          >editorial y propia</strong
-        >: no reproduce la valoración de Amazon. Y siempre señalamos los
-        defectos reales de cada producto, no solo lo bueno.
+        Para los <strong>comederos automáticos</strong>: precisión de las
+        raciones, material del cuenco, respaldo a pilas si se va la luz,
+        capacidad real en días, facilidad de limpieza y sistema antiatasco.
       </p>
 
-      <h2>Independencia y afiliación</h2>
+      <h2>Cómo puntuamos</h2>
+      <ul>
+        <li>
+          <strong>Nota editorial propia, de 1 a 5.</strong> Sale de los criterios
+          anteriores, no de las estrellas de Amazon. Cada ficha muestra también sus
+          <strong>defectos reales</strong>, no solo lo bueno.
+        </li>
+        <li>
+          <strong>Techo de 4,7 para los análisis por criterios.</strong> Sin haber
+          usado una unidad, no damos la nota máxima: hay cosas (el ruido real tras
+          meses, si al gato le gusta el chorro) que solo se ven en casa.
+        </li>
+        <li>
+          <strong>Sello "Probado en casa".</strong> Cuando compremos y usemos una
+          unidad con gatos reales, la ficha llevará ese sello, explicará qué hemos
+          medido y podrá superar el 4,7. Si una ficha no lo lleva, es un análisis
+          por criterios, y lo indicamos en la firma de cada producto.
+        </li>
+      </ul>
+
+      <h2>De dónde sale la información de salud</h2>
+      <p>
+        Las guías sobre hidratación, problemas urinarios o alimentación se basan
+        en fuentes veterinarias reconocidas (International Cat Care, la AVMA, el
+        Manual Veterinario Merck) y en estudios publicados. Marcamos con
+        claridad cuándo un síntoma es una urgencia.
+        {
+          reviewer
+            ? ` Las guías de salud las revisa ${reviewer.name}${reviewer.jobTitle ? `, ${reviewer.jobTitle.toLowerCase()}` : ""}.`
+            : " No somos veterinarios: nuestras guías son divulgativas y no sustituyen una consulta."
+        }
+      </p>
+
+      <h2>Precios, disponibilidad y actualizaciones</h2>
+      <p>
+        Los precios que mostramos son <strong>orientativos</strong>: cambian a
+        menudo en Amazon, y el definitivo es siempre el que ves allí. Revisamos
+        el catálogo periódicamente, marcamos como "agotado" lo que deja de estar
+        disponible y actualizamos la fecha de cada guía cuando cambia su
+        contenido. Si ves un dato desactualizado o un error, escríbenos y lo
+        corregimos.
+      </p>
+
+      <h2>Cómo nos financiamos</h2>
+      <p>
+        {SITE.name} se financia con enlaces de afiliado de Amazon: si compras a través
+        de ellos, recibimos una pequeña comisión <strong
+          >sin coste extra para ti</strong
+        >. No aceptamos patrocinios ni productos a cambio de reseñas: ninguna
+        marca paga por aparecer ni por su nota. Si algo no nos convence, lo
+        decimos.
+      </p>
+
+      <h2>Contacto</h2>
       <p>
         {
-          AUTHOR.email && (
+          AUTHOR.email ? (
             <>
-              Puedes escribirnos a{" "}
-              <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>.{" "}
+              Para dudas, correcciones o sugerencias, escríbenos a{" "}
+              <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>.
             </>
+          ) : (
+            "Para dudas, correcciones o sugerencias, escríbenos."
           )
-        }Financiamos el proyecto con enlaces de afiliado: si compras a través de
-        ellos, podemos llevarnos una pequeña comisión <strong
-          >sin coste extra para ti</strong
-        >. Eso nunca cambia qué recomendamos; si algo no nos gusta, lo decimos.
-      </p>
-
-      <h2>No sustituimos al veterinario</h2>
-      <p>
-        Damos información general sobre hidratación y bienestar felino. Ante
-        cualquier síntoma o duda de salud de tu gato, consulta siempre con un
-        profesional veterinario.
+        }
       </p>
     </div>
   </main>
