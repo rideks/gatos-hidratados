@@ -1,5 +1,6 @@
 ---
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 import { SILOS } from "../data/taxonomy.js";
@@ -35,15 +36,53 @@ const faqs = [
     a: "No necesariamente. Muchos gatos piden por costumbre o aburrimiento, no por hambre real. Si mantiene un peso correcto (notas las costillas sin verlas y tiene cintura vista desde arriba), la ración es adecuada. Si pide mucho, reparte la misma cantidad en más tomas pequeñas antes que aumentarla.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "World Small Animal Veterinary Association (WSAVA)",
+    title: "Global Nutrition Guidelines",
+    source: "wsava.org",
+    url: "https://wsava.org/global-guidelines/global-nutrition-guidelines/",
+  },
+  {
+    authors: "American Animal Hospital Association (AAHA)",
+    year: 2021,
+    title: "2021 AAHA Nutrition and Weight Management Guidelines for Dogs and Cats",
+    source: "aaha.org",
+    url: "https://www.aaha.org/resources/2021-aaha-nutrition-and-weight-management-guidelines/prevention-of-obesity/",
+  },
+  {
+    authors: "Association for Pet Obesity Prevention",
+    title: "Cat Body Condition Scoring",
+    source: "petobesityprevention.org",
+    url: "https://www.petobesityprevention.org/catbcs",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Feeding your cat or kitten",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/feeding-your-cat-or-kitten",
+  },
+  {
+    authors: "Sadek T, Hamper B, Horwitz D, et al.",
+    year: 2018,
+    title: "Feline feeding programs: Addressing behavioural needs to improve feline health and wellbeing",
+    source: "J Feline Med Surg 20:1049-1055",
+    url: "https://doi.org/10.1177/1098612X18791877",
+  },
+];
 ---
 
 <GuideLayout
   seo={seo}
   breadcrumbs={breadcrumbs}
   datePublished="2026-09-24"
+  dateModified="2026-10-01T00:00:00.000Z"
   faqs={faqs}
   section="Alimentación"
   noindex={!SILOS.comederos.active}
+  fuentes={fuentes}
 >
   <p>
     La pregunta no tiene un número único, porque la cantidad correcta depende de
@@ -152,4 +191,6 @@ const faqs = [
   </p>
 
   <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

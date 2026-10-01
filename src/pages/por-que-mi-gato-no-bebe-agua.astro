@@ -6,6 +6,7 @@
 // → src/pages/por-que-mi-gato-no-bebe-agua.astro
 // ============================================================================
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 
 const seo = {
   title: "¿Por qué mi gato no bebe agua? Causas y cómo animarle a beber",
@@ -21,7 +22,7 @@ const breadcrumbs = [
 ];
 
 const datePublished = "2026-08-15";
-const dateModified = "2026-08-15T00:00:00.000Z";
+const dateModified = "2026-10-01T00:00:00.000Z";
 
 const faqs = [
   {
@@ -49,6 +50,43 @@ const faqs = [
     a: "Un gato que no bebe (ni come) durante más de 24 horas, y sobre todo si está decaído, vomita o tiene otros síntomas, necesita veterinario sin demora: la deshidratación se agrava muy rápido en gatos y puede ser señal de un problema de fondo. No intentes forzarle el agua con jeringa por tu cuenta (riesgo de que se atragante); es una situación para el profesional.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "How to encourage your cat to drink",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/how-to-encourage-your-cat-to-drink",
+  },
+  {
+    authors: "Royal Canin Academy",
+    title: "The water requirements and drinking habits of cats",
+    source: "academy.royalcanin.com",
+    url: "https://academy.royalcanin.com/en/veterinary/the-water-requirements-and-drinking-habits-of-cats",
+  },
+  {
+    authors: "Buckley CM, Hawthorne A, Colyer A, Stevenson AE",
+    year: 2011,
+    title: "Effect of dietary water intake on urinary output, specific gravity and relative supersaturation for calcium oxalate and struvite in the cat",
+    source: "Br J Nutr 106(S1):S128-S130",
+    url: "https://doi.org/10.1017/S0007114511001875",
+  },
+  {
+    authors: "Grant DC",
+    year: 2010,
+    title: "Effect of water source on intake and urine concentration in healthy cats",
+    source: "J Feline Med Surg",
+    url: "https://journals.sagepub.com/doi/10.1016/j.jfms.2009.10.008",
+  },
+  {
+    authors: "Pachel C, Neilson J",
+    year: 2010,
+    title: "Comparison of feline water consumption between still and flowing water sources: a pilot study",
+    source: "J Vet Behav 5:130-133",
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S155878781000002X",
+  },
+];
 ---
 
 <GuideLayout
@@ -57,6 +95,7 @@ const faqs = [
   datePublished={datePublished}
   dateModified={dateModified}
   faqs={faqs}
+  fuentes={fuentes}
 >
   <div
     class="not-prose rounded-xl border border-brand-200 bg-brand-50 p-5 mb-8"
@@ -222,4 +261,6 @@ const faqs = [
     </p>
   </div>
   <!-- Si prefieres tu componente, sustituye el bloque anterior por <VetDisclaimer /> -->
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

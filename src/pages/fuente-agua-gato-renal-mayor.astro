@@ -1,11 +1,12 @@
 ---
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 const seo = {
   title: "Fuente de agua para gato renal o mayor: cuál y por qué",
   description:
-    "Qué fuente de agua ayuda a un gato con problemas renales o a un gato mayor: hidratación, monitorización del consumo y accesibilidad. Con criterio veterinario y honesto.",
+    "Qué fuente de agua ayuda a un gato renal o mayor: hidratación, control de cuánto bebe y accesibilidad. Con criterio veterinario y sin exagerar.",
   canonical: "/fuente-agua-gato-renal-mayor/",
 };
 const breadcrumbs = [
@@ -32,13 +33,45 @@ const faqs = [
     a: "Sí, si es accesible: un plato a baja altura y de borde amplio evita que tenga que agacharse o forzar el cuello. Colócala en un sitio de fácil acceso, sin escaleras ni saltos de por medio.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Chronic kidney disease (CKD) in cats",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/chronic-kidney-disease-ckd-in-cats",
+  },
+  {
+    authors: "Sparkes AH, Caney S, Chalhoub S, et al.",
+    year: 2016,
+    title: "ISFM Consensus Guidelines on the Diagnosis and Management of Feline Chronic Kidney Disease",
+    source: "J Feline Med Surg 18(3):219-239",
+    url: "https://doi.org/10.1177/1098612X16631234",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "How to encourage your cat to drink",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/how-to-encourage-your-cat-to-drink",
+  },
+  {
+    authors: "Grant DC",
+    year: 2010,
+    title: "Effect of water source on intake and urine concentration in healthy cats",
+    source: "J Feline Med Surg",
+    url: "https://journals.sagepub.com/doi/10.1016/j.jfms.2009.10.008",
+  },
+];
 ---
 
 <GuideLayout
   seo={seo}
   breadcrumbs={breadcrumbs}
   datePublished="2026-08-20"
+  dateModified="2026-10-01T00:00:00.000Z"
   faqs={faqs}
+  fuentes={fuentes}
 >
   <p>
     En un gato con <strong>problemas renales</strong> o simplemente <strong
@@ -143,4 +176,6 @@ const faqs = [
       href="/por-que-mi-gato-no-bebe-agua/">deja de beber por completo</a
     > más de 24 h, es urgente.
   </p>
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

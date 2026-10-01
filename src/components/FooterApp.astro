@@ -1,18 +1,110 @@
 ---
-import { SITE, SILOS, AMAZON_AFFILIATE_DISCLOSURE } from "../config/site.js";
-import { CATEGORIES, getActiveGuides } from "../data/taxonomy.js";
+import {
+  SITE,
+  SILOS,
+  AUTHOR,
+  AMAZON_AFFILIATE_DISCLOSURE,
+} from "../config/site.js";
+import { getCategory, getActiveGuides } from "../data/taxonomy.js";
+
 const isActive = (id) => SILOS[id]?.active;
-const comparativas = CATEGORIES.filter(
-  (c) => c.comparativa && isActive(c.silo),
-).map((c) => ({ name: c.name, href: c.comparativa.path }));
-const guias = getActiveGuides().map((g) => ({ name: g.short, href: g.path }));
+
+// Comparativas: lista curada (orden = prioridad comercial). Cada enlace
+// declara su silo y desaparece solo si ese silo se apaga.
+const comparativas = [
+  {
+    silo: "hidratacion",
+    name: "Mejores fuentes de agua",
+    href: "/mejores-fuentes-agua-para-gatos/",
+  },
+  {
+    silo: "hidratacion",
+    name: "Fuentes de acero inoxidable",
+    href: "/fuentes-acero-inoxidable-gatos/",
+  },
+  {
+    silo: "hidratacion",
+    name: "Fuentes silenciosas",
+    href: "/fuentes-agua-silenciosas-gatos/",
+  },
+  {
+    silo: "hidratacion",
+    name: "Fuentes sin cable",
+    href: "/mejores-fuentes-agua-sin-cable-gatos/",
+  },
+  {
+    silo: "hidratacion",
+    name: "Fuentes baratas",
+    href: "/mejores-fuentes-agua-baratas-gatos/",
+  },
+  {
+    silo: "hidratacion",
+    name: "Filtros de recambio",
+    href: "/filtros-recambio-fuentes-gatos/",
+  },
+  {
+    silo: "comederos",
+    name: "Mejores comederos automáticos",
+    href: "/mejores-comederos-automaticos-gatos/",
+  },
+  {
+    silo: "comederos",
+    name: "Comederos con app y WiFi",
+    href: "/mejores-comederos-automaticos-app-gatos/",
+  },
+].filter((l) => isActive(l.silo));
+
+// Guías: TODAS las activas (se añaden solas al registrarlas en taxonomy.js),
+// agrupadas por silo. Las transversales (category null) van a "Salud".
+const guias = getActiveGuides().map((g) => ({
+  name: g.short,
+  href: g.path,
+  silo: getCategory(g.category)?.silo ?? null,
+}));
+const grupos = [
+  {
+    title: "Agua y fuentes",
+    links: guias.filter((g) => g.silo === "hidratacion"),
+    all: isActive("hidratacion") && {
+      name: "Todo sobre hidratación",
+      href: SILOS.hidratacion.path,
+    },
+    wide: true,
+  },
+  {
+    title: "Comederos y comida",
+    links: guias.filter((g) => g.silo === "comederos"),
+    all: isActive("comederos") && {
+      name: "Todo sobre comederos",
+      href: SILOS.comederos.path,
+    },
+  },
+  {
+    title: "Salud y herramientas",
+    links: guias.filter((g) => !g.silo),
+  },
+].filter((g) => g.links.length > 0);
+
+const sitio = [
+  { name: "Quiénes somos y método", href: "/quienes-somos/" },
+  { name: "Catálogo completo", href: "/catalogo/" },
+  ...(AUTHOR.email
+    ? [{ name: "Contacto", href: `mailto:${AUTHOR.email}` }]
+    : []),
+  { name: "Aviso legal", href: "/aviso-legal/" },
+  { name: "Privacidad", href: "/politica-privacidad/" },
+  { name: "Cookies", href: "/politica-cookies/" },
+];
+
 const year = new Date().getFullYear();
+const link = "text-white/70 hover:text-white transition-colors";
 ---
 
 <footer class="bg-ink text-white">
-  <div class="max-w-6xl mx-auto px-4 py-16">
-    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-      <div>
+  <div class="max-w-6xl mx-auto px-4 pt-16 pb-12">
+    <!-- Fila 1: marca + comparativas + sitio -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+      <div class="col-span-2">
         <div class="flex items-center gap-2.5">
           <span
             class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-brand-300"
@@ -32,21 +124,23 @@ const year = new Date().getFullYear();
           </span>
           <p class="font-display font-semibold text-lg">{SITE.name}</p>
         </div>
-        <p class="text-sm text-white/60 mt-4 max-w-xs leading-relaxed">
+        <p class="text-sm text-white/60 mt-4 max-w-sm leading-relaxed">
           Análisis independiente de productos para gatos. Estudiamos cada
           producto a fondo, lo puntuamos y señalamos también sus defectos.
         </p>
+        <ul class="mt-5 space-y-1.5 text-xs text-white/50">
+          <li>✓ Sin patrocinios: ninguna marca paga por su nota</li>
+          <li>✓ Notas propias, no las estrellas de Amazon</li>
+        </ul>
       </div>
+
       <nav aria-label="Comparativas">
         <p class="kicker !text-brand-300 mb-3">Comparativas</p>
         <ul class="space-y-2.5 text-sm">
           {
             comparativas.map((l) => (
               <li>
-                <a
-                  href={l.href}
-                  class="text-white/70 hover:text-white transition-colors"
-                >
+                <a href={l.href} class={link}>
                   {l.name}
                 </a>
               </li>
@@ -54,65 +148,54 @@ const year = new Date().getFullYear();
           }
         </ul>
       </nav>
-      <nav aria-label="Guías">
-        <p class="kicker !text-brand-300 mb-3">Guías</p>
+
+      <nav aria-label={SITE.name}>
+        <p class="kicker !text-brand-300 mb-3">{SITE.name}</p>
         <ul class="space-y-2.5 text-sm">
           {
-            guias.map((l) => (
+            sitio.map((l) => (
               <li>
-                <a
-                  href={l.href}
-                  class="text-white/70 hover:text-white transition-colors"
-                >
+                <a href={l.href} class={link}>
                   {l.name}
                 </a>
               </li>
             ))
           }
-        </ul>
-      </nav>
-      <nav aria-label="Sitio">
-        <p class="kicker !text-brand-300 mb-3">Felinlab</p>
-        <ul class="space-y-2.5 text-sm">
-          <li>
-            <a
-              href={SILOS.hidratacion.path}
-              class="text-white/70 hover:text-white transition-colors"
-              >Guía de hidratación</a
-            >
-          </li>
-          <li>
-            <a
-              href="/catalogo/"
-              class="text-white/70 hover:text-white transition-colors"
-              >Catálogo</a
-            >
-          </li>
-          <li>
-            <a
-              href="/quienes-somos/"
-              class="text-white/70 hover:text-white transition-colors"
-              >Método y equipo</a
-            >
-          </li>
-          <li>
-            <a
-              href="/aviso-legal/"
-              class="text-white/70 hover:text-white transition-colors"
-              >Aviso legal</a
-            >
-          </li>
-          <li>
-            <a
-              href="/politica-privacidad/"
-              class="text-white/70 hover:text-white transition-colors"
-              >Privacidad</a
-            >
-          </li>
         </ul>
       </nav>
     </div>
+
+    <!-- Fila 2: guías agrupadas por tema -->
+    <nav aria-label="Guías" class="mt-12 pt-10 border-t border-white/10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+        {
+          grupos.map((g) => (
+            <div class={g.wide ? "col-span-2" : ""}>
+              <p class="kicker !text-brand-300 mb-3">{g.title}</p>
+              <ul class={`text-sm ${g.wide ? "columns-2 gap-x-8" : ""}`}>
+                {g.links.map((l) => (
+                  <li class="break-inside-avoid pb-2.5">
+                    <a href={l.href} class={link}>
+                      {l.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {g.all && (
+                <a
+                  href={g.all.href}
+                  class="inline-block whitespace-nowrap mt-1 text-sm font-semibold text-brand-300 hover:text-white transition-colors"
+                >
+                  {g.all.name} →
+                </a>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </nav>
   </div>
+
   <div class="border-t border-white/10">
     <div
       class="max-w-6xl mx-auto px-4 py-5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text-white/50"

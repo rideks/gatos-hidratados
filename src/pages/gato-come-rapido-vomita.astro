@@ -1,5 +1,6 @@
 ---
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 import { SILOS } from "../data/taxonomy.js";
@@ -7,7 +8,7 @@ import { SILOS } from "../data/taxonomy.js";
 const seo = {
   title: "Mi gato come muy rápido y vomita: soluciones",
   description:
-    "Por qué tu gato come demasiado rápido y devuelve la comida, cómo distinguir regurgitación de vómito y qué soluciones funcionan, incluidos los comederos de alimentación lenta.",
+    "Por qué tu gato come tan rápido y devuelve la comida, cómo distinguir regurgitación de vómito y qué funciona, incluidos los comederos de alimentación lenta.",
   canonical: "/gato-come-rapido-vomita/",
 };
 
@@ -35,15 +36,41 @@ const faqs = [
     a: "Mucho. Si el gato llega con demasiada hambre a una toma grande, come ansioso y rápido. Dar la misma cantidad diaria en más tomas pequeñas reduce la ansiedad y la voracidad; un comedero automático lo hace solo a horas fijas.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "Sadek T, Hamper B, Horwitz D, et al.",
+    year: 2018,
+    title: "Feline feeding programs: Addressing behavioural needs to improve feline health and wellbeing",
+    source: "J Feline Med Surg 20:1049-1055",
+    url: "https://doi.org/10.1177/1098612X18791877",
+  },
+  {
+    authors: "Dantas LMS, Delgado MM, Johnson I, Buffington CAT",
+    year: 2016,
+    title: "Food puzzles for cats: Feeding for physical and emotional wellbeing",
+    source: "J Feline Med Surg 18(9)",
+    url: "https://doi.org/10.1177/1098612X16643753",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Feeding your cat or kitten",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/feeding-your-cat-or-kitten",
+  },
+];
 ---
 
 <GuideLayout
   seo={seo}
   breadcrumbs={breadcrumbs}
   datePublished="2026-09-24"
+  dateModified="2026-10-01T00:00:00.000Z"
   faqs={faqs}
   section="Alimentación"
   noindex={!SILOS.comederos.active}
+  fuentes={fuentes}
 >
   <p>
     Si tu gato devora el plato en segundos y al poco <strong
@@ -134,4 +161,6 @@ const faqs = [
   </p>
 
   <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

@@ -1,11 +1,12 @@
 ---
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 const seo = {
   title: "Fuente de agua vs cuenco: ¿de verdad bebe más tu gato?",
   description:
-    "Comparamos con honestidad la fuente de agua frente al cuenco de toda la vida: qué dice la ciencia, cuándo compensa una fuente, cuándo basta un buen cuenco y qué gatos ganan más.",
+    "Fuente de agua o cuenco: qué dice la ciencia, cuándo compensa una fuente, cuándo basta un buen cuenco y qué gatos ganan más con el cambio.",
   canonical: "/fuente-de-agua-vs-cuenco-gatos/",
 };
 const breadcrumbs = [
@@ -27,13 +28,53 @@ const faqs = [
     a: "Sí, si lo cuidas: agua fresca a diario, cuenco ancho y poco profundo (para no molestar los bigotes), de acero o cerámica en lugar de plástico, y colocado lejos de la comida y del arenero. Un buen cuenco bien mantenido supera a una fuente sucia o ruidosa.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "Grant DC",
+    year: 2010,
+    title: "Effect of water source on intake and urine concentration in healthy cats",
+    source: "J Feline Med Surg",
+    url: "https://journals.sagepub.com/doi/10.1016/j.jfms.2009.10.008",
+  },
+  {
+    authors: "Pachel C, Neilson J",
+    year: 2010,
+    title: "Comparison of feline water consumption between still and flowing water sources: a pilot study",
+    source: "J Vet Behav 5:130-133",
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S155878781000002X",
+  },
+  {
+    authors: "Robbins MT, Cline MG, Bartges JW, et al.",
+    year: 2019,
+    title: "Quantified water intake in laboratory cats from still, free-falling and circulating water bowls, and its effects on selected urinary parameters",
+    source: "J Feline Med Surg",
+    url: "https://doi.org/10.1177/1098612X18803753",
+  },
+  {
+    authors: "Buckley CM, Hawthorne A, Colyer A, Stevenson AE",
+    year: 2011,
+    title: "Effect of dietary water intake on urinary output, specific gravity and relative supersaturation for calcium oxalate and struvite in the cat",
+    source: "Br J Nutr 106(S1):S128-S130",
+    url: "https://doi.org/10.1017/S0007114511001875",
+  },
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "How to encourage your cat to drink",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/how-to-encourage-your-cat-to-drink",
+  },
+];
 ---
 
 <GuideLayout
   seo={seo}
   breadcrumbs={breadcrumbs}
   datePublished="2026-08-13"
+  dateModified="2026-10-01T00:00:00.000Z"
   faqs={faqs}
+  fuentes={fuentes}
 >
   <p>
     Las fuentes para gatos se venden con la promesa de que tu gato beberá más.
@@ -157,4 +198,6 @@ const faqs = [
   </div>
 
   <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

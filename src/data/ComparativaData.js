@@ -167,7 +167,7 @@ export const COMPARISONS = [
     seo: {
       title: "Fuente de plástico vs cerámica para gatos: cuál compensa",
       description:
-        "Plástico frente a cerámica en fuentes de agua para gatos: higiene y acné felino, precio, peso y estabilidad, durabilidad y mantenimiento. Cuál conviene según tu caso.",
+        "Fuente de plástico o de cerámica para gatos: higiene y acné felino, precio, estabilidad, durabilidad y mantenimiento. Cuál conviene según tu caso.",
     },
     a: "plastico",
     b: "ceramica",
@@ -273,7 +273,7 @@ export const COMPARISONS = [
     seo: {
       title: "PETKIT vs FEELNEEDY: fuente premium o acero barato",
       description:
-        "Comparamos PETKIT y FEELNEEDY en fuentes de agua para gatos: app y seguimiento, sin cable, acero, capacidad, soporte de recambios y precio. Cuándo compensa cada una.",
+        "PETKIT o FEELNEEDY: comparamos app, versiones sin cable, acero, capacidad, recambios y precio de sus fuentes para gatos. Cuándo compensa cada marca.",
     },
     a: "petkit",
     b: "feelneedy",
