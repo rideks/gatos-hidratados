@@ -1,11 +1,12 @@
 ---
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 const seo = {
   title: "¿Cuánta agua debe beber un gato al día? (tabla por peso)",
   description:
-    "Cuánta agua necesita un gato al día según su peso: la fórmula de 50-60 ml/kg, cómo cuenta la comida húmeda, señales de que bebe poco y cuándo acudir al veterinario.",
+    "Cuánta agua necesita un gato al día según su peso (50-60 ml/kg), cómo cuenta la comida húmeda, señales de que bebe poco y cuándo ir al veterinario.",
   canonical: "/cuanta-agua-debe-beber-un-gato/",
 };
 const breadcrumbs = [
@@ -27,13 +28,45 @@ const faqs = [
     a: "Un aumento brusco y sostenido del consumo (por encima de unos 100 ml/kg al día) puede ser señal de problemas renales, diabetes o tiroides y merece una consulta veterinaria. Cualquier cambio marcado en cuánto bebe, en un sentido o en otro, conviene revisarlo.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "How to encourage your cat to drink",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/how-to-encourage-your-cat-to-drink",
+  },
+  {
+    authors: "Royal Canin Academy",
+    title: "The water requirements and drinking habits of cats",
+    source: "academy.royalcanin.com",
+    url: "https://academy.royalcanin.com/en/veterinary/the-water-requirements-and-drinking-habits-of-cats",
+  },
+  {
+    authors: "Buckley CM, Hawthorne A, Colyer A, Stevenson AE",
+    year: 2011,
+    title: "Effect of dietary water intake on urinary output, specific gravity and relative supersaturation for calcium oxalate and struvite in the cat",
+    source: "Br J Nutr 106(S1):S128-S130",
+    url: "https://doi.org/10.1017/S0007114511001875",
+  },
+  {
+    authors: "Grant DC",
+    year: 2010,
+    title: "Effect of water source on intake and urine concentration in healthy cats",
+    source: "J Feline Med Surg",
+    url: "https://journals.sagepub.com/doi/10.1016/j.jfms.2009.10.008",
+  },
+];
 ---
 
 <GuideLayout
   seo={seo}
   breadcrumbs={breadcrumbs}
   datePublished="2026-08-13"
+  dateModified="2026-10-01T00:00:00.000Z"
   faqs={faqs}
+  fuentes={fuentes}
 >
   <p>
     Es una de las dudas más frecuentes y la respuesta corta tiene truco: lo que
@@ -177,4 +210,6 @@ const faqs = [
   </p>
 
   <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

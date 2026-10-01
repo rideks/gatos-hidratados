@@ -1,5 +1,6 @@
 ---
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 import KeyFacts from "../components/KeyFacts.astro";
 import VetDisclaimer from "../components/VetDisclaimer.astro";
 const seo = {
@@ -28,13 +29,39 @@ const faqs = [
     a: "Mejor no. Por instinto, el gato asocia el agua cercana a la comida (o al arenero) con contaminación y la rechaza. Sepáralas y colócala en un sitio tranquilo y de paso.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "How to encourage your cat to drink",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/how-to-encourage-your-cat-to-drink",
+  },
+  {
+    authors: "Pachel C, Neilson J",
+    year: 2010,
+    title: "Comparison of feline water consumption between still and flowing water sources: a pilot study",
+    source: "J Vet Behav 5:130-133",
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S155878781000002X",
+  },
+  {
+    authors: "Grant DC",
+    year: 2010,
+    title: "Effect of water source on intake and urine concentration in healthy cats",
+    source: "J Feline Med Surg",
+    url: "https://journals.sagepub.com/doi/10.1016/j.jfms.2009.10.008",
+  },
+];
 ---
 
 <GuideLayout
   seo={seo}
   breadcrumbs={breadcrumbs}
   datePublished="2026-08-05"
+  dateModified="2026-10-01T00:00:00.000Z"
   faqs={faqs}
+  fuentes={fuentes}
 >
   <p>
     Has comprado la fuente, la has montado… y tu gato la mira con desconfianza.
@@ -103,4 +130,6 @@ const faqs = [
   </div>
 
   <VetDisclaimer />
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

@@ -1,0 +1,238 @@
+diff --git a/src/data/ComparativaData.js b/src/data/ComparativaData.js
+index 9996801..92c2b12 100644
+--- a/src/data/ComparativaData.js
++++ b/src/data/ComparativaData.js
+@@ -167,7 +167,7 @@ export const COMPARISONS = [
+     seo: {
+       title: "Fuente de plástico vs cerámica para gatos: cuál compensa",
+       description:
+-        "Plástico frente a cerámica en fuentes de agua para gatos: higiene y acné felino, precio, peso y estabilidad, durabilidad y mantenimiento. Cuál conviene según tu caso.",
++        "Fuente de plástico o de cerámica para gatos: higiene y acné felino, precio, estabilidad, durabilidad y mantenimiento. Cuál conviene según tu caso.",
+     },
+     a: "plastico",
+     b: "ceramica",
+@@ -273,7 +273,7 @@ export const COMPARISONS = [
+     seo: {
+       title: "PETKIT vs FEELNEEDY: fuente premium o acero barato",
+       description:
+-        "Comparamos PETKIT y FEELNEEDY en fuentes de agua para gatos: app y seguimiento, sin cable, acero, capacidad, soporte de recambios y precio. Cuándo compensa cada una.",
++        "PETKIT o FEELNEEDY: comparamos app, versiones sin cable, acero, capacidad, recambios y precio de sus fuentes para gatos. Cuándo compensa cada marca.",
+     },
+     a: "petkit",
+     b: "feelneedy",
+diff --git a/src/pages/agua-problemas-urinarios-gatos.astro b/src/pages/agua-problemas-urinarios-gatos.astro
+index 0de8c3b..0297e54 100644
+--- a/src/pages/agua-problemas-urinarios-gatos.astro
++++ b/src/pages/agua-problemas-urinarios-gatos.astro
+@@ -7,9 +7,9 @@ import Sources from "../components/Sources.astro";
+ 
+ const seo = {
+   title:
+-    "Agua y problemas urinarios en gatos: cistitis, cristales y cuándo es urgencia",
++    "Agua y problemas urinarios en gatos: cuándo es urgencia",
+   description:
+-    "Cómo influye la hidratación en las vías urinarias del gato (cistitis, cristales, FLUTD), qué dice de verdad la evidencia y las señales de urgencia que no debes ignorar.",
++    "Cómo influye beber agua en las vías urinarias del gato (cistitis, cristales, FLUTD), qué dice la evidencia y las señales de urgencia que no debes ignorar.",
+   canonical: "/agua-problemas-urinarios-gatos/",
+ };
+ 
+diff --git a/src/pages/cada-cuanto-cambiar-filtro-fuente-gato.astro b/src/pages/cada-cuanto-cambiar-filtro-fuente-gato.astro
+index b92deed..cd200d7 100644
+--- a/src/pages/cada-cuanto-cambiar-filtro-fuente-gato.astro
++++ b/src/pages/cada-cuanto-cambiar-filtro-fuente-gato.astro
+@@ -4,7 +4,7 @@ import KeyFacts from "../components/KeyFacts.astro";
+ const seo = {
+   title: "¿Cada cuánto hay que cambiar el filtro de la fuente del gato?",
+   description:
+-    "El filtro de carbón se cambia cada 2-4 semanas (antes con varios gatos); el prefiltro de espuma, enjuague semanal. Señales de que está saturado y cómo alargar su vida.",
++    "El filtro de carbón se cambia cada 2-4 semanas (antes con varios gatos) y la espuma se enjuaga cada semana. Señales de que está saturado y cómo alargarlo.",
+   canonical: "/cada-cuanto-cambiar-filtro-fuente-gato/",
+ };
+ const breadcrumbs = [
+diff --git a/src/pages/comedero-automatico-vs-gravedad-gatos.astro b/src/pages/comedero-automatico-vs-gravedad-gatos.astro
+index c04ea13..5169451 100644
+--- a/src/pages/comedero-automatico-vs-gravedad-gatos.astro
++++ b/src/pages/comedero-automatico-vs-gravedad-gatos.astro
+@@ -8,7 +8,7 @@ import { SILOS } from "../data/taxonomy.js";
+ const seo = {
+   title: "Comedero automático vs por gravedad: ¿cuál necesita tu gato?",
+   description:
+-    "Comedero automático (programable) o por gravedad para gatos: la diferencia real es el control de la ración. Qué es mejor según el peso de tu gato, si viajas y cuántos gatos tienes.",
++    "Comedero automático o por gravedad: la diferencia real es el control de la ración. Cuál elegir según el peso de tu gato, si viajas y cuántos gatos tienes.",
+   canonical: "/comedero-automatico-vs-gravedad-gatos/",
+ };
+ 
+diff --git a/src/pages/comederos-automaticos-varios-gatos.astro b/src/pages/comederos-automaticos-varios-gatos.astro
+index 68f3203..73bf519 100644
+--- a/src/pages/comederos-automaticos-varios-gatos.astro
++++ b/src/pages/comederos-automaticos-varios-gatos.astro
+@@ -4,7 +4,7 @@ import KeyFacts from "../components/KeyFacts.astro";
+ import { SILOS } from "../data/taxonomy.js";
+ 
+ const seo = {
+-  title: "Comederos automáticos para varios gatos: cómo alimentar a 2 o más",
++  title: "Comederos automáticos para varios gatos: cómo elegir",
+   description:
+     "Cómo usar un comedero automático con varios gatos sin que uno robe la ración del otro: doble cuenco, uno por gato o con reconocimiento por chip. Cuál elegir.",
+   canonical: "/comederos-automaticos-varios-gatos/",
+diff --git a/src/pages/cristales-orina-gato.astro b/src/pages/cristales-orina-gato.astro
+index ceee589..bc13fb0 100644
+--- a/src/pages/cristales-orina-gato.astro
++++ b/src/pages/cristales-orina-gato.astro
+@@ -8,7 +8,7 @@ import Sources from "../components/Sources.astro";
+ const seo = {
+   title: "Cristales en la orina del gato: tipos, síntomas y tratamiento",
+   description:
+-    "Cristales en la orina del gato: diferencias entre estruvita y oxalato cálcico, síntomas, tratamiento según el tipo, si se pueden disolver y cómo prevenirlos con hidratación. Cuándo es urgencia.",
++    "Estruvita u oxalato: tipos de cristales en la orina del gato, síntomas, tratamiento, si se pueden disolver, cómo prevenirlos y cuándo es una urgencia.",
+   canonical: "/cristales-orina-gato/",
+ };
+ 
+diff --git a/src/pages/cuanta-agua-debe-beber-un-gato.astro b/src/pages/cuanta-agua-debe-beber-un-gato.astro
+index 3e4aebf..4d1bedd 100644
+--- a/src/pages/cuanta-agua-debe-beber-un-gato.astro
++++ b/src/pages/cuanta-agua-debe-beber-un-gato.astro
+@@ -6,7 +6,7 @@ import VetDisclaimer from "../components/VetDisclaimer.astro";
+ const seo = {
+   title: "¿Cuánta agua debe beber un gato al día? (tabla por peso)",
+   description:
+-    "Cuánta agua necesita un gato al día según su peso: la fórmula de 50-60 ml/kg, cómo cuenta la comida húmeda, señales de que bebe poco y cuándo acudir al veterinario.",
++    "Cuánta agua necesita un gato al día según su peso (50-60 ml/kg), cómo cuenta la comida húmeda, señales de que bebe poco y cuándo ir al veterinario.",
+   canonical: "/cuanta-agua-debe-beber-un-gato/",
+ };
+ const breadcrumbs = [
+diff --git a/src/pages/filtro-original-vs-generico-fuente-gatos.astro b/src/pages/filtro-original-vs-generico-fuente-gatos.astro
+index 6f7bbd4..7a5e8b8 100644
+--- a/src/pages/filtro-original-vs-generico-fuente-gatos.astro
++++ b/src/pages/filtro-original-vs-generico-fuente-gatos.astro
+@@ -8,7 +8,7 @@
+ import GuideLayout from "../components/GuideLayout.astro";
+ 
+ const seo = {
+-  title: "Filtro original vs genérico para fuente de gatos: ¿merece la pena?",
++  title: "Filtro original vs genérico para fuente de gatos",
+   description:
+     "¿Compensa el filtro original de tu fuente o vale uno genérico? Compatibilidad, riesgos de fugas, coste real y cuándo cada opción tiene sentido para tu gato.",
+   canonical: "/filtro-original-vs-generico-fuente-gatos/",
+diff --git a/src/pages/filtros-recambio-fuentes-gatos.astro b/src/pages/filtros-recambio-fuentes-gatos.astro
+index e1fb5c2..fda9426 100644
+--- a/src/pages/filtros-recambio-fuentes-gatos.astro
++++ b/src/pages/filtros-recambio-fuentes-gatos.astro
+@@ -13,7 +13,7 @@ const products = getBySubcategory("filtros-fuente").sort(
+ );
+ 
+ const seo = {
+-  title: "Filtros de recambio para fuentes de gatos: compatibilidad y cambio",
++  title: "Filtros de recambio para fuentes de gatos: compatibilidad",
+   description:
+     "Guía de filtros de recambio para fuentes de gatos: carbón activo vs espuma, compatibilidad, cada cuánto cambiarlos y packs que salen a cuenta.",
+   canonical: "/filtros-recambio-fuentes-gatos/",
+diff --git a/src/pages/fuente-agua-gato-renal-mayor.astro b/src/pages/fuente-agua-gato-renal-mayor.astro
+index a4170db..18dc761 100644
+--- a/src/pages/fuente-agua-gato-renal-mayor.astro
++++ b/src/pages/fuente-agua-gato-renal-mayor.astro
+@@ -6,7 +6,7 @@ import VetDisclaimer from "../components/VetDisclaimer.astro";
+ const seo = {
+   title: "Fuente de agua para gato renal o mayor: cuál y por qué",
+   description:
+-    "Qué fuente de agua ayuda a un gato con problemas renales o a un gato mayor: hidratación, monitorización del consumo y accesibilidad. Con criterio veterinario y honesto.",
++    "Qué fuente de agua ayuda a un gato renal o mayor: hidratación, control de cuánto bebe y accesibilidad. Con criterio veterinario y sin exagerar.",
+   canonical: "/fuente-agua-gato-renal-mayor/",
+ };
+ const breadcrumbs = [
+diff --git a/src/pages/fuente-de-agua-vs-cuenco-gatos.astro b/src/pages/fuente-de-agua-vs-cuenco-gatos.astro
+index dca9f61..c1f2504 100644
+--- a/src/pages/fuente-de-agua-vs-cuenco-gatos.astro
++++ b/src/pages/fuente-de-agua-vs-cuenco-gatos.astro
+@@ -6,7 +6,7 @@ import VetDisclaimer from "../components/VetDisclaimer.astro";
+ const seo = {
+   title: "Fuente de agua vs cuenco: ¿de verdad bebe más tu gato?",
+   description:
+-    "Comparamos con honestidad la fuente de agua frente al cuenco de toda la vida: qué dice la ciencia, cuándo compensa una fuente, cuándo basta un buen cuenco y qué gatos ganan más.",
++    "Fuente de agua o cuenco: qué dice la ciencia, cuándo compensa una fuente, cuándo basta un buen cuenco y qué gatos ganan más con el cambio.",
+   canonical: "/fuente-de-agua-vs-cuenco-gatos/",
+ };
+ const breadcrumbs = [
+diff --git a/src/pages/gato-come-rapido-vomita.astro b/src/pages/gato-come-rapido-vomita.astro
+index 0a9985d..da18e58 100644
+--- a/src/pages/gato-come-rapido-vomita.astro
++++ b/src/pages/gato-come-rapido-vomita.astro
+@@ -8,7 +8,7 @@ import { SILOS } from "../data/taxonomy.js";
+ const seo = {
+   title: "Mi gato come muy rápido y vomita: soluciones",
+   description:
+-    "Por qué tu gato come demasiado rápido y devuelve la comida, cómo distinguir regurgitación de vómito y qué soluciones funcionan, incluidos los comederos de alimentación lenta.",
++    "Por qué tu gato come tan rápido y devuelve la comida, cómo distinguir regurgitación de vómito y qué funciona, incluidos los comederos de alimentación lenta.",
+   canonical: "/gato-come-rapido-vomita/",
+ };
+ 
+diff --git a/src/pages/hidratacion-felina.astro b/src/pages/hidratacion-felina.astro
+index c4afbe6..c06363e 100644
+--- a/src/pages/hidratacion-felina.astro
++++ b/src/pages/hidratacion-felina.astro
+@@ -96,7 +96,7 @@ const schema = graph(
+   buildArticle({
+     url,
+     headline:
+-      "Hidratación felina: cuánta agua necesita tu gato y cómo mejorarla",
++      "Hidratación felina: cuánta agua necesita tu gato",
+     description:
+       "Cuánta agua debe beber un gato al día, señales de deshidratación, qué dice de verdad la ciencia sobre las fuentes de agua y cuándo acudir al veterinario.",
+     datePublished: "2026-08-01",
+@@ -119,7 +119,7 @@ const schema = graph(
+ ---
+ 
+ <Layout
+-  title="Hidratación felina: cuánta agua necesita tu gato y cómo mejorarla"
++  title="Hidratación felina: cuánta agua necesita tu gato"
+   description="Cuánta agua debe beber un gato al día, señales de deshidratación, qué dice de verdad la ciencia sobre las fuentes de agua y cuándo acudir al veterinario."
+   canonical={canonical}
+   type="article"
+@@ -131,7 +131,7 @@ const schema = graph(
+ 
+   <PageHeader
+     eyebrow="Guía pilar"
+-    title="Hidratación felina: cuánta agua necesita tu gato y cómo mejorarla"
++    title="Hidratación felina: cuánta agua necesita tu gato"
+     description="Los gatos beben poco por instinto. Aquí tienes las cifras exactas, cómo detectar deshidratación y qué funciona de verdad (con evidencia, no con marketing)."
+   >
+     <Breadcrumbs slot="breadcrumbs" items={breadcrumbs} />
+diff --git a/src/pages/mejores-comederos-automaticos-app-gatos.astro b/src/pages/mejores-comederos-automaticos-app-gatos.astro
+index 800a4c0..43e4080 100644
+--- a/src/pages/mejores-comederos-automaticos-app-gatos.astro
++++ b/src/pages/mejores-comederos-automaticos-app-gatos.astro
+@@ -20,7 +20,7 @@ const active = SILOS.comederos.active;
+ const seo = {
+   title: "Mejores comederos automáticos con app y WiFi para gatos 2026", // año SÍ
+   description:
+-    "El comedero automático con app y WiFi que recomendamos para gatos, y cuándo te compensa frente a uno programable de botones. Control desde el móvil, cubeta de acero y respaldo a pilas.",
++    "El comedero automático con app y WiFi que recomendamos y cuándo compensa frente a uno de botones: control desde el móvil, cubeta de acero y respaldo a pilas.",
+   canonical: "/mejores-comederos-automaticos-app-gatos/", // año NO
+ };
+ 
+diff --git a/src/pages/mejores-fuentes-agua-sin-cable-gatos.astro b/src/pages/mejores-fuentes-agua-sin-cable-gatos.astro
+index c2ee335..e13a5a8 100644
+--- a/src/pages/mejores-fuentes-agua-sin-cable-gatos.astro
++++ b/src/pages/mejores-fuentes-agua-sin-cable-gatos.astro
+@@ -21,7 +21,7 @@ const products = getBySubcategory("fuentes-agua")
+ const seo = {
+   title: "Mejores fuentes de agua sin cable para gatos 2026",
+   description:
+-    "Las mejores fuentes de agua sin cable (con batería) para gatos: cuánto dura la batería, cómo funciona el modo sensor, si se pueden usar con cable y cuándo compensan. Analizadas y puntuadas.",
++    "Fuentes de agua sin cable para gatos: cuánto dura la batería, cómo funciona el sensor, si funcionan enchufadas y cuándo compensan. Analizadas y puntuadas.",
+   canonical: "/mejores-fuentes-agua-sin-cable-gatos/",
+ };
+ 
+diff --git a/src/pages/por-que-mi-gato-bebe-mucha-agua.astro b/src/pages/por-que-mi-gato-bebe-mucha-agua.astro
+index ae54f15..cde4abd 100644
+--- a/src/pages/por-que-mi-gato-bebe-mucha-agua.astro
++++ b/src/pages/por-que-mi-gato-bebe-mucha-agua.astro
+@@ -6,7 +6,7 @@ import Sources from "../components/Sources.astro";
+ 
+ const seo = {
+   title:
+-    "¿Por qué mi gato bebe mucha agua? Cuándo es normal y cuándo preocuparse",
++    "¿Por qué mi gato bebe mucha agua? Cuándo preocuparse",
+   description:
+     "Tu gato bebe mucha agua (polidipsia): cuánto es demasiado, causas normales y las señales de alarma (riñón, diabetes, tiroides) que sí exigen ir al veterinario.",
+   canonical: "/por-que-mi-gato-bebe-mucha-agua/",

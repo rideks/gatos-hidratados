@@ -6,6 +6,7 @@
 // → src/pages/acne-felino-cuencos-plastico.astro
 // ============================================================================
 import GuideLayout from "../components/GuideLayout.astro";
+import Sources from "../components/Sources.astro";
 
 const seo = {
   title: "Acné felino y cuencos de plástico: por qué el acero es mejor",
@@ -21,7 +22,7 @@ const breadcrumbs = [
 ];
 
 const datePublished = "2026-08-15";
-const dateModified = "2026-08-15T00:00:00.000Z";
+const dateModified = "2026-10-01T00:00:00.000Z";
 
 const faqs = [
   {
@@ -41,6 +42,22 @@ const faqs = [
     a: "En casos leves, cambiar a acero o cerámica y lavar a diario suele ser suficiente para que mejore. En casos moderados o graves —muy inflamado, doloroso o que no remite— hace falta tratamiento veterinario, porque puede complicarse con una infección. El cambio de material es una medida de apoyo, no un tratamiento.",
   },
 ];
+
+// Fuentes citadas (bloque visible + citation en el JSON-LD del artículo).
+const fuentes = [
+  {
+    authors: "International Cat Care (ISFM)",
+    title: "Acne and stud tail",
+    source: "icatcare.org",
+    url: "https://icatcare.org/articles/acne-and-stud-tail",
+  },
+  {
+    authors: "Veterinary Partner (VIN)",
+    title: "Feline acne",
+    source: "veterinarypartner.vin.com",
+    url: "https://veterinarypartner.vin.com/default.aspx?pid=19239&catId=102903&id=9405780",
+  },
+];
 ---
 
 <GuideLayout
@@ -49,6 +66,7 @@ const faqs = [
   datePublished={datePublished}
   dateModified={dateModified}
   faqs={faqs}
+  fuentes={fuentes}
 >
   <div
     class="not-prose rounded-xl border border-brand-200 bg-brand-50 p-5 mb-8"
@@ -175,4 +193,6 @@ const faqs = [
     </p>
   </div>
   <!-- Si prefieres tu componente, sustituye el bloque anterior por <VetDisclaimer /> -->
+
+  <Sources items={fuentes} reviewed="octubre de 2026" />
 </GuideLayout>

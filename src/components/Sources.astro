@@ -76,7 +76,8 @@ const {
                 class="font-medium text-brand-700 hover:text-brand-600 underline decoration-brand-200 underline-offset-2 break-words"
               >
                 {s.title}
-                <ArrowUpRight className="inline w-3 h-3 ml-0.5 align-baseline shrink-0" />
+                {/* span inline-block: la regla global svg{display:block} gana a la clase "inline" */}
+                <span class="inline-block ml-0.5 align-baseline"><ArrowUpRight className="w-3 h-3" /></span>
               </a>
               {s.source && <span class="text-ink-500">. {s.source}.</span>}
             </span>
