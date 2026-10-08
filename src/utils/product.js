@@ -25,7 +25,14 @@ export const formatEUR = (v) => {
 };
 
 // ── Variantes ─────────────────────────────────────────────────────────────────
-export const getVariants = (p) => (Array.isArray(p?.variants) ? p.variants : []);
+// Solo variantes comprables (con ASIN o enlace propio). Una variante sin enlace
+// mandaría al usuario al pack base con otro precio. Si queda una sola, no hay
+// nada que elegir: se usa la ficha tal cual.
+const _buyable = (v) => Boolean(v?.asin || v?.amazonUrl);
+export const getVariants = (p) => {
+  const vs = Array.isArray(p?.variants) ? p.variants.filter(_buyable) : [];
+  return vs.length > 1 ? vs : [];
+};
 export const hasVariants = (p) => getVariants(p).length > 0;
 
 // ── Imágenes ─────────────────────────────────────────────────────────────────
