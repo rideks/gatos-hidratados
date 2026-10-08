@@ -18,7 +18,7 @@ const P = (p) => ({
   ...p,
   originalPrice: p.originalPrice ?? p.price,        // ← SIEMPRE presente (= price si no hay rebaja)
   datePublished: p.datePublished ?? FECHA_SEMANA,   // ← por defecto: hace una semana
-  updatedAt: FECHA_HOY,          // ← por defecto: hoy
+  updatedAt: p.updatedAt ?? FECHA_HOY,              // ← la fecha propia del producto; «hoy» solo si falta
   amazonUrl: p.amazonUrl ?? "",
   sku: p.sku || p.asin || undefined,
 });
@@ -323,7 +323,7 @@ export const aguaProducts = [
     brand: "Amazon Basics",
     name: "Amazon Basics Dispensador de agua por gravedad 3,8 L",
     metaTitle: "Dispensador de agua por gravedad Amazon Basics 3,8 L",
-    price: "20.34",
+    price: "20,34",
     asin: "B07227RQJ9",
     rating: "4.5",
     reviews: "34690",
